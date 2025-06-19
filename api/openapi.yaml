@@ -1,0 +1,3046 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: support@spartera.com
+    name: API Support
+  description: Auto-generated API documentation for REST services of the Spartera
+    platform
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Spartera API Documentation
+  version: 0.0.0
+servers:
+- description: Production server
+  url: https://api.spartera.com/
+- description: Staging server
+  url: https://stage.api.spartera.com/
+paths:
+  /companies/{company_id}/api-keys:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get all API keys
+      tags:
+      - API Keys
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: Create single API key
+      tags:
+      - API Keys
+  /companies/{company_id}/api-keys/{api_key_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: api_key_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get single API key by ID
+      tags:
+      - API Keys
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: api_key_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Update an existing API key by ID
+      tags:
+      - API Keys
+  /companies/{company_id}/api-keys/{token}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: token
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Delete single API key by token
+      tags:
+      - API Keys
+  /cloud-providers:
+    get:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get a list of all cloud providers
+      tags:
+      - Cloud Providers
+    post:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: Create single cloud provider
+      tags:
+      - Cloud Providers
+  /cloud-providers/{provider_id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: provider_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Delete single cloud provider by ID
+      tags:
+      - Cloud Providers
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: provider_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get single cloud provider by ID
+      tags:
+      - Cloud Providers
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: provider_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Update an existing cloud provider by ID
+      tags:
+      - Cloud Providers
+  /companies/{company_id}/users/{user_id}/favorites:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Get a list of all favorites for a specific user
+            Query params:
+            - category: filter by category
+            - sort: sort field (priority, date_created, etc.)
+            - order: sort direction (asc, desc)
+      tags:
+      - Favorites
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Favorite'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: "POST /companies/{company_id}/users/{user_id}/favorites"
+      tags:
+      - Favorites
+  /companies/{company_id}/users/{user_id}/favorites/{favorite_id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: favorite_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Delete single favorite by ID (unfavorite an asset)
+      tags:
+      - Favorites
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: favorite_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get single favorite by ID
+      tags:
+      - Favorites
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: favorite_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Favorite'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Update an existing favorite by ID
+            Can update notes, category, priority
+      tags:
+      - Favorites
+  /companies/{company_id}/users/{user_id}/favorites/category/{category}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: category
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get all favorites for the specified user in a specific category
+      tags:
+      - Favorites
+  /companies/{company_id}/users/{user_id}/favorites/uncategorized:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get all favorites for the specified user that don't have a category
+      tags:
+      - Favorites
+  /companies/{company_id}/users/{user_id}/favorites/check/{asset_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Check if the specified user has favorited a specific asset
+            Returns the favorite record if it exists, or empty result if not
+            Useful for UI to show/hide favorite button states
+      tags:
+      - Favorites
+  /companies/{company_id}/assets/{asset_id}/prices:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get all price history records for a specific asset
+      tags:
+      - Asset Price History
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: Create a new price history record for an asset
+      tags:
+      - Asset Price History
+  /companies/{company_id}/assets/{asset_id}/prices/{aph_id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: aph_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Delete single price history record by ID
+      tags:
+      - Asset Price History
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: aph_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get single price history record by ID
+      tags:
+      - Asset Price History
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: aph_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Update an existing price history record by ID
+      tags:
+      - Asset Price History
+  /companies/{company_id}/assets/{asset_id}/prices/active:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get the currently active price for an asset
+      tags:
+      - Asset Price History
+  /companies/{company_id}/assets/{asset_id}/prices/discount:
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: Apply a discount to the active price for an asset
+      tags:
+      - Asset Price History
+  /companies/{company_id}/assets/{asset_id}/prices/calculate_credits:
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: Calculate the credit equivalent for a given USD price without saving
+      tags:
+      - Asset Price History
+  /companies/{company_id}/users/{user_id}/alerts:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get a list of all alerts for a specific user
+      tags:
+      - Alerts
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alert'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: "POST /companies/{company_id}/users/{user_id}/alerts"
+      tags:
+      - Alerts
+  /companies/{company_id}/users/{user_id}/alerts/{alert_id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: alert_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Delete single alert by ID
+      tags:
+      - Alerts
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: alert_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get single alert by ID
+      tags:
+      - Alerts
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: alert_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alert'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Update an existing alert by ID
+      tags:
+      - Alerts
+  /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Get all alerts for a specific asset by the specified user
+            Useful for checking if user already has an alert set up for an asset
+      tags:
+      - Alerts
+  /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Get all alerts for a specific asset (from all users)
+            This would typically be restricted to asset owners or admins
+      tags:
+      - Alerts
+  /companies/{company_id}/connections:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get all connections for a specific company
+      tags:
+      - Connections
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connection'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: Create a new connection by ID
+      tags:
+      - Connections
+  /companies/{company_id}/connections/{connection_id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: connection_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Delete single connection by ID
+      tags:
+      - Connections
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: connection_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get single connection by ID
+      tags:
+      - Connections
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: connection_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connection'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Update an existing connection by ID
+      tags:
+      - Connections
+  /companies/{company_id}/connections/{connection_id}/infoschema:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: connection_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Retrieve the information schema for the specified connection
+      tags:
+      - Connections
+  /companies/{company_id}/connections/{connection_id}/test:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: connection_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Verify the specified connection to ensure it is functioning correctly
+      tags:
+      - Connections
+  /companies/{company_id}/users:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get a list of all users for a particular company
+      tags:
+      - Users
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: Create a new user
+      tags:
+      - Users
+  /companies/{company_id}/users/{user_id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Delete single user by ID
+      tags:
+      - Users
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get single user by ID
+      tags:
+      - Users
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Update an existing user by ID
+      tags:
+      - Users
+  /companies/{company_id}/assets:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get all assets for a specific company
+      tags:
+      - Assets
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Asset'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: Create a new asset
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Delete single asset by ID
+      tags:
+      - Assets
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get single asset by ID
+      tags:
+      - Assets
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Asset'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Update an existing asset by ID
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/infoschema:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get the information schema for a specific asset's table
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/test:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Test out an Asset (on a subset of data)
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/infoschema/save:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get the information schema for a specific asset and save it to the
+        asset's asset_schema field
+      tags:
+      - Assets
+  /companies/{company_id}/assets/statistics:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get statistics for all assets the user has access to
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/predicted_price:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get AI-predicted pricing for a specific asset
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/statistics:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get statistics for a specific asset (public endpoint)
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/recommendations:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: min_score
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: include_details
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Get asset recommendations for a specific asset using heuristic waterfall matching
+            Returns list of similar assets based on industry, company, connection, tags, etc.
+
+            Query Parameters:
+            - limit: Number of recommendations to return (default: 12, max: 50)
+            - min_score: Minimum similarity score threshold (default: 0.1)
+            - include_details: Include component similarity scores (default: false)
+      tags:
+      - Assets
+  /companies/{company_id}/assets/recommendations/bulk:
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Asset'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+      summary: Get recommendations for multiple assets in a single request. Useful
+        for pre-loading recommendations.
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/recommendations/explain:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get detailed explanation of how asset recommendations are calculated
+        for debugging purposes.
+      tags:
+      - Assets
+  /companies/{company_id}/assets/recommendations/health:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Health check for the recommendations system with sample data and performance
+        metrics.
+      tags:
+      - Assets
+  /companies/{company_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get details of the requestor's own company
+      tags:
+      - Companies
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Update an existing company by ID
+      tags:
+      - Companies
+  /companies/{company_id}/requests/plan:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get the total number of requests allocated in the company's current
+        subscription plan.
+      tags:
+      - Companies
+  /companies/{company_id}/requests/usage:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: Get company request usage data for a specific month. Returns JSON metrics
+        by default or CSV logs when download parameter is included.
+      tags:
+      - Companies
+  /companies/{company_id}/objects:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: "Get all objects (connections, assets) of a single company"
+      tags:
+      - Companies
+  /companies/{company_id}/analytics/dashboard:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Get comprehensive dashboard analytics for seller dashboard
+            Includes all metrics needed for dashboard charts in one call
+            Query params: start_date, end_date, period (day/week/month/quarter)
+      tags:
+      - Companies
+  /companies/{company_id}/analytics/sales:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Get sales over time analytics
+            Query params: start_date, end_date, group_by (day/week/month/quarter), metrics
+      tags:
+      - Companies
+  /companies/{company_id}/analytics/assets:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Get asset performance analytics
+            Query params: start_date, end_date, limit, sort_by, include
+      tags:
+      - Companies
+  /companies/{company_id}/analytics/customers:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Get customer analytics including growth and segmentation
+            Query params: start_date, end_date, group_by, segment_by
+      tags:
+      - Companies
+  /analyze/{company_handle}/assets/{asset_slug}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_handle
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_slug
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - bearerAuth: []
+      summary: |-
+        Process assets route that handles both owned and purchased assets.
+                    Minimal route function that passes all logic to crudder.process_asset
+
+                    Args:
+                        asset_path: The path after /analyze/ containing asset information
+                        company_handle: The subdomain from Flask's routing (if available)
+      tags:
+      - Assets
+components:
+  responses:
+    BadRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object'
+      description: Invalid input
+    Unauthorized:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object_1'
+      description: Authentication required
+    Forbidden:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object_2'
+      description: Permission denied
+    NotFound:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object_3'
+      description: Resource not found
+  schemas:
+    Error:
+      properties:
+        code:
+          description: Error code
+          format: int32
+          type: integer
+        message:
+          description: Error message
+          type: string
+        details:
+          description: Additional error details
+          type: string
+        timestamp:
+          description: When the error occurred
+          format: date-time
+          type: string
+      required:
+      - code
+      - message
+    Alert:
+      description: User alerts for when assets are updated
+      example:
+        last_updated: last_updated
+        is_active: is_active
+        company_id: company_id
+        last_triggered: last_triggered
+        user_id: user_id
+        date_created: date_created
+        alert_id: alert_id
+        active: active
+        asset_id: asset_id
+        alert_type: alert_type
+      properties:
+        alert_id:
+          readOnly: true
+          type: string
+        asset_id:
+          type: string
+        user_id:
+          type: string
+        company_id:
+          type: string
+        alert_type:
+          type: string
+        is_active:
+          type: string
+        last_triggered:
+          type: string
+        date_created:
+          readOnly: true
+          type: string
+        last_updated:
+          readOnly: true
+          type: string
+        active:
+          type: string
+      required:
+      - alert_type
+      - asset_id
+      - company_id
+    Apikey:
+      description: API Keys model storing every key created
+      properties:
+        api_key_id:
+          readOnly: true
+          type: string
+        user_id:
+          type: string
+        company_id:
+          type: string
+        role_id:
+          type: string
+        token:
+          type: string
+        name:
+          type: string
+        expiration_date_utc:
+          type: string
+        date_created:
+          type: string
+        last_updated:
+          type: string
+        active:
+          type: string
+      required:
+      - api_key_id
+      - company_id
+      - role_id
+      - token
+    Assetpricehistory:
+      description: Pricing history for an asset
+      properties:
+        aph_id:
+          type: string
+        asset_id:
+          type: string
+        price_usd:
+          format: double
+          type: number
+        price_credits:
+          type: string
+        discount_percentage:
+          format: float
+          type: number
+        sale_start_date:
+          type: string
+        sale_end_date:
+          type: string
+        date_ended:
+          type: string
+        date_created:
+          readOnly: true
+          type: string
+        last_updated:
+          readOnly: true
+          type: string
+        active:
+          type: string
+      required:
+      - active
+      - asset_id
+    Asset:
+      description: Asset model for every asset (insight/visualization/feed/etc.) customer
+        creates
+      example:
+        industry_id: industry_id
+        data_time_period_start: data_time_period_start
+        viz_data_aggregation: viz_data_aggregation
+        allow_params: allow_params
+        viz_dep_var_col_name: viz_dep_var_col_name
+        description: description
+        source_table_name: source_table_name
+        asset_id: asset_id
+        source: source
+        geographic_coverage_type: geographic_coverage_type
+        data_source_last_refreshed: data_source_last_refreshed
+        geographic_coverage_details: geographic_coverage_details
+        next_run: next_run
+        approved_by_user_id: approved_by_user_id
+        data_time_period_end: data_time_period_end
+        approved_at: approved_at
+        cached: cached
+        asset_type: asset_type
+        viz_color_col_name: viz_color_col_name
+        llm_connection_id: llm_connection_id
+        viz_data_limit: viz_data_limit
+        slug: slug
+        viz_sort_direction: viz_sort_direction
+        data_source_refresh_frequency: data_source_refresh_frequency
+        snippet_id: snippet_id
+        last_updated: last_updated
+        company_id: company_id
+        visibility: visibility
+        viz_size_col_name: viz_size_col_name
+        approval_status: approval_status
+        sell_in_marketplace: sell_in_marketplace
+        date_created: date_created
+        sql_logic: sql_logic
+        viz_chart_library: viz_chart_library
+        viz_indep_var_col_name: viz_indep_var_col_name
+        active: active
+        tags: tags
+        ai_job_id: ai_job_id
+        source_schema_name: source_schema_name
+        schedule: schedule
+        asset_schema: asset_schema
+        user_id: user_id
+        connection_id: connection_id
+        name: name
+        viz_chart_type: viz_chart_type
+        accept_terms: accept_terms
+        viz_color_scheme: viz_color_scheme
+      properties:
+        asset_id:
+          type: string
+        user_id:
+          type: string
+        company_id:
+          type: string
+        connection_id:
+          type: string
+        llm_connection_id:
+          type: string
+        snippet_id:
+          type: string
+        industry_id:
+          type: string
+        ai_job_id:
+          type: string
+        approval_status:
+          type: string
+        approved_by_user_id:
+          type: string
+        approved_at:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        source:
+          type: string
+        asset_type:
+          type: string
+        asset_schema:
+          type: string
+        visibility:
+          type: string
+        tags:
+          type: string
+        sql_logic:
+          type: string
+        source_schema_name:
+          type: string
+        source_table_name:
+          type: string
+        sell_in_marketplace:
+          type: string
+        viz_chart_library:
+          type: string
+        viz_chart_type:
+          type: string
+        viz_dep_var_col_name:
+          type: string
+        viz_indep_var_col_name:
+          type: string
+        viz_size_col_name:
+          type: string
+        viz_color_col_name:
+          type: string
+        viz_data_aggregation:
+          type: string
+        viz_sort_direction:
+          type: string
+        viz_data_limit:
+          type: string
+        viz_color_scheme:
+          type: string
+        allow_params:
+          type: string
+        accept_terms:
+          type: string
+        cached:
+          type: string
+        schedule:
+          type: string
+        next_run:
+          type: string
+        data_time_period_start:
+          type: string
+        data_time_period_end:
+          type: string
+        geographic_coverage_type:
+          type: string
+        geographic_coverage_details:
+          type: string
+        data_source_refresh_frequency:
+          type: string
+        data_source_last_refreshed:
+          type: string
+        date_created:
+          type: string
+        last_updated:
+          type: string
+        active:
+          type: string
+      required:
+      - company_id
+      - name
+      - source
+    Cloudprovider:
+      description: Cloud providers (platforms) database
+      properties:
+        provider_id:
+          readOnly: true
+          type: string
+        name:
+          type: string
+        parent_company:
+          type: string
+        marketing_homepage_url:
+          type: string
+        date_created:
+          type: string
+        last_updated:
+          type: string
+        active:
+          type: string
+      required:
+      - name
+    Company:
+      description: All of our customer company entities
+      properties:
+        company_id:
+          type: string
+        industry_id:
+          type: string
+        country_id:
+          type: string
+        company_name:
+          type: string
+        company_description:
+          type: string
+        company_handle:
+          type: string
+        company_domain:
+          type: string
+        credits_balance:
+          type: string
+        accepted_eula:
+          type: string
+        stripe_account_id:
+          type: string
+        stripe_account_status:
+          type: string
+        date_created:
+          type: string
+        last_updated:
+          type: string
+        active:
+          type: string
+      required:
+      - company_domain
+      - company_handle
+      - credits_balance
+    Connection:
+      description: Model for every connection setup from our platform
+      example:
+        last_updated: last_updated
+        company_id: company_id
+        visibility: visibility
+        verified_usage_ability: verified_usage_ability
+        date_created: date_created
+        description: description
+        provider_domain: provider_domain
+        active: active
+        api_key_param: api_key_param
+        api_provider: api_provider
+        credential_type: credential_type
+        api_endpoint: api_endpoint
+        api_key_value: api_key_value
+        connection_id: connection_id
+        user_id: user_id
+        engine_id: engine_id
+        name: name
+        api_key_location: api_key_location
+        gcp_secret_id: gcp_secret_id
+      properties:
+        connection_id:
+          type: string
+        user_id:
+          type: string
+        engine_id:
+          type: string
+        company_id:
+          type: string
+        credential_type:
+          type: string
+        api_provider:
+          type: string
+        api_endpoint:
+          type: string
+        api_key_location:
+          type: string
+        api_key_param:
+          type: string
+        api_key_value:
+          type: string
+        visibility:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        gcp_secret_id:
+          type: string
+        provider_domain:
+          type: string
+        verified_usage_ability:
+          type: string
+        date_created:
+          type: string
+        last_updated:
+          type: string
+        active:
+          type: string
+      required:
+      - company_id
+      - engine_id
+      - visibility
+    Favorite:
+      description: User favorites for marketplace assets
+      example:
+        last_updated: last_updated
+        notes: notes
+        company_id: company_id
+        user_id: user_id
+        date_created: date_created
+        active: active
+        favorite_id: favorite_id
+        asset_id: asset_id
+        category: category
+        priority: priority
+      properties:
+        favorite_id:
+          readOnly: true
+          type: string
+        asset_id:
+          type: string
+        user_id:
+          type: string
+        company_id:
+          type: string
+        notes:
+          type: string
+        category:
+          type: string
+        priority:
+          type: string
+        date_created:
+          readOnly: true
+          type: string
+        last_updated:
+          readOnly: true
+          type: string
+        active:
+          type: string
+      required:
+      - asset_id
+      - company_id
+      - priority
+    User:
+      description: Individual users within a company
+      example:
+        last_updated: last_updated
+        email_address: email_address
+        company_id: company_id
+        user_id: user_id
+        timezone: timezone
+        date_created: date_created
+        function_id: function_id
+        active: active
+        status: status
+      properties:
+        user_id:
+          type: string
+        company_id:
+          type: string
+        function_id:
+          type: string
+        status:
+          type: string
+        email_address:
+          type: string
+        timezone:
+          type: string
+        date_created:
+          type: string
+        last_updated:
+          type: string
+        active:
+          type: string
+      required:
+      - company_id
+      - status
+    inline_object:
+      example:
+        code: 400
+        message: message
+        errors:
+          key:
+          - errors
+          - errors
+      properties:
+        code:
+          example: 400
+          type: integer
+        message:
+          type: string
+        errors:
+          additionalProperties:
+            items:
+              type: string
+    inline_object_1:
+      example:
+        code: 401
+        message: Authentication required
+      properties:
+        code:
+          example: 401
+          type: integer
+        message:
+          example: Authentication required
+          type: string
+    inline_object_2:
+      example:
+        code: 403
+        message: Insufficient permissions
+      properties:
+        code:
+          example: 403
+          type: integer
+        message:
+          example: Insufficient permissions
+          type: string
+    inline_object_3:
+      example:
+        code: 404
+        message: Resource not found
+      properties:
+        code:
+          example: 404
+          type: integer
+        message:
+          example: Resource not found
+          type: string
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+    ApiKeyAuth:
+      in: header
+      name: X-API-Key
+      type: apiKey
