@@ -21,34 +21,40 @@ import (
 )
 
 
-// CloudProvidersAPIService CloudProvidersAPI service
-type CloudProvidersAPIService service
+// StorageEnginesAPIService StorageEnginesAPI service
+type StorageEnginesAPIService service
 
-type CloudProvidersAPICloudProvidersGetRequest struct {
+type StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest struct {
 	ctx context.Context
-	ApiService *CloudProvidersAPIService
+	ApiService *StorageEnginesAPIService
+	providerId string
+	engineId string
 }
 
-func (r CloudProvidersAPICloudProvidersGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.CloudProvidersGetExecute(r)
+func (r StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.CloudProvidersProviderIdStorageEnginesEngineIdGetExecute(r)
 }
 
 /*
-CloudProvidersGet Get a list of all cloud providers
+CloudProvidersProviderIdStorageEnginesEngineIdGet Get single storage engine by ID
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return CloudProvidersAPICloudProvidersGetRequest
+ @param providerId
+ @param engineId
+ @return StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest
 */
-func (a *CloudProvidersAPIService) CloudProvidersGet(ctx context.Context) CloudProvidersAPICloudProvidersGetRequest {
-	return CloudProvidersAPICloudProvidersGetRequest{
+func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesEngineIdGet(ctx context.Context, providerId string, engineId string) StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest {
+	return StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest{
 		ApiService: a,
 		ctx: ctx,
+		providerId: providerId,
+		engineId: engineId,
 	}
 }
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CloudProvidersAPIService) CloudProvidersGetExecute(r CloudProvidersAPICloudProvidersGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesEngineIdGetExecute(r StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -56,12 +62,14 @@ func (a *CloudProvidersAPIService) CloudProvidersGetExecute(r CloudProvidersAPIC
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProvidersAPIService.CloudProvidersGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageEnginesAPIService.CloudProvidersProviderIdStorageEnginesEngineIdGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/cloud-providers"
+	localVarPath := localBasePath + "/cloud-providers/{provider_id}/storage-engines/{engine_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"provider_id"+"}", url.PathEscape(parameterValueToString(r.providerId, "providerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"engine_id"+"}", url.PathEscape(parameterValueToString(r.engineId, "engineId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -167,25 +175,25 @@ func (a *CloudProvidersAPIService) CloudProvidersGetExecute(r CloudProvidersAPIC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type CloudProvidersAPICloudProvidersProviderIdGetRequest struct {
+type StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest struct {
 	ctx context.Context
-	ApiService *CloudProvidersAPIService
+	ApiService *StorageEnginesAPIService
 	providerId string
 }
 
-func (r CloudProvidersAPICloudProvidersProviderIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.CloudProvidersProviderIdGetExecute(r)
+func (r StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.CloudProvidersProviderIdStorageEnginesGetExecute(r)
 }
 
 /*
-CloudProvidersProviderIdGet Get single cloud provider by ID
+CloudProvidersProviderIdStorageEnginesGet Get a list of all storage engines
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param providerId
- @return CloudProvidersAPICloudProvidersProviderIdGetRequest
+ @return StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest
 */
-func (a *CloudProvidersAPIService) CloudProvidersProviderIdGet(ctx context.Context, providerId string) CloudProvidersAPICloudProvidersProviderIdGetRequest {
-	return CloudProvidersAPICloudProvidersProviderIdGetRequest{
+func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesGet(ctx context.Context, providerId string) StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest {
+	return StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		providerId: providerId,
@@ -194,7 +202,7 @@ func (a *CloudProvidersAPIService) CloudProvidersProviderIdGet(ctx context.Conte
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *CloudProvidersAPIService) CloudProvidersProviderIdGetExecute(r CloudProvidersAPICloudProvidersProviderIdGetRequest) (map[string]interface{}, *http.Response, error) {
+func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesGetExecute(r StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -202,12 +210,12 @@ func (a *CloudProvidersAPIService) CloudProvidersProviderIdGetExecute(r CloudPro
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProvidersAPIService.CloudProvidersProviderIdGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageEnginesAPIService.CloudProvidersProviderIdStorageEnginesGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/cloud-providers/{provider_id}"
+	localVarPath := localBasePath + "/cloud-providers/{provider_id}/storage-engines"
 	localVarPath = strings.Replace(localVarPath, "{"+"provider_id"+"}", url.PathEscape(parameterValueToString(r.providerId, "providerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

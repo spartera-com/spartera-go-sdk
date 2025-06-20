@@ -1,6 +1,6 @@
 {
     "packageName": "sparteraapi",
-    "packageVersion": "1.0.62",
+    "packageVersion": "1.0.68",
     "packageUrl": "https://github.com/spartera-com/spartera-go-sdk",
     "moduleName": "github.com/spartera-com/spartera-go-sdk",
     "enumClassPrefix": true,

@@ -26,10 +26,10 @@ func Test_sparteraapi_AssetsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var companyHandle string
 		var assetSlug string
+		var companyHandle string
 
-		resp, httpRes, err := apiClient.AssetsAPI.AnalyzeCompanyHandleAssetsAssetSlugGet(context.Background(), companyHandle, assetSlug).Execute()
+		resp, httpRes, err := apiClient.AssetsAPI.AnalyzeCompanyHandleAssetsAssetSlugGet(context.Background(), assetSlug, companyHandle).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -127,36 +127,6 @@ func Test_sparteraapi_AssetsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AssetsAPIService CompaniesCompanyIdAssetsAssetIdRecommendationsExplainGet", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var companyId string
-		var assetId string
-
-		resp, httpRes, err := apiClient.AssetsAPI.CompaniesCompanyIdAssetsAssetIdRecommendationsExplainGet(context.Background(), companyId, assetId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AssetsAPIService CompaniesCompanyIdAssetsAssetIdRecommendationsGet", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var companyId string
-		var assetId string
-
-		resp, httpRes, err := apiClient.AssetsAPI.CompaniesCompanyIdAssetsAssetIdRecommendationsGet(context.Background(), companyId, assetId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test AssetsAPIService CompaniesCompanyIdAssetsAssetIdStatisticsGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -208,34 +178,6 @@ func Test_sparteraapi_AssetsAPIService(t *testing.T) {
 		var companyId string
 
 		resp, httpRes, err := apiClient.AssetsAPI.CompaniesCompanyIdAssetsPost(context.Background(), companyId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AssetsAPIService CompaniesCompanyIdAssetsRecommendationsBulkPost", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var companyId string
-
-		resp, httpRes, err := apiClient.AssetsAPI.CompaniesCompanyIdAssetsRecommendationsBulkPost(context.Background(), companyId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AssetsAPIService CompaniesCompanyIdAssetsRecommendationsHealthGet", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var companyId string
-
-		resp, httpRes, err := apiClient.AssetsAPI.CompaniesCompanyIdAssetsRecommendationsHealthGet(context.Background(), companyId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -11,6 +11,7 @@ api_cloud_providers.go
 api_companies.go
 api_connections.go
 api_favorites.go
+api_storage_engines.go
 api_users.go
 client.go
 configuration.go
@@ -35,6 +36,7 @@ docs/InlineObject.md
 docs/InlineObject1.md
 docs/InlineObject2.md
 docs/InlineObject3.md
+docs/StorageEnginesAPI.md
 docs/User.md
 docs/UsersAPI.md
 git_push.sh
@@ -63,5 +65,6 @@ test/api_cloud_providers_test.go
 test/api_companies_test.go
 test/api_connections_test.go
 test/api_favorites_test.go
+test/api_storage_engines_test.go
 test/api_users_test.go
 utils.go

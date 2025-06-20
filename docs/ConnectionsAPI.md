@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**CompaniesCompanyIdConnectionsConnectionIdGet**](ConnectionsAPI.md#CompaniesCompanyIdConnectionsConnectionIdGet) | **Get** /companies/{company_id}/connections/{connection_id} | Get single connection by ID
 [**CompaniesCompanyIdConnectionsConnectionIdInfoschemaGet**](ConnectionsAPI.md#CompaniesCompanyIdConnectionsConnectionIdInfoschemaGet) | **Get** /companies/{company_id}/connections/{connection_id}/infoschema | Retrieve the information schema for the specified connection
 [**CompaniesCompanyIdConnectionsConnectionIdPatch**](ConnectionsAPI.md#CompaniesCompanyIdConnectionsConnectionIdPatch) | **Patch** /companies/{company_id}/connections/{connection_id} | Update an existing connection by ID
-[**CompaniesCompanyIdConnectionsConnectionIdTestGet**](ConnectionsAPI.md#CompaniesCompanyIdConnectionsConnectionIdTestGet) | **Get** /companies/{company_id}/connections/{connection_id}/test | Verify the specified connection to ensure it is functioning correctly
+[**CompaniesCompanyIdConnectionsConnectionIdTestGet**](ConnectionsAPI.md#CompaniesCompanyIdConnectionsConnectionIdTestGet) | **Get** /companies/{company_id}/connections/{connection_id}/test | Test the specified connection
 [**CompaniesCompanyIdConnectionsGet**](ConnectionsAPI.md#CompaniesCompanyIdConnectionsGet) | **Get** /companies/{company_id}/connections | Get all connections for a specific company
 [**CompaniesCompanyIdConnectionsPost**](ConnectionsAPI.md#CompaniesCompanyIdConnectionsPost) | **Post** /companies/{company_id}/connections | Create a new connection by ID
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} CompaniesCompanyIdConnectionsConnectionIdTestGet(ctx, companyId, connectionId).Execute()
 
-Verify the specified connection to ensure it is functioning correctly
+Test the specified connection
 
 ### Example
 
@@ -359,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -497,7 +497,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

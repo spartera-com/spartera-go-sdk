@@ -7,8 +7,8 @@ Method | HTTP request | Description
 [**CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete) | **Delete** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Delete single alert by ID
 [**CompaniesCompanyIdUsersUserIdAlertsAlertIdGet**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAlertIdGet) | **Get** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Get single alert by ID
 [**CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch) | **Patch** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Update an existing alert by ID
-[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet) | **Get** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all | Get all alerts for a specific asset (from all users)     This would typically be restricted to asset owners or admins
-[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet) | **Get** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id} | Get all alerts for a specific asset by the specified user     Useful for checking if user already has an alert set up for an asset
+[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet) | **Get** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all | Get all alerts for a specific asset
+[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet) | **Get** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id} | Get all alerts for a specific asset (by user)
 [**CompaniesCompanyIdUsersUserIdAlertsGet**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsGet) | **Get** /companies/{company_id}/users/{user_id}/alerts | Get a list of all alerts for a specific user
 [**CompaniesCompanyIdUsersUserIdAlertsPost**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsPost) | **Post** /companies/{company_id}/users/{user_id}/alerts | POST /companies/{company_id}/users/{user_id}/alerts
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(ctx, companyId, userId, assetId).Execute()
 
-Get all alerts for a specific asset (from all users)     This would typically be restricted to asset owners or admins
+Get all alerts for a specific asset
 
 ### Example
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet(ctx, companyId, userId, assetId).Execute()
 
-Get all alerts for a specific asset by the specified user     Useful for checking if user already has an alert set up for an asset
+Get all alerts for a specific asset (by user)
 
 ### Example
 
@@ -374,7 +374,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -445,7 +445,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -518,7 +518,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

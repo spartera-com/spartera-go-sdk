@@ -66,6 +66,8 @@ type APIClient struct {
 
 	FavoritesAPI *FavoritesAPIService
 
+	StorageEnginesAPI *StorageEnginesAPIService
+
 	UsersAPI *UsersAPIService
 }
 
@@ -93,6 +95,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CompaniesAPI = (*CompaniesAPIService)(&c.common)
 	c.ConnectionsAPI = (*ConnectionsAPIService)(&c.common)
 	c.FavoritesAPI = (*FavoritesAPIService)(&c.common)
+	c.StorageEnginesAPI = (*StorageEnginesAPIService)(&c.common)
 	c.UsersAPI = (*UsersAPIService)(&c.common)
 
 	return c
@@ -442,11 +445,6 @@ func (c *APIClient) prepareRequest(
 		localVarRequest = localVarRequest.WithContext(ctx)
 
 		// Walk through any authentication.
-
-		// AccessToken Authentication
-		if auth, ok := ctx.Value(ContextAccessToken).(string); ok {
-			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
-		}
 
 	}
 

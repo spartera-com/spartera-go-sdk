@@ -8,8 +8,8 @@ Method | HTTP request | Description
 [**CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete**](AssetPriceHistoryAPI.md#CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete) | **Delete** /companies/{company_id}/assets/{asset_id}/prices/{aph_id} | Delete single price history record by ID
 [**CompaniesCompanyIdAssetsAssetIdPricesAphIdGet**](AssetPriceHistoryAPI.md#CompaniesCompanyIdAssetsAssetIdPricesAphIdGet) | **Get** /companies/{company_id}/assets/{asset_id}/prices/{aph_id} | Get single price history record by ID
 [**CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch**](AssetPriceHistoryAPI.md#CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch) | **Patch** /companies/{company_id}/assets/{asset_id}/prices/{aph_id} | Update an existing price history record by ID
-[**CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost**](AssetPriceHistoryAPI.md#CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost) | **Post** /companies/{company_id}/assets/{asset_id}/prices/calculate_credits | Calculate the credit equivalent for a given USD price without saving
-[**CompaniesCompanyIdAssetsAssetIdPricesDiscountPost**](AssetPriceHistoryAPI.md#CompaniesCompanyIdAssetsAssetIdPricesDiscountPost) | **Post** /companies/{company_id}/assets/{asset_id}/prices/discount | Apply a discount to the active price for an asset
+[**CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost**](AssetPriceHistoryAPI.md#CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost) | **Post** /companies/{company_id}/assets/{asset_id}/prices/calculate_credits | POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
+[**CompaniesCompanyIdAssetsAssetIdPricesDiscountPost**](AssetPriceHistoryAPI.md#CompaniesCompanyIdAssetsAssetIdPricesDiscountPost) | **Post** /companies/{company_id}/assets/{asset_id}/prices/discount | POST /companies/{company_id}/assets/{asset_id}/prices/discount
 [**CompaniesCompanyIdAssetsAssetIdPricesGet**](AssetPriceHistoryAPI.md#CompaniesCompanyIdAssetsAssetIdPricesGet) | **Get** /companies/{company_id}/assets/{asset_id}/prices | Get all price history records for a specific asset
 [**CompaniesCompanyIdAssetsAssetIdPricesPost**](AssetPriceHistoryAPI.md#CompaniesCompanyIdAssetsAssetIdPricesPost) | **Post** /companies/{company_id}/assets/{asset_id}/prices | Create a new price history record for an asset
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(ctx, companyId, assetId).Execute()
 
-Calculate the credit equivalent for a given USD price without saving
+POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
 
 ### Example
 
@@ -367,7 +367,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} CompaniesCompanyIdAssetsAssetIdPricesDiscountPost(ctx, companyId, assetId).Execute()
 
-Apply a discount to the active price for an asset
+POST /companies/{company_id}/assets/{asset_id}/prices/discount
 
 ### Example
 
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -580,7 +580,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

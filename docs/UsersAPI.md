@@ -4,7 +4,7 @@ All URIs are relative to *https://api.spartera.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CompaniesCompanyIdUsersGet**](UsersAPI.md#CompaniesCompanyIdUsersGet) | **Get** /companies/{company_id}/users | Get a list of all users for a particular company
+[**CompaniesCompanyIdUsersGet**](UsersAPI.md#CompaniesCompanyIdUsersGet) | **Get** /companies/{company_id}/users | Get a list of all users in a company
 [**CompaniesCompanyIdUsersPost**](UsersAPI.md#CompaniesCompanyIdUsersPost) | **Post** /companies/{company_id}/users | Create a new user
 [**CompaniesCompanyIdUsersUserIdDelete**](UsersAPI.md#CompaniesCompanyIdUsersUserIdDelete) | **Delete** /companies/{company_id}/users/{user_id} | Delete single user by ID
 [**CompaniesCompanyIdUsersUserIdGet**](UsersAPI.md#CompaniesCompanyIdUsersUserIdGet) | **Get** /companies/{company_id}/users/{user_id} | Get single user by ID
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > map[string]interface{} CompaniesCompanyIdUsersGet(ctx, companyId).Execute()
 
-Get a list of all users for a particular company
+Get a list of all users in a company
 
 ### Example
 
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

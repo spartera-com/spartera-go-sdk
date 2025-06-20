@@ -5,11 +5,11 @@ All URIs are relative to *https://api.spartera.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet) | **Get** /companies/{company_id}/users/{user_id}/favorites/category/{category} | Get all favorites for the specified user in a specific category
-[**CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet) | **Get** /companies/{company_id}/users/{user_id}/favorites/check/{asset_id} | Check if the specified user has favorited a specific asset     Returns the favorite record if it exists, or empty result if not     Useful for UI to show/hide favorite button states
+[**CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet) | **Get** /companies/{company_id}/users/{user_id}/favorites/check/{asset_id} | Check if the specified user has favorited a specific asset
 [**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete) | **Delete** /companies/{company_id}/users/{user_id}/favorites/{favorite_id} | Delete single favorite by ID (unfavorite an asset)
 [**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet) | **Get** /companies/{company_id}/users/{user_id}/favorites/{favorite_id} | Get single favorite by ID
-[**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch) | **Patch** /companies/{company_id}/users/{user_id}/favorites/{favorite_id} | Update an existing favorite by ID     Can update notes, category, priority
-[**CompaniesCompanyIdUsersUserIdFavoritesGet**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesGet) | **Get** /companies/{company_id}/users/{user_id}/favorites | Get a list of all favorites for a specific user     Query params:     - category: filter by category     - sort: sort field (priority, date_created, etc.)     - order: sort direction (asc, desc)
+[**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch) | **Patch** /companies/{company_id}/users/{user_id}/favorites/{favorite_id} | Update an existing favorite by ID
+[**CompaniesCompanyIdUsersUserIdFavoritesGet**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesGet) | **Get** /companies/{company_id}/users/{user_id}/favorites | Get a list of all favorites for a specific user
 [**CompaniesCompanyIdUsersUserIdFavoritesPost**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesPost) | **Post** /companies/{company_id}/users/{user_id}/favorites | POST /companies/{company_id}/users/{user_id}/favorites
 [**CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGet**](FavoritesAPI.md#CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGet) | **Get** /companies/{company_id}/users/{user_id}/favorites/uncategorized | Get all favorites for the specified user that don&#39;t have a category
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet(ctx, companyId, userId, assetId).Execute()
 
-Check if the specified user has favorited a specific asset     Returns the favorite record if it exists, or empty result if not     Useful for UI to show/hide favorite button states
+Check if the specified user has favorited a specific asset
 
 ### Example
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -315,7 +315,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(ctx, companyId, userId, favoriteId).Favorite(favorite).Execute()
 
-Update an existing favorite by ID     Can update notes, category, priority
+Update an existing favorite by ID
 
 ### Example
 
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesGet(ctx, companyId, userId).Execute()
 
-Get a list of all favorites for a specific user     Query params:     - category: filter by category     - sort: sort field (priority, date_created, etc.)     - order: sort direction (asc, desc)
+Get a list of all favorites for a specific user
 
 ### Example
 
@@ -446,7 +446,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 
@@ -590,7 +590,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearerAuth](../README.md#bearerAuth)
+[ApiKeyAuth](../README.md#ApiKeyAuth)
 
 ### HTTP request headers
 

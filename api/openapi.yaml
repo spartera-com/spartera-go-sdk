@@ -40,7 +40,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get all API keys
       tags:
       - API Keys
@@ -67,7 +67,7 @@ paths:
         "400":
           $ref: '#/components/responses/BadRequest'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Create single API key
       tags:
       - API Keys
@@ -102,7 +102,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get single API key by ID
       tags:
       - API Keys
@@ -138,7 +138,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Update an existing API key by ID
       tags:
       - API Keys
@@ -173,7 +173,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Delete single API key by token
       tags:
       - API Keys
@@ -194,58 +194,11 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get a list of all cloud providers
       tags:
       - Cloud Providers
-    post:
-      parameters: []
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: object
-          description: Successful operation
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "400":
-          $ref: '#/components/responses/BadRequest'
-      security:
-      - bearerAuth: []
-      summary: Create single cloud provider
-      tags:
-      - Cloud Providers
   /cloud-providers/{provider_id}:
-    delete:
-      parameters:
-      - explode: false
-        in: path
-        name: provider_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: object
-          description: Successful operation
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - bearerAuth: []
-      summary: Delete single cloud provider by ID
-      tags:
-      - Cloud Providers
     get:
       parameters:
       - explode: false
@@ -269,37 +222,8 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get single cloud provider by ID
-      tags:
-      - Cloud Providers
-    patch:
-      parameters:
-      - explode: false
-        in: path
-        name: provider_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: object
-          description: Successful operation
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "400":
-          $ref: '#/components/responses/BadRequest'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - bearerAuth: []
-      summary: Update an existing cloud provider by ID
       tags:
       - Cloud Providers
   /companies/{company_id}/users/{user_id}/favorites:
@@ -333,13 +257,8 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
-      summary: |-
-        Get a list of all favorites for a specific user
-            Query params:
-            - category: filter by category
-            - sort: sort field (priority, date_created, etc.)
-            - order: sort direction (asc, desc)
+      - ApiKeyAuth: []
+      summary: Get a list of all favorites for a specific user
       tags:
       - Favorites
     post:
@@ -378,7 +297,7 @@ paths:
         "400":
           $ref: '#/components/responses/BadRequest'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: "POST /companies/{company_id}/users/{user_id}/favorites"
       tags:
       - Favorites
@@ -420,7 +339,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Delete single favorite by ID (unfavorite an asset)
       tags:
       - Favorites
@@ -461,7 +380,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get single favorite by ID
       tags:
       - Favorites
@@ -510,10 +429,8 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
-      summary: |-
-        Update an existing favorite by ID
-            Can update notes, category, priority
+      - ApiKeyAuth: []
+      summary: Update an existing favorite by ID
       tags:
       - Favorites
   /companies/{company_id}/users/{user_id}/favorites/category/{category}:
@@ -554,7 +471,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get all favorites for the specified user in a specific category
       tags:
       - Favorites
@@ -589,7 +506,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get all favorites for the specified user that don't have a category
       tags:
       - Favorites
@@ -631,11 +548,8 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
-      summary: |-
-        Check if the specified user has favorited a specific asset
-            Returns the favorite record if it exists, or empty result if not
-            Useful for UI to show/hide favorite button states
+      - ApiKeyAuth: []
+      summary: Check if the specified user has favorited a specific asset
       tags:
       - Favorites
   /companies/{company_id}/assets/{asset_id}/prices:
@@ -669,7 +583,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get all price history records for a specific asset
       tags:
       - Asset Price History
@@ -703,7 +617,7 @@ paths:
         "400":
           $ref: '#/components/responses/BadRequest'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Create a new price history record for an asset
       tags:
       - Asset Price History
@@ -745,7 +659,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Delete single price history record by ID
       tags:
       - Asset Price History
@@ -786,7 +700,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get single price history record by ID
       tags:
       - Asset Price History
@@ -829,7 +743,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Update an existing price history record by ID
       tags:
       - Asset Price History
@@ -864,7 +778,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get the currently active price for an asset
       tags:
       - Asset Price History
@@ -899,8 +813,8 @@ paths:
         "400":
           $ref: '#/components/responses/BadRequest'
       security:
-      - bearerAuth: []
-      summary: Apply a discount to the active price for an asset
+      - ApiKeyAuth: []
+      summary: "POST /companies/{company_id}/assets/{asset_id}/prices/discount"
       tags:
       - Asset Price History
   /companies/{company_id}/assets/{asset_id}/prices/calculate_credits:
@@ -934,10 +848,73 @@ paths:
         "400":
           $ref: '#/components/responses/BadRequest'
       security:
-      - bearerAuth: []
-      summary: Calculate the credit equivalent for a given USD price without saving
+      - ApiKeyAuth: []
+      summary: "POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits"
       tags:
       - Asset Price History
+  /cloud-providers/{provider_id}/storage-engines:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: provider_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a list of all storage engines
+      tags:
+      - Storage Engines
+  /cloud-providers/{provider_id}/storage-engines/{engine_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: provider_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: engine_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Successful operation
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get single storage engine by ID
+      tags:
+      - Storage Engines
   /companies/{company_id}/users/{user_id}/alerts:
     get:
       parameters:
@@ -969,7 +946,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get a list of all alerts for a specific user
       tags:
       - Alerts
@@ -1009,7 +986,7 @@ paths:
         "400":
           $ref: '#/components/responses/BadRequest'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: "POST /companies/{company_id}/users/{user_id}/alerts"
       tags:
       - Alerts
@@ -1051,7 +1028,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Delete single alert by ID
       tags:
       - Alerts
@@ -1092,7 +1069,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get single alert by ID
       tags:
       - Alerts
@@ -1141,7 +1118,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Update an existing alert by ID
       tags:
       - Alerts
@@ -1183,10 +1160,8 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
-      summary: |-
-        Get all alerts for a specific asset by the specified user
-            Useful for checking if user already has an alert set up for an asset
+      - ApiKeyAuth: []
+      summary: Get all alerts for a specific asset (by user)
       tags:
       - Alerts
   /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all:
@@ -1227,10 +1202,8 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
-      summary: |-
-        Get all alerts for a specific asset (from all users)
-            This would typically be restricted to asset owners or admins
+      - ApiKeyAuth: []
+      summary: Get all alerts for a specific asset
       tags:
       - Alerts
   /companies/{company_id}/connections:
@@ -1257,7 +1230,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get all connections for a specific company
       tags:
       - Connections
@@ -1290,7 +1263,7 @@ paths:
         "400":
           $ref: '#/components/responses/BadRequest'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Create a new connection by ID
       tags:
       - Connections
@@ -1325,7 +1298,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Delete single connection by ID
       tags:
       - Connections
@@ -1359,7 +1332,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get single connection by ID
       tags:
       - Connections
@@ -1401,7 +1374,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Update an existing connection by ID
       tags:
       - Connections
@@ -1436,7 +1409,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Retrieve the information schema for the specified connection
       tags:
       - Connections
@@ -1471,8 +1444,8 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
-      summary: Verify the specified connection to ensure it is functioning correctly
+      - ApiKeyAuth: []
+      summary: Test the specified connection
       tags:
       - Connections
   /companies/{company_id}/users:
@@ -1499,8 +1472,8 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
-      summary: Get a list of all users for a particular company
+      - ApiKeyAuth: []
+      summary: Get a list of all users in a company
       tags:
       - Users
     post:
@@ -1532,7 +1505,7 @@ paths:
         "400":
           $ref: '#/components/responses/BadRequest'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Create a new user
       tags:
       - Users
@@ -1567,7 +1540,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Delete single user by ID
       tags:
       - Users
@@ -1601,7 +1574,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get single user by ID
       tags:
       - Users
@@ -1643,7 +1616,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Update an existing user by ID
       tags:
       - Users
@@ -1671,7 +1644,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get all assets for a specific company
       tags:
       - Assets
@@ -1704,7 +1677,7 @@ paths:
         "400":
           $ref: '#/components/responses/BadRequest'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Create a new asset
       tags:
       - Assets
@@ -1739,7 +1712,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Delete single asset by ID
       tags:
       - Assets
@@ -1773,7 +1746,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get single asset by ID
       tags:
       - Assets
@@ -1815,7 +1788,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Update an existing asset by ID
       tags:
       - Assets
@@ -1850,7 +1823,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get the information schema for a specific asset's table
       tags:
       - Assets
@@ -1885,7 +1858,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Test out an Asset (on a subset of data)
       tags:
       - Assets
@@ -1920,9 +1893,8 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
-      summary: Get the information schema for a specific asset and save it to the
-        asset's asset_schema field
+      - ApiKeyAuth: []
+      summary: Retrieve and save an asset's information schema
       tags:
       - Assets
   /companies/{company_id}/assets/statistics:
@@ -1949,7 +1921,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get statistics for all assets the user has access to
       tags:
       - Assets
@@ -1984,7 +1956,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get AI-predicted pricing for a specific asset
       tags:
       - Assets
@@ -2019,171 +1991,8 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get statistics for a specific asset (public endpoint)
-      tags:
-      - Assets
-  /companies/{company_id}/assets/{asset_id}/recommendations:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: asset_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: min_score
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: include_details
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: object
-          description: Successful operation
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - bearerAuth: []
-      summary: |-
-        Get asset recommendations for a specific asset using heuristic waterfall matching
-            Returns list of similar assets based on industry, company, connection, tags, etc.
-
-            Query Parameters:
-            - limit: Number of recommendations to return (default: 12, max: 50)
-            - min_score: Minimum similarity score threshold (default: 0.1)
-            - include_details: Include component similarity scores (default: false)
-      tags:
-      - Assets
-  /companies/{company_id}/assets/recommendations/bulk:
-    post:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Asset'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: object
-          description: Successful operation
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "400":
-          $ref: '#/components/responses/BadRequest'
-      security:
-      - bearerAuth: []
-      summary: Get recommendations for multiple assets in a single request. Useful
-        for pre-loading recommendations.
-      tags:
-      - Assets
-  /companies/{company_id}/assets/{asset_id}/recommendations/explain:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: asset_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: object
-          description: Successful operation
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - bearerAuth: []
-      summary: Get detailed explanation of how asset recommendations are calculated
-        for debugging purposes.
-      tags:
-      - Assets
-  /companies/{company_id}/assets/recommendations/health:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: object
-          description: Successful operation
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - bearerAuth: []
-      summary: Health check for the recommendations system with sample data and performance
-        metrics.
       tags:
       - Assets
   /companies/{company_id}:
@@ -2210,7 +2019,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get details of the requestor's own company
       tags:
       - Companies
@@ -2239,7 +2048,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Update an existing company by ID
       tags:
       - Companies
@@ -2267,7 +2076,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get the total number of requests allocated in the company's current
         subscription plan.
       tags:
@@ -2296,7 +2105,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: Get company request usage data for a specific month. Returns JSON metrics
         by default or CSV logs when download parameter is included.
       tags:
@@ -2325,7 +2134,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: "Get all objects (connections, assets) of a single company"
       tags:
       - Companies
@@ -2353,7 +2162,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: |-
         Get comprehensive dashboard analytics for seller dashboard
             Includes all metrics needed for dashboard charts in one call
@@ -2384,7 +2193,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: |-
         Get sales over time analytics
             Query params: start_date, end_date, group_by (day/week/month/quarter), metrics
@@ -2414,7 +2223,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: |-
         Get asset performance analytics
             Query params: start_date, end_date, limit, sort_by, include
@@ -2444,7 +2253,7 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
+      - ApiKeyAuth: []
       summary: |-
         Get customer analytics including growth and segmentation
             Query params: start_date, end_date, group_by, segment_by
@@ -2455,14 +2264,14 @@ paths:
       parameters:
       - explode: false
         in: path
-        name: company_handle
+        name: asset_slug
         required: true
         schema:
           type: string
         style: simple
       - explode: false
         in: path
-        name: asset_slug
+        name: company_handle
         required: true
         schema:
           type: string
@@ -2481,14 +2290,9 @@ paths:
         "404":
           $ref: '#/components/responses/NotFound'
       security:
-      - bearerAuth: []
-      summary: |-
-        Process assets route that handles both owned and purchased assets.
-                    Minimal route function that passes all logic to crudder.process_asset
-
-                    Args:
-                        asset_path: The path after /analyze/ containing asset information
-                        company_handle: The subdomain from Flask's routing (if available)
+      - ApiKeyAuth: []
+      summary: Process (analyze) an asset. Attempt to process an analytic on a backend
+        warehouse/AI model.
       tags:
       - Assets
 components:
@@ -3036,11 +2840,7 @@ components:
           example: Resource not found
           type: string
   securitySchemes:
-    bearerAuth:
-      bearerFormat: JWT
-      scheme: bearer
-      type: http
     ApiKeyAuth:
       in: header
-      name: X-API-Key
+      name: x-api-key
       type: apiKey

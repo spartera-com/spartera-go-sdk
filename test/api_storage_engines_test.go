@@ -1,7 +1,7 @@
 /*
 Spartera API Documentation
 
-Testing CloudProvidersAPIService
+Testing StorageEnginesAPIService
 
 */
 
@@ -17,16 +17,19 @@ import (
 	openapiclient "github.com/spartera-com/spartera-go-sdk"
 )
 
-func Test_sparteraapi_CloudProvidersAPIService(t *testing.T) {
+func Test_sparteraapi_StorageEnginesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CloudProvidersAPIService CloudProvidersGet", func(t *testing.T) {
+	t.Run("Test StorageEnginesAPIService CloudProvidersProviderIdStorageEnginesEngineIdGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CloudProvidersAPI.CloudProvidersGet(context.Background()).Execute()
+		var providerId string
+		var engineId string
+
+		resp, httpRes, err := apiClient.StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesEngineIdGet(context.Background(), providerId, engineId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +37,13 @@ func Test_sparteraapi_CloudProvidersAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CloudProvidersAPIService CloudProvidersProviderIdGet", func(t *testing.T) {
+	t.Run("Test StorageEnginesAPIService CloudProvidersProviderIdStorageEnginesGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var providerId string
 
-		resp, httpRes, err := apiClient.CloudProvidersAPI.CloudProvidersProviderIdGet(context.Background(), providerId).Execute()
+		resp, httpRes, err := apiClient.StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesGet(context.Background(), providerId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
