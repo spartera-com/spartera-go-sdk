@@ -32,7 +32,7 @@ type AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdDeleteRequest struct {
 	alertId string
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdDeleteRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdAlertsAlertIdDeleteExecute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete(ctx 
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdDeleteExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response
+func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdDeleteExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdDeleteRequest) (*CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete")
@@ -187,7 +187,7 @@ type AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest struct {
 	alertId string
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdAlertsAlertIdGetExecute(r)
 }
 
@@ -211,13 +211,13 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdGet(ctx con
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
+func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest) (*CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.CompaniesCompanyIdUsersUserIdAlertsAlertIdGet")
@@ -348,7 +348,7 @@ func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest) Alert(a
 	return r
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdAlertsAlertIdPatchExecute(r)
 }
 
@@ -372,13 +372,13 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch(ctx c
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdPatchExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response
+func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdPatchExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest) (*CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch")
@@ -519,7 +519,7 @@ type AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetRequest struc
 	assetId string
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetExecute(r)
 }
 
@@ -543,13 +543,13 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdAlertsGet200Response
+func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetRequest) (*CompaniesCompanyIdUsersUserIdAlertsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet")
@@ -674,7 +674,7 @@ type AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest struct {
 	assetId string
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetExecute(r)
 }
 
@@ -698,13 +698,13 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet(ct
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
+func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest) (*CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet")
@@ -828,7 +828,7 @@ type AlertsAPICompaniesCompanyIdUsersUserIdAlertsGetRequest struct {
 	userId string
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdAlertsGetExecute(r)
 }
 
@@ -850,13 +850,13 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsGet(ctx context.Co
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdAlertsGet200Response
+func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsGetRequest) (*CompaniesCompanyIdUsersUserIdAlertsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.CompaniesCompanyIdUsersUserIdAlertsGet")
@@ -985,7 +985,7 @@ func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsPostRequest) Alert(alert Ale
 	return r
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsPostRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsPost200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdAlertsPostExecute(r)
 }
 
@@ -1007,13 +1007,13 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsPost(ctx context.C
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsPostExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsPostRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdAlertsPost200Response
+func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsPostExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsPostRequest) (*CompaniesCompanyIdUsersUserIdAlertsPost200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.CompaniesCompanyIdUsersUserIdAlertsPost")

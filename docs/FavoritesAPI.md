@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet(ctx, companyId, userId, category).Execute()
+> CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet(ctx, companyId, userId, category).Execute()
 
 Get all favorites for the specified user in a specific category
 
@@ -45,7 +45,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet`: CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet(ctx, companyId, userId, assetId).Execute()
+> CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet(ctx, companyId, userId, assetId).Execute()
 
 Check if the specified user has favorited a specific asset
 
@@ -119,7 +119,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet`: CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet`: %v\n", resp)
 }
 ```
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response.md)
 
 ### Authorization
 
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete(ctx, companyId, userId, favoriteId).Execute()
+> CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete(ctx, companyId, userId, favoriteId).Execute()
 
 Delete single favorite by ID (unfavorite an asset)
 
@@ -193,7 +193,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete`: CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response
 	fmt.Fprintf(os.Stdout, "Response from `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete`: %v\n", resp)
 }
 ```
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response**](CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response.md)
 
 ### Authorization
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet(ctx, companyId, userId, favoriteId).Execute()
+> CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet(ctx, companyId, userId, favoriteId).Execute()
 
 Get single favorite by ID
 
@@ -267,7 +267,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet`: CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet`: %v\n", resp)
 }
 ```
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response.md)
 
 ### Authorization
 
@@ -313,7 +313,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(ctx, companyId, userId, favoriteId).Favorite(favorite).Execute()
+> CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch(ctx, companyId, userId, favoriteId).Favorite(favorite).Execute()
 
 Update an existing favorite by ID
 
@@ -342,7 +342,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch`: CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response
 	fmt.Fprintf(os.Stdout, "Response from `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch`: %v\n", resp)
 }
 ```
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response**](CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response.md)
 
 ### Authorization
 
@@ -389,7 +389,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdFavoritesGet
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesGet(ctx, companyId, userId).Execute()
+> CompaniesCompanyIdUsersUserIdFavoritesGet200Response CompaniesCompanyIdUsersUserIdFavoritesGet(ctx, companyId, userId).Execute()
 
 Get a list of all favorites for a specific user
 
@@ -416,7 +416,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdFavoritesGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdFavoritesGet`: CompaniesCompanyIdUsersUserIdFavoritesGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesGet`: %v\n", resp)
 }
 ```
@@ -442,7 +442,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdFavoritesGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesGet200Response.md)
 
 ### Authorization
 
@@ -460,7 +460,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdFavoritesPost
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesPost(ctx, companyId, userId).Favorite(favorite).Execute()
+> CompaniesCompanyIdUsersUserIdFavoritesPost200Response CompaniesCompanyIdUsersUserIdFavoritesPost(ctx, companyId, userId).Favorite(favorite).Execute()
 
 POST /companies/{company_id}/users/{user_id}/favorites
 
@@ -488,7 +488,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdFavoritesPost`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdFavoritesPost`: CompaniesCompanyIdUsersUserIdFavoritesPost200Response
 	fmt.Fprintf(os.Stdout, "Response from `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesPost`: %v\n", resp)
 }
 ```
@@ -515,7 +515,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdFavoritesPost200Response**](CompaniesCompanyIdUsersUserIdFavoritesPost200Response.md)
 
 ### Authorization
 
@@ -533,7 +533,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGet
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGet(ctx, companyId, userId).Execute()
+> CompaniesCompanyIdUsersUserIdFavoritesGet200Response CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGet(ctx, companyId, userId).Execute()
 
 Get all favorites for the specified user that don't have a category
 
@@ -560,7 +560,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGet`: CompaniesCompanyIdUsersUserIdFavoritesGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `FavoritesAPI.CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGet`: %v\n", resp)
 }
 ```
@@ -586,7 +586,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdFavoritesGet200Response**](CompaniesCompanyIdUsersUserIdFavoritesGet200Response.md)
 
 ### Authorization
 

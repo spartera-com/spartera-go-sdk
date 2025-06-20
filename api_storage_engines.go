@@ -31,7 +31,7 @@ type StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest s
 	engineId string
 }
 
-func (r StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	return r.ApiService.CloudProvidersProviderIdStorageEnginesEngineIdGetExecute(r)
 }
 
@@ -53,13 +53,13 @@ func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesEngineI
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesEngineIdGetExecute(r StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdApiKeysGet200Response
+func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesEngineIdGetExecute(r StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageEnginesAPIService.CloudProvidersProviderIdStorageEnginesEngineIdGet")
@@ -181,7 +181,7 @@ type StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest struct {
 	providerId string
 }
 
-func (r StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	return r.ApiService.CloudProvidersProviderIdStorageEnginesGetExecute(r)
 }
 
@@ -201,13 +201,13 @@ func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesGet(ctx
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesGetExecute(r StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdApiKeysGet200Response
+func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesGetExecute(r StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageEnginesAPIService.CloudProvidersProviderIdStorageEnginesGet")

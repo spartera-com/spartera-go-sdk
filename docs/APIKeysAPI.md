@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## CompaniesCompanyIdApiKeysApiKeyIdGet
 
-> map[string]interface{} CompaniesCompanyIdApiKeysApiKeyIdGet(ctx, companyId, apiKeyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdApiKeysApiKeyIdGet(ctx, companyId, apiKeyId).Execute()
 
 Get single API key by ID
 
@@ -41,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `APIKeysAPI.CompaniesCompanyIdApiKeysApiKeyIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdApiKeysApiKeyIdGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdApiKeysApiKeyIdGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `APIKeysAPI.CompaniesCompanyIdApiKeysApiKeyIdGet`: %v\n", resp)
 }
 ```
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdApiKeysApiKeyIdPatch
 
-> map[string]interface{} CompaniesCompanyIdApiKeysApiKeyIdPatch(ctx, companyId, apiKeyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdApiKeysApiKeyIdPatch(ctx, companyId, apiKeyId).Execute()
 
 Update an existing API key by ID
 
@@ -112,7 +112,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `APIKeysAPI.CompaniesCompanyIdApiKeysApiKeyIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdApiKeysApiKeyIdPatch`: map[string]interface{}
+	// response from `CompaniesCompanyIdApiKeysApiKeyIdPatch`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `APIKeysAPI.CompaniesCompanyIdApiKeysApiKeyIdPatch`: %v\n", resp)
 }
 ```
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdApiKeysGet
 
-> map[string]interface{} CompaniesCompanyIdApiKeysGet(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdApiKeysGet(ctx, companyId).Execute()
 
 Get all API keys
 
@@ -182,7 +182,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `APIKeysAPI.CompaniesCompanyIdApiKeysGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdApiKeysGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdApiKeysGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `APIKeysAPI.CompaniesCompanyIdApiKeysGet`: %v\n", resp)
 }
 ```
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdApiKeysPost
 
-> map[string]interface{} CompaniesCompanyIdApiKeysPost(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdApiKeysPost(ctx, companyId).Execute()
 
 Create single API key
 
@@ -250,7 +250,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `APIKeysAPI.CompaniesCompanyIdApiKeysPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdApiKeysPost`: map[string]interface{}
+	// response from `CompaniesCompanyIdApiKeysPost`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `APIKeysAPI.CompaniesCompanyIdApiKeysPost`: %v\n", resp)
 }
 ```
@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdApiKeysTokenDelete
 
-> map[string]interface{} CompaniesCompanyIdApiKeysTokenDelete(ctx, companyId, token).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdApiKeysTokenDelete(ctx, companyId, token).Execute()
 
 Delete single API key by token
 
@@ -319,7 +319,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `APIKeysAPI.CompaniesCompanyIdApiKeysTokenDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdApiKeysTokenDelete`: map[string]interface{}
+	// response from `CompaniesCompanyIdApiKeysTokenDelete`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `APIKeysAPI.CompaniesCompanyIdApiKeysTokenDelete`: %v\n", resp)
 }
 ```
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 

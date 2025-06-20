@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CompaniesCompanyIdAnalyticsAssetsGet
 
-> map[string]interface{} CompaniesCompanyIdAnalyticsAssetsGet(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAnalyticsAssetsGet(ctx, companyId).Execute()
 
 Get asset performance analytics     Query params: start_date, end_date, limit, sort_by, include
 
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CompaniesAPI.CompaniesCompanyIdAnalyticsAssetsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAnalyticsAssetsGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAnalyticsAssetsGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CompaniesAPI.CompaniesCompanyIdAnalyticsAssetsGet`: %v\n", resp)
 }
 ```
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAnalyticsCustomersGet
 
-> map[string]interface{} CompaniesCompanyIdAnalyticsCustomersGet(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAnalyticsCustomersGet(ctx, companyId).Execute()
 
 Get customer analytics including growth and segmentation     Query params: start_date, end_date, group_by, segment_by
 
@@ -112,7 +112,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CompaniesAPI.CompaniesCompanyIdAnalyticsCustomersGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAnalyticsCustomersGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAnalyticsCustomersGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CompaniesAPI.CompaniesCompanyIdAnalyticsCustomersGet`: %v\n", resp)
 }
 ```
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAnalyticsDashboardGet
 
-> map[string]interface{} CompaniesCompanyIdAnalyticsDashboardGet(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAnalyticsDashboardGet(ctx, companyId).Execute()
 
 Get comprehensive dashboard analytics for seller dashboard     Includes all metrics needed for dashboard charts in one call     Query params: start_date, end_date, period (day/week/month/quarter)
 
@@ -180,7 +180,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CompaniesAPI.CompaniesCompanyIdAnalyticsDashboardGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAnalyticsDashboardGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAnalyticsDashboardGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CompaniesAPI.CompaniesCompanyIdAnalyticsDashboardGet`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAnalyticsSalesGet
 
-> map[string]interface{} CompaniesCompanyIdAnalyticsSalesGet(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAnalyticsSalesGet(ctx, companyId).Execute()
 
 Get sales over time analytics     Query params: start_date, end_date, group_by (day/week/month/quarter), metrics
 
@@ -248,7 +248,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CompaniesAPI.CompaniesCompanyIdAnalyticsSalesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAnalyticsSalesGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAnalyticsSalesGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CompaniesAPI.CompaniesCompanyIdAnalyticsSalesGet`: %v\n", resp)
 }
 ```
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdGet
 
-> map[string]interface{} CompaniesCompanyIdGet(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdGet(ctx, companyId).Execute()
 
 Get details of the requestor's own company
 
@@ -316,7 +316,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CompaniesAPI.CompaniesCompanyIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CompaniesAPI.CompaniesCompanyIdGet`: %v\n", resp)
 }
 ```
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdObjectsGet
 
-> map[string]interface{} CompaniesCompanyIdObjectsGet(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdObjectsGet(ctx, companyId).Execute()
 
 Get all objects (connections, assets) of a single company
 
@@ -384,7 +384,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CompaniesAPI.CompaniesCompanyIdObjectsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdObjectsGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdObjectsGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CompaniesAPI.CompaniesCompanyIdObjectsGet`: %v\n", resp)
 }
 ```
@@ -408,7 +408,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdPatch
 
-> map[string]interface{} CompaniesCompanyIdPatch(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdPatch(ctx, companyId).Execute()
 
 Update an existing company by ID
 
@@ -452,7 +452,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CompaniesAPI.CompaniesCompanyIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdPatch`: map[string]interface{}
+	// response from `CompaniesCompanyIdPatch`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CompaniesAPI.CompaniesCompanyIdPatch`: %v\n", resp)
 }
 ```
@@ -476,7 +476,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -494,7 +494,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdRequestsPlanGet
 
-> map[string]interface{} CompaniesCompanyIdRequestsPlanGet(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdRequestsPlanGet(ctx, companyId).Execute()
 
 Get the total number of requests allocated in the company's current subscription plan.
 
@@ -520,7 +520,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CompaniesAPI.CompaniesCompanyIdRequestsPlanGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdRequestsPlanGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdRequestsPlanGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CompaniesAPI.CompaniesCompanyIdRequestsPlanGet`: %v\n", resp)
 }
 ```
@@ -544,7 +544,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -562,7 +562,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdRequestsUsageGet
 
-> map[string]interface{} CompaniesCompanyIdRequestsUsageGet(ctx, companyId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdRequestsUsageGet(ctx, companyId).Execute()
 
 Get company request usage data for a specific month. Returns JSON metrics by default or CSV logs when download parameter is included.
 
@@ -588,7 +588,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CompaniesAPI.CompaniesCompanyIdRequestsUsageGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdRequestsUsageGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdRequestsUsageGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CompaniesAPI.CompaniesCompanyIdRequestsUsageGet`: %v\n", resp)
 }
 ```
@@ -612,7 +612,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 

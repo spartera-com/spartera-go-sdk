@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## CompaniesCompanyIdConnectionsConnectionIdDelete
 
-> map[string]interface{} CompaniesCompanyIdConnectionsConnectionIdDelete(ctx, companyId, connectionId).Execute()
+> CompaniesCompanyIdConnectionsConnectionIdDelete200Response CompaniesCompanyIdConnectionsConnectionIdDelete(ctx, companyId, connectionId).Execute()
 
 Delete single connection by ID
 
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdConnectionsConnectionIdDelete`: map[string]interface{}
+	// response from `CompaniesCompanyIdConnectionsConnectionIdDelete`: CompaniesCompanyIdConnectionsConnectionIdDelete200Response
 	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdDelete`: %v\n", resp)
 }
 ```
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdConnectionsConnectionIdDelete200Response**](CompaniesCompanyIdConnectionsConnectionIdDelete200Response.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdConnectionsConnectionIdGet
 
-> map[string]interface{} CompaniesCompanyIdConnectionsConnectionIdGet(ctx, companyId, connectionId).Execute()
+> CompaniesCompanyIdConnectionsConnectionIdGet200Response CompaniesCompanyIdConnectionsConnectionIdGet(ctx, companyId, connectionId).Execute()
 
 Get single connection by ID
 
@@ -114,7 +114,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdConnectionsConnectionIdGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdConnectionsConnectionIdGet`: CompaniesCompanyIdConnectionsConnectionIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdGet`: %v\n", resp)
 }
 ```
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdConnectionsConnectionIdGet200Response**](CompaniesCompanyIdConnectionsConnectionIdGet200Response.md)
 
 ### Authorization
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdConnectionsConnectionIdInfoschemaGet
 
-> map[string]interface{} CompaniesCompanyIdConnectionsConnectionIdInfoschemaGet(ctx, companyId, connectionId).Execute()
+> CompaniesCompanyIdConnectionsGet200Response CompaniesCompanyIdConnectionsConnectionIdInfoschemaGet(ctx, companyId, connectionId).Execute()
 
 Retrieve the information schema for the specified connection
 
@@ -185,7 +185,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdInfoschemaGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdConnectionsConnectionIdInfoschemaGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdConnectionsConnectionIdInfoschemaGet`: CompaniesCompanyIdConnectionsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdInfoschemaGet`: %v\n", resp)
 }
 ```
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdConnectionsGet200Response**](CompaniesCompanyIdConnectionsGet200Response.md)
 
 ### Authorization
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdConnectionsConnectionIdPatch
 
-> map[string]interface{} CompaniesCompanyIdConnectionsConnectionIdPatch(ctx, companyId, connectionId).Connection(connection).Execute()
+> CompaniesCompanyIdConnectionsConnectionIdPatch200Response CompaniesCompanyIdConnectionsConnectionIdPatch(ctx, companyId, connectionId).Connection(connection).Execute()
 
 Update an existing connection by ID
 
@@ -257,7 +257,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdConnectionsConnectionIdPatch`: map[string]interface{}
+	// response from `CompaniesCompanyIdConnectionsConnectionIdPatch`: CompaniesCompanyIdConnectionsConnectionIdPatch200Response
 	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdPatch`: %v\n", resp)
 }
 ```
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdConnectionsConnectionIdPatch200Response**](CompaniesCompanyIdConnectionsConnectionIdPatch200Response.md)
 
 ### Authorization
 
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdConnectionsConnectionIdTestGet
 
-> map[string]interface{} CompaniesCompanyIdConnectionsConnectionIdTestGet(ctx, companyId, connectionId).Execute()
+> CompaniesCompanyIdConnectionsGet200Response CompaniesCompanyIdConnectionsConnectionIdTestGet(ctx, companyId, connectionId).Execute()
 
 Test the specified connection
 
@@ -329,7 +329,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdTestGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdConnectionsConnectionIdTestGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdConnectionsConnectionIdTestGet`: CompaniesCompanyIdConnectionsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdTestGet`: %v\n", resp)
 }
 ```
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdConnectionsGet200Response**](CompaniesCompanyIdConnectionsGet200Response.md)
 
 ### Authorization
 
@@ -373,7 +373,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdConnectionsGet
 
-> map[string]interface{} CompaniesCompanyIdConnectionsGet(ctx, companyId).Execute()
+> CompaniesCompanyIdConnectionsGet200Response CompaniesCompanyIdConnectionsGet(ctx, companyId).Execute()
 
 Get all connections for a specific company
 
@@ -399,7 +399,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.CompaniesCompanyIdConnectionsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdConnectionsGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdConnectionsGet`: CompaniesCompanyIdConnectionsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.CompaniesCompanyIdConnectionsGet`: %v\n", resp)
 }
 ```
@@ -423,7 +423,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdConnectionsGet200Response**](CompaniesCompanyIdConnectionsGet200Response.md)
 
 ### Authorization
 
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdConnectionsPost
 
-> map[string]interface{} CompaniesCompanyIdConnectionsPost(ctx, companyId).Connection(connection).Execute()
+> CompaniesCompanyIdConnectionsPost200Response CompaniesCompanyIdConnectionsPost(ctx, companyId).Connection(connection).Execute()
 
 Create a new connection by ID
 
@@ -468,7 +468,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.CompaniesCompanyIdConnectionsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdConnectionsPost`: map[string]interface{}
+	// response from `CompaniesCompanyIdConnectionsPost`: CompaniesCompanyIdConnectionsPost200Response
 	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.CompaniesCompanyIdConnectionsPost`: %v\n", resp)
 }
 ```
@@ -493,7 +493,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdConnectionsPost200Response**](CompaniesCompanyIdConnectionsPost200Response.md)
 
 ### Authorization
 

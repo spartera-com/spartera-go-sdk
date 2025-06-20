@@ -30,7 +30,7 @@ type UsersAPICompaniesCompanyIdUsersGetRequest struct {
 	companyId string
 }
 
-func (r UsersAPICompaniesCompanyIdUsersGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r UsersAPICompaniesCompanyIdUsersGetRequest) Execute() (*CompaniesCompanyIdUsersGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersGetExecute(r)
 }
 
@@ -50,13 +50,13 @@ func (a *UsersAPIService) CompaniesCompanyIdUsersGet(ctx context.Context, compan
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *UsersAPIService) CompaniesCompanyIdUsersGetExecute(r UsersAPICompaniesCompanyIdUsersGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersGet200Response
+func (a *UsersAPIService) CompaniesCompanyIdUsersGetExecute(r UsersAPICompaniesCompanyIdUsersGetRequest) (*CompaniesCompanyIdUsersGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.CompaniesCompanyIdUsersGet")
@@ -183,7 +183,7 @@ func (r UsersAPICompaniesCompanyIdUsersPostRequest) User(user User) UsersAPIComp
 	return r
 }
 
-func (r UsersAPICompaniesCompanyIdUsersPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r UsersAPICompaniesCompanyIdUsersPostRequest) Execute() (*CompaniesCompanyIdUsersPost200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersPostExecute(r)
 }
 
@@ -203,13 +203,13 @@ func (a *UsersAPIService) CompaniesCompanyIdUsersPost(ctx context.Context, compa
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *UsersAPIService) CompaniesCompanyIdUsersPostExecute(r UsersAPICompaniesCompanyIdUsersPostRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersPost200Response
+func (a *UsersAPIService) CompaniesCompanyIdUsersPostExecute(r UsersAPICompaniesCompanyIdUsersPostRequest) (*CompaniesCompanyIdUsersPost200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.CompaniesCompanyIdUsersPost")
@@ -336,7 +336,7 @@ type UsersAPICompaniesCompanyIdUsersUserIdDeleteRequest struct {
 	userId string
 }
 
-func (r UsersAPICompaniesCompanyIdUsersUserIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r UsersAPICompaniesCompanyIdUsersUserIdDeleteRequest) Execute() (*CompaniesCompanyIdUsersUserIdDelete200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdDeleteExecute(r)
 }
 
@@ -358,13 +358,13 @@ func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdDelete(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdDeleteExecute(r UsersAPICompaniesCompanyIdUsersUserIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdDelete200Response
+func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdDeleteExecute(r UsersAPICompaniesCompanyIdUsersUserIdDeleteRequest) (*CompaniesCompanyIdUsersUserIdDelete200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdDelete200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.CompaniesCompanyIdUsersUserIdDelete")
@@ -487,7 +487,7 @@ type UsersAPICompaniesCompanyIdUsersUserIdGetRequest struct {
 	userId string
 }
 
-func (r UsersAPICompaniesCompanyIdUsersUserIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r UsersAPICompaniesCompanyIdUsersUserIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdGetExecute(r)
 }
 
@@ -509,13 +509,13 @@ func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdGet(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdGetExecute(r UsersAPICompaniesCompanyIdUsersUserIdGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdGet200Response
+func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdGetExecute(r UsersAPICompaniesCompanyIdUsersUserIdGetRequest) (*CompaniesCompanyIdUsersUserIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.CompaniesCompanyIdUsersUserIdGet")
@@ -644,7 +644,7 @@ func (r UsersAPICompaniesCompanyIdUsersUserIdPatchRequest) User(user User) Users
 	return r
 }
 
-func (r UsersAPICompaniesCompanyIdUsersUserIdPatchRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r UsersAPICompaniesCompanyIdUsersUserIdPatchRequest) Execute() (*CompaniesCompanyIdUsersUserIdPatch200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdPatchExecute(r)
 }
 
@@ -666,13 +666,13 @@ func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdPatch(ctx context.Context
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdPatchExecute(r UsersAPICompaniesCompanyIdUsersUserIdPatchRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdPatch200Response
+func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdPatchExecute(r UsersAPICompaniesCompanyIdUsersUserIdPatchRequest) (*CompaniesCompanyIdUsersUserIdPatch200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdPatch200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.CompaniesCompanyIdUsersUserIdPatch")
@@ -770,6 +770,149 @@ func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdPatchExecute(r UsersAPICo
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v InlineObject
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v InlineObject3
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UsersAPIMeGetRequest struct {
+	ctx context.Context
+	ApiService *UsersAPIService
+}
+
+func (r UsersAPIMeGetRequest) Execute() (*MeGet200Response, *http.Response, error) {
+	return r.ApiService.MeGetExecute(r)
+}
+
+/*
+MeGet Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return UsersAPIMeGetRequest
+*/
+func (a *UsersAPIService) MeGet(ctx context.Context) UsersAPIMeGetRequest {
+	return UsersAPIMeGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return MeGet200Response
+func (a *UsersAPIService) MeGetExecute(r UsersAPIMeGetRequest) (*MeGet200Response, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MeGet200Response
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.MeGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/me"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["x-api-key"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v InlineObject1
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v InlineObject2
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

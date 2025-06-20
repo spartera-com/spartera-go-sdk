@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete(ctx, companyId, userId, alertId).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete(ctx, companyId, userId, alertId).Execute()
 
 Delete single alert by ID
 
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete`: CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response
 	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete`: %v\n", resp)
 }
 ```
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response.md)
 
 ### Authorization
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdAlertsAlertIdGet
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdAlertsAlertIdGet(ctx, companyId, userId, alertId).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response CompaniesCompanyIdUsersUserIdAlertsAlertIdGet(ctx, companyId, userId, alertId).Execute()
 
 Get single alert by ID
 
@@ -118,7 +118,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdGet`: CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdGet`: %v\n", resp)
 }
 ```
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch(ctx, companyId, userId, alertId).Alert(alert).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch(ctx, companyId, userId, alertId).Alert(alert).Execute()
 
 Update an existing alert by ID
 
@@ -193,7 +193,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch`: CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response
 	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch`: %v\n", resp)
 }
 ```
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response.md)
 
 ### Authorization
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(ctx, companyId, userId, assetId).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsGet200Response CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(ctx, companyId, userId, assetId).Execute()
 
 Get all alerts for a specific asset
 
@@ -268,7 +268,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet`: CompaniesCompanyIdUsersUserIdAlertsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet`: %v\n", resp)
 }
 ```
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdAlertsGet200Response**](CompaniesCompanyIdUsersUserIdAlertsGet200Response.md)
 
 ### Authorization
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet(ctx, companyId, userId, assetId).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet(ctx, companyId, userId, assetId).Execute()
 
 Get all alerts for a specific asset (by user)
 
@@ -342,7 +342,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet`: CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet`: %v\n", resp)
 }
 ```
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response.md)
 
 ### Authorization
 
@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdAlertsGet
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdAlertsGet(ctx, companyId, userId).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsGet200Response CompaniesCompanyIdUsersUserIdAlertsGet(ctx, companyId, userId).Execute()
 
 Get a list of all alerts for a specific user
 
@@ -415,7 +415,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdAlertsGet`: CompaniesCompanyIdUsersUserIdAlertsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsGet`: %v\n", resp)
 }
 ```
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdAlertsGet200Response**](CompaniesCompanyIdUsersUserIdAlertsGet200Response.md)
 
 ### Authorization
 
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdAlertsPost
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdAlertsPost(ctx, companyId, userId).Alert(alert).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsPost200Response CompaniesCompanyIdUsersUserIdAlertsPost(ctx, companyId, userId).Alert(alert).Execute()
 
 POST /companies/{company_id}/users/{user_id}/alerts
 
@@ -487,7 +487,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsPost`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdAlertsPost`: CompaniesCompanyIdUsersUserIdAlertsPost200Response
 	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsPost`: %v\n", resp)
 }
 ```
@@ -514,7 +514,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdAlertsPost200Response**](CompaniesCompanyIdUsersUserIdAlertsPost200Response.md)
 
 ### Authorization
 

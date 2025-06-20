@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## CloudProvidersGet
 
-> map[string]interface{} CloudProvidersGet(ctx).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CloudProvidersGet(ctx).Execute()
 
 Get a list of all cloud providers
 
@@ -36,7 +36,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CloudProvidersAPI.CloudProvidersGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CloudProvidersGet`: map[string]interface{}
+	// response from `CloudProvidersGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CloudProvidersAPI.CloudProvidersGet`: %v\n", resp)
 }
 ```
@@ -52,7 +52,7 @@ Other parameters are passed through a pointer to a apiCloudProvidersGetRequest s
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -70,7 +70,7 @@ Other parameters are passed through a pointer to a apiCloudProvidersGetRequest s
 
 ## CloudProvidersProviderIdGet
 
-> map[string]interface{} CloudProvidersProviderIdGet(ctx, providerId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CloudProvidersProviderIdGet(ctx, providerId).Execute()
 
 Get single cloud provider by ID
 
@@ -96,7 +96,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `CloudProvidersAPI.CloudProvidersProviderIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CloudProvidersProviderIdGet`: map[string]interface{}
+	// response from `CloudProvidersProviderIdGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `CloudProvidersAPI.CloudProvidersProviderIdGet`: %v\n", resp)
 }
 ```
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 

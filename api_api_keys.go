@@ -31,7 +31,7 @@ type APIKeysAPICompaniesCompanyIdApiKeysApiKeyIdGetRequest struct {
 	apiKeyId string
 }
 
-func (r APIKeysAPICompaniesCompanyIdApiKeysApiKeyIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r APIKeysAPICompaniesCompanyIdApiKeysApiKeyIdGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdApiKeysApiKeyIdGetExecute(r)
 }
 
@@ -53,13 +53,13 @@ func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysApiKeyIdGet(ctx context.Con
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysApiKeyIdGetExecute(r APIKeysAPICompaniesCompanyIdApiKeysApiKeyIdGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdApiKeysGet200Response
+func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysApiKeyIdGetExecute(r APIKeysAPICompaniesCompanyIdApiKeysApiKeyIdGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIKeysAPIService.CompaniesCompanyIdApiKeysApiKeyIdGet")
@@ -182,7 +182,7 @@ type APIKeysAPICompaniesCompanyIdApiKeysApiKeyIdPatchRequest struct {
 	apiKeyId string
 }
 
-func (r APIKeysAPICompaniesCompanyIdApiKeysApiKeyIdPatchRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r APIKeysAPICompaniesCompanyIdApiKeysApiKeyIdPatchRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdApiKeysApiKeyIdPatchExecute(r)
 }
 
@@ -204,13 +204,13 @@ func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysApiKeyIdPatch(ctx context.C
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysApiKeyIdPatchExecute(r APIKeysAPICompaniesCompanyIdApiKeysApiKeyIdPatchRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdApiKeysGet200Response
+func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysApiKeyIdPatchExecute(r APIKeysAPICompaniesCompanyIdApiKeysApiKeyIdPatchRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIKeysAPIService.CompaniesCompanyIdApiKeysApiKeyIdPatch")
@@ -343,7 +343,7 @@ type APIKeysAPICompaniesCompanyIdApiKeysGetRequest struct {
 	companyId string
 }
 
-func (r APIKeysAPICompaniesCompanyIdApiKeysGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r APIKeysAPICompaniesCompanyIdApiKeysGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdApiKeysGetExecute(r)
 }
 
@@ -363,13 +363,13 @@ func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysGet(ctx context.Context, co
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysGetExecute(r APIKeysAPICompaniesCompanyIdApiKeysGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdApiKeysGet200Response
+func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysGetExecute(r APIKeysAPICompaniesCompanyIdApiKeysGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIKeysAPIService.CompaniesCompanyIdApiKeysGet")
@@ -490,7 +490,7 @@ type APIKeysAPICompaniesCompanyIdApiKeysPostRequest struct {
 	companyId string
 }
 
-func (r APIKeysAPICompaniesCompanyIdApiKeysPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r APIKeysAPICompaniesCompanyIdApiKeysPostRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdApiKeysPostExecute(r)
 }
 
@@ -510,13 +510,13 @@ func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysPost(ctx context.Context, c
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysPostExecute(r APIKeysAPICompaniesCompanyIdApiKeysPostRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdApiKeysGet200Response
+func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysPostExecute(r APIKeysAPICompaniesCompanyIdApiKeysPostRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIKeysAPIService.CompaniesCompanyIdApiKeysPost")
@@ -638,7 +638,7 @@ type APIKeysAPICompaniesCompanyIdApiKeysTokenDeleteRequest struct {
 	token string
 }
 
-func (r APIKeysAPICompaniesCompanyIdApiKeysTokenDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r APIKeysAPICompaniesCompanyIdApiKeysTokenDeleteRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdApiKeysTokenDeleteExecute(r)
 }
 
@@ -660,13 +660,13 @@ func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysTokenDelete(ctx context.Con
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysTokenDeleteExecute(r APIKeysAPICompaniesCompanyIdApiKeysTokenDeleteRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdApiKeysGet200Response
+func (a *APIKeysAPIService) CompaniesCompanyIdApiKeysTokenDeleteExecute(r APIKeysAPICompaniesCompanyIdApiKeysTokenDeleteRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "APIKeysAPIService.CompaniesCompanyIdApiKeysTokenDelete")

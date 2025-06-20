@@ -29,7 +29,7 @@ type CloudProvidersAPICloudProvidersGetRequest struct {
 	ApiService *CloudProvidersAPIService
 }
 
-func (r CloudProvidersAPICloudProvidersGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CloudProvidersAPICloudProvidersGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	return r.ApiService.CloudProvidersGetExecute(r)
 }
 
@@ -47,13 +47,13 @@ func (a *CloudProvidersAPIService) CloudProvidersGet(ctx context.Context) CloudP
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *CloudProvidersAPIService) CloudProvidersGetExecute(r CloudProvidersAPICloudProvidersGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdApiKeysGet200Response
+func (a *CloudProvidersAPIService) CloudProvidersGetExecute(r CloudProvidersAPICloudProvidersGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProvidersAPIService.CloudProvidersGet")
@@ -173,7 +173,7 @@ type CloudProvidersAPICloudProvidersProviderIdGetRequest struct {
 	providerId string
 }
 
-func (r CloudProvidersAPICloudProvidersProviderIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r CloudProvidersAPICloudProvidersProviderIdGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	return r.ApiService.CloudProvidersProviderIdGetExecute(r)
 }
 
@@ -193,13 +193,13 @@ func (a *CloudProvidersAPIService) CloudProvidersProviderIdGet(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *CloudProvidersAPIService) CloudProvidersProviderIdGetExecute(r CloudProvidersAPICloudProvidersProviderIdGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdApiKeysGet200Response
+func (a *CloudProvidersAPIService) CloudProvidersProviderIdGetExecute(r CloudProvidersAPICloudProvidersProviderIdGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProvidersAPIService.CloudProvidersProviderIdGet")

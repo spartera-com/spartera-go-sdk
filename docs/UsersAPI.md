@@ -9,12 +9,13 @@ Method | HTTP request | Description
 [**CompaniesCompanyIdUsersUserIdDelete**](UsersAPI.md#CompaniesCompanyIdUsersUserIdDelete) | **Delete** /companies/{company_id}/users/{user_id} | Delete single user by ID
 [**CompaniesCompanyIdUsersUserIdGet**](UsersAPI.md#CompaniesCompanyIdUsersUserIdGet) | **Get** /companies/{company_id}/users/{user_id} | Get single user by ID
 [**CompaniesCompanyIdUsersUserIdPatch**](UsersAPI.md#CompaniesCompanyIdUsersUserIdPatch) | **Patch** /companies/{company_id}/users/{user_id} | Update an existing user by ID
+[**MeGet**](UsersAPI.md#MeGet) | **Get** /me | Get current authenticated user&#39;s profile information.              Returns:                 JSON response with user profile data from database
 
 
 
 ## CompaniesCompanyIdUsersGet
 
-> map[string]interface{} CompaniesCompanyIdUsersGet(ctx, companyId).Execute()
+> CompaniesCompanyIdUsersGet200Response CompaniesCompanyIdUsersGet(ctx, companyId).Execute()
 
 Get a list of all users in a company
 
@@ -40,7 +41,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.CompaniesCompanyIdUsersGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersGet`: CompaniesCompanyIdUsersGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.CompaniesCompanyIdUsersGet`: %v\n", resp)
 }
 ```
@@ -64,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersGet200Response**](CompaniesCompanyIdUsersGet200Response.md)
 
 ### Authorization
 
@@ -82,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersPost
 
-> map[string]interface{} CompaniesCompanyIdUsersPost(ctx, companyId).User(user).Execute()
+> CompaniesCompanyIdUsersPost200Response CompaniesCompanyIdUsersPost(ctx, companyId).User(user).Execute()
 
 Create a new user
 
@@ -109,7 +110,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.CompaniesCompanyIdUsersPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersPost`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersPost`: CompaniesCompanyIdUsersPost200Response
 	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.CompaniesCompanyIdUsersPost`: %v\n", resp)
 }
 ```
@@ -134,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersPost200Response**](CompaniesCompanyIdUsersPost200Response.md)
 
 ### Authorization
 
@@ -152,7 +153,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdDelete
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdDelete(ctx, companyId, userId).Execute()
+> CompaniesCompanyIdUsersUserIdDelete200Response CompaniesCompanyIdUsersUserIdDelete(ctx, companyId, userId).Execute()
 
 Delete single user by ID
 
@@ -179,7 +180,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.CompaniesCompanyIdUsersUserIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdDelete`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdDelete`: CompaniesCompanyIdUsersUserIdDelete200Response
 	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.CompaniesCompanyIdUsersUserIdDelete`: %v\n", resp)
 }
 ```
@@ -205,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdDelete200Response**](CompaniesCompanyIdUsersUserIdDelete200Response.md)
 
 ### Authorization
 
@@ -223,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdGet
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdGet(ctx, companyId, userId).Execute()
+> CompaniesCompanyIdUsersUserIdGet200Response CompaniesCompanyIdUsersUserIdGet(ctx, companyId, userId).Execute()
 
 Get single user by ID
 
@@ -250,7 +251,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.CompaniesCompanyIdUsersUserIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdGet`: CompaniesCompanyIdUsersUserIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.CompaniesCompanyIdUsersUserIdGet`: %v\n", resp)
 }
 ```
@@ -276,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdGet200Response**](CompaniesCompanyIdUsersUserIdGet200Response.md)
 
 ### Authorization
 
@@ -294,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdPatch
 
-> map[string]interface{} CompaniesCompanyIdUsersUserIdPatch(ctx, companyId, userId).User(user).Execute()
+> CompaniesCompanyIdUsersUserIdPatch200Response CompaniesCompanyIdUsersUserIdPatch(ctx, companyId, userId).User(user).Execute()
 
 Update an existing user by ID
 
@@ -322,7 +323,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.CompaniesCompanyIdUsersUserIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdPatch`: map[string]interface{}
+	// response from `CompaniesCompanyIdUsersUserIdPatch`: CompaniesCompanyIdUsersUserIdPatch200Response
 	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.CompaniesCompanyIdUsersUserIdPatch`: %v\n", resp)
 }
 ```
@@ -349,7 +350,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdUsersUserIdPatch200Response**](CompaniesCompanyIdUsersUserIdPatch200Response.md)
 
 ### Authorization
 
@@ -358,6 +359,65 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## MeGet
+
+> MeGet200Response MeGet(ctx).Execute()
+
+Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/spartera-com/spartera-go-sdk"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UsersAPI.MeGet(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.MeGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `MeGet`: MeGet200Response
+	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.MeGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMeGetRequest struct via the builder pattern
+
+
+### Return type
+
+[**MeGet200Response**](MeGet200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## CompaniesCompanyIdAssetsAssetIdPricesActiveGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdPricesActiveGet(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAssetsAssetIdPricesActiveGet(ctx, companyId, assetId).Execute()
 
 Get the currently active price for an asset
 
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesActiveGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdPricesActiveGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdPricesActiveGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesActiveGet`: %v\n", resp)
 }
 ```
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete(ctx, companyId, assetId, aphId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete(ctx, companyId, assetId, aphId).Execute()
 
 Delete single price history record by ID
 
@@ -116,7 +116,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete`: %v\n", resp)
 }
 ```
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdPricesAphIdGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdPricesAphIdGet(ctx, companyId, assetId, aphId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAssetsAssetIdPricesAphIdGet(ctx, companyId, assetId, aphId).Execute()
 
 Get single price history record by ID
 
@@ -190,7 +190,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesAphIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdPricesAphIdGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdPricesAphIdGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesAphIdGet`: %v\n", resp)
 }
 ```
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch(ctx, companyId, assetId, aphId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch(ctx, companyId, assetId, aphId).Execute()
 
 Update an existing price history record by ID
 
@@ -264,7 +264,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch`: %v\n", resp)
 }
 ```
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost(ctx, companyId, assetId).Execute()
 
 POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
 
@@ -337,7 +337,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost`: %v\n", resp)
 }
 ```
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -381,7 +381,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdPricesDiscountPost
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdPricesDiscountPost(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAssetsAssetIdPricesDiscountPost(ctx, companyId, assetId).Execute()
 
 POST /companies/{company_id}/assets/{asset_id}/prices/discount
 
@@ -408,7 +408,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesDiscountPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdPricesDiscountPost`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdPricesDiscountPost`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesDiscountPost`: %v\n", resp)
 }
 ```
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdPricesGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdPricesGet(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAssetsAssetIdPricesGet(ctx, companyId, assetId).Execute()
 
 Get all price history records for a specific asset
 
@@ -479,7 +479,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdPricesGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdPricesGet`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesGet`: %v\n", resp)
 }
 ```
@@ -505,7 +505,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 
@@ -523,7 +523,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdPricesPost
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdPricesPost(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdAssetsAssetIdPricesPost(ctx, companyId, assetId).Execute()
 
 Create a new price history record for an asset
 
@@ -550,7 +550,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdPricesPost`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdPricesPost`: CompaniesCompanyIdApiKeysGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetPriceHistoryAPI.CompaniesCompanyIdAssetsAssetIdPricesPost`: %v\n", resp)
 }
 ```
@@ -576,7 +576,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
 
 ### Authorization
 

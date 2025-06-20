@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 ## AnalyzeCompanyHandleAssetsAssetSlugGet
 
-> map[string]interface{} AnalyzeCompanyHandleAssetsAssetSlugGet(ctx, assetSlug, companyHandle).Execute()
+> CompaniesCompanyIdAssetsAssetIdGet200Response AnalyzeCompanyHandleAssetsAssetSlugGet(ctx, companyHandle, assetSlug).Execute()
 
 Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
 
@@ -38,17 +38,17 @@ import (
 )
 
 func main() {
-	assetSlug := "assetSlug_example" // string | 
 	companyHandle := "companyHandle_example" // string | 
+	assetSlug := "assetSlug_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AssetsAPI.AnalyzeCompanyHandleAssetsAssetSlugGet(context.Background(), assetSlug, companyHandle).Execute()
+	resp, r, err := apiClient.AssetsAPI.AnalyzeCompanyHandleAssetsAssetSlugGet(context.Background(), companyHandle, assetSlug).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.AnalyzeCompanyHandleAssetsAssetSlugGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AnalyzeCompanyHandleAssetsAssetSlugGet`: map[string]interface{}
+	// response from `AnalyzeCompanyHandleAssetsAssetSlugGet`: CompaniesCompanyIdAssetsAssetIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.AnalyzeCompanyHandleAssetsAssetSlugGet`: %v\n", resp)
 }
 ```
@@ -59,8 +59,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**assetSlug** | **string** |  | 
 **companyHandle** | **string** |  | 
+**assetSlug** | **string** |  | 
 
 ### Other Parameters
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsAssetIdGet200Response**](CompaniesCompanyIdAssetsAssetIdGet200Response.md)
 
 ### Authorization
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdDelete
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdDelete(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdAssetsAssetIdDelete200Response CompaniesCompanyIdAssetsAssetIdDelete(ctx, companyId, assetId).Execute()
 
 Delete single asset by ID
 
@@ -119,7 +119,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsAssetIdDelete``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdDelete`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdDelete`: CompaniesCompanyIdAssetsAssetIdDelete200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsAssetIdDelete`: %v\n", resp)
 }
 ```
@@ -145,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsAssetIdDelete200Response**](CompaniesCompanyIdAssetsAssetIdDelete200Response.md)
 
 ### Authorization
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdGet(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdAssetsAssetIdGet200Response CompaniesCompanyIdAssetsAssetIdGet(ctx, companyId, assetId).Execute()
 
 Get single asset by ID
 
@@ -190,7 +190,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsAssetIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdGet`: CompaniesCompanyIdAssetsAssetIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsAssetIdGet`: %v\n", resp)
 }
 ```
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsAssetIdGet200Response**](CompaniesCompanyIdAssetsAssetIdGet200Response.md)
 
 ### Authorization
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdInfoschemaGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdInfoschemaGet(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdAssetsGet200Response CompaniesCompanyIdAssetsAssetIdInfoschemaGet(ctx, companyId, assetId).Execute()
 
 Get the information schema for a specific asset's table
 
@@ -261,7 +261,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsAssetIdInfoschemaGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdInfoschemaGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdInfoschemaGet`: CompaniesCompanyIdAssetsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsAssetIdInfoschemaGet`: %v\n", resp)
 }
 ```
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdInfoschemaSaveGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdInfoschemaSaveGet(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdAssetsGet200Response CompaniesCompanyIdAssetsAssetIdInfoschemaSaveGet(ctx, companyId, assetId).Execute()
 
 Retrieve and save an asset's information schema
 
@@ -332,7 +332,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsAssetIdInfoschemaSaveGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdInfoschemaSaveGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdInfoschemaSaveGet`: CompaniesCompanyIdAssetsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsAssetIdInfoschemaSaveGet`: %v\n", resp)
 }
 ```
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdPatch
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdPatch(ctx, companyId, assetId).Asset(asset).Execute()
+> CompaniesCompanyIdAssetsAssetIdPatch200Response CompaniesCompanyIdAssetsAssetIdPatch(ctx, companyId, assetId).Asset(asset).Execute()
 
 Update an existing asset by ID
 
@@ -404,7 +404,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsAssetIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdPatch`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdPatch`: CompaniesCompanyIdAssetsAssetIdPatch200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsAssetIdPatch`: %v\n", resp)
 }
 ```
@@ -431,7 +431,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsAssetIdPatch200Response**](CompaniesCompanyIdAssetsAssetIdPatch200Response.md)
 
 ### Authorization
 
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdPredictedPriceGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdPredictedPriceGet(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdAssetsGet200Response CompaniesCompanyIdAssetsAssetIdPredictedPriceGet(ctx, companyId, assetId).Execute()
 
 Get AI-predicted pricing for a specific asset
 
@@ -476,7 +476,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsAssetIdPredictedPriceGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdPredictedPriceGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdPredictedPriceGet`: CompaniesCompanyIdAssetsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsAssetIdPredictedPriceGet`: %v\n", resp)
 }
 ```
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -520,7 +520,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdStatisticsGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdStatisticsGet(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdAssetsGet200Response CompaniesCompanyIdAssetsAssetIdStatisticsGet(ctx, companyId, assetId).Execute()
 
 Get statistics for a specific asset (public endpoint)
 
@@ -547,7 +547,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsAssetIdStatisticsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdStatisticsGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdStatisticsGet`: CompaniesCompanyIdAssetsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsAssetIdStatisticsGet`: %v\n", resp)
 }
 ```
@@ -573,7 +573,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -591,7 +591,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdTestGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsAssetIdTestGet(ctx, companyId, assetId).Execute()
+> CompaniesCompanyIdAssetsGet200Response CompaniesCompanyIdAssetsAssetIdTestGet(ctx, companyId, assetId).Execute()
 
 Test out an Asset (on a subset of data)
 
@@ -618,7 +618,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsAssetIdTestGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdTestGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsAssetIdTestGet`: CompaniesCompanyIdAssetsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsAssetIdTestGet`: %v\n", resp)
 }
 ```
@@ -644,7 +644,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -662,7 +662,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsGet(ctx, companyId).Execute()
+> CompaniesCompanyIdAssetsGet200Response CompaniesCompanyIdAssetsGet(ctx, companyId).Execute()
 
 Get all assets for a specific company
 
@@ -688,7 +688,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsGet`: CompaniesCompanyIdAssetsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsGet`: %v\n", resp)
 }
 ```
@@ -712,7 +712,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 
@@ -730,7 +730,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsPost
 
-> map[string]interface{} CompaniesCompanyIdAssetsPost(ctx, companyId).Asset(asset).Execute()
+> CompaniesCompanyIdAssetsPost200Response CompaniesCompanyIdAssetsPost(ctx, companyId).Asset(asset).Execute()
 
 Create a new asset
 
@@ -757,7 +757,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsPost`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsPost`: CompaniesCompanyIdAssetsPost200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsPost`: %v\n", resp)
 }
 ```
@@ -782,7 +782,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsPost200Response**](CompaniesCompanyIdAssetsPost200Response.md)
 
 ### Authorization
 
@@ -800,7 +800,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsStatisticsGet
 
-> map[string]interface{} CompaniesCompanyIdAssetsStatisticsGet(ctx, companyId).Execute()
+> CompaniesCompanyIdAssetsGet200Response CompaniesCompanyIdAssetsStatisticsGet(ctx, companyId).Execute()
 
 Get statistics for all assets the user has access to
 
@@ -826,7 +826,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsStatisticsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsStatisticsGet`: map[string]interface{}
+	// response from `CompaniesCompanyIdAssetsStatisticsGet`: CompaniesCompanyIdAssetsGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsStatisticsGet`: %v\n", resp)
 }
 ```
@@ -850,7 +850,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**CompaniesCompanyIdAssetsGet200Response**](CompaniesCompanyIdAssetsGet200Response.md)
 
 ### Authorization
 

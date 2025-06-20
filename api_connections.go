@@ -31,7 +31,7 @@ type ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdDeleteRequest struct
 	connectionId string
 }
 
-func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdDeleteRequest) Execute() (*CompaniesCompanyIdConnectionsConnectionIdDelete200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdConnectionsConnectionIdDeleteExecute(r)
 }
 
@@ -53,13 +53,13 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdDelete(
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdDeleteExecute(r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdConnectionsConnectionIdDelete200Response
+func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdDeleteExecute(r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdDeleteRequest) (*CompaniesCompanyIdConnectionsConnectionIdDelete200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdConnectionsConnectionIdDelete200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectionsAPIService.CompaniesCompanyIdConnectionsConnectionIdDelete")
@@ -182,7 +182,7 @@ type ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdGetRequest struct {
 	connectionId string
 }
 
-func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdGetRequest) Execute() (*CompaniesCompanyIdConnectionsConnectionIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdConnectionsConnectionIdGetExecute(r)
 }
 
@@ -204,13 +204,13 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdGet(ctx
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdGetExecute(r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdConnectionsConnectionIdGet200Response
+func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdGetExecute(r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdGetRequest) (*CompaniesCompanyIdConnectionsConnectionIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdConnectionsConnectionIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectionsAPIService.CompaniesCompanyIdConnectionsConnectionIdGet")
@@ -333,7 +333,7 @@ type ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdInfoschemaGetRequest
 	connectionId string
 }
 
-func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdInfoschemaGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdInfoschemaGetRequest) Execute() (*CompaniesCompanyIdConnectionsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdConnectionsConnectionIdInfoschemaGetExecute(r)
 }
 
@@ -355,13 +355,13 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdInfosch
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdInfoschemaGetExecute(r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdInfoschemaGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdConnectionsGet200Response
+func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdInfoschemaGetExecute(r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdInfoschemaGetRequest) (*CompaniesCompanyIdConnectionsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdConnectionsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectionsAPIService.CompaniesCompanyIdConnectionsConnectionIdInfoschemaGet")
@@ -490,7 +490,7 @@ func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdPatchRequest) Con
 	return r
 }
 
-func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdPatchRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdPatchRequest) Execute() (*CompaniesCompanyIdConnectionsConnectionIdPatch200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdConnectionsConnectionIdPatchExecute(r)
 }
 
@@ -512,13 +512,13 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdPatch(c
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdPatchExecute(r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdPatchRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdConnectionsConnectionIdPatch200Response
+func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdPatchExecute(r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdPatchRequest) (*CompaniesCompanyIdConnectionsConnectionIdPatch200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdConnectionsConnectionIdPatch200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectionsAPIService.CompaniesCompanyIdConnectionsConnectionIdPatch")
@@ -657,7 +657,7 @@ type ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdTestGetRequest struc
 	connectionId string
 }
 
-func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdTestGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdTestGetRequest) Execute() (*CompaniesCompanyIdConnectionsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdConnectionsConnectionIdTestGetExecute(r)
 }
 
@@ -679,13 +679,13 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdTestGet
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdTestGetExecute(r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdTestGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdConnectionsGet200Response
+func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdTestGetExecute(r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdTestGetRequest) (*CompaniesCompanyIdConnectionsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdConnectionsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectionsAPIService.CompaniesCompanyIdConnectionsConnectionIdTestGet")
@@ -807,7 +807,7 @@ type ConnectionsAPICompaniesCompanyIdConnectionsGetRequest struct {
 	companyId string
 }
 
-func (r ConnectionsAPICompaniesCompanyIdConnectionsGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ConnectionsAPICompaniesCompanyIdConnectionsGetRequest) Execute() (*CompaniesCompanyIdConnectionsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdConnectionsGetExecute(r)
 }
 
@@ -827,13 +827,13 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsGet(ctx context.Con
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsGetExecute(r ConnectionsAPICompaniesCompanyIdConnectionsGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdConnectionsGet200Response
+func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsGetExecute(r ConnectionsAPICompaniesCompanyIdConnectionsGetRequest) (*CompaniesCompanyIdConnectionsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdConnectionsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectionsAPIService.CompaniesCompanyIdConnectionsGet")
@@ -960,7 +960,7 @@ func (r ConnectionsAPICompaniesCompanyIdConnectionsPostRequest) Connection(conne
 	return r
 }
 
-func (r ConnectionsAPICompaniesCompanyIdConnectionsPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ConnectionsAPICompaniesCompanyIdConnectionsPostRequest) Execute() (*CompaniesCompanyIdConnectionsPost200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdConnectionsPostExecute(r)
 }
 
@@ -980,13 +980,13 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsPost(ctx context.Co
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsPostExecute(r ConnectionsAPICompaniesCompanyIdConnectionsPostRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdConnectionsPost200Response
+func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsPostExecute(r ConnectionsAPICompaniesCompanyIdConnectionsPostRequest) (*CompaniesCompanyIdConnectionsPost200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdConnectionsPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ConnectionsAPIService.CompaniesCompanyIdConnectionsPost")

@@ -32,7 +32,7 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetReques
 	category string
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetExecute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCategoryCate
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet")
@@ -187,7 +187,7 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetRequest st
 	assetId string
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetExecute(r)
 }
 
@@ -211,13 +211,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCheckAssetId
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet")
@@ -342,7 +342,7 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDeleteRequest s
 	favoriteId string
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDeleteRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDeleteRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDeleteExecute(r)
 }
 
@@ -366,13 +366,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDe
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDeleteExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDeleteRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDeleteExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDeleteRequest) (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdDelete")
@@ -497,7 +497,7 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetRequest stru
 	favoriteId string
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetExecute(r)
 }
 
@@ -521,13 +521,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGe
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet")
@@ -658,7 +658,7 @@ func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchRequest
 	return r
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchExecute(r)
 }
 
@@ -682,13 +682,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPa
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchRequest) (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatch")
@@ -828,7 +828,7 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesGetRequest struct {
 	userId string
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesGetExecute(r)
 }
 
@@ -850,13 +850,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesGet(ctx cont
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesGet200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesGet")
@@ -985,7 +985,7 @@ func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesPostRequest) Favorite(
 	return r
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesPostRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesPostRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesPost200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesPostExecute(r)
 }
 
@@ -1007,13 +1007,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesPost(ctx con
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesPostExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesPostRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesPost200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesPostExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesPostRequest) (*CompaniesCompanyIdUsersUserIdFavoritesPost200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesPost")
@@ -1141,7 +1141,7 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesUncategorizedGetRequest s
 	userId string
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesUncategorizedGetRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesUncategorizedGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGetExecute(r)
 }
 
@@ -1163,13 +1163,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesUncategorize
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesUncategorizedGetRequest) (map[string]interface{}, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesGet200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesUncategorizedGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesUncategorizedGet")
