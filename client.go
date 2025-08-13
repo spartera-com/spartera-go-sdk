@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -42,7 +42,7 @@ var (
 	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
-// APIClient manages communication with the Spartera API Documentation API v0.0.0
+// APIClient manages communication with the Spartera API Documentation API v1.24.0
 // In most cases there should be only one, shared, APIClient.
 type APIClient struct {
 	cfg    *Configuration
@@ -65,6 +65,8 @@ type APIClient struct {
 	ConnectionsAPI *ConnectionsAPIService
 
 	FavoritesAPI *FavoritesAPIService
+
+	JobFunctionsAPI *JobFunctionsAPIService
 
 	StorageEnginesAPI *StorageEnginesAPIService
 
@@ -95,6 +97,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CompaniesAPI = (*CompaniesAPIService)(&c.common)
 	c.ConnectionsAPI = (*ConnectionsAPIService)(&c.common)
 	c.FavoritesAPI = (*FavoritesAPIService)(&c.common)
+	c.JobFunctionsAPI = (*JobFunctionsAPIService)(&c.common)
 	c.StorageEnginesAPI = (*StorageEnginesAPIService)(&c.common)
 	c.UsersAPI = (*UsersAPIService)(&c.common)
 

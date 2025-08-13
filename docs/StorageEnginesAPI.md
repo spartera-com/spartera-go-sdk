@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## CloudProvidersProviderIdStorageEnginesEngineIdGet
 
-> CompaniesCompanyIdApiKeysGet200Response CloudProvidersProviderIdStorageEnginesEngineIdGet(ctx, providerId, engineId).Execute()
+> CloudProvidersProviderIdStorageEnginesGet200Response CloudProvidersProviderIdStorageEnginesEngineIdGet(ctx, providerId, engineId).Execute()
 
 Get single storage engine by ID
 
@@ -38,7 +38,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesEngineIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CloudProvidersProviderIdStorageEnginesEngineIdGet`: CompaniesCompanyIdApiKeysGet200Response
+	// response from `CloudProvidersProviderIdStorageEnginesEngineIdGet`: CloudProvidersProviderIdStorageEnginesGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesEngineIdGet`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CloudProvidersProviderIdStorageEnginesGet200Response**](CloudProvidersProviderIdStorageEnginesGet200Response.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 
 ## CloudProvidersProviderIdStorageEnginesGet
 
-> CompaniesCompanyIdApiKeysGet200Response CloudProvidersProviderIdStorageEnginesGet(ctx, providerId).Execute()
+> CloudProvidersProviderIdStorageEnginesGet200Response CloudProvidersProviderIdStorageEnginesGet(ctx, providerId).Execute()
 
 Get a list of all storage engines
 
@@ -108,7 +108,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CloudProvidersProviderIdStorageEnginesGet`: CompaniesCompanyIdApiKeysGet200Response
+	// response from `CloudProvidersProviderIdStorageEnginesGet`: CloudProvidersProviderIdStorageEnginesGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesGet`: %v\n", resp)
 }
 ```
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdApiKeysGet200Response**](CompaniesCompanyIdApiKeysGet200Response.md)
+[**CloudProvidersProviderIdStorageEnginesGet200Response**](CloudProvidersProviderIdStorageEnginesGet200Response.md)
 
 ### Authorization
 

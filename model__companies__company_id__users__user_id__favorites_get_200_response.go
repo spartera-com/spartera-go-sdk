@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &CompaniesCompanyIdUsersUserIdFavoritesGet200Response{}
 type CompaniesCompanyIdUsersUserIdFavoritesGet200Response struct {
 	// Response status message
 	Message string `json:"message"`
-	Data []Favorite `json:"data"`
+	Data []Favorites `json:"data"`
 }
 
 type _CompaniesCompanyIdUsersUserIdFavoritesGet200Response CompaniesCompanyIdUsersUserIdFavoritesGet200Response
@@ -33,7 +33,7 @@ type _CompaniesCompanyIdUsersUserIdFavoritesGet200Response CompaniesCompanyIdUse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCompaniesCompanyIdUsersUserIdFavoritesGet200Response(message string, data []Favorite) *CompaniesCompanyIdUsersUserIdFavoritesGet200Response {
+func NewCompaniesCompanyIdUsersUserIdFavoritesGet200Response(message string, data []Favorites) *CompaniesCompanyIdUsersUserIdFavoritesGet200Response {
 	this := CompaniesCompanyIdUsersUserIdFavoritesGet200Response{}
 	this.Message = message
 	this.Data = data
@@ -73,9 +73,9 @@ func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) SetMessage(v stri
 }
 
 // GetData returns the Data field value
-func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) GetData() []Favorite {
+func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) GetData() []Favorites {
 	if o == nil {
-		var ret []Favorite
+		var ret []Favorites
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) GetData() []Favor
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) GetDataOk() ([]Favorite, bool) {
+func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) GetDataOk() ([]Favorites, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) GetDataOk() ([]Fa
 }
 
 // SetData sets field value
-func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) SetData(v []Favorite) {
+func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) SetData(v []Favorites) {
 	o.Data = v
 }
 

@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -24,8 +24,7 @@ var _ MappedNullable = &CompaniesCompanyIdApiKeysGet200Response{}
 type CompaniesCompanyIdApiKeysGet200Response struct {
 	// Response status message
 	Message string `json:"message"`
-	// Response data
-	Data map[string]interface{} `json:"data,omitempty"`
+	Data []ApiKeys `json:"data"`
 }
 
 type _CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdApiKeysGet200Response
@@ -34,9 +33,10 @@ type _CompaniesCompanyIdApiKeysGet200Response CompaniesCompanyIdApiKeysGet200Res
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCompaniesCompanyIdApiKeysGet200Response(message string) *CompaniesCompanyIdApiKeysGet200Response {
+func NewCompaniesCompanyIdApiKeysGet200Response(message string, data []ApiKeys) *CompaniesCompanyIdApiKeysGet200Response {
 	this := CompaniesCompanyIdApiKeysGet200Response{}
 	this.Message = message
+	this.Data = data
 	return &this
 }
 
@@ -72,35 +72,27 @@ func (o *CompaniesCompanyIdApiKeysGet200Response) SetMessage(v string) {
 	o.Message = v
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
-func (o *CompaniesCompanyIdApiKeysGet200Response) GetData() map[string]interface{} {
-	if o == nil || IsNil(o.Data) {
-		var ret map[string]interface{}
+// GetData returns the Data field value
+func (o *CompaniesCompanyIdApiKeysGet200Response) GetData() []ApiKeys {
+	if o == nil {
+		var ret []ApiKeys
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *CompaniesCompanyIdApiKeysGet200Response) GetDataOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Data) {
-		return map[string]interface{}{}, false
+func (o *CompaniesCompanyIdApiKeysGet200Response) GetDataOk() ([]ApiKeys, bool) {
+	if o == nil {
+		return nil, false
 	}
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *CompaniesCompanyIdApiKeysGet200Response) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given map[string]interface{} and assigns it to the Data field.
-func (o *CompaniesCompanyIdApiKeysGet200Response) SetData(v map[string]interface{}) {
+// SetData sets field value
+func (o *CompaniesCompanyIdApiKeysGet200Response) SetData(v []ApiKeys) {
 	o.Data = v
 }
 
@@ -115,9 +107,7 @@ func (o CompaniesCompanyIdApiKeysGet200Response) MarshalJSON() ([]byte, error) {
 func (o CompaniesCompanyIdApiKeysGet200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["message"] = o.Message
-	if !IsNil(o.Data) {
-		toSerialize["data"] = o.Data
-	}
+	toSerialize["data"] = o.Data
 	return toSerialize, nil
 }
 
@@ -127,6 +117,7 @@ func (o *CompaniesCompanyIdApiKeysGet200Response) UnmarshalJSON(data []byte) (er
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"message",
+		"data",
 	}
 
 	allProperties := make(map[string]interface{})

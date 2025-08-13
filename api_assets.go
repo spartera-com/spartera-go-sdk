@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -27,39 +27,39 @@ type AssetsAPIService service
 type AssetsAPIAnalyzeCompanyHandleAssetsAssetSlugGetRequest struct {
 	ctx context.Context
 	ApiService *AssetsAPIService
-	companyHandle string
 	assetSlug string
+	companyHandle string
 }
 
-func (r AssetsAPIAnalyzeCompanyHandleAssetsAssetSlugGetRequest) Execute() (*CompaniesCompanyIdAssetsAssetIdGet200Response, *http.Response, error) {
+func (r AssetsAPIAnalyzeCompanyHandleAssetsAssetSlugGetRequest) Execute() (*AnalyzeCompanyHandleAssetsAssetSlugGet200Response, *http.Response, error) {
 	return r.ApiService.AnalyzeCompanyHandleAssetsAssetSlugGetExecute(r)
 }
 
 /*
-AnalyzeCompanyHandleAssetsAssetSlugGet Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
+AnalyzeCompanyHandleAssetsAssetSlugGet Process (analyze) an asset.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param companyHandle
  @param assetSlug
+ @param companyHandle
  @return AssetsAPIAnalyzeCompanyHandleAssetsAssetSlugGetRequest
 */
-func (a *AssetsAPIService) AnalyzeCompanyHandleAssetsAssetSlugGet(ctx context.Context, companyHandle string, assetSlug string) AssetsAPIAnalyzeCompanyHandleAssetsAssetSlugGetRequest {
+func (a *AssetsAPIService) AnalyzeCompanyHandleAssetsAssetSlugGet(ctx context.Context, assetSlug string, companyHandle string) AssetsAPIAnalyzeCompanyHandleAssetsAssetSlugGetRequest {
 	return AssetsAPIAnalyzeCompanyHandleAssetsAssetSlugGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		companyHandle: companyHandle,
 		assetSlug: assetSlug,
+		companyHandle: companyHandle,
 	}
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdAssetsAssetIdGet200Response
-func (a *AssetsAPIService) AnalyzeCompanyHandleAssetsAssetSlugGetExecute(r AssetsAPIAnalyzeCompanyHandleAssetsAssetSlugGetRequest) (*CompaniesCompanyIdAssetsAssetIdGet200Response, *http.Response, error) {
+//  @return AnalyzeCompanyHandleAssetsAssetSlugGet200Response
+func (a *AssetsAPIService) AnalyzeCompanyHandleAssetsAssetSlugGetExecute(r AssetsAPIAnalyzeCompanyHandleAssetsAssetSlugGetRequest) (*AnalyzeCompanyHandleAssetsAssetSlugGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdAssetsAssetIdGet200Response
+		localVarReturnValue  *AnalyzeCompanyHandleAssetsAssetSlugGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetsAPIService.AnalyzeCompanyHandleAssetsAssetSlugGet")
@@ -68,8 +68,8 @@ func (a *AssetsAPIService) AnalyzeCompanyHandleAssetsAssetSlugGetExecute(r Asset
 	}
 
 	localVarPath := localBasePath + "/analyze/{company_handle}/assets/{asset_slug}"
-	localVarPath = strings.Replace(localVarPath, "{"+"company_handle"+"}", url.PathEscape(parameterValueToString(r.companyHandle, "companyHandle")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"asset_slug"+"}", url.PathEscape(parameterValueToString(r.assetSlug, "assetSlug")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"company_handle"+"}", url.PathEscape(parameterValueToString(r.companyHandle, "companyHandle")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -333,7 +333,7 @@ type AssetsAPICompaniesCompanyIdAssetsAssetIdGetRequest struct {
 	assetId string
 }
 
-func (r AssetsAPICompaniesCompanyIdAssetsAssetIdGetRequest) Execute() (*CompaniesCompanyIdAssetsAssetIdGet200Response, *http.Response, error) {
+func (r AssetsAPICompaniesCompanyIdAssetsAssetIdGetRequest) Execute() (*AnalyzeCompanyHandleAssetsAssetSlugGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAssetsAssetIdGetExecute(r)
 }
 
@@ -355,13 +355,13 @@ func (a *AssetsAPIService) CompaniesCompanyIdAssetsAssetIdGet(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdAssetsAssetIdGet200Response
-func (a *AssetsAPIService) CompaniesCompanyIdAssetsAssetIdGetExecute(r AssetsAPICompaniesCompanyIdAssetsAssetIdGetRequest) (*CompaniesCompanyIdAssetsAssetIdGet200Response, *http.Response, error) {
+//  @return AnalyzeCompanyHandleAssetsAssetSlugGet200Response
+func (a *AssetsAPIService) CompaniesCompanyIdAssetsAssetIdGetExecute(r AssetsAPICompaniesCompanyIdAssetsAssetIdGetRequest) (*AnalyzeCompanyHandleAssetsAssetSlugGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdAssetsAssetIdGet200Response
+		localVarReturnValue  *AnalyzeCompanyHandleAssetsAssetSlugGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetsAPIService.CompaniesCompanyIdAssetsAssetIdGet")
@@ -784,11 +784,11 @@ type AssetsAPICompaniesCompanyIdAssetsAssetIdPatchRequest struct {
 	ApiService *AssetsAPIService
 	companyId string
 	assetId string
-	asset *Asset
+	assetsUpdate *AssetsUpdate
 }
 
-func (r AssetsAPICompaniesCompanyIdAssetsAssetIdPatchRequest) Asset(asset Asset) AssetsAPICompaniesCompanyIdAssetsAssetIdPatchRequest {
-	r.asset = &asset
+func (r AssetsAPICompaniesCompanyIdAssetsAssetIdPatchRequest) AssetsUpdate(assetsUpdate AssetsUpdate) AssetsAPICompaniesCompanyIdAssetsAssetIdPatchRequest {
+	r.assetsUpdate = &assetsUpdate
 	return r
 }
 
@@ -835,8 +835,8 @@ func (a *AssetsAPIService) CompaniesCompanyIdAssetsAssetIdPatchExecute(r AssetsA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.asset == nil {
-		return localVarReturnValue, nil, reportError("asset is required and must be specified")
+	if r.assetsUpdate == nil {
+		return localVarReturnValue, nil, reportError("assetsUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -857,7 +857,7 @@ func (a *AssetsAPIService) CompaniesCompanyIdAssetsAssetIdPatchExecute(r AssetsA
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.asset
+	localVarPostBody = r.assetsUpdate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1556,11 +1556,11 @@ type AssetsAPICompaniesCompanyIdAssetsPostRequest struct {
 	ctx context.Context
 	ApiService *AssetsAPIService
 	companyId string
-	asset *Asset
+	assetsInput *AssetsInput
 }
 
-func (r AssetsAPICompaniesCompanyIdAssetsPostRequest) Asset(asset Asset) AssetsAPICompaniesCompanyIdAssetsPostRequest {
-	r.asset = &asset
+func (r AssetsAPICompaniesCompanyIdAssetsPostRequest) AssetsInput(assetsInput AssetsInput) AssetsAPICompaniesCompanyIdAssetsPostRequest {
+	r.assetsInput = &assetsInput
 	return r
 }
 
@@ -1604,8 +1604,8 @@ func (a *AssetsAPIService) CompaniesCompanyIdAssetsPostExecute(r AssetsAPICompan
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.asset == nil {
-		return localVarReturnValue, nil, reportError("asset is required and must be specified")
+	if r.assetsInput == nil {
+		return localVarReturnValue, nil, reportError("assetsInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1626,7 +1626,7 @@ func (a *AssetsAPIService) CompaniesCompanyIdAssetsPostExecute(r AssetsAPICompan
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.asset
+	localVarPostBody = r.assetsInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

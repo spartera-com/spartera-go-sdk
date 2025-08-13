@@ -4,7 +4,7 @@ All URIs are relative to *https://api.spartera.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AnalyzeCompanyHandleAssetsAssetSlugGet**](AssetsAPI.md#AnalyzeCompanyHandleAssetsAssetSlugGet) | **Get** /analyze/{company_handle}/assets/{asset_slug} | Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
+[**AnalyzeCompanyHandleAssetsAssetSlugGet**](AssetsAPI.md#AnalyzeCompanyHandleAssetsAssetSlugGet) | **Get** /analyze/{company_handle}/assets/{asset_slug} | Process (analyze) an asset.
 [**CompaniesCompanyIdAssetsAssetIdDelete**](AssetsAPI.md#CompaniesCompanyIdAssetsAssetIdDelete) | **Delete** /companies/{company_id}/assets/{asset_id} | Delete single asset by ID
 [**CompaniesCompanyIdAssetsAssetIdGet**](AssetsAPI.md#CompaniesCompanyIdAssetsAssetIdGet) | **Get** /companies/{company_id}/assets/{asset_id} | Get single asset by ID
 [**CompaniesCompanyIdAssetsAssetIdInfoschemaGet**](AssetsAPI.md#CompaniesCompanyIdAssetsAssetIdInfoschemaGet) | **Get** /companies/{company_id}/assets/{asset_id}/infoschema | Get the information schema for a specific asset&#39;s table
@@ -21,9 +21,9 @@ Method | HTTP request | Description
 
 ## AnalyzeCompanyHandleAssetsAssetSlugGet
 
-> CompaniesCompanyIdAssetsAssetIdGet200Response AnalyzeCompanyHandleAssetsAssetSlugGet(ctx, companyHandle, assetSlug).Execute()
+> AnalyzeCompanyHandleAssetsAssetSlugGet200Response AnalyzeCompanyHandleAssetsAssetSlugGet(ctx, assetSlug, companyHandle).Execute()
 
-Process (analyze) an asset. Attempt to process an analytic on a backend warehouse/AI model.
+Process (analyze) an asset.
 
 ### Example
 
@@ -38,17 +38,17 @@ import (
 )
 
 func main() {
-	companyHandle := "companyHandle_example" // string | 
 	assetSlug := "assetSlug_example" // string | 
+	companyHandle := "companyHandle_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AssetsAPI.AnalyzeCompanyHandleAssetsAssetSlugGet(context.Background(), companyHandle, assetSlug).Execute()
+	resp, r, err := apiClient.AssetsAPI.AnalyzeCompanyHandleAssetsAssetSlugGet(context.Background(), assetSlug, companyHandle).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.AnalyzeCompanyHandleAssetsAssetSlugGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AnalyzeCompanyHandleAssetsAssetSlugGet`: CompaniesCompanyIdAssetsAssetIdGet200Response
+	// response from `AnalyzeCompanyHandleAssetsAssetSlugGet`: AnalyzeCompanyHandleAssetsAssetSlugGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.AnalyzeCompanyHandleAssetsAssetSlugGet`: %v\n", resp)
 }
 ```
@@ -59,8 +59,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**companyHandle** | **string** |  | 
 **assetSlug** | **string** |  | 
+**companyHandle** | **string** |  | 
 
 ### Other Parameters
 
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdAssetsAssetIdGet200Response**](CompaniesCompanyIdAssetsAssetIdGet200Response.md)
+[**AnalyzeCompanyHandleAssetsAssetSlugGet200Response**](AnalyzeCompanyHandleAssetsAssetSlugGet200Response.md)
 
 ### Authorization
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdGet
 
-> CompaniesCompanyIdAssetsAssetIdGet200Response CompaniesCompanyIdAssetsAssetIdGet(ctx, companyId, assetId).Execute()
+> AnalyzeCompanyHandleAssetsAssetSlugGet200Response CompaniesCompanyIdAssetsAssetIdGet(ctx, companyId, assetId).Execute()
 
 Get single asset by ID
 
@@ -190,7 +190,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsAssetIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdAssetsAssetIdGet`: CompaniesCompanyIdAssetsAssetIdGet200Response
+	// response from `CompaniesCompanyIdAssetsAssetIdGet`: AnalyzeCompanyHandleAssetsAssetSlugGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AssetsAPI.CompaniesCompanyIdAssetsAssetIdGet`: %v\n", resp)
 }
 ```
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdAssetsAssetIdGet200Response**](CompaniesCompanyIdAssetsAssetIdGet200Response.md)
+[**AnalyzeCompanyHandleAssetsAssetSlugGet200Response**](AnalyzeCompanyHandleAssetsAssetSlugGet200Response.md)
 
 ### Authorization
 
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsAssetIdPatch
 
-> CompaniesCompanyIdAssetsAssetIdPatch200Response CompaniesCompanyIdAssetsAssetIdPatch(ctx, companyId, assetId).Asset(asset).Execute()
+> CompaniesCompanyIdAssetsAssetIdPatch200Response CompaniesCompanyIdAssetsAssetIdPatch(ctx, companyId, assetId).AssetsUpdate(assetsUpdate).Execute()
 
 Update an existing asset by ID
 
@@ -395,11 +395,11 @@ import (
 func main() {
 	companyId := "companyId_example" // string | 
 	assetId := "assetId_example" // string | 
-	asset := *openapiclient.NewAsset("CompanyId_example", "Name_example", "Source_example") // Asset | 
+	assetsUpdate := *openapiclient.NewAssetsUpdate() // AssetsUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AssetsAPI.CompaniesCompanyIdAssetsAssetIdPatch(context.Background(), companyId, assetId).Asset(asset).Execute()
+	resp, r, err := apiClient.AssetsAPI.CompaniesCompanyIdAssetsAssetIdPatch(context.Background(), companyId, assetId).AssetsUpdate(assetsUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsAssetIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **asset** | [**Asset**](Asset.md) |  | 
+ **assetsUpdate** | [**AssetsUpdate**](AssetsUpdate.md) |  | 
 
 ### Return type
 
@@ -730,7 +730,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdAssetsPost
 
-> CompaniesCompanyIdAssetsPost200Response CompaniesCompanyIdAssetsPost(ctx, companyId).Asset(asset).Execute()
+> CompaniesCompanyIdAssetsPost200Response CompaniesCompanyIdAssetsPost(ctx, companyId).AssetsInput(assetsInput).Execute()
 
 Create a new asset
 
@@ -748,11 +748,11 @@ import (
 
 func main() {
 	companyId := "companyId_example" // string | 
-	asset := *openapiclient.NewAsset("CompanyId_example", "Name_example", "Source_example") // Asset | 
+	assetsInput := *openapiclient.NewAssetsInput("CompanyId_example", "Name_example", "Source_example") // AssetsInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AssetsAPI.CompaniesCompanyIdAssetsPost(context.Background(), companyId).Asset(asset).Execute()
+	resp, r, err := apiClient.AssetsAPI.CompaniesCompanyIdAssetsPost(context.Background(), companyId).AssetsInput(assetsInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CompaniesCompanyIdAssetsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -778,7 +778,7 @@ Other parameters are passed through a pointer to a apiCompaniesCompanyIdAssetsPo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **asset** | [**Asset**](Asset.md) |  | 
+ **assetsInput** | [**AssetsInput**](AssetsInput.md) |  | 
 
 ### Return type
 

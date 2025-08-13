@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -482,11 +482,11 @@ type ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdPatchRequest struct 
 	ApiService *ConnectionsAPIService
 	companyId string
 	connectionId string
-	connection *Connection
+	connectionsUpdate *ConnectionsUpdate
 }
 
-func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdPatchRequest) Connection(connection Connection) ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdPatchRequest {
-	r.connection = &connection
+func (r ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdPatchRequest) ConnectionsUpdate(connectionsUpdate ConnectionsUpdate) ConnectionsAPICompaniesCompanyIdConnectionsConnectionIdPatchRequest {
+	r.connectionsUpdate = &connectionsUpdate
 	return r
 }
 
@@ -533,8 +533,8 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdPatchEx
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.connection == nil {
-		return localVarReturnValue, nil, reportError("connection is required and must be specified")
+	if r.connectionsUpdate == nil {
+		return localVarReturnValue, nil, reportError("connectionsUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -555,7 +555,7 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsConnectionIdPatchEx
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.connection
+	localVarPostBody = r.connectionsUpdate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -952,11 +952,11 @@ type ConnectionsAPICompaniesCompanyIdConnectionsPostRequest struct {
 	ctx context.Context
 	ApiService *ConnectionsAPIService
 	companyId string
-	connection *Connection
+	connectionsInput *ConnectionsInput
 }
 
-func (r ConnectionsAPICompaniesCompanyIdConnectionsPostRequest) Connection(connection Connection) ConnectionsAPICompaniesCompanyIdConnectionsPostRequest {
-	r.connection = &connection
+func (r ConnectionsAPICompaniesCompanyIdConnectionsPostRequest) ConnectionsInput(connectionsInput ConnectionsInput) ConnectionsAPICompaniesCompanyIdConnectionsPostRequest {
+	r.connectionsInput = &connectionsInput
 	return r
 }
 
@@ -1000,8 +1000,8 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsPostExecute(r Conne
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.connection == nil {
-		return localVarReturnValue, nil, reportError("connection is required and must be specified")
+	if r.connectionsInput == nil {
+		return localVarReturnValue, nil, reportError("connectionsInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1022,7 +1022,7 @@ func (a *ConnectionsAPIService) CompaniesCompanyIdConnectionsPostExecute(r Conne
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.connection
+	localVarPostBody = r.connectionsInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

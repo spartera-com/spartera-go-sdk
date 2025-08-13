@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &CompaniesCompanyIdAssetsGet200Response{}
 type CompaniesCompanyIdAssetsGet200Response struct {
 	// Response status message
 	Message string `json:"message"`
-	Data []Asset `json:"data"`
+	Data []Assets `json:"data"`
 }
 
 type _CompaniesCompanyIdAssetsGet200Response CompaniesCompanyIdAssetsGet200Response
@@ -33,7 +33,7 @@ type _CompaniesCompanyIdAssetsGet200Response CompaniesCompanyIdAssetsGet200Respo
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCompaniesCompanyIdAssetsGet200Response(message string, data []Asset) *CompaniesCompanyIdAssetsGet200Response {
+func NewCompaniesCompanyIdAssetsGet200Response(message string, data []Assets) *CompaniesCompanyIdAssetsGet200Response {
 	this := CompaniesCompanyIdAssetsGet200Response{}
 	this.Message = message
 	this.Data = data
@@ -73,9 +73,9 @@ func (o *CompaniesCompanyIdAssetsGet200Response) SetMessage(v string) {
 }
 
 // GetData returns the Data field value
-func (o *CompaniesCompanyIdAssetsGet200Response) GetData() []Asset {
+func (o *CompaniesCompanyIdAssetsGet200Response) GetData() []Assets {
 	if o == nil {
-		var ret []Asset
+		var ret []Assets
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *CompaniesCompanyIdAssetsGet200Response) GetData() []Asset {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *CompaniesCompanyIdAssetsGet200Response) GetDataOk() ([]Asset, bool) {
+func (o *CompaniesCompanyIdAssetsGet200Response) GetDataOk() ([]Assets, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *CompaniesCompanyIdAssetsGet200Response) GetDataOk() ([]Asset, bool) {
 }
 
 // SetData sets field value
-func (o *CompaniesCompanyIdAssetsGet200Response) SetData(v []Asset) {
+func (o *CompaniesCompanyIdAssetsGet200Response) SetData(v []Assets) {
 	o.Data = v
 }
 

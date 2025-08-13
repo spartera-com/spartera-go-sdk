@@ -22,6 +22,21 @@ func Test_sparteraapi_APIKeysAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test APIKeysAPIService CompaniesCompanyIdApiKeysApiKeyIdDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var companyId string
+		var apiKeyId string
+
+		resp, httpRes, err := apiClient.APIKeysAPI.CompaniesCompanyIdApiKeysApiKeyIdDelete(context.Background(), companyId, apiKeyId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test APIKeysAPIService CompaniesCompanyIdApiKeysApiKeyIdGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -52,6 +67,36 @@ func Test_sparteraapi_APIKeysAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test APIKeysAPIService CompaniesCompanyIdApiKeysApiKeyIdRevokePost", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var companyId string
+		var apiKeyId string
+
+		resp, httpRes, err := apiClient.APIKeysAPI.CompaniesCompanyIdApiKeysApiKeyIdRevokePost(context.Background(), companyId, apiKeyId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test APIKeysAPIService CompaniesCompanyIdApiKeysApiKeyIdStatsGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var companyId string
+		var apiKeyId string
+
+		resp, httpRes, err := apiClient.APIKeysAPI.CompaniesCompanyIdApiKeysApiKeyIdStatsGet(context.Background(), companyId, apiKeyId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test APIKeysAPIService CompaniesCompanyIdApiKeysGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -73,21 +118,6 @@ func Test_sparteraapi_APIKeysAPIService(t *testing.T) {
 		var companyId string
 
 		resp, httpRes, err := apiClient.APIKeysAPI.CompaniesCompanyIdApiKeysPost(context.Background(), companyId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test APIKeysAPIService CompaniesCompanyIdApiKeysTokenDelete", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var companyId string
-		var token string
-
-		resp, httpRes, err := apiClient.APIKeysAPI.CompaniesCompanyIdApiKeysTokenDelete(context.Background(), companyId, token).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

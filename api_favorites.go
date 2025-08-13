@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -32,7 +32,7 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetReques
 	category string
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetExecute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCategoryCate
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet")
@@ -187,7 +187,7 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetRequest st
 	assetId string
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetExecute(r)
 }
 
@@ -211,13 +211,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCheckAssetId
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesCheckAssetIdGet")
@@ -497,7 +497,7 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetRequest stru
 	favoriteId string
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetExecute(r)
 }
 
@@ -521,13 +521,13 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGe
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
-func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response
+func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetExecute(r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGetRequest) (*CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet200Response
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdFavoritesCategoryCategoryGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FavoritesAPIService.CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdGet")
@@ -650,11 +650,11 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchRequest st
 	companyId string
 	userId string
 	favoriteId string
-	favorite *Favorite
+	favoritesUpdate *FavoritesUpdate
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchRequest) Favorite(favorite Favorite) FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchRequest {
-	r.favorite = &favorite
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchRequest) FavoritesUpdate(favoritesUpdate FavoritesUpdate) FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPatchRequest {
+	r.favoritesUpdate = &favoritesUpdate
 	return r
 }
 
@@ -704,8 +704,8 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.favorite == nil {
-		return localVarReturnValue, nil, reportError("favorite is required and must be specified")
+	if r.favoritesUpdate == nil {
+		return localVarReturnValue, nil, reportError("favoritesUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -726,7 +726,7 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesFavoriteIdPa
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.favorite
+	localVarPostBody = r.favoritesUpdate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -977,11 +977,11 @@ type FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesPostRequest struct {
 	ApiService *FavoritesAPIService
 	companyId string
 	userId string
-	favorite *Favorite
+	favoritesInput *FavoritesInput
 }
 
-func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesPostRequest) Favorite(favorite Favorite) FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesPostRequest {
-	r.favorite = &favorite
+func (r FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesPostRequest) FavoritesInput(favoritesInput FavoritesInput) FavoritesAPICompaniesCompanyIdUsersUserIdFavoritesPostRequest {
+	r.favoritesInput = &favoritesInput
 	return r
 }
 
@@ -1028,8 +1028,8 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesPostExecute(
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.favorite == nil {
-		return localVarReturnValue, nil, reportError("favorite is required and must be specified")
+	if r.favoritesInput == nil {
+		return localVarReturnValue, nil, reportError("favoritesInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1050,7 +1050,7 @@ func (a *FavoritesAPIService) CompaniesCompanyIdUsersUserIdFavoritesPostExecute(
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.favorite
+	localVarPostBody = r.favoritesInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &CompaniesCompanyIdConnectionsConnectionIdGet200Response{
 type CompaniesCompanyIdConnectionsConnectionIdGet200Response struct {
 	// Response status message
 	Message string `json:"message"`
-	Data Connection `json:"data"`
+	Data Connections `json:"data"`
 }
 
 type _CompaniesCompanyIdConnectionsConnectionIdGet200Response CompaniesCompanyIdConnectionsConnectionIdGet200Response
@@ -33,7 +33,7 @@ type _CompaniesCompanyIdConnectionsConnectionIdGet200Response CompaniesCompanyId
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCompaniesCompanyIdConnectionsConnectionIdGet200Response(message string, data Connection) *CompaniesCompanyIdConnectionsConnectionIdGet200Response {
+func NewCompaniesCompanyIdConnectionsConnectionIdGet200Response(message string, data Connections) *CompaniesCompanyIdConnectionsConnectionIdGet200Response {
 	this := CompaniesCompanyIdConnectionsConnectionIdGet200Response{}
 	this.Message = message
 	this.Data = data
@@ -73,9 +73,9 @@ func (o *CompaniesCompanyIdConnectionsConnectionIdGet200Response) SetMessage(v s
 }
 
 // GetData returns the Data field value
-func (o *CompaniesCompanyIdConnectionsConnectionIdGet200Response) GetData() Connection {
+func (o *CompaniesCompanyIdConnectionsConnectionIdGet200Response) GetData() Connections {
 	if o == nil {
-		var ret Connection
+		var ret Connections
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *CompaniesCompanyIdConnectionsConnectionIdGet200Response) GetData() Conn
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *CompaniesCompanyIdConnectionsConnectionIdGet200Response) GetDataOk() (*Connection, bool) {
+func (o *CompaniesCompanyIdConnectionsConnectionIdGet200Response) GetDataOk() (*Connections, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *CompaniesCompanyIdConnectionsConnectionIdGet200Response) GetDataOk() (*
 }
 
 // SetData sets field value
-func (o *CompaniesCompanyIdConnectionsConnectionIdGet200Response) SetData(v Connection) {
+func (o *CompaniesCompanyIdConnectionsConnectionIdGet200Response) SetData(v Connections) {
 	o.Data = v
 }
 

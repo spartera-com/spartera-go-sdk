@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**CompaniesCompanyIdUsersUserIdDelete**](UsersAPI.md#CompaniesCompanyIdUsersUserIdDelete) | **Delete** /companies/{company_id}/users/{user_id} | Delete single user by ID
 [**CompaniesCompanyIdUsersUserIdGet**](UsersAPI.md#CompaniesCompanyIdUsersUserIdGet) | **Get** /companies/{company_id}/users/{user_id} | Get single user by ID
 [**CompaniesCompanyIdUsersUserIdPatch**](UsersAPI.md#CompaniesCompanyIdUsersUserIdPatch) | **Patch** /companies/{company_id}/users/{user_id} | Update an existing user by ID
-[**MeGet**](UsersAPI.md#MeGet) | **Get** /me | Get current authenticated user&#39;s profile information.              Returns:                 JSON response with user profile data from database
+[**MeGet**](UsersAPI.md#MeGet) | **Get** /me | Get current authenticated user&#39;s profile.
 
 
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersPost
 
-> CompaniesCompanyIdUsersPost200Response CompaniesCompanyIdUsersPost(ctx, companyId).User(user).Execute()
+> CompaniesCompanyIdUsersPost200Response CompaniesCompanyIdUsersPost(ctx, companyId).UsersInput(usersInput).Execute()
 
 Create a new user
 
@@ -101,11 +101,11 @@ import (
 
 func main() {
 	companyId := "companyId_example" // string | 
-	user := *openapiclient.NewUser("CompanyId_example", "Status_example") // User | 
+	usersInput := *openapiclient.NewUsersInput("CompanyId_example") // UsersInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UsersAPI.CompaniesCompanyIdUsersPost(context.Background(), companyId).User(user).Execute()
+	resp, r, err := apiClient.UsersAPI.CompaniesCompanyIdUsersPost(context.Background(), companyId).UsersInput(usersInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.CompaniesCompanyIdUsersPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -131,7 +131,7 @@ Other parameters are passed through a pointer to a apiCompaniesCompanyIdUsersPos
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **user** | [**User**](User.md) |  | 
+ **usersInput** | [**UsersInput**](UsersInput.md) |  | 
 
 ### Return type
 
@@ -295,7 +295,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdPatch
 
-> CompaniesCompanyIdUsersUserIdPatch200Response CompaniesCompanyIdUsersUserIdPatch(ctx, companyId, userId).User(user).Execute()
+> CompaniesCompanyIdUsersUserIdPatch200Response CompaniesCompanyIdUsersUserIdPatch(ctx, companyId, userId).UsersUpdate(usersUpdate).Execute()
 
 Update an existing user by ID
 
@@ -314,11 +314,11 @@ import (
 func main() {
 	companyId := "companyId_example" // string | 
 	userId := "userId_example" // string | 
-	user := *openapiclient.NewUser("CompanyId_example", "Status_example") // User | 
+	usersUpdate := *openapiclient.NewUsersUpdate() // UsersUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UsersAPI.CompaniesCompanyIdUsersUserIdPatch(context.Background(), companyId, userId).User(user).Execute()
+	resp, r, err := apiClient.UsersAPI.CompaniesCompanyIdUsersUserIdPatch(context.Background(), companyId, userId).UsersUpdate(usersUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.CompaniesCompanyIdUsersUserIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -346,7 +346,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **user** | [**User**](User.md) |  | 
+ **usersUpdate** | [**UsersUpdate**](UsersUpdate.md) |  | 
 
 ### Return type
 
@@ -368,9 +368,9 @@ Name | Type | Description  | Notes
 
 ## MeGet
 
-> MeGet200Response MeGet(ctx).Execute()
+> CompaniesCompanyIdUsersGet200Response MeGet(ctx).Execute()
 
-Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
+Get current authenticated user's profile.
 
 ### Example
 
@@ -393,7 +393,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.MeGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `MeGet`: MeGet200Response
+	// response from `MeGet`: CompaniesCompanyIdUsersGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.MeGet`: %v\n", resp)
 }
 ```
@@ -409,7 +409,7 @@ Other parameters are passed through a pointer to a apiMeGetRequest struct via th
 
 ### Return type
 
-[**MeGet200Response**](MeGet200Response.md)
+[**CompaniesCompanyIdUsersGet200Response**](CompaniesCompanyIdUsersGet200Response.md)
 
 ### Authorization
 

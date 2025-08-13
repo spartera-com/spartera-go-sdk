@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -31,7 +31,7 @@ type AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesActiveGetRequest s
 	assetId string
 }
 
-func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesActiveGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesActiveGetRequest) Execute() (*CompaniesCompanyIdAssetsAssetIdPricesGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAssetsAssetIdPricesActiveGetExecute(r)
 }
 
@@ -53,13 +53,13 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesActiv
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesActiveGetExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesActiveGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAssetsAssetIdPricesGet200Response
+func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesActiveGetExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesActiveGetRequest) (*CompaniesCompanyIdAssetsAssetIdPricesGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAssetsAssetIdPricesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetPriceHistoryAPIService.CompaniesCompanyIdAssetsAssetIdPricesActiveGet")
@@ -183,7 +183,7 @@ type AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdDeleteRequest
 	aphId string
 }
 
-func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdDeleteRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdDeleteRequest) Execute() (*CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAssetsAssetIdPricesAphIdDeleteExecute(r)
 }
 
@@ -207,13 +207,13 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphId
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphIdDeleteExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdDeleteRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response
+func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphIdDeleteExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdDeleteRequest) (*CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetPriceHistoryAPIService.CompaniesCompanyIdAssetsAssetIdPricesAphIdDelete")
@@ -338,7 +338,7 @@ type AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdGetRequest st
 	aphId string
 }
 
-func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdGetRequest) Execute() (*CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAssetsAssetIdPricesAphIdGetExecute(r)
 }
 
@@ -362,13 +362,13 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphId
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphIdGetExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response
+func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphIdGetExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdGetRequest) (*CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAssetsAssetIdPricesAphIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetPriceHistoryAPIService.CompaniesCompanyIdAssetsAssetIdPricesAphIdGet")
@@ -491,9 +491,15 @@ type AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdPatchRequest 
 	companyId string
 	assetId string
 	aphId string
+	assetPriceHistoryUpdate *AssetPriceHistoryUpdate
 }
 
-func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdPatchRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdPatchRequest) AssetPriceHistoryUpdate(assetPriceHistoryUpdate AssetPriceHistoryUpdate) AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdPatchRequest {
+	r.assetPriceHistoryUpdate = &assetPriceHistoryUpdate
+	return r
+}
+
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdPatchRequest) Execute() (*CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAssetsAssetIdPricesAphIdPatchExecute(r)
 }
 
@@ -517,13 +523,13 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphId
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphIdPatchExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdPatchRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response
+func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphIdPatchExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesAphIdPatchRequest) (*CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetPriceHistoryAPIService.CompaniesCompanyIdAssetsAssetIdPricesAphIdPatch")
@@ -539,9 +545,12 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphId
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.assetPriceHistoryUpdate == nil {
+		return localVarReturnValue, nil, reportError("assetPriceHistoryUpdate is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -557,6 +566,8 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesAphId
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.assetPriceHistoryUpdate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -656,14 +667,20 @@ type AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPo
 	ApiService *AssetPriceHistoryAPIService
 	companyId string
 	assetId string
+	assetPriceHistoryInput *AssetPriceHistoryInput
 }
 
-func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPostRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPostRequest) AssetPriceHistoryInput(assetPriceHistoryInput AssetPriceHistoryInput) AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPostRequest {
+	r.assetPriceHistoryInput = &assetPriceHistoryInput
+	return r
+}
+
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPostRequest) Execute() (*CompaniesCompanyIdAssetsAssetIdPricesPost200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPostExecute(r)
 }
 
 /*
-CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits
+CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost Calculate the credit equivalent for a given USD price without saving
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param companyId
@@ -680,13 +697,13 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesCalcu
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPostExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPostRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAssetsAssetIdPricesPost200Response
+func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPostExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPostRequest) (*CompaniesCompanyIdAssetsAssetIdPricesPost200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAssetsAssetIdPricesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetPriceHistoryAPIService.CompaniesCompanyIdAssetsAssetIdPricesCalculateCreditsPost")
@@ -701,9 +718,12 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesCalcu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.assetPriceHistoryInput == nil {
+		return localVarReturnValue, nil, reportError("assetPriceHistoryInput is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -719,6 +739,8 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesCalcu
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.assetPriceHistoryInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -807,9 +829,15 @@ type AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesDiscountPostReques
 	ApiService *AssetPriceHistoryAPIService
 	companyId string
 	assetId string
+	assetPriceHistoryInput *AssetPriceHistoryInput
 }
 
-func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesDiscountPostRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesDiscountPostRequest) AssetPriceHistoryInput(assetPriceHistoryInput AssetPriceHistoryInput) AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesDiscountPostRequest {
+	r.assetPriceHistoryInput = &assetPriceHistoryInput
+	return r
+}
+
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesDiscountPostRequest) Execute() (*CompaniesCompanyIdAssetsAssetIdPricesPost200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAssetsAssetIdPricesDiscountPostExecute(r)
 }
 
@@ -831,13 +859,13 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesDisco
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesDiscountPostExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesDiscountPostRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAssetsAssetIdPricesPost200Response
+func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesDiscountPostExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesDiscountPostRequest) (*CompaniesCompanyIdAssetsAssetIdPricesPost200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAssetsAssetIdPricesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetPriceHistoryAPIService.CompaniesCompanyIdAssetsAssetIdPricesDiscountPost")
@@ -852,9 +880,12 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesDisco
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.assetPriceHistoryInput == nil {
+		return localVarReturnValue, nil, reportError("assetPriceHistoryInput is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -870,6 +901,8 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesDisco
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.assetPriceHistoryInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -960,7 +993,7 @@ type AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesGetRequest struct 
 	assetId string
 }
 
-func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesGetRequest) Execute() (*CompaniesCompanyIdAssetsAssetIdPricesGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAssetsAssetIdPricesGetExecute(r)
 }
 
@@ -982,13 +1015,13 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesGet(c
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesGetExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAssetsAssetIdPricesGet200Response
+func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesGetExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesGetRequest) (*CompaniesCompanyIdAssetsAssetIdPricesGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAssetsAssetIdPricesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetPriceHistoryAPIService.CompaniesCompanyIdAssetsAssetIdPricesGet")
@@ -1109,9 +1142,15 @@ type AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesPostRequest struct
 	ApiService *AssetPriceHistoryAPIService
 	companyId string
 	assetId string
+	assetPriceHistoryInput *AssetPriceHistoryInput
 }
 
-func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesPostRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesPostRequest) AssetPriceHistoryInput(assetPriceHistoryInput AssetPriceHistoryInput) AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesPostRequest {
+	r.assetPriceHistoryInput = &assetPriceHistoryInput
+	return r
+}
+
+func (r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesPostRequest) Execute() (*CompaniesCompanyIdAssetsAssetIdPricesPost200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAssetsAssetIdPricesPostExecute(r)
 }
 
@@ -1133,13 +1172,13 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesPost(
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesPostExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesPostRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAssetsAssetIdPricesPost200Response
+func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesPostExecute(r AssetPriceHistoryAPICompaniesCompanyIdAssetsAssetIdPricesPostRequest) (*CompaniesCompanyIdAssetsAssetIdPricesPost200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAssetsAssetIdPricesPost200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AssetPriceHistoryAPIService.CompaniesCompanyIdAssetsAssetIdPricesPost")
@@ -1154,9 +1193,12 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesPostE
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.assetPriceHistoryInput == nil {
+		return localVarReturnValue, nil, reportError("assetPriceHistoryInput is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1172,6 +1214,8 @@ func (a *AssetPriceHistoryAPIService) CompaniesCompanyIdAssetsAssetIdPricesPostE
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.assetPriceHistoryInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

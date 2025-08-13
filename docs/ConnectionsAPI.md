@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdConnectionsConnectionIdPatch
 
-> CompaniesCompanyIdConnectionsConnectionIdPatch200Response CompaniesCompanyIdConnectionsConnectionIdPatch(ctx, companyId, connectionId).Connection(connection).Execute()
+> CompaniesCompanyIdConnectionsConnectionIdPatch200Response CompaniesCompanyIdConnectionsConnectionIdPatch(ctx, companyId, connectionId).ConnectionsUpdate(connectionsUpdate).Execute()
 
 Update an existing connection by ID
 
@@ -248,11 +248,11 @@ import (
 func main() {
 	companyId := "companyId_example" // string | 
 	connectionId := "connectionId_example" // string | 
-	connection := *openapiclient.NewConnection("EngineId_example", "CompanyId_example", "Visibility_example") // Connection | 
+	connectionsUpdate := *openapiclient.NewConnectionsUpdate() // ConnectionsUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdPatch(context.Background(), companyId, connectionId).Connection(connection).Execute()
+	resp, r, err := apiClient.ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdPatch(context.Background(), companyId, connectionId).ConnectionsUpdate(connectionsUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.CompaniesCompanyIdConnectionsConnectionIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **connection** | [**Connection**](Connection.md) |  | 
+ **connectionsUpdate** | [**ConnectionsUpdate**](ConnectionsUpdate.md) |  | 
 
 ### Return type
 
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdConnectionsPost
 
-> CompaniesCompanyIdConnectionsPost200Response CompaniesCompanyIdConnectionsPost(ctx, companyId).Connection(connection).Execute()
+> CompaniesCompanyIdConnectionsPost200Response CompaniesCompanyIdConnectionsPost(ctx, companyId).ConnectionsInput(connectionsInput).Execute()
 
 Create a new connection by ID
 
@@ -459,11 +459,11 @@ import (
 
 func main() {
 	companyId := "companyId_example" // string | 
-	connection := *openapiclient.NewConnection("EngineId_example", "CompanyId_example", "Visibility_example") // Connection | 
+	connectionsInput := *openapiclient.NewConnectionsInput(int64(123), "CompanyId_example") // ConnectionsInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectionsAPI.CompaniesCompanyIdConnectionsPost(context.Background(), companyId).Connection(connection).Execute()
+	resp, r, err := apiClient.ConnectionsAPI.CompaniesCompanyIdConnectionsPost(context.Background(), companyId).ConnectionsInput(connectionsInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.CompaniesCompanyIdConnectionsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -489,7 +489,7 @@ Other parameters are passed through a pointer to a apiCompaniesCompanyIdConnecti
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **connection** | [**Connection**](Connection.md) |  | 
+ **connectionsInput** | [**ConnectionsInput**](ConnectionsInput.md) |  | 
 
 ### Return type
 

@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &CompaniesCompanyIdUsersUserIdGet200Response{}
 type CompaniesCompanyIdUsersUserIdGet200Response struct {
 	// Response status message
 	Message string `json:"message"`
-	Data User `json:"data"`
+	Data Users `json:"data"`
 }
 
 type _CompaniesCompanyIdUsersUserIdGet200Response CompaniesCompanyIdUsersUserIdGet200Response
@@ -33,7 +33,7 @@ type _CompaniesCompanyIdUsersUserIdGet200Response CompaniesCompanyIdUsersUserIdG
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCompaniesCompanyIdUsersUserIdGet200Response(message string, data User) *CompaniesCompanyIdUsersUserIdGet200Response {
+func NewCompaniesCompanyIdUsersUserIdGet200Response(message string, data Users) *CompaniesCompanyIdUsersUserIdGet200Response {
 	this := CompaniesCompanyIdUsersUserIdGet200Response{}
 	this.Message = message
 	this.Data = data
@@ -73,9 +73,9 @@ func (o *CompaniesCompanyIdUsersUserIdGet200Response) SetMessage(v string) {
 }
 
 // GetData returns the Data field value
-func (o *CompaniesCompanyIdUsersUserIdGet200Response) GetData() User {
+func (o *CompaniesCompanyIdUsersUserIdGet200Response) GetData() Users {
 	if o == nil {
-		var ret User
+		var ret Users
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *CompaniesCompanyIdUsersUserIdGet200Response) GetData() User {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *CompaniesCompanyIdUsersUserIdGet200Response) GetDataOk() (*User, bool) {
+func (o *CompaniesCompanyIdUsersUserIdGet200Response) GetDataOk() (*Users, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *CompaniesCompanyIdUsersUserIdGet200Response) GetDataOk() (*User, bool) 
 }
 
 // SetData sets field value
-func (o *CompaniesCompanyIdUsersUserIdGet200Response) SetData(v User) {
+func (o *CompaniesCompanyIdUsersUserIdGet200Response) SetData(v Users) {
 	o.Data = v
 }
 

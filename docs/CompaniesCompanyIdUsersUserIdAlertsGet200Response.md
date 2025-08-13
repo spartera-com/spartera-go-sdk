@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Message** | **string** | Response status message | 
-**Data** | [**[]Alert**](Alert.md) |  | 
+**Data** | [**[]Alerts**](Alerts.md) |  | 
 
 ## Methods
 
 ### NewCompaniesCompanyIdUsersUserIdAlertsGet200Response
 
-`func NewCompaniesCompanyIdUsersUserIdAlertsGet200Response(message string, data []Alert, ) *CompaniesCompanyIdUsersUserIdAlertsGet200Response`
+`func NewCompaniesCompanyIdUsersUserIdAlertsGet200Response(message string, data []Alerts, ) *CompaniesCompanyIdUsersUserIdAlertsGet200Response`
 
 NewCompaniesCompanyIdUsersUserIdAlertsGet200Response instantiates a new CompaniesCompanyIdUsersUserIdAlertsGet200Response object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetMessage sets Message field to given value.
 
 ### GetData
 
-`func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) GetData() []Alert`
+`func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) GetData() []Alerts`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) GetDataOk() (*[]Alert, bool)`
+`func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) GetDataOk() (*[]Alerts, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) SetData(v []Alert)`
+`func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) SetData(v []Alerts)`
 
 SetData sets Data field to given value.
 

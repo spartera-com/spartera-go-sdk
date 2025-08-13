@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &CompaniesCompanyIdUsersUserIdAlertsGet200Response{}
 type CompaniesCompanyIdUsersUserIdAlertsGet200Response struct {
 	// Response status message
 	Message string `json:"message"`
-	Data []Alert `json:"data"`
+	Data []Alerts `json:"data"`
 }
 
 type _CompaniesCompanyIdUsersUserIdAlertsGet200Response CompaniesCompanyIdUsersUserIdAlertsGet200Response
@@ -33,7 +33,7 @@ type _CompaniesCompanyIdUsersUserIdAlertsGet200Response CompaniesCompanyIdUsersU
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCompaniesCompanyIdUsersUserIdAlertsGet200Response(message string, data []Alert) *CompaniesCompanyIdUsersUserIdAlertsGet200Response {
+func NewCompaniesCompanyIdUsersUserIdAlertsGet200Response(message string, data []Alerts) *CompaniesCompanyIdUsersUserIdAlertsGet200Response {
 	this := CompaniesCompanyIdUsersUserIdAlertsGet200Response{}
 	this.Message = message
 	this.Data = data
@@ -73,9 +73,9 @@ func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) SetMessage(v string)
 }
 
 // GetData returns the Data field value
-func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) GetData() []Alert {
+func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) GetData() []Alerts {
 	if o == nil {
-		var ret []Alert
+		var ret []Alerts
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) GetData() []Alert {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) GetDataOk() ([]Alert, bool) {
+func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) GetDataOk() ([]Alerts, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) GetDataOk() ([]Alert
 }
 
 // SetData sets field value
-func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) SetData(v []Alert) {
+func (o *CompaniesCompanyIdUsersUserIdAlertsGet200Response) SetData(v []Alerts) {
 	o.Data = v
 }
 

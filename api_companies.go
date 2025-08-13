@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -30,7 +30,7 @@ type CompaniesAPICompaniesCompanyIdAnalyticsAssetsGetRequest struct {
 	companyId string
 }
 
-func (r CompaniesAPICompaniesCompanyIdAnalyticsAssetsGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r CompaniesAPICompaniesCompanyIdAnalyticsAssetsGetRequest) Execute() (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAnalyticsAssetsGetExecute(r)
 }
 
@@ -50,13 +50,13 @@ func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsAssetsGet(ctx context.C
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsAssetsGetExecute(r CompaniesAPICompaniesCompanyIdAnalyticsAssetsGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAnalyticsAssetsGet200Response
+func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsAssetsGetExecute(r CompaniesAPICompaniesCompanyIdAnalyticsAssetsGetRequest) (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAnalyticsAssetsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompaniesAPIService.CompaniesCompanyIdAnalyticsAssetsGet")
@@ -177,7 +177,7 @@ type CompaniesAPICompaniesCompanyIdAnalyticsCustomersGetRequest struct {
 	companyId string
 }
 
-func (r CompaniesAPICompaniesCompanyIdAnalyticsCustomersGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r CompaniesAPICompaniesCompanyIdAnalyticsCustomersGetRequest) Execute() (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAnalyticsCustomersGetExecute(r)
 }
 
@@ -197,13 +197,13 @@ func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsCustomersGet(ctx contex
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsCustomersGetExecute(r CompaniesAPICompaniesCompanyIdAnalyticsCustomersGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAnalyticsAssetsGet200Response
+func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsCustomersGetExecute(r CompaniesAPICompaniesCompanyIdAnalyticsCustomersGetRequest) (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAnalyticsAssetsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompaniesAPIService.CompaniesCompanyIdAnalyticsCustomersGet")
@@ -324,7 +324,7 @@ type CompaniesAPICompaniesCompanyIdAnalyticsDashboardGetRequest struct {
 	companyId string
 }
 
-func (r CompaniesAPICompaniesCompanyIdAnalyticsDashboardGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r CompaniesAPICompaniesCompanyIdAnalyticsDashboardGetRequest) Execute() (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAnalyticsDashboardGetExecute(r)
 }
 
@@ -344,13 +344,13 @@ func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsDashboardGet(ctx contex
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsDashboardGetExecute(r CompaniesAPICompaniesCompanyIdAnalyticsDashboardGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAnalyticsAssetsGet200Response
+func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsDashboardGetExecute(r CompaniesAPICompaniesCompanyIdAnalyticsDashboardGetRequest) (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAnalyticsAssetsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompaniesAPIService.CompaniesCompanyIdAnalyticsDashboardGet")
@@ -471,7 +471,7 @@ type CompaniesAPICompaniesCompanyIdAnalyticsSalesGetRequest struct {
 	companyId string
 }
 
-func (r CompaniesAPICompaniesCompanyIdAnalyticsSalesGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r CompaniesAPICompaniesCompanyIdAnalyticsSalesGetRequest) Execute() (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdAnalyticsSalesGetExecute(r)
 }
 
@@ -491,13 +491,13 @@ func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsSalesGet(ctx context.Co
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsSalesGetExecute(r CompaniesAPICompaniesCompanyIdAnalyticsSalesGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAnalyticsAssetsGet200Response
+func (a *CompaniesAPIService) CompaniesCompanyIdAnalyticsSalesGetExecute(r CompaniesAPICompaniesCompanyIdAnalyticsSalesGetRequest) (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAnalyticsAssetsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompaniesAPIService.CompaniesCompanyIdAnalyticsSalesGet")
@@ -618,7 +618,7 @@ type CompaniesAPICompaniesCompanyIdGetRequest struct {
 	companyId string
 }
 
-func (r CompaniesAPICompaniesCompanyIdGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r CompaniesAPICompaniesCompanyIdGetRequest) Execute() (*CompaniesCompanyIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdGetExecute(r)
 }
 
@@ -638,13 +638,13 @@ func (a *CompaniesAPIService) CompaniesCompanyIdGet(ctx context.Context, company
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *CompaniesAPIService) CompaniesCompanyIdGetExecute(r CompaniesAPICompaniesCompanyIdGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdGet200Response
+func (a *CompaniesAPIService) CompaniesCompanyIdGetExecute(r CompaniesAPICompaniesCompanyIdGetRequest) (*CompaniesCompanyIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompaniesAPIService.CompaniesCompanyIdGet")
@@ -765,7 +765,7 @@ type CompaniesAPICompaniesCompanyIdObjectsGetRequest struct {
 	companyId string
 }
 
-func (r CompaniesAPICompaniesCompanyIdObjectsGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r CompaniesAPICompaniesCompanyIdObjectsGetRequest) Execute() (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdObjectsGetExecute(r)
 }
 
@@ -785,13 +785,13 @@ func (a *CompaniesAPIService) CompaniesCompanyIdObjectsGet(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *CompaniesAPIService) CompaniesCompanyIdObjectsGetExecute(r CompaniesAPICompaniesCompanyIdObjectsGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAnalyticsAssetsGet200Response
+func (a *CompaniesAPIService) CompaniesCompanyIdObjectsGetExecute(r CompaniesAPICompaniesCompanyIdObjectsGetRequest) (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAnalyticsAssetsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompaniesAPIService.CompaniesCompanyIdObjectsGet")
@@ -910,9 +910,15 @@ type CompaniesAPICompaniesCompanyIdPatchRequest struct {
 	ctx context.Context
 	ApiService *CompaniesAPIService
 	companyId string
+	companiesUpdate *CompaniesUpdate
 }
 
-func (r CompaniesAPICompaniesCompanyIdPatchRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r CompaniesAPICompaniesCompanyIdPatchRequest) CompaniesUpdate(companiesUpdate CompaniesUpdate) CompaniesAPICompaniesCompanyIdPatchRequest {
+	r.companiesUpdate = &companiesUpdate
+	return r
+}
+
+func (r CompaniesAPICompaniesCompanyIdPatchRequest) Execute() (*CompaniesCompanyIdPatch200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdPatchExecute(r)
 }
 
@@ -932,13 +938,13 @@ func (a *CompaniesAPIService) CompaniesCompanyIdPatch(ctx context.Context, compa
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *CompaniesAPIService) CompaniesCompanyIdPatchExecute(r CompaniesAPICompaniesCompanyIdPatchRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdPatch200Response
+func (a *CompaniesAPIService) CompaniesCompanyIdPatchExecute(r CompaniesAPICompaniesCompanyIdPatchRequest) (*CompaniesCompanyIdPatch200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdPatch200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompaniesAPIService.CompaniesCompanyIdPatch")
@@ -952,9 +958,12 @@ func (a *CompaniesAPIService) CompaniesCompanyIdPatchExecute(r CompaniesAPICompa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.companiesUpdate == nil {
+		return localVarReturnValue, nil, reportError("companiesUpdate is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -970,6 +979,8 @@ func (a *CompaniesAPIService) CompaniesCompanyIdPatchExecute(r CompaniesAPICompa
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.companiesUpdate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1070,7 +1081,7 @@ type CompaniesAPICompaniesCompanyIdRequestsPlanGetRequest struct {
 	companyId string
 }
 
-func (r CompaniesAPICompaniesCompanyIdRequestsPlanGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r CompaniesAPICompaniesCompanyIdRequestsPlanGetRequest) Execute() (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdRequestsPlanGetExecute(r)
 }
 
@@ -1090,13 +1101,13 @@ func (a *CompaniesAPIService) CompaniesCompanyIdRequestsPlanGet(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *CompaniesAPIService) CompaniesCompanyIdRequestsPlanGetExecute(r CompaniesAPICompaniesCompanyIdRequestsPlanGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAnalyticsAssetsGet200Response
+func (a *CompaniesAPIService) CompaniesCompanyIdRequestsPlanGetExecute(r CompaniesAPICompaniesCompanyIdRequestsPlanGetRequest) (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAnalyticsAssetsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompaniesAPIService.CompaniesCompanyIdRequestsPlanGet")
@@ -1217,7 +1228,7 @@ type CompaniesAPICompaniesCompanyIdRequestsUsageGetRequest struct {
 	companyId string
 }
 
-func (r CompaniesAPICompaniesCompanyIdRequestsUsageGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r CompaniesAPICompaniesCompanyIdRequestsUsageGetRequest) Execute() (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdRequestsUsageGetExecute(r)
 }
 
@@ -1237,13 +1248,13 @@ func (a *CompaniesAPIService) CompaniesCompanyIdRequestsUsageGet(ctx context.Con
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *CompaniesAPIService) CompaniesCompanyIdRequestsUsageGetExecute(r CompaniesAPICompaniesCompanyIdRequestsUsageGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdAnalyticsAssetsGet200Response
+func (a *CompaniesAPIService) CompaniesCompanyIdRequestsUsageGetExecute(r CompaniesAPICompaniesCompanyIdRequestsUsageGetRequest) (*CompaniesCompanyIdAnalyticsAssetsGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CompaniesCompanyIdAnalyticsAssetsGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CompaniesAPIService.CompaniesCompanyIdRequestsUsageGet")

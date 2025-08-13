@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -175,11 +175,11 @@ type UsersAPICompaniesCompanyIdUsersPostRequest struct {
 	ctx context.Context
 	ApiService *UsersAPIService
 	companyId string
-	user *User
+	usersInput *UsersInput
 }
 
-func (r UsersAPICompaniesCompanyIdUsersPostRequest) User(user User) UsersAPICompaniesCompanyIdUsersPostRequest {
-	r.user = &user
+func (r UsersAPICompaniesCompanyIdUsersPostRequest) UsersInput(usersInput UsersInput) UsersAPICompaniesCompanyIdUsersPostRequest {
+	r.usersInput = &usersInput
 	return r
 }
 
@@ -223,8 +223,8 @@ func (a *UsersAPIService) CompaniesCompanyIdUsersPostExecute(r UsersAPICompanies
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.user == nil {
-		return localVarReturnValue, nil, reportError("user is required and must be specified")
+	if r.usersInput == nil {
+		return localVarReturnValue, nil, reportError("usersInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -245,7 +245,7 @@ func (a *UsersAPIService) CompaniesCompanyIdUsersPostExecute(r UsersAPICompanies
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.user
+	localVarPostBody = r.usersInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -636,11 +636,11 @@ type UsersAPICompaniesCompanyIdUsersUserIdPatchRequest struct {
 	ApiService *UsersAPIService
 	companyId string
 	userId string
-	user *User
+	usersUpdate *UsersUpdate
 }
 
-func (r UsersAPICompaniesCompanyIdUsersUserIdPatchRequest) User(user User) UsersAPICompaniesCompanyIdUsersUserIdPatchRequest {
-	r.user = &user
+func (r UsersAPICompaniesCompanyIdUsersUserIdPatchRequest) UsersUpdate(usersUpdate UsersUpdate) UsersAPICompaniesCompanyIdUsersUserIdPatchRequest {
+	r.usersUpdate = &usersUpdate
 	return r
 }
 
@@ -687,8 +687,8 @@ func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdPatchExecute(r UsersAPICo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.user == nil {
-		return localVarReturnValue, nil, reportError("user is required and must be specified")
+	if r.usersUpdate == nil {
+		return localVarReturnValue, nil, reportError("usersUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -709,7 +709,7 @@ func (a *UsersAPIService) CompaniesCompanyIdUsersUserIdPatchExecute(r UsersAPICo
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.user
+	localVarPostBody = r.usersUpdate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -809,12 +809,12 @@ type UsersAPIMeGetRequest struct {
 	ApiService *UsersAPIService
 }
 
-func (r UsersAPIMeGetRequest) Execute() (*MeGet200Response, *http.Response, error) {
+func (r UsersAPIMeGetRequest) Execute() (*CompaniesCompanyIdUsersGet200Response, *http.Response, error) {
 	return r.ApiService.MeGetExecute(r)
 }
 
 /*
-MeGet Get current authenticated user's profile information.              Returns:                 JSON response with user profile data from database
+MeGet Get current authenticated user's profile.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return UsersAPIMeGetRequest
@@ -827,13 +827,13 @@ func (a *UsersAPIService) MeGet(ctx context.Context) UsersAPIMeGetRequest {
 }
 
 // Execute executes the request
-//  @return MeGet200Response
-func (a *UsersAPIService) MeGetExecute(r UsersAPIMeGetRequest) (*MeGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersGet200Response
+func (a *UsersAPIService) MeGetExecute(r UsersAPIMeGetRequest) (*CompaniesCompanyIdUsersGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *MeGet200Response
+		localVarReturnValue  *CompaniesCompanyIdUsersGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.MeGet")

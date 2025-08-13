@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdAlertsAlertIdGet
 
-> CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response CompaniesCompanyIdUsersUserIdAlertsAlertIdGet(ctx, companyId, userId, alertId).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response CompaniesCompanyIdUsersUserIdAlertsAlertIdGet(ctx, companyId, userId, alertId).Execute()
 
 Get single alert by ID
 
@@ -118,7 +118,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdGet`: CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
+	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdGet`: CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdGet`: %v\n", resp)
 }
 ```
@@ -146,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response.md)
+[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch
 
-> CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch(ctx, companyId, userId, alertId).Alert(alert).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch(ctx, companyId, userId, alertId).AlertsUpdate(alertsUpdate).Execute()
 
 Update an existing alert by ID
 
@@ -184,11 +184,11 @@ func main() {
 	companyId := "companyId_example" // string | 
 	userId := "userId_example" // string | 
 	alertId := "alertId_example" // string | 
-	alert := *openapiclient.NewAlert("AssetId_example", "CompanyId_example", "AlertType_example") // Alert | 
+	alertsUpdate := *openapiclient.NewAlertsUpdate() // AlertsUpdate | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch(context.Background(), companyId, userId, alertId).Alert(alert).Execute()
+	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch(context.Background(), companyId, userId, alertId).AlertsUpdate(alertsUpdate).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 
 
- **alert** | [**Alert**](Alert.md) |  | 
+ **alertsUpdate** | [**AlertsUpdate**](AlertsUpdate.md) |  | 
 
 ### Return type
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet
 
-> CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet(ctx, companyId, userId, assetId).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet(ctx, companyId, userId, assetId).Execute()
 
 Get all alerts for a specific asset (by user)
 
@@ -342,7 +342,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet`: CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
+	// response from `CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet`: CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response
 	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet`: %v\n", resp)
 }
 ```
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response.md)
+[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response.md)
 
 ### Authorization
 
@@ -459,7 +459,7 @@ Name | Type | Description  | Notes
 
 ## CompaniesCompanyIdUsersUserIdAlertsPost
 
-> CompaniesCompanyIdUsersUserIdAlertsPost200Response CompaniesCompanyIdUsersUserIdAlertsPost(ctx, companyId, userId).Alert(alert).Execute()
+> CompaniesCompanyIdUsersUserIdAlertsPost200Response CompaniesCompanyIdUsersUserIdAlertsPost(ctx, companyId, userId).AlertsInput(alertsInput).Execute()
 
 POST /companies/{company_id}/users/{user_id}/alerts
 
@@ -478,11 +478,11 @@ import (
 func main() {
 	companyId := "companyId_example" // string | 
 	userId := "userId_example" // string | 
-	alert := *openapiclient.NewAlert("AssetId_example", "CompanyId_example", "AlertType_example") // Alert | 
+	alertsInput := *openapiclient.NewAlertsInput("AssetId_example", "CompanyId_example") // AlertsInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsPost(context.Background(), companyId, userId).Alert(alert).Execute()
+	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsPost(context.Background(), companyId, userId).AlertsInput(alertsInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsPost``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -510,7 +510,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **alert** | [**Alert**](Alert.md) |  | 
+ **alertsInput** | [**AlertsInput**](AlertsInput.md) |  | 
 
 ### Return type
 

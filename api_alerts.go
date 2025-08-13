@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -187,7 +187,7 @@ type AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest struct {
 	alertId string
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response, *http.Response, error) {
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdAlertsAlertIdGetExecute(r)
 }
 
@@ -211,13 +211,13 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdGet(ctx con
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
-func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest) (*CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response
+func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest) (*CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.CompaniesCompanyIdUsersUserIdAlertsAlertIdGet")
@@ -340,11 +340,11 @@ type AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest struct {
 	companyId string
 	userId string
 	alertId string
-	alert *Alert
+	alertsUpdate *AlertsUpdate
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest) Alert(alert Alert) AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest {
-	r.alert = &alert
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest) AlertsUpdate(alertsUpdate AlertsUpdate) AlertsAPICompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest {
+	r.alertsUpdate = &alertsUpdate
 	return r
 }
 
@@ -394,8 +394,8 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdPatchExecut
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.alert == nil {
-		return localVarReturnValue, nil, reportError("alert is required and must be specified")
+	if r.alertsUpdate == nil {
+		return localVarReturnValue, nil, reportError("alertsUpdate is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -416,7 +416,7 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAlertIdPatchExecut
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.alert
+	localVarPostBody = r.alertsUpdate
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -674,7 +674,7 @@ type AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest struct {
 	assetId string
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response, *http.Response, error) {
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest) Execute() (*CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response, *http.Response, error) {
 	return r.ApiService.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetExecute(r)
 }
 
@@ -698,13 +698,13 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet(ct
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
-func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest) (*CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response, *http.Response, error) {
+//  @return CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response
+func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetExecute(r AlertsAPICompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest) (*CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsAlertIdGet200Response
+		localVarReturnValue  *CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertsAPIService.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet")
@@ -977,11 +977,11 @@ type AlertsAPICompaniesCompanyIdUsersUserIdAlertsPostRequest struct {
 	ApiService *AlertsAPIService
 	companyId string
 	userId string
-	alert *Alert
+	alertsInput *AlertsInput
 }
 
-func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsPostRequest) Alert(alert Alert) AlertsAPICompaniesCompanyIdUsersUserIdAlertsPostRequest {
-	r.alert = &alert
+func (r AlertsAPICompaniesCompanyIdUsersUserIdAlertsPostRequest) AlertsInput(alertsInput AlertsInput) AlertsAPICompaniesCompanyIdUsersUserIdAlertsPostRequest {
+	r.alertsInput = &alertsInput
 	return r
 }
 
@@ -1028,8 +1028,8 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsPostExecute(r Aler
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.alert == nil {
-		return localVarReturnValue, nil, reportError("alert is required and must be specified")
+	if r.alertsInput == nil {
+		return localVarReturnValue, nil, reportError("alertsInput is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1050,7 +1050,7 @@ func (a *AlertsAPIService) CompaniesCompanyIdUsersUserIdAlertsPostExecute(r Aler
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.alert
+	localVarPostBody = r.alertsInput
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

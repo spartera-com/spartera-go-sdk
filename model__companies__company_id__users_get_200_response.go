@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -24,7 +24,7 @@ var _ MappedNullable = &CompaniesCompanyIdUsersGet200Response{}
 type CompaniesCompanyIdUsersGet200Response struct {
 	// Response status message
 	Message string `json:"message"`
-	Data []User `json:"data"`
+	Data []Users `json:"data"`
 }
 
 type _CompaniesCompanyIdUsersGet200Response CompaniesCompanyIdUsersGet200Response
@@ -33,7 +33,7 @@ type _CompaniesCompanyIdUsersGet200Response CompaniesCompanyIdUsersGet200Respons
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCompaniesCompanyIdUsersGet200Response(message string, data []User) *CompaniesCompanyIdUsersGet200Response {
+func NewCompaniesCompanyIdUsersGet200Response(message string, data []Users) *CompaniesCompanyIdUsersGet200Response {
 	this := CompaniesCompanyIdUsersGet200Response{}
 	this.Message = message
 	this.Data = data
@@ -73,9 +73,9 @@ func (o *CompaniesCompanyIdUsersGet200Response) SetMessage(v string) {
 }
 
 // GetData returns the Data field value
-func (o *CompaniesCompanyIdUsersGet200Response) GetData() []User {
+func (o *CompaniesCompanyIdUsersGet200Response) GetData() []Users {
 	if o == nil {
-		var ret []User
+		var ret []Users
 		return ret
 	}
 
@@ -84,7 +84,7 @@ func (o *CompaniesCompanyIdUsersGet200Response) GetData() []User {
 
 // GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
-func (o *CompaniesCompanyIdUsersGet200Response) GetDataOk() ([]User, bool) {
+func (o *CompaniesCompanyIdUsersGet200Response) GetDataOk() ([]Users, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -92,7 +92,7 @@ func (o *CompaniesCompanyIdUsersGet200Response) GetDataOk() ([]User, bool) {
 }
 
 // SetData sets field value
-func (o *CompaniesCompanyIdUsersGet200Response) SetData(v []User) {
+func (o *CompaniesCompanyIdUsersGet200Response) SetData(v []Users) {
 	o.Data = v
 }
 

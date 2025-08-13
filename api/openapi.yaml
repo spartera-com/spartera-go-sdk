@@ -9,19 +9,49 @@ info:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   title: Spartera API Documentation
-  version: 0.0.0
+  version: 1.24.0
 servers:
 - description: Production server
   url: https://api.spartera.com/
 - description: Staging server
   url: https://stage.api.spartera.com/
+tags:
+- description: API Keys operations
+  name: API Keys
+- description: Alerts operations
+  name: Alerts
+- description: Asset Price History operations
+  name: Asset Price History
+- description: Assets operations
+  name: Assets
+- description: Cloud Providers operations
+  name: Cloud Providers
+- description: Companies operations
+  name: Companies
+- description: Connections operations
+  name: Connections
+- description: Favorites operations
+  name: Favorites
+- description: Job Functions operations
+  name: Job Functions
+- description: Storage Engines operations
+  name: Storage Engines
+- description: Users operations
+  name: Users
 paths:
-  /companies/{company_id}/api-keys:
+  /analyze/{company_handle}/assets/{asset_slug}:
     get:
       parameters:
       - explode: false
         in: path
-        name: company_id
+        name: asset_slug
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: company_handle
         required: true
         schema:
           type: string
@@ -31,8 +61,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved api keys
+                $ref: '#/components/schemas/_analyze__company_handle__assets__asset_slug__get_200_response'
+          description: Successfully retrieved assets
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -41,142 +71,9 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get all API keys
+      summary: Process (analyze) an asset.
       tags:
-      - API Keys
-    post:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully created api keys
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "400":
-          $ref: '#/components/responses/BadRequest'
-      security:
-      - ApiKeyAuth: []
-      summary: Create single API key
-      tags:
-      - API Keys
-  /companies/{company_id}/api-keys/{api_key_id}:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: api_key_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved api keys
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get single API key by ID
-      tags:
-      - API Keys
-    patch:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: api_key_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully updated api keys
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "400":
-          $ref: '#/components/responses/BadRequest'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Update an existing API key by ID
-      tags:
-      - API Keys
-  /companies/{company_id}/api-keys/{token}:
-    delete:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: token
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully deleted api keys
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Delete single API key by token
-      tags:
-      - API Keys
+      - Assets
   /cloud-providers:
     get:
       parameters: []
@@ -185,7 +82,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
+                $ref: '#/components/schemas/_cloud_providers_get_200_response'
           description: Successfully retrieved cloud providers
         "401":
           $ref: '#/components/responses/Unauthorized'
@@ -213,7 +110,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
+                $ref: '#/components/schemas/_cloud_providers__provider_id__get_200_response'
           description: Successfully retrieved cloud providers
         "401":
           $ref: '#/components/responses/Unauthorized'
@@ -226,7 +123,70 @@ paths:
       summary: Get single cloud provider by ID
       tags:
       - Cloud Providers
-  /companies/{company_id}/users/{user_id}/favorites:
+  /cloud-providers/{provider_id}/storage-engines:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: provider_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_cloud_providers__provider_id__storage_engines_get_200_response'
+          description: Successfully retrieved storage engines
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a list of all storage engines
+      tags:
+      - Storage Engines
+  /cloud-providers/{provider_id}/storage-engines/{engine_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: provider_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: engine_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_cloud_providers__provider_id__storage_engines_get_200_response'
+          description: Successfully retrieved storage engines
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get single storage engine by ID
+      tags:
+      - Storage Engines
+  /companies/{company_id}:
     get:
       parameters:
       - explode: false
@@ -236,9 +196,65 @@ paths:
         schema:
           type: string
         style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__get_200_response'
+          description: Successfully retrieved companies
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get details of the requestor's own company
+      tags:
+      - Companies
+    patch:
+      parameters:
       - explode: false
         in: path
-        name: user_id
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompaniesUpdate'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__patch_200_response'
+          description: Successfully updated companies
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Update an existing company by ID
+      tags:
+      - Companies
+  /companies/{company_id}/analytics/assets:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
         required: true
         schema:
           type: string
@@ -248,8 +264,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_get_200_response'
-          description: Successfully retrieved favorites
+                $ref: '#/components/schemas/_companies__company_id__analytics_assets_get_200_response'
+          description: Successfully retrieved companies
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -258,9 +274,132 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get a list of all favorites for a specific user
+      summary: |-
+        Get asset performance analytics
+            Query params: start_date, end_date, limit, sort_by, include
       tags:
-      - Favorites
+      - Companies
+  /companies/{company_id}/analytics/customers:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__analytics_assets_get_200_response'
+          description: Successfully retrieved companies
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: |-
+        Get customer analytics including growth and segmentation
+            Query params: start_date, end_date, group_by, segment_by
+      tags:
+      - Companies
+  /companies/{company_id}/analytics/dashboard:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__analytics_assets_get_200_response'
+          description: Successfully retrieved companies
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: |-
+        Get comprehensive dashboard analytics for seller dashboard
+            Includes all metrics needed for dashboard charts in one call
+            Query params: start_date, end_date, period (day/week/month/quarter)
+      tags:
+      - Companies
+  /companies/{company_id}/analytics/sales:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__analytics_assets_get_200_response'
+          description: Successfully retrieved companies
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: |-
+        Get sales over time analytics
+            Query params: start_date, end_date, group_by (day/week/month/quarter), metrics
+      tags:
+      - Companies
+  /companies/{company_id}/api-keys:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
+          description: Successfully retrieved api keys
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: |-
+        Get all API keys for a company.
+            Returns masked API keys for security (sk_****1234).
+      tags:
+      - API Keys
     post:
       parameters:
       - explode: false
@@ -270,26 +409,19 @@ paths:
         schema:
           type: string
         style: simple
-      - explode: false
-        in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Favorite'
+              $ref: '#/components/schemas/ApiKeysInput'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_post_200_response'
-          description: Successfully created favorites
+                $ref: '#/components/schemas/_companies__company_id__api_keys_post_200_response'
+          description: Successfully created api keys
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -298,10 +430,12 @@ paths:
           $ref: '#/components/responses/BadRequest'
       security:
       - ApiKeyAuth: []
-      summary: "POST /companies/{company_id}/users/{user_id}/favorites"
+      summary: |-
+        Create single API key.
+            Returns the actual sk_ key (only time it's exposed) and api_key_id for future operations.
       tags:
-      - Favorites
-  /companies/{company_id}/users/{user_id}/favorites/{favorite_id}:
+      - API Keys
+  /companies/{company_id}/api-keys/{api_key_id}:
     delete:
       parameters:
       - explode: false
@@ -313,14 +447,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: favorite_id
+        name: api_key_id
         required: true
         schema:
           type: string
@@ -330,8 +457,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__delete_200_response'
-          description: Successfully deleted favorites
+                $ref: '#/components/schemas/_companies__company_id__api_keys__api_key_id__delete_200_response'
+          description: Successfully deleted api keys
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -340,9 +467,12 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Delete single favorite by ID (unfavorite an asset)
+      summary: |-
+        Delete (deactivate) single API key by api_key_id.
+            Uses the api_key_id returned during creation for clean identification.
+            Fixed to use correct primary key lookup.
       tags:
-      - Favorites
+      - API Keys
     get:
       parameters:
       - explode: false
@@ -354,14 +484,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: favorite_id
+        name: api_key_id
         required: true
         schema:
           type: string
@@ -371,8 +494,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__get_200_response'
-          description: Successfully retrieved favorites
+                $ref: '#/components/schemas/_companies__company_id__api_keys__api_key_id__get_200_response'
+          description: Successfully retrieved api keys
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -381,9 +504,11 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get single favorite by ID
+      summary: |-
+        Get single API key by ID.
+            Returns masked API key for security (sk_****1234).
       tags:
-      - Favorites
+      - API Keys
     patch:
       parameters:
       - explode: false
@@ -395,14 +520,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: favorite_id
+        name: api_key_id
         required: true
         schema:
           type: string
@@ -411,15 +529,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Favorite'
+              $ref: '#/components/schemas/ApiKeysUpdate'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__patch_200_response'
-          description: Successfully updated favorites
+                $ref: '#/components/schemas/_companies__company_id__api_keys__api_key_id__patch_200_response'
+          description: Successfully updated api keys
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -430,10 +548,56 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Update an existing favorite by ID
+      summary: |-
+        Update an existing API key by ID.
+            Can update metadata like name, expiration, rate limits, etc.
+            Cannot update the actual key value (for security).
       tags:
-      - Favorites
-  /companies/{company_id}/users/{user_id}/favorites/category/{category}:
+      - API Keys
+  /companies/{company_id}/api-keys/{api_key_id}/revoke:
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: api_key_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiKeysInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__api_keys_post_200_response'
+          description: Successfully created api keys
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - ApiKeyAuth: []
+      summary: |-
+        Explicitly revoke an API key with reason tracking.
+            This is different from delete as it includes revocation metadata.
+      tags:
+      - API Keys
+  /companies/{company_id}/api-keys/{api_key_id}/stats:
     get:
       parameters:
       - explode: false
@@ -445,14 +609,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: category
+        name: api_key_id
         required: true
         schema:
           type: string
@@ -462,8 +619,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__get_200_response'
-          description: Successfully retrieved favorites
+                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
+          description: Successfully retrieved api keys
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -472,22 +629,17 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get all favorites for the specified user in a specific category
+      summary: |-
+        Get usage statistics for a specific API key.
+            Returns usage count, last used date, failed attempts, etc.
       tags:
-      - Favorites
-  /companies/{company_id}/users/{user_id}/favorites/uncategorized:
+      - API Keys
+  /companies/{company_id}/assets:
     get:
       parameters:
       - explode: false
         in: path
         name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: user_id
         required: true
         schema:
           type: string
@@ -497,8 +649,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_get_200_response'
-          description: Successfully retrieved favorites
+                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
+          description: Successfully retrieved assets
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -507,10 +659,43 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get all favorites for the specified user that don't have a category
+      summary: Get all assets for a specific company
       tags:
-      - Favorites
-  /companies/{company_id}/users/{user_id}/favorites/check/{asset_id}:
+      - Assets
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetsInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__assets_post_200_response'
+          description: Successfully created assets
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a new asset
+      tags:
+      - Assets
+  /companies/{company_id}/assets/statistics:
     get:
       parameters:
       - explode: false
@@ -520,9 +705,30 @@ paths:
         schema:
           type: string
         style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
+          description: Successfully retrieved assets
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get statistics for all assets the user has access to
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}:
+    delete:
+      parameters:
       - explode: false
         in: path
-        name: user_id
+        name: company_id
         required: true
         schema:
           type: string
@@ -539,8 +745,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__get_200_response'
-          description: Successfully retrieved favorites
+                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__delete_200_response'
+          description: Successfully deleted assets
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -549,9 +755,190 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Check if the specified user has favorited a specific asset
+      summary: Delete single asset by ID
       tags:
-      - Favorites
+      - Assets
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_analyze__company_handle__assets__asset_slug__get_200_response'
+          description: Successfully retrieved assets
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get single asset by ID
+      tags:
+      - Assets
+    patch:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetsUpdate'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__patch_200_response'
+          description: Successfully updated assets
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Update an existing asset by ID
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/infoschema:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
+          description: Successfully retrieved assets
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get the information schema for a specific asset's table
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/infoschema/save:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
+          description: Successfully retrieved assets
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Retrieve and save an asset's information schema
+      tags:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/predicted_price:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
+          description: Successfully retrieved assets
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get AI-predicted pricing for a specific asset
+      tags:
+      - Assets
   /companies/{company_id}/assets/{asset_id}/prices:
     get:
       parameters:
@@ -574,7 +961,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
+                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices_get_200_response'
           description: Successfully retrieved asset price history
         "401":
           $ref: '#/components/responses/Unauthorized'
@@ -603,12 +990,18 @@ paths:
         schema:
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetPriceHistoryInput'
+        required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
+                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices_post_200_response'
           description: Successfully created asset price history
         "401":
           $ref: '#/components/responses/Unauthorized'
@@ -619,6 +1012,123 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Create a new price history record for an asset
+      tags:
+      - Asset Price History
+  /companies/{company_id}/assets/{asset_id}/prices/active:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices_get_200_response'
+          description: Successfully retrieved asset price history
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get the currently active price for an asset
+      tags:
+      - Asset Price History
+  /companies/{company_id}/assets/{asset_id}/prices/calculate_credits:
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetPriceHistoryInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices_post_200_response'
+          description: Successfully created asset price history
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - ApiKeyAuth: []
+      summary: Calculate the credit equivalent for a given USD price without saving
+      tags:
+      - Asset Price History
+  /companies/{company_id}/assets/{asset_id}/prices/discount:
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetPriceHistoryInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices_post_200_response'
+          description: Successfully created asset price history
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - ApiKeyAuth: []
+      summary: "POST /companies/{company_id}/assets/{asset_id}/prices/discount"
       tags:
       - Asset Price History
   /companies/{company_id}/assets/{asset_id}/prices/{aph_id}:
@@ -650,7 +1160,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
+                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices__aph_id__delete_200_response'
           description: Successfully deleted asset price history
         "401":
           $ref: '#/components/responses/Unauthorized'
@@ -691,7 +1201,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
+                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices__aph_id__get_200_response'
           description: Successfully retrieved asset price history
         "401":
           $ref: '#/components/responses/Unauthorized'
@@ -727,12 +1237,18 @@ paths:
         schema:
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetPriceHistoryUpdate'
+        required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
+                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices__aph_id__patch_200_response'
           description: Successfully updated asset price history
         "401":
           $ref: '#/components/responses/Unauthorized'
@@ -747,7 +1263,7 @@ paths:
       summary: Update an existing price history record by ID
       tags:
       - Asset Price History
-  /companies/{company_id}/assets/{asset_id}/prices/active:
+  /companies/{company_id}/assets/{asset_id}/statistics:
     get:
       parameters:
       - explode: false
@@ -769,8 +1285,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved asset price history
+                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
+          description: Successfully retrieved assets
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -779,11 +1295,11 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get the currently active price for an asset
+      summary: Get statistics for a specific asset (public endpoint)
       tags:
-      - Asset Price History
-  /companies/{company_id}/assets/{asset_id}/prices/discount:
-    post:
+      - Assets
+  /companies/{company_id}/assets/{asset_id}/test:
+    get:
       parameters:
       - explode: false
         in: path
@@ -804,71 +1320,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully created asset price history
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "400":
-          $ref: '#/components/responses/BadRequest'
-      security:
-      - ApiKeyAuth: []
-      summary: "POST /companies/{company_id}/assets/{asset_id}/prices/discount"
-      tags:
-      - Asset Price History
-  /companies/{company_id}/assets/{asset_id}/prices/calculate_credits:
-    post:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: asset_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully created asset price history
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "400":
-          $ref: '#/components/responses/BadRequest'
-      security:
-      - ApiKeyAuth: []
-      summary: "POST /companies/{company_id}/assets/{asset_id}/prices/calculate_credits"
-      tags:
-      - Asset Price History
-  /cloud-providers/{provider_id}/storage-engines:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: provider_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved storage engines
+                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
+          description: Successfully retrieved assets
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -877,335 +1330,9 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get a list of all storage engines
+      summary: Test out an Asset (on a subset of data)
       tags:
-      - Storage Engines
-  /cloud-providers/{provider_id}/storage-engines/{engine_id}:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: provider_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: engine_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved storage engines
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get single storage engine by ID
-      tags:
-      - Storage Engines
-  /companies/{company_id}/users/{user_id}/alerts:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts_get_200_response'
-          description: Successfully retrieved alerts
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get a list of all alerts for a specific user
-      tags:
-      - Alerts
-    post:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Alert'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts_post_200_response'
-          description: Successfully created alerts
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "400":
-          $ref: '#/components/responses/BadRequest'
-      security:
-      - ApiKeyAuth: []
-      summary: "POST /companies/{company_id}/users/{user_id}/alerts"
-      tags:
-      - Alerts
-  /companies/{company_id}/users/{user_id}/alerts/{alert_id}:
-    delete:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: alert_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts__alert_id__delete_200_response'
-          description: Successfully deleted alerts
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Delete single alert by ID
-      tags:
-      - Alerts
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: alert_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts__alert_id__get_200_response'
-          description: Successfully retrieved alerts
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get single alert by ID
-      tags:
-      - Alerts
-    patch:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: alert_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Alert'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts__alert_id__patch_200_response'
-          description: Successfully updated alerts
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "400":
-          $ref: '#/components/responses/BadRequest'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Update an existing alert by ID
-      tags:
-      - Alerts
-  /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: asset_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts__alert_id__get_200_response'
-          description: Successfully retrieved alerts
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get all alerts for a specific asset (by user)
-      tags:
-      - Alerts
-  /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: user_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: asset_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts_get_200_response'
-          description: Successfully retrieved alerts
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get all alerts for a specific asset
-      tags:
-      - Alerts
+      - Assets
   /companies/{company_id}/connections:
     get:
       parameters:
@@ -1247,7 +1374,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Connection'
+              $ref: '#/components/schemas/ConnectionsInput'
         required: true
       responses:
         "200":
@@ -1356,7 +1483,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Connection'
+              $ref: '#/components/schemas/ConnectionsUpdate'
         required: true
       responses:
         "200":
@@ -1448,6 +1575,92 @@ paths:
       summary: Test the specified connection
       tags:
       - Connections
+  /companies/{company_id}/objects:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__analytics_assets_get_200_response'
+          description: Successfully retrieved companies
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: "Get all objects (connections, assets) of a single company"
+      tags:
+      - Companies
+  /companies/{company_id}/requests/plan:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__analytics_assets_get_200_response'
+          description: Successfully retrieved companies
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get the total number of requests allocated in the company's current
+        subscription plan.
+      tags:
+      - Companies
+  /companies/{company_id}/requests/usage:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__analytics_assets_get_200_response'
+          description: Successfully retrieved companies
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get company request usage data for a specific month. Returns JSON metrics
+        by default or CSV logs when download parameter is included.
+      tags:
+      - Companies
   /companies/{company_id}/users:
     get:
       parameters:
@@ -1489,7 +1702,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/UsersInput'
         required: true
       responses:
         "200":
@@ -1598,7 +1811,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/UsersUpdate'
         required: true
       responses:
         "200":
@@ -1620,7 +1833,7 @@ paths:
       summary: Update an existing user by ID
       tags:
       - Users
-  /companies/{company_id}/assets:
+  /companies/{company_id}/users/{user_id}/alerts:
     get:
       parameters:
       - explode: false
@@ -1630,13 +1843,20 @@ paths:
         schema:
           type: string
         style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
-          description: Successfully retrieved assets
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts_get_200_response'
+          description: Successfully retrieved alerts
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -1645,9 +1865,9 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get all assets for a specific company
+      summary: Get a list of all alerts for a specific user
       tags:
-      - Assets
+      - Alerts
     post:
       parameters:
       - explode: false
@@ -1657,19 +1877,26 @@ paths:
         schema:
           type: string
         style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Asset'
+              $ref: '#/components/schemas/AlertsInput'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__assets_post_200_response'
-          description: Successfully created assets
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts_post_200_response'
+          description: Successfully created alerts
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -1678,10 +1905,94 @@ paths:
           $ref: '#/components/responses/BadRequest'
       security:
       - ApiKeyAuth: []
-      summary: Create a new asset
+      summary: "POST /companies/{company_id}/users/{user_id}/alerts"
       tags:
-      - Assets
-  /companies/{company_id}/assets/{asset_id}:
+      - Alerts
+  /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts_asset__asset_id__get_200_response'
+          description: Successfully retrieved alerts
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all alerts for a specific asset (by user)
+      tags:
+      - Alerts
+  /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: asset_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts_get_200_response'
+          description: Successfully retrieved alerts
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all alerts for a specific asset
+      tags:
+      - Alerts
+  /companies/{company_id}/users/{user_id}/alerts/{alert_id}:
     delete:
       parameters:
       - explode: false
@@ -1693,7 +2004,14 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: asset_id
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: alert_id
         required: true
         schema:
           type: string
@@ -1703,8 +2021,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__delete_200_response'
-          description: Successfully deleted assets
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts__alert_id__delete_200_response'
+          description: Successfully deleted alerts
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -1713,9 +2031,9 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Delete single asset by ID
+      summary: Delete single alert by ID
       tags:
-      - Assets
+      - Alerts
     get:
       parameters:
       - explode: false
@@ -1727,7 +2045,14 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: asset_id
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: alert_id
         required: true
         schema:
           type: string
@@ -1737,8 +2062,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__get_200_response'
-          description: Successfully retrieved assets
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts_asset__asset_id__get_200_response'
+          description: Successfully retrieved alerts
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -1747,9 +2072,9 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get single asset by ID
+      summary: Get single alert by ID
       tags:
-      - Assets
+      - Alerts
     patch:
       parameters:
       - explode: false
@@ -1761,7 +2086,14 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: asset_id
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: alert_id
         required: true
         schema:
           type: string
@@ -1770,15 +2102,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Asset'
+              $ref: '#/components/schemas/AlertsUpdate'
         required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__patch_200_response'
-          description: Successfully updated assets
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts__alert_id__patch_200_response'
+          description: Successfully updated alerts
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -1789,15 +2121,139 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Update an existing asset by ID
+      summary: Update an existing alert by ID
       tags:
-      - Assets
-  /companies/{company_id}/assets/{asset_id}/infoschema:
+      - Alerts
+  /companies/{company_id}/users/{user_id}/favorites:
     get:
       parameters:
       - explode: false
         in: path
         name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_get_200_response'
+          description: Successfully retrieved favorites
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a list of all favorites for a specific user
+      tags:
+      - Favorites
+    post:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FavoritesInput'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_post_200_response'
+          description: Successfully created favorites
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - ApiKeyAuth: []
+      summary: "POST /companies/{company_id}/users/{user_id}/favorites"
+      tags:
+      - Favorites
+  /companies/{company_id}/users/{user_id}/favorites/category/{category}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: category
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_category__category__get_200_response'
+          description: Successfully retrieved favorites
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all favorites for the specified user in a specific category
+      tags:
+      - Favorites
+  /companies/{company_id}/users/{user_id}/favorites/check/{asset_id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
         required: true
         schema:
           type: string
@@ -1814,8 +2270,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
-          description: Successfully retrieved assets
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_category__category__get_200_response'
+          description: Successfully retrieved favorites
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -1824,10 +2280,10 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get the information schema for a specific asset's table
+      summary: Check if the specified user has favorited a specific asset
       tags:
-      - Assets
-  /companies/{company_id}/assets/{asset_id}/test:
+      - Favorites
+  /companies/{company_id}/users/{user_id}/favorites/uncategorized:
     get:
       parameters:
       - explode: false
@@ -1839,7 +2295,7 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: asset_id
+        name: user_id
         required: true
         schema:
           type: string
@@ -1849,8 +2305,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
-          description: Successfully retrieved assets
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_get_200_response'
+          description: Successfully retrieved favorites
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -1859,10 +2315,51 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Test out an Asset (on a subset of data)
+      summary: Get all favorites for the specified user that don't have a category
       tags:
-      - Assets
-  /companies/{company_id}/assets/{asset_id}/infoschema/save:
+      - Favorites
+  /companies/{company_id}/users/{user_id}/favorites/{favorite_id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: company_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: favorite_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__delete_200_response'
+          description: Successfully deleted favorites
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete single favorite by ID (unfavorite an asset)
+      tags:
+      - Favorites
     get:
       parameters:
       - explode: false
@@ -1874,7 +2371,14 @@ paths:
         style: simple
       - explode: false
         in: path
-        name: asset_id
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: favorite_id
         required: true
         schema:
           type: string
@@ -1884,8 +2388,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
-          description: Successfully retrieved assets
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_category__category__get_200_response'
+          description: Successfully retrieved favorites
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -1894,135 +2398,9 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Retrieve and save an asset's information schema
+      summary: Get single favorite by ID
       tags:
-      - Assets
-  /companies/{company_id}/assets/statistics:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
-          description: Successfully retrieved assets
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get statistics for all assets the user has access to
-      tags:
-      - Assets
-  /companies/{company_id}/assets/{asset_id}/predicted_price:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: asset_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
-          description: Successfully retrieved assets
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get AI-predicted pricing for a specific asset
-      tags:
-      - Assets
-  /companies/{company_id}/assets/{asset_id}/statistics:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: asset_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__assets_get_200_response'
-          description: Successfully retrieved assets
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get statistics for a specific asset (public endpoint)
-      tags:
-      - Assets
-  /companies/{company_id}:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved companies
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get details of the requestor's own company
-      tags:
-      - Companies
+      - Favorites
     patch:
       parameters:
       - explode: false
@@ -2032,13 +2410,33 @@ paths:
         schema:
           type: string
         style: simple
+      - explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: favorite_id
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FavoritesUpdate'
+        required: true
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully updated companies
+                $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__patch_200_response'
+          description: Successfully updated favorites
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -2049,15 +2447,36 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Update an existing company by ID
+      summary: Update an existing favorite by ID
       tags:
-      - Companies
-  /companies/{company_id}/requests/plan:
+      - Favorites
+  /job-functions:
+    get:
+      parameters: []
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_job_functions_get_200_response'
+          description: Successfully retrieved job functions
+        "401":
+          $ref: '#/components/responses/Unauthorized'
+        "403":
+          $ref: '#/components/responses/Forbidden'
+        "404":
+          $ref: '#/components/responses/NotFound'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a list of all job functions
+      tags:
+      - Job Functions
+  /job-functions/{function_id}:
     get:
       parameters:
       - explode: false
         in: path
-        name: company_id
+        name: function_id
         required: true
         schema:
           type: string
@@ -2067,8 +2486,8 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved companies
+                $ref: '#/components/schemas/_job_functions__function_id__get_200_response'
+          description: Successfully retrieved job functions
         "401":
           $ref: '#/components/responses/Unauthorized'
         "403":
@@ -2077,188 +2496,9 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: Get the total number of requests allocated in the company's current
-        subscription plan.
+      summary: Get single job function by ID
       tags:
-      - Companies
-  /companies/{company_id}/requests/usage:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved companies
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Get company request usage data for a specific month. Returns JSON metrics
-        by default or CSV logs when download parameter is included.
-      tags:
-      - Companies
-  /companies/{company_id}/objects:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved companies
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: "Get all objects (connections, assets) of a single company"
-      tags:
-      - Companies
-  /companies/{company_id}/analytics/dashboard:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved companies
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: |-
-        Get comprehensive dashboard analytics for seller dashboard
-            Includes all metrics needed for dashboard charts in one call
-            Query params: start_date, end_date, period (day/week/month/quarter)
-      tags:
-      - Companies
-  /companies/{company_id}/analytics/sales:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved companies
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: |-
-        Get sales over time analytics
-            Query params: start_date, end_date, group_by (day/week/month/quarter), metrics
-      tags:
-      - Companies
-  /companies/{company_id}/analytics/assets:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved companies
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: |-
-        Get asset performance analytics
-            Query params: start_date, end_date, limit, sort_by, include
-      tags:
-      - Companies
-  /companies/{company_id}/analytics/customers:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_id
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__api_keys_get_200_response'
-          description: Successfully retrieved companies
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: |-
-        Get customer analytics including growth and segmentation
-            Query params: start_date, end_date, group_by, segment_by
-      tags:
-      - Companies
+      - Job Functions
   /me:
     get:
       parameters: []
@@ -2267,7 +2507,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/_me_get_200_response'
+                $ref: '#/components/schemas/_companies__company_id__users_get_200_response'
           description: Successfully retrieved users
         "401":
           $ref: '#/components/responses/Unauthorized'
@@ -2277,49 +2517,9 @@ paths:
           $ref: '#/components/responses/NotFound'
       security:
       - ApiKeyAuth: []
-      summary: |-
-        Get current authenticated user's profile information.
-
-                    Returns:
-                        JSON response with user profile data from database
+      summary: Get current authenticated user's profile.
       tags:
       - Users
-  /analyze/{company_handle}/assets/{asset_slug}:
-    get:
-      parameters:
-      - explode: false
-        in: path
-        name: company_handle
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: asset_slug
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_companies__company_id__assets__asset_id__get_200_response'
-          description: Successfully retrieved assets
-        "401":
-          $ref: '#/components/responses/Unauthorized'
-        "403":
-          $ref: '#/components/responses/Forbidden'
-        "404":
-          $ref: '#/components/responses/NotFound'
-      security:
-      - ApiKeyAuth: []
-      summary: Process (analyze) an asset. Attempt to process an analytic on a backend
-        warehouse/AI model.
-      tags:
-      - Assets
 components:
   responses:
     BadRequest:
@@ -2347,6 +2547,1212 @@ components:
             $ref: '#/components/schemas/inline_object_3'
       description: Resource not found
   schemas:
+    Alerts:
+      description: User alerts for when assets are updated
+      example:
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        is_active: true
+        company_id: company_id
+        user_id: user_id
+        date_created: 2000-01-23T04:56:07.000+00:00
+        alert_id: 0
+        asset_id: asset_id
+      properties:
+        date_created:
+          format: date-time
+          type: string
+        last_updated:
+          format: date-time
+          type: string
+        alert_id:
+          format: int64
+          type: integer
+        asset_id:
+          type: string
+        user_id:
+          type: string
+        company_id:
+          type: string
+        is_active:
+          description: Whether this alert is currently active
+          type: boolean
+      required:
+      - asset_id
+      - company_id
+      - is_active
+    AlertsInput:
+      description: Input schema for creating Alert
+      example:
+        is_active: true
+        company_id: company_id
+        user_id: user_id
+        asset_id: asset_id
+      properties:
+        asset_id:
+          type: string
+        user_id:
+          type: string
+        company_id:
+          type: string
+        is_active:
+          description: Whether this alert is currently active
+          type: boolean
+      required:
+      - asset_id
+      - company_id
+    AlertsUpdate:
+      description: Update schema for modifying Alert
+      example:
+        is_active: true
+        company_id: company_id
+        user_id: user_id
+        asset_id: asset_id
+      properties:
+        asset_id:
+          type: string
+        user_id:
+          type: string
+        company_id:
+          type: string
+        is_active:
+          description: Whether this alert is currently active
+          type: boolean
+    ApiKeys:
+      description: API Keys model storing every key created with SOC2 compliance
+      example:
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        company_id: company_id
+        expiration_date_utc: 2000-01-23T04:56:07.000+00:00
+        user_id: user_id
+        role_id: 6
+        date_created: 2000-01-23T04:56:07.000+00:00
+        name: name
+        api_key_id: 0
+      properties:
+        date_created:
+          format: date-time
+          type: string
+        last_updated:
+          format: date-time
+          type: string
+        api_key_id:
+          format: int64
+          type: integer
+        user_id:
+          description: User who owns this API key
+          type: string
+        company_id:
+          description: Company this API key belongs to
+          type: string
+        role_id:
+          description: Role/permission level for this API key
+          format: int64
+          type: integer
+        name:
+          description: Human-readable name for this API key
+          type: string
+        expiration_date_utc:
+          description: When this API key expires (NULL = never expires)
+          format: date-time
+          type: string
+      required:
+      - api_key_id
+      - company_id
+      - role_id
+    ApiKeysInput:
+      description: Input schema for creating ApiKey
+      example:
+        company_id: company_id
+        expiration_date_utc: 2000-01-23T04:56:07.000+00:00
+        user_id: user_id
+        role_id: 0
+        name: name
+      properties:
+        user_id:
+          description: User who owns this API key
+          type: string
+        company_id:
+          description: Company this API key belongs to
+          type: string
+        role_id:
+          description: Role/permission level for this API key
+          format: int64
+          type: integer
+        name:
+          description: Human-readable name for this API key
+          type: string
+        expiration_date_utc:
+          description: When this API key expires (NULL = never expires)
+          format: date-time
+          type: string
+      required:
+      - company_id
+      - role_id
+    ApiKeysUpdate:
+      description: Update schema for modifying ApiKey
+      example:
+        company_id: company_id
+        expiration_date_utc: 2000-01-23T04:56:07.000+00:00
+        user_id: user_id
+        role_id: 0
+        name: name
+      properties:
+        user_id:
+          description: User who owns this API key
+          type: string
+        company_id:
+          description: Company this API key belongs to
+          type: string
+        role_id:
+          description: Role/permission level for this API key
+          format: int64
+          type: integer
+        name:
+          description: Human-readable name for this API key
+          type: string
+        expiration_date_utc:
+          description: When this API key expires (NULL = never expires)
+          format: date-time
+          type: string
+    AssetPriceHistory:
+      description: Pricing history for an asset
+      example:
+        aph_id: aph_id
+        price_usd: 0.8008281904610115
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        date_ended: 2000-01-23T04:56:07.000+00:00
+        date_created: 2000-01-23T04:56:07.000+00:00
+        asset_id: asset_id
+      properties:
+        date_created:
+          format: date-time
+          type: string
+        last_updated:
+          format: date-time
+          type: string
+        aph_id:
+          type: string
+        asset_id:
+          type: string
+        price_usd:
+          format: double
+          type: number
+        date_ended:
+          description: When did the price end (Datetime)
+          format: date-time
+          type: string
+      required:
+      - asset_id
+    AssetPriceHistoryInput:
+      description: Input schema for creating AssetPriceHistory
+      example:
+        price_usd: 0.8008281904610115
+        date_ended: 2000-01-23T04:56:07.000+00:00
+        asset_id: asset_id
+      properties:
+        asset_id:
+          type: string
+        price_usd:
+          format: double
+          type: number
+        date_ended:
+          description: When did the price end (Datetime)
+          format: date-time
+          type: string
+      required:
+      - asset_id
+    AssetPriceHistoryUpdate:
+      description: Update schema for modifying AssetPriceHistory
+      example:
+        price_usd: 0.8008281904610115
+        date_ended: 2000-01-23T04:56:07.000+00:00
+        asset_id: asset_id
+      properties:
+        asset_id:
+          type: string
+        price_usd:
+          format: double
+          type: number
+        date_ended:
+          description: When did the price end (Datetime)
+          format: date-time
+          type: string
+    Assets:
+      description: Asset model for every asset (insight/visualization/feed/etc.) customer
+        creates
+      example:
+        industry_id: 6
+        data_time_period_start: 2000-01-23T04:56:07.000+00:00
+        viz_data_aggregation: No Aggregation
+        allow_params: true
+        viz_dep_var_col_name: viz_dep_var_col_name
+        description: description
+        source_table_name: source_table_name
+        asset_id: asset_id
+        source: MANUAL
+        geographic_coverage_type: GLOBAL
+        data_source_last_refreshed: 2000-01-23T04:56:07.000+00:00
+        geographic_coverage_details: geographic_coverage_details
+        next_run: 2000-01-23T04:56:07.000+00:00
+        approved_by_user_id: approved_by_user_id
+        data_time_period_end: 2000-01-23T04:56:07.000+00:00
+        approved_at: 2000-01-23T04:56:07.000+00:00
+        cached: true
+        asset_type: CALCULATION
+        viz_color_col_name: viz_color_col_name
+        llm_connection_id: llm_connection_id
+        viz_data_limit: 1
+        slug: slug
+        viz_sort_direction: No Sorting
+        data_source_refresh_frequency: REAL_TIME
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        snippet_id: 0
+        company_id: company_id
+        visibility: PRIVATE
+        viz_size_col_name: viz_size_col_name
+        date_created: 2000-01-23T04:56:07.000+00:00
+        approval_status: approval_status
+        sell_in_marketplace: true
+        sql_logic: sql_logic
+        viz_chart_library: PLOTLY
+        viz_indep_var_col_name: viz_indep_var_col_name
+        tags: tags
+        ai_job_id: ai_job_id
+        source_schema_name: source_schema_name
+        schedule: schedule
+        asset_schema: "{}"
+        user_id: user_id
+        connection_id: connection_id
+        name: name
+        viz_chart_type: LINE
+        accept_terms: true
+        viz_color_scheme: Default
+      properties:
+        date_created:
+          format: date-time
+          type: string
+        last_updated:
+          format: date-time
+          type: string
+        asset_id:
+          type: string
+        user_id:
+          type: string
+        company_id:
+          type: string
+        connection_id:
+          type: string
+        llm_connection_id:
+          type: string
+        snippet_id:
+          format: int64
+          type: integer
+        industry_id:
+          format: int64
+          type: integer
+        ai_job_id:
+          description: Links to the AutoInsights job that created this asset
+          type: string
+        approval_status:
+          description: Approval status for AI-generated assets
+          type: string
+        approved_by_user_id:
+          description: User who approved this asset for marketplace
+          type: string
+        approved_at:
+          description: When this asset was approved for marketplace
+          format: date-time
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        source:
+          description: "Enum type: Source"
+          enum:
+          - MANUAL
+          - AUTOMATIC
+          type: string
+        asset_type:
+          description: "Enum type: AssetType"
+          enum:
+          - CALCULATION
+          - VISUALIZATION
+          - DATA
+          type: string
+        asset_schema:
+          description: "Stores database table schema data including columns, types,\
+            \ and metadata"
+          type: object
+        visibility:
+          description: "Enum type: Visibility"
+          enum:
+          - PRIVATE
+          - SHARED
+          type: string
+        tags:
+          type: string
+        sql_logic:
+          type: string
+        source_schema_name:
+          type: string
+        source_table_name:
+          type: string
+        sell_in_marketplace:
+          type: boolean
+        viz_chart_library:
+          description: "Enum type: PlottingLibrary"
+          enum:
+          - PLOTLY
+          - MATPLOTLIB
+          - SEABORN
+          type: string
+        viz_chart_type:
+          description: "Enum type: ChartType"
+          enum:
+          - LINE
+          - BAR
+          - HORIZONTALBAR
+          - PIE
+          - DOUGHNUT
+          - POLAR
+          - RADAR
+          - BUBBLE
+          - SCATTER
+          - NA
+          type: string
+        viz_dep_var_col_name:
+          type: string
+        viz_indep_var_col_name:
+          type: string
+        viz_size_col_name:
+          type: string
+        viz_color_col_name:
+          type: string
+        viz_data_aggregation:
+          description: "Enum type: AggregationType"
+          enum:
+          - No Aggregation
+          - Sum
+          - Average
+          - Count
+          - Minimum
+          - Maximum
+          type: string
+        viz_sort_direction:
+          description: "Enum type: SortDirection"
+          enum:
+          - No Sorting
+          - Ascending
+          - Descending
+          type: string
+        viz_data_limit:
+          format: int64
+          type: integer
+        viz_color_scheme:
+          description: "Enum type: ColorScheme"
+          enum:
+          - Default
+          - Sequential
+          - Diverging
+          - Categorical
+          - Monochrome
+          - Pastel
+          - Dark
+          - Light
+          type: string
+        allow_params:
+          type: boolean
+        accept_terms:
+          type: boolean
+        cached:
+          type: boolean
+        schedule:
+          type: string
+        next_run:
+          format: date-time
+          type: string
+        data_time_period_start:
+          description: Start date of the data time period covered
+          format: date-time
+          type: string
+        data_time_period_end:
+          description: End date of the data time period covered
+          format: date-time
+          type: string
+        geographic_coverage_type:
+          description: "Type of geographic coverage (Enum type: GeographicCoverage)"
+          enum:
+          - GLOBAL
+          - CONTINENTAL
+          - REGIONAL
+          - NATIONAL
+          - STATE
+          - LOCAL
+          - CUSTOM
+          - UNKNOWN
+          type: string
+        geographic_coverage_details:
+          description: "Specific regions/countries covered (e.g., 'United States,\
+            \ Canada, Mexico')"
+          type: string
+        data_source_refresh_frequency:
+          description: "How often the source data is refreshed (Enum type: DataRefreshFrequency)"
+          enum:
+          - REAL_TIME
+          - HOURLY
+          - DAILY
+          - WEEKLY
+          - MONTHLY
+          - QUARTERLY
+          - ANNUAL
+          - ONE_TIME
+          - CUSTOM
+          - UNKNOWN
+          type: string
+        data_source_last_refreshed:
+          description: When the source data was last refreshed
+          format: date-time
+          type: string
+      required:
+      - accept_terms
+      - allow_params
+      - company_id
+      - name
+      - sell_in_marketplace
+      - source
+    AssetsInput:
+      description: Input schema for creating Asset
+      example:
+        industry_id: 0
+        data_time_period_start: 2000-01-23T04:56:07.000+00:00
+        viz_data_aggregation: No Aggregation
+        allow_params: true
+        viz_dep_var_col_name: viz_dep_var_col_name
+        description: description
+        source_table_name: source_table_name
+        source: MANUAL
+        geographic_coverage_type: GLOBAL
+        data_source_last_refreshed: 2000-01-23T04:56:07.000+00:00
+        geographic_coverage_details: geographic_coverage_details
+        next_run: 2000-01-23T04:56:07.000+00:00
+        approved_by_user_id: approved_by_user_id
+        data_time_period_end: 2000-01-23T04:56:07.000+00:00
+        approved_at: 2000-01-23T04:56:07.000+00:00
+        cached: true
+        asset_type: CALCULATION
+        viz_color_col_name: viz_color_col_name
+        viz_data_limit: 6
+        slug: slug
+        viz_sort_direction: No Sorting
+        data_source_refresh_frequency: REAL_TIME
+        company_id: company_id
+        viz_size_col_name: viz_size_col_name
+        approval_status: approval_status
+        sell_in_marketplace: true
+        sql_logic: sql_logic
+        viz_chart_library: PLOTLY
+        viz_indep_var_col_name: viz_indep_var_col_name
+        tags: tags
+        source_schema_name: source_schema_name
+        schedule: schedule
+        asset_schema: "{}"
+        user_id: user_id
+        connection_id: connection_id
+        name: name
+        viz_chart_type: LINE
+        accept_terms: true
+        viz_color_scheme: Default
+      properties:
+        user_id:
+          type: string
+        company_id:
+          type: string
+        connection_id:
+          type: string
+        industry_id:
+          format: int64
+          type: integer
+        approval_status:
+          description: Approval status for AI-generated assets
+          type: string
+        approved_by_user_id:
+          description: User who approved this asset for marketplace
+          type: string
+        approved_at:
+          description: When this asset was approved for marketplace
+          format: date-time
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        source:
+          description: "Enum type: Source"
+          enum:
+          - MANUAL
+          - AUTOMATIC
+          type: string
+        asset_type:
+          description: "Enum type: AssetType"
+          enum:
+          - CALCULATION
+          - VISUALIZATION
+          - DATA
+          type: string
+        asset_schema:
+          description: "Stores database table schema data including columns, types,\
+            \ and metadata"
+          type: object
+        tags:
+          type: string
+        sql_logic:
+          type: string
+        source_schema_name:
+          type: string
+        source_table_name:
+          type: string
+        sell_in_marketplace:
+          type: boolean
+        viz_chart_library:
+          description: "Enum type: PlottingLibrary"
+          enum:
+          - PLOTLY
+          - MATPLOTLIB
+          - SEABORN
+          type: string
+        viz_chart_type:
+          description: "Enum type: ChartType"
+          enum:
+          - LINE
+          - BAR
+          - HORIZONTALBAR
+          - PIE
+          - DOUGHNUT
+          - POLAR
+          - RADAR
+          - BUBBLE
+          - SCATTER
+          - NA
+          type: string
+        viz_dep_var_col_name:
+          type: string
+        viz_indep_var_col_name:
+          type: string
+        viz_size_col_name:
+          type: string
+        viz_color_col_name:
+          type: string
+        viz_data_aggregation:
+          description: "Enum type: AggregationType"
+          enum:
+          - No Aggregation
+          - Sum
+          - Average
+          - Count
+          - Minimum
+          - Maximum
+          type: string
+        viz_sort_direction:
+          description: "Enum type: SortDirection"
+          enum:
+          - No Sorting
+          - Ascending
+          - Descending
+          type: string
+        viz_data_limit:
+          format: int64
+          type: integer
+        viz_color_scheme:
+          description: "Enum type: ColorScheme"
+          enum:
+          - Default
+          - Sequential
+          - Diverging
+          - Categorical
+          - Monochrome
+          - Pastel
+          - Dark
+          - Light
+          type: string
+        allow_params:
+          type: boolean
+        accept_terms:
+          type: boolean
+        cached:
+          type: boolean
+        schedule:
+          type: string
+        next_run:
+          format: date-time
+          type: string
+        data_time_period_start:
+          description: Start date of the data time period covered
+          format: date-time
+          type: string
+        data_time_period_end:
+          description: End date of the data time period covered
+          format: date-time
+          type: string
+        geographic_coverage_type:
+          description: "Type of geographic coverage (Enum type: GeographicCoverage)"
+          enum:
+          - GLOBAL
+          - CONTINENTAL
+          - REGIONAL
+          - NATIONAL
+          - STATE
+          - LOCAL
+          - CUSTOM
+          - UNKNOWN
+          type: string
+        geographic_coverage_details:
+          description: "Specific regions/countries covered (e.g., 'United States,\
+            \ Canada, Mexico')"
+          type: string
+        data_source_refresh_frequency:
+          description: "How often the source data is refreshed (Enum type: DataRefreshFrequency)"
+          enum:
+          - REAL_TIME
+          - HOURLY
+          - DAILY
+          - WEEKLY
+          - MONTHLY
+          - QUARTERLY
+          - ANNUAL
+          - ONE_TIME
+          - CUSTOM
+          - UNKNOWN
+          type: string
+        data_source_last_refreshed:
+          description: When the source data was last refreshed
+          format: date-time
+          type: string
+      required:
+      - company_id
+      - name
+      - source
+    AssetsUpdate:
+      description: Update schema for modifying Asset
+      example:
+        industry_id: 0
+        data_time_period_start: 2000-01-23T04:56:07.000+00:00
+        viz_data_aggregation: No Aggregation
+        allow_params: true
+        viz_dep_var_col_name: viz_dep_var_col_name
+        description: description
+        source_table_name: source_table_name
+        source: MANUAL
+        geographic_coverage_type: GLOBAL
+        data_source_last_refreshed: 2000-01-23T04:56:07.000+00:00
+        geographic_coverage_details: geographic_coverage_details
+        next_run: 2000-01-23T04:56:07.000+00:00
+        approved_by_user_id: approved_by_user_id
+        data_time_period_end: 2000-01-23T04:56:07.000+00:00
+        approved_at: 2000-01-23T04:56:07.000+00:00
+        cached: true
+        asset_type: CALCULATION
+        viz_color_col_name: viz_color_col_name
+        viz_data_limit: 6
+        slug: slug
+        viz_sort_direction: No Sorting
+        data_source_refresh_frequency: REAL_TIME
+        company_id: company_id
+        viz_size_col_name: viz_size_col_name
+        approval_status: approval_status
+        sell_in_marketplace: true
+        sql_logic: sql_logic
+        viz_chart_library: PLOTLY
+        viz_indep_var_col_name: viz_indep_var_col_name
+        tags: tags
+        source_schema_name: source_schema_name
+        schedule: schedule
+        asset_schema: "{}"
+        user_id: user_id
+        connection_id: connection_id
+        name: name
+        viz_chart_type: LINE
+        accept_terms: true
+        viz_color_scheme: Default
+      properties:
+        user_id:
+          type: string
+        company_id:
+          type: string
+        connection_id:
+          type: string
+        industry_id:
+          format: int64
+          type: integer
+        approval_status:
+          description: Approval status for AI-generated assets
+          type: string
+        approved_by_user_id:
+          description: User who approved this asset for marketplace
+          type: string
+        approved_at:
+          description: When this asset was approved for marketplace
+          format: date-time
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        source:
+          description: "Enum type: Source"
+          enum:
+          - MANUAL
+          - AUTOMATIC
+          type: string
+        asset_type:
+          description: "Enum type: AssetType"
+          enum:
+          - CALCULATION
+          - VISUALIZATION
+          - DATA
+          type: string
+        asset_schema:
+          description: "Stores database table schema data including columns, types,\
+            \ and metadata"
+          type: object
+        tags:
+          type: string
+        sql_logic:
+          type: string
+        source_schema_name:
+          type: string
+        source_table_name:
+          type: string
+        sell_in_marketplace:
+          type: boolean
+        viz_chart_library:
+          description: "Enum type: PlottingLibrary"
+          enum:
+          - PLOTLY
+          - MATPLOTLIB
+          - SEABORN
+          type: string
+        viz_chart_type:
+          description: "Enum type: ChartType"
+          enum:
+          - LINE
+          - BAR
+          - HORIZONTALBAR
+          - PIE
+          - DOUGHNUT
+          - POLAR
+          - RADAR
+          - BUBBLE
+          - SCATTER
+          - NA
+          type: string
+        viz_dep_var_col_name:
+          type: string
+        viz_indep_var_col_name:
+          type: string
+        viz_size_col_name:
+          type: string
+        viz_color_col_name:
+          type: string
+        viz_data_aggregation:
+          description: "Enum type: AggregationType"
+          enum:
+          - No Aggregation
+          - Sum
+          - Average
+          - Count
+          - Minimum
+          - Maximum
+          type: string
+        viz_sort_direction:
+          description: "Enum type: SortDirection"
+          enum:
+          - No Sorting
+          - Ascending
+          - Descending
+          type: string
+        viz_data_limit:
+          format: int64
+          type: integer
+        viz_color_scheme:
+          description: "Enum type: ColorScheme"
+          enum:
+          - Default
+          - Sequential
+          - Diverging
+          - Categorical
+          - Monochrome
+          - Pastel
+          - Dark
+          - Light
+          type: string
+        allow_params:
+          type: boolean
+        accept_terms:
+          type: boolean
+        cached:
+          type: boolean
+        schedule:
+          type: string
+        next_run:
+          format: date-time
+          type: string
+        data_time_period_start:
+          description: Start date of the data time period covered
+          format: date-time
+          type: string
+        data_time_period_end:
+          description: End date of the data time period covered
+          format: date-time
+          type: string
+        geographic_coverage_type:
+          description: "Type of geographic coverage (Enum type: GeographicCoverage)"
+          enum:
+          - GLOBAL
+          - CONTINENTAL
+          - REGIONAL
+          - NATIONAL
+          - STATE
+          - LOCAL
+          - CUSTOM
+          - UNKNOWN
+          type: string
+        geographic_coverage_details:
+          description: "Specific regions/countries covered (e.g., 'United States,\
+            \ Canada, Mexico')"
+          type: string
+        data_source_refresh_frequency:
+          description: "How often the source data is refreshed (Enum type: DataRefreshFrequency)"
+          enum:
+          - REAL_TIME
+          - HOURLY
+          - DAILY
+          - WEEKLY
+          - MONTHLY
+          - QUARTERLY
+          - ANNUAL
+          - ONE_TIME
+          - CUSTOM
+          - UNKNOWN
+          type: string
+        data_source_last_refreshed:
+          description: When the source data was last refreshed
+          format: date-time
+          type: string
+    CloudProviders:
+      description: Cloud providers (platforms) database
+      example:
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        parent_company: parent_company
+        marketing_homepage_url: marketing_homepage_url
+        date_created: 2000-01-23T04:56:07.000+00:00
+        name: name
+        provider_id: 0
+      properties:
+        date_created:
+          format: date-time
+          type: string
+        last_updated:
+          format: date-time
+          type: string
+        provider_id:
+          format: int64
+          type: integer
+        name:
+          type: string
+        parent_company:
+          type: string
+        marketing_homepage_url:
+          type: string
+      required:
+      - name
+    CloudProvidersInput:
+      description: Input schema for creating CloudProvider
+      properties:
+        name:
+          type: string
+        parent_company:
+          type: string
+        marketing_homepage_url:
+          type: string
+      required:
+      - name
+    CloudProvidersUpdate:
+      description: Update schema for modifying CloudProvider
+      properties:
+        name:
+          type: string
+        parent_company:
+          type: string
+        marketing_homepage_url:
+          type: string
+    Companies:
+      description: All of our customer company entities
+      example:
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        industry_id: 0
+        company_id: company_id
+        date_created: 2000-01-23T04:56:07.000+00:00
+        stripe_account_id: stripe_account_id
+        company_handle: company_handle
+        credits_balance: 1
+        stripe_account_status: stripe_account_status
+        company_description: company_description
+        company_domain: company_domain
+        company_name: company_name
+        accepted_eula: true
+        country_id: 6
+      properties:
+        date_created:
+          format: date-time
+          type: string
+        last_updated:
+          format: date-time
+          type: string
+        company_id:
+          type: string
+        industry_id:
+          format: int64
+          type: integer
+        country_id:
+          format: int64
+          type: integer
+        company_name:
+          type: string
+        company_description:
+          type: string
+        company_handle:
+          type: string
+        company_domain:
+          type: string
+        credits_balance:
+          description: Current balance of credits for this company (buyer)
+          format: int64
+          type: integer
+        accepted_eula:
+          type: boolean
+        stripe_account_id:
+          description: Stripe Connect account ID for marketplace sellers
+          type: string
+        stripe_account_status:
+          description: "Status of the Stripe account (verified, pending, etc.)"
+          type: string
+      required:
+      - company_domain
+      - company_handle
+      - credits_balance
+    CompaniesInput:
+      description: Input schema for creating Company
+      properties:
+        industry_id:
+          format: int64
+          type: integer
+        country_id:
+          format: int64
+          type: integer
+        company_name:
+          type: string
+        company_description:
+          type: string
+        company_handle:
+          type: string
+        company_domain:
+          type: string
+        credits_balance:
+          description: Current balance of credits for this company (buyer)
+          format: int64
+          type: integer
+        accepted_eula:
+          type: boolean
+        stripe_account_id:
+          description: Stripe Connect account ID for marketplace sellers
+          type: string
+        stripe_account_status:
+          description: "Status of the Stripe account (verified, pending, etc.)"
+          type: string
+      required:
+      - company_domain
+      - company_handle
+    CompaniesUpdate:
+      description: Update schema for modifying Company
+      example:
+        industry_id: 0
+        company_description: company_description
+        company_domain: company_domain
+        stripe_account_id: stripe_account_id
+        company_name: company_name
+        company_handle: company_handle
+        credits_balance: 1
+        stripe_account_status: stripe_account_status
+        accepted_eula: true
+        country_id: 6
+      properties:
+        industry_id:
+          format: int64
+          type: integer
+        country_id:
+          format: int64
+          type: integer
+        company_name:
+          type: string
+        company_description:
+          type: string
+        company_handle:
+          type: string
+        company_domain:
+          type: string
+        credits_balance:
+          description: Current balance of credits for this company (buyer)
+          format: int64
+          type: integer
+        accepted_eula:
+          type: boolean
+        stripe_account_id:
+          description: Stripe Connect account ID for marketplace sellers
+          type: string
+        stripe_account_status:
+          description: "Status of the Stripe account (verified, pending, etc.)"
+          type: string
+    Connections:
+      description: Model for every connection setup from our platform
+      example:
+        credential_type: SERVICE_ACCOUNT
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        company_id: company_id
+        verified_usage_ability: true
+        connection_id: connection_id
+        user_id: user_id
+        engine_id: 0
+        date_created: 2000-01-23T04:56:07.000+00:00
+        name: name
+        description: description
+        provider_domain: provider_domain
+      properties:
+        date_created:
+          format: date-time
+          type: string
+        last_updated:
+          format: date-time
+          type: string
+        connection_id:
+          type: string
+        user_id:
+          type: string
+        engine_id:
+          format: int64
+          type: integer
+        company_id:
+          type: string
+        credential_type:
+          description: "Enum type: CredentialType"
+          enum:
+          - SERVICE_ACCOUNT
+          - USERNAME_PASSWORD
+          - API_KEY
+          - SERVICE_IDENTITY
+          - ACCESS_KEY
+          - NONE
+          - OAUTH
+          - JSON
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        provider_domain:
+          type: string
+        verified_usage_ability:
+          type: boolean
+      required:
+      - company_id
+      - engine_id
+    ConnectionsInput:
+      description: Input schema for creating Connection
+      example:
+        credential_type: SERVICE_ACCOUNT
+        company_id: company_id
+        verified_usage_ability: true
+        user_id: user_id
+        engine_id: 0
+        name: name
+        description: description
+        provider_domain: provider_domain
+      properties:
+        user_id:
+          type: string
+        engine_id:
+          format: int64
+          type: integer
+        company_id:
+          type: string
+        credential_type:
+          description: "Enum type: CredentialType"
+          enum:
+          - SERVICE_ACCOUNT
+          - USERNAME_PASSWORD
+          - API_KEY
+          - SERVICE_IDENTITY
+          - ACCESS_KEY
+          - NONE
+          - OAUTH
+          - JSON
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        provider_domain:
+          type: string
+        verified_usage_ability:
+          type: boolean
+      required:
+      - company_id
+      - engine_id
+    ConnectionsUpdate:
+      description: Update schema for modifying Connection
+      example:
+        credential_type: SERVICE_ACCOUNT
+        company_id: company_id
+        verified_usage_ability: true
+        user_id: user_id
+        engine_id: 0
+        name: name
+        description: description
+        provider_domain: provider_domain
+      properties:
+        user_id:
+          type: string
+        engine_id:
+          format: int64
+          type: integer
+        company_id:
+          type: string
+        credential_type:
+          description: "Enum type: CredentialType"
+          enum:
+          - SERVICE_ACCOUNT
+          - USERNAME_PASSWORD
+          - API_KEY
+          - SERVICE_IDENTITY
+          - ACCESS_KEY
+          - NONE
+          - OAUTH
+          - JSON
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        provider_domain:
+          type: string
+        verified_usage_ability:
+          type: boolean
     Error:
       properties:
         code:
@@ -2366,395 +3772,28 @@ components:
       required:
       - code
       - message
-    Alert:
-      description: User alerts for when assets are updated
-      example:
-        last_updated: last_updated
-        is_active: is_active
-        company_id: company_id
-        last_triggered: last_triggered
-        user_id: user_id
-        date_created: date_created
-        alert_id: alert_id
-        active: active
-        asset_id: asset_id
-        alert_type: alert_type
-      properties:
-        alert_id:
-          readOnly: true
-          type: string
-        asset_id:
-          type: string
-        user_id:
-          type: string
-        company_id:
-          type: string
-        alert_type:
-          type: string
-        is_active:
-          type: string
-        last_triggered:
-          type: string
-        date_created:
-          readOnly: true
-          type: string
-        last_updated:
-          readOnly: true
-          type: string
-        active:
-          type: string
-      required:
-      - alert_type
-      - asset_id
-      - company_id
-    Apikey:
-      description: API Keys model storing every key created
-      properties:
-        api_key_id:
-          readOnly: true
-          type: string
-        user_id:
-          type: string
-        company_id:
-          type: string
-        role_id:
-          type: string
-        token:
-          type: string
-        name:
-          type: string
-        expiration_date_utc:
-          type: string
-        date_created:
-          type: string
-        last_updated:
-          type: string
-        active:
-          type: string
-      required:
-      - api_key_id
-      - company_id
-      - role_id
-      - token
-    Assetpricehistory:
-      description: Pricing history for an asset
-      properties:
-        aph_id:
-          type: string
-        asset_id:
-          type: string
-        price_usd:
-          format: double
-          type: number
-        price_credits:
-          type: string
-        discount_percentage:
-          format: float
-          type: number
-        sale_start_date:
-          type: string
-        sale_end_date:
-          type: string
-        date_ended:
-          type: string
-        date_created:
-          readOnly: true
-          type: string
-        last_updated:
-          readOnly: true
-          type: string
-        active:
-          type: string
-      required:
-      - active
-      - asset_id
-    Asset:
-      description: Asset model for every asset (insight/visualization/feed/etc.) customer
-        creates
-      example:
-        industry_id: industry_id
-        data_time_period_start: data_time_period_start
-        viz_data_aggregation: viz_data_aggregation
-        allow_params: allow_params
-        viz_dep_var_col_name: viz_dep_var_col_name
-        description: description
-        source_table_name: source_table_name
-        asset_id: asset_id
-        source: source
-        geographic_coverage_type: geographic_coverage_type
-        data_source_last_refreshed: data_source_last_refreshed
-        geographic_coverage_details: geographic_coverage_details
-        next_run: next_run
-        approved_by_user_id: approved_by_user_id
-        data_time_period_end: data_time_period_end
-        approved_at: approved_at
-        cached: cached
-        asset_type: asset_type
-        viz_color_col_name: viz_color_col_name
-        llm_connection_id: llm_connection_id
-        viz_data_limit: viz_data_limit
-        slug: slug
-        viz_sort_direction: viz_sort_direction
-        data_source_refresh_frequency: data_source_refresh_frequency
-        snippet_id: snippet_id
-        last_updated: last_updated
-        company_id: company_id
-        visibility: visibility
-        viz_size_col_name: viz_size_col_name
-        approval_status: approval_status
-        sell_in_marketplace: sell_in_marketplace
-        date_created: date_created
-        sql_logic: sql_logic
-        viz_chart_library: viz_chart_library
-        viz_indep_var_col_name: viz_indep_var_col_name
-        active: active
-        tags: tags
-        ai_job_id: ai_job_id
-        source_schema_name: source_schema_name
-        schedule: schedule
-        asset_schema: asset_schema
-        user_id: user_id
-        connection_id: connection_id
-        name: name
-        viz_chart_type: viz_chart_type
-        accept_terms: accept_terms
-        viz_color_scheme: viz_color_scheme
-      properties:
-        asset_id:
-          type: string
-        user_id:
-          type: string
-        company_id:
-          type: string
-        connection_id:
-          type: string
-        llm_connection_id:
-          type: string
-        snippet_id:
-          type: string
-        industry_id:
-          type: string
-        ai_job_id:
-          type: string
-        approval_status:
-          type: string
-        approved_by_user_id:
-          type: string
-        approved_at:
-          type: string
-        name:
-          type: string
-        slug:
-          type: string
-        description:
-          type: string
-        source:
-          type: string
-        asset_type:
-          type: string
-        asset_schema:
-          type: string
-        visibility:
-          type: string
-        tags:
-          type: string
-        sql_logic:
-          type: string
-        source_schema_name:
-          type: string
-        source_table_name:
-          type: string
-        sell_in_marketplace:
-          type: string
-        viz_chart_library:
-          type: string
-        viz_chart_type:
-          type: string
-        viz_dep_var_col_name:
-          type: string
-        viz_indep_var_col_name:
-          type: string
-        viz_size_col_name:
-          type: string
-        viz_color_col_name:
-          type: string
-        viz_data_aggregation:
-          type: string
-        viz_sort_direction:
-          type: string
-        viz_data_limit:
-          type: string
-        viz_color_scheme:
-          type: string
-        allow_params:
-          type: string
-        accept_terms:
-          type: string
-        cached:
-          type: string
-        schedule:
-          type: string
-        next_run:
-          type: string
-        data_time_period_start:
-          type: string
-        data_time_period_end:
-          type: string
-        geographic_coverage_type:
-          type: string
-        geographic_coverage_details:
-          type: string
-        data_source_refresh_frequency:
-          type: string
-        data_source_last_refreshed:
-          type: string
-        date_created:
-          type: string
-        last_updated:
-          type: string
-        active:
-          type: string
-      required:
-      - company_id
-      - name
-      - source
-    Cloudprovider:
-      description: Cloud providers (platforms) database
-      properties:
-        provider_id:
-          readOnly: true
-          type: string
-        name:
-          type: string
-        parent_company:
-          type: string
-        marketing_homepage_url:
-          type: string
-        date_created:
-          type: string
-        last_updated:
-          type: string
-        active:
-          type: string
-      required:
-      - name
-    Company:
-      description: All of our customer company entities
-      properties:
-        company_id:
-          type: string
-        industry_id:
-          type: string
-        country_id:
-          type: string
-        company_name:
-          type: string
-        company_description:
-          type: string
-        company_handle:
-          type: string
-        company_domain:
-          type: string
-        credits_balance:
-          type: string
-        accepted_eula:
-          type: string
-        stripe_account_id:
-          type: string
-        stripe_account_status:
-          type: string
-        date_created:
-          type: string
-        last_updated:
-          type: string
-        active:
-          type: string
-      required:
-      - company_domain
-      - company_handle
-      - credits_balance
-    Connection:
-      description: Model for every connection setup from our platform
-      example:
-        last_updated: last_updated
-        company_id: company_id
-        visibility: visibility
-        verified_usage_ability: verified_usage_ability
-        date_created: date_created
-        description: description
-        provider_domain: provider_domain
-        active: active
-        api_key_param: api_key_param
-        api_provider: api_provider
-        credential_type: credential_type
-        api_endpoint: api_endpoint
-        api_key_value: api_key_value
-        connection_id: connection_id
-        user_id: user_id
-        engine_id: engine_id
-        name: name
-        api_key_location: api_key_location
-        gcp_secret_id: gcp_secret_id
-      properties:
-        connection_id:
-          type: string
-        user_id:
-          type: string
-        engine_id:
-          type: string
-        company_id:
-          type: string
-        credential_type:
-          type: string
-        api_provider:
-          type: string
-        api_endpoint:
-          type: string
-        api_key_location:
-          type: string
-        api_key_param:
-          type: string
-        api_key_value:
-          type: string
-        visibility:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        gcp_secret_id:
-          type: string
-        provider_domain:
-          type: string
-        verified_usage_ability:
-          type: string
-        date_created:
-          type: string
-        last_updated:
-          type: string
-        active:
-          type: string
-      required:
-      - company_id
-      - engine_id
-      - visibility
-    Favorite:
+    Favorites:
       description: User favorites for marketplace assets
       example:
-        last_updated: last_updated
+        last_updated: 2000-01-23T04:56:07.000+00:00
         notes: notes
         company_id: company_id
         user_id: user_id
-        date_created: date_created
-        active: active
-        favorite_id: favorite_id
+        date_created: 2000-01-23T04:56:07.000+00:00
+        favorite_id: 0
         asset_id: asset_id
         category: category
-        priority: priority
+        priority: 6
       properties:
-        favorite_id:
-          readOnly: true
+        date_created:
+          format: date-time
           type: string
+        last_updated:
+          format: date-time
+          type: string
+        favorite_id:
+          format: int64
+          type: integer
         asset_id:
           type: string
         user_id:
@@ -2762,94 +3801,405 @@ components:
         company_id:
           type: string
         notes:
+          description: Optional user notes about this favorite
           type: string
         category:
+          description: "Optional category for organizing favorites (e.g., 'Work',\
+            \ 'Research')"
           type: string
         priority:
-          type: string
-        date_created:
-          readOnly: true
-          type: string
-        last_updated:
-          readOnly: true
-          type: string
-        active:
-          type: string
+          description: User-defined priority for sorting (higher = more important)
+          format: int64
+          type: integer
       required:
       - asset_id
       - company_id
       - priority
-    User:
-      description: Individual users within a company
+    FavoritesInput:
+      description: Input schema for creating Favorite
       example:
-        last_updated: last_updated
+        notes: notes
+        company_id: company_id
+        user_id: user_id
+        asset_id: asset_id
+        category: category
+        priority: 0
+      properties:
+        asset_id:
+          type: string
+        user_id:
+          type: string
+        company_id:
+          type: string
+        notes:
+          description: Optional user notes about this favorite
+          type: string
+        category:
+          description: "Optional category for organizing favorites (e.g., 'Work',\
+            \ 'Research')"
+          type: string
+        priority:
+          description: User-defined priority for sorting (higher = more important)
+          format: int64
+          type: integer
+      required:
+      - asset_id
+      - company_id
+    FavoritesUpdate:
+      description: Update schema for modifying Favorite
+      example:
+        notes: notes
+        company_id: company_id
+        user_id: user_id
+        asset_id: asset_id
+        category: category
+        priority: 0
+      properties:
+        asset_id:
+          type: string
+        user_id:
+          type: string
+        company_id:
+          type: string
+        notes:
+          description: Optional user notes about this favorite
+          type: string
+        category:
+          description: "Optional category for organizing favorites (e.g., 'Work',\
+            \ 'Research')"
+          type: string
+        priority:
+          description: User-defined priority for sorting (higher = more important)
+          format: int64
+          type: integer
+    JobFunctions:
+      description: Metadata about the different kinds of job function our users have.
+      example:
+        last_updated: 2000-01-23T04:56:07.000+00:00
+        date_created: 2000-01-23T04:56:07.000+00:00
+        name: name
+        function_id: 0
+      properties:
+        date_created:
+          format: date-time
+          type: string
+        last_updated:
+          format: date-time
+          type: string
+        function_id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      required:
+      - function_id
+      - name
+    JobFunctionsInput:
+      description: Input schema for creating JobFunction
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    JobFunctionsUpdate:
+      description: Update schema for modifying JobFunction
+      properties:
+        name:
+          type: string
+    Users:
+      description: Individual users within a company with SOC2 authentication tracking
+      example:
+        last_updated: 2000-01-23T04:56:07.000+00:00
         email_address: email_address
         company_id: company_id
         user_id: user_id
+        date_created: 2000-01-23T04:56:07.000+00:00
         timezone: timezone
-        date_created: date_created
-        function_id: function_id
-        active: active
-        status: status
+        function_id: 0
+        status: ACTIVE
       properties:
+        date_created:
+          format: date-time
+          type: string
+        last_updated:
+          format: date-time
+          type: string
         user_id:
           type: string
         company_id:
           type: string
         function_id:
-          type: string
+          format: int64
+          type: integer
         status:
+          description: "Enum type: StatusCodes"
+          enum:
+          - ACTIVE
+          - PENDING
+          - INACTIVE
+          - BANNED
           type: string
         email_address:
           type: string
         timezone:
           type: string
-        date_created:
-          type: string
-        last_updated:
-          type: string
-        active:
-          type: string
       required:
       - company_id
       - status
-    _companies__company_id__api_keys_get_200_response:
+    UsersInput:
+      description: Input schema for creating User
+      example:
+        email_address: email_address
+        company_id: company_id
+        timezone: timezone
+        function_id: 0
+        status: ACTIVE
+      properties:
+        company_id:
+          type: string
+        function_id:
+          format: int64
+          type: integer
+        status:
+          description: "Enum type: StatusCodes"
+          enum:
+          - ACTIVE
+          - PENDING
+          - INACTIVE
+          - BANNED
+          type: string
+        email_address:
+          type: string
+        timezone:
+          type: string
+      required:
+      - company_id
+    UsersUpdate:
+      description: Update schema for modifying User
+      example:
+        email_address: email_address
+        company_id: company_id
+        timezone: timezone
+        function_id: 0
+        status: ACTIVE
+      properties:
+        company_id:
+          type: string
+        function_id:
+          format: int64
+          type: integer
+        status:
+          description: "Enum type: StatusCodes"
+          enum:
+          - ACTIVE
+          - PENDING
+          - INACTIVE
+          - BANNED
+          type: string
+        email_address:
+          type: string
+        timezone:
+          type: string
+    _analyze__company_handle__assets__asset_slug__get_200_response:
+      example:
+        data:
+          industry_id: 6
+          data_time_period_start: 2000-01-23T04:56:07.000+00:00
+          viz_data_aggregation: No Aggregation
+          allow_params: true
+          viz_dep_var_col_name: viz_dep_var_col_name
+          description: description
+          source_table_name: source_table_name
+          asset_id: asset_id
+          source: MANUAL
+          geographic_coverage_type: GLOBAL
+          data_source_last_refreshed: 2000-01-23T04:56:07.000+00:00
+          geographic_coverage_details: geographic_coverage_details
+          next_run: 2000-01-23T04:56:07.000+00:00
+          approved_by_user_id: approved_by_user_id
+          data_time_period_end: 2000-01-23T04:56:07.000+00:00
+          approved_at: 2000-01-23T04:56:07.000+00:00
+          cached: true
+          asset_type: CALCULATION
+          viz_color_col_name: viz_color_col_name
+          llm_connection_id: llm_connection_id
+          viz_data_limit: 1
+          slug: slug
+          viz_sort_direction: No Sorting
+          data_source_refresh_frequency: REAL_TIME
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          snippet_id: 0
+          company_id: company_id
+          visibility: PRIVATE
+          viz_size_col_name: viz_size_col_name
+          date_created: 2000-01-23T04:56:07.000+00:00
+          approval_status: approval_status
+          sell_in_marketplace: true
+          sql_logic: sql_logic
+          viz_chart_library: PLOTLY
+          viz_indep_var_col_name: viz_indep_var_col_name
+          tags: tags
+          ai_job_id: ai_job_id
+          source_schema_name: source_schema_name
+          schedule: schedule
+          asset_schema: "{}"
+          user_id: user_id
+          connection_id: connection_id
+          name: name
+          viz_chart_type: LINE
+          accept_terms: true
+          viz_color_scheme: Default
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/Assets'
+      required:
+      - data
+      - message
+    _cloud_providers_get_200_response:
+      example:
+        data:
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          parent_company: parent_company
+          marketing_homepage_url: marketing_homepage_url
+          date_created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          provider_id: 0
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          parent_company: parent_company
+          marketing_homepage_url: marketing_homepage_url
+          date_created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          provider_id: 0
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/CloudProviders'
+          type: array
+      required:
+      - data
+      - message
+    _cloud_providers__provider_id__get_200_response:
+      example:
+        data:
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          parent_company: parent_company
+          marketing_homepage_url: marketing_homepage_url
+          date_created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          provider_id: 0
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/CloudProviders'
+      required:
+      - data
+      - message
+    _cloud_providers__provider_id__storage_engines_get_200_response:
       example:
         data: "{}"
         message: success
       properties:
         message:
-          description: Response status message
           example: success
           type: string
         data:
-          description: Response data
           type: object
       required:
       - message
-    _companies__company_id__users__user_id__favorites_get_200_response:
+    _companies__company_id__get_200_response:
       example:
         data:
-        - last_updated: last_updated
-          notes: notes
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          industry_id: 0
           company_id: company_id
-          user_id: user_id
-          date_created: date_created
-          active: active
-          favorite_id: favorite_id
-          asset_id: asset_id
-          category: category
-          priority: priority
-        - last_updated: last_updated
-          notes: notes
+          date_created: 2000-01-23T04:56:07.000+00:00
+          stripe_account_id: stripe_account_id
+          company_handle: company_handle
+          credits_balance: 1
+          stripe_account_status: stripe_account_status
+          company_description: company_description
+          company_domain: company_domain
+          company_name: company_name
+          accepted_eula: true
+          country_id: 6
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/Companies'
+      required:
+      - data
+      - message
+    _companies__company_id__patch_200_response_data:
+      example:
+        company_id: company_id
+      properties:
+        company_id:
+          description: ID of the updated companies
+          type: string
+      required:
+      - company_id
+    _companies__company_id__patch_200_response:
+      example:
+        data:
           company_id: company_id
-          user_id: user_id
-          date_created: date_created
-          active: active
-          favorite_id: favorite_id
-          asset_id: asset_id
-          category: category
-          priority: priority
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__patch_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__analytics_assets_get_200_response:
+      example:
+        data:
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          industry_id: 0
+          company_id: company_id
+          date_created: 2000-01-23T04:56:07.000+00:00
+          stripe_account_id: stripe_account_id
+          company_handle: company_handle
+          credits_balance: 1
+          stripe_account_status: stripe_account_status
+          company_description: company_description
+          company_domain: company_domain
+          company_name: company_name
+          accepted_eula: true
+          country_id: 6
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          industry_id: 0
+          company_id: company_id
+          date_created: 2000-01-23T04:56:07.000+00:00
+          stripe_account_id: stripe_account_id
+          company_handle: company_handle
+          credits_balance: 1
+          stripe_account_status: stripe_account_status
+          company_description: company_description
+          company_domain: company_domain
+          company_name: company_name
+          accepted_eula: true
+          country_id: 6
         message: success
       properties:
         message:
@@ -2858,130 +4208,30 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/Favorite'
+            $ref: '#/components/schemas/Companies'
           type: array
       required:
       - data
       - message
-    _companies__company_id__users__user_id__favorites_post_200_response_data:
-      example:
-        favorite_id: favorite_id
-      properties:
-        favorite_id:
-          description: ID of the created favorites
-          type: string
-      required:
-      - favorite_id
-    _companies__company_id__users__user_id__favorites_post_200_response:
+    _companies__company_id__api_keys_get_200_response:
       example:
         data:
-          favorite_id: favorite_id
-        message: success
-      properties:
-        message:
-          description: Response status message
-          example: success
-          type: string
-        data:
-          $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_post_200_response_data'
-      required:
-      - data
-      - message
-    _companies__company_id__users__user_id__favorites__favorite_id__get_200_response:
-      example:
-        data:
-          last_updated: last_updated
-          notes: notes
+        - last_updated: 2000-01-23T04:56:07.000+00:00
           company_id: company_id
+          expiration_date_utc: 2000-01-23T04:56:07.000+00:00
           user_id: user_id
-          date_created: date_created
-          active: active
-          favorite_id: favorite_id
-          asset_id: asset_id
-          category: category
-          priority: priority
-        message: success
-      properties:
-        message:
-          description: Response status message
-          example: success
-          type: string
-        data:
-          $ref: '#/components/schemas/Favorite'
-      required:
-      - data
-      - message
-    _companies__company_id__users__user_id__favorites__favorite_id__delete_200_response_data:
-      example:
-        favorite_id: favorite_id
-      properties:
-        favorite_id:
-          description: ID of the deleted favorites
-          type: string
-      required:
-      - favorite_id
-    _companies__company_id__users__user_id__favorites__favorite_id__delete_200_response:
-      example:
-        data:
-          favorite_id: favorite_id
-        message: success
-      properties:
-        message:
-          description: Response status message
-          example: success
-          type: string
-        data:
-          $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__delete_200_response_data'
-      required:
-      - data
-      - message
-    _companies__company_id__users__user_id__favorites__favorite_id__patch_200_response_data:
-      example:
-        favorite_id: favorite_id
-      properties:
-        favorite_id:
-          description: ID of the updated favorites
-          type: string
-      required:
-      - favorite_id
-    _companies__company_id__users__user_id__favorites__favorite_id__patch_200_response:
-      example:
-        data:
-          favorite_id: favorite_id
-        message: success
-      properties:
-        message:
-          description: Response status message
-          example: success
-          type: string
-        data:
-          $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__patch_200_response_data'
-      required:
-      - data
-      - message
-    _companies__company_id__users__user_id__alerts_get_200_response:
-      example:
-        data:
-        - last_updated: last_updated
-          is_active: is_active
+          role_id: 6
+          date_created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          api_key_id: 0
+        - last_updated: 2000-01-23T04:56:07.000+00:00
           company_id: company_id
-          last_triggered: last_triggered
+          expiration_date_utc: 2000-01-23T04:56:07.000+00:00
           user_id: user_id
-          date_created: date_created
-          alert_id: alert_id
-          active: active
-          asset_id: asset_id
-          alert_type: alert_type
-        - last_updated: last_updated
-          is_active: is_active
-          company_id: company_id
-          last_triggered: last_triggered
-          user_id: user_id
-          date_created: date_created
-          alert_id: alert_id
-          active: active
-          asset_id: asset_id
-          alert_type: alert_type
+          role_id: 6
+          date_created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          api_key_id: 0
         message: success
       properties:
         message:
@@ -2990,24 +4240,24 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/Alert'
+            $ref: '#/components/schemas/ApiKeys'
           type: array
       required:
       - data
       - message
-    _companies__company_id__users__user_id__alerts_post_200_response_data:
+    _companies__company_id__api_keys_post_200_response_data:
       example:
-        alert_id: alert_id
+        api_key_id: api_key_id
       properties:
-        alert_id:
-          description: ID of the created alerts
+        api_key_id:
+          description: ID of the created api_keys
           type: string
       required:
-      - alert_id
-    _companies__company_id__users__user_id__alerts_post_200_response:
+      - api_key_id
+    _companies__company_id__api_keys_post_200_response:
       example:
         data:
-          alert_id: alert_id
+          api_key_id: api_key_id
         message: success
       properties:
         message:
@@ -3015,23 +4265,175 @@ components:
           example: success
           type: string
         data:
-          $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts_post_200_response_data'
+          $ref: '#/components/schemas/_companies__company_id__api_keys_post_200_response_data'
       required:
       - data
       - message
-    _companies__company_id__users__user_id__alerts__alert_id__get_200_response:
+    _companies__company_id__api_keys__api_key_id__get_200_response:
       example:
         data:
-          last_updated: last_updated
-          is_active: is_active
+          last_updated: 2000-01-23T04:56:07.000+00:00
           company_id: company_id
-          last_triggered: last_triggered
+          expiration_date_utc: 2000-01-23T04:56:07.000+00:00
           user_id: user_id
-          date_created: date_created
-          alert_id: alert_id
-          active: active
+          role_id: 6
+          date_created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          api_key_id: 0
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/ApiKeys'
+      required:
+      - data
+      - message
+    _companies__company_id__api_keys__api_key_id__delete_200_response_data:
+      example:
+        api_key_id: api_key_id
+      properties:
+        api_key_id:
+          description: ID of the deleted api_keys
+          type: string
+      required:
+      - api_key_id
+    _companies__company_id__api_keys__api_key_id__delete_200_response:
+      example:
+        data:
+          api_key_id: api_key_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__api_keys__api_key_id__delete_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__api_keys__api_key_id__patch_200_response_data:
+      example:
+        api_key_id: api_key_id
+      properties:
+        api_key_id:
+          description: ID of the updated api_keys
+          type: string
+      required:
+      - api_key_id
+    _companies__company_id__api_keys__api_key_id__patch_200_response:
+      example:
+        data:
+          api_key_id: api_key_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__api_keys__api_key_id__patch_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__assets_get_200_response:
+      example:
+        data:
+        - industry_id: 6
+          data_time_period_start: 2000-01-23T04:56:07.000+00:00
+          viz_data_aggregation: No Aggregation
+          allow_params: true
+          viz_dep_var_col_name: viz_dep_var_col_name
+          description: description
+          source_table_name: source_table_name
           asset_id: asset_id
-          alert_type: alert_type
+          source: MANUAL
+          geographic_coverage_type: GLOBAL
+          data_source_last_refreshed: 2000-01-23T04:56:07.000+00:00
+          geographic_coverage_details: geographic_coverage_details
+          next_run: 2000-01-23T04:56:07.000+00:00
+          approved_by_user_id: approved_by_user_id
+          data_time_period_end: 2000-01-23T04:56:07.000+00:00
+          approved_at: 2000-01-23T04:56:07.000+00:00
+          cached: true
+          asset_type: CALCULATION
+          viz_color_col_name: viz_color_col_name
+          llm_connection_id: llm_connection_id
+          viz_data_limit: 1
+          slug: slug
+          viz_sort_direction: No Sorting
+          data_source_refresh_frequency: REAL_TIME
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          snippet_id: 0
+          company_id: company_id
+          visibility: PRIVATE
+          viz_size_col_name: viz_size_col_name
+          date_created: 2000-01-23T04:56:07.000+00:00
+          approval_status: approval_status
+          sell_in_marketplace: true
+          sql_logic: sql_logic
+          viz_chart_library: PLOTLY
+          viz_indep_var_col_name: viz_indep_var_col_name
+          tags: tags
+          ai_job_id: ai_job_id
+          source_schema_name: source_schema_name
+          schedule: schedule
+          asset_schema: "{}"
+          user_id: user_id
+          connection_id: connection_id
+          name: name
+          viz_chart_type: LINE
+          accept_terms: true
+          viz_color_scheme: Default
+        - industry_id: 6
+          data_time_period_start: 2000-01-23T04:56:07.000+00:00
+          viz_data_aggregation: No Aggregation
+          allow_params: true
+          viz_dep_var_col_name: viz_dep_var_col_name
+          description: description
+          source_table_name: source_table_name
+          asset_id: asset_id
+          source: MANUAL
+          geographic_coverage_type: GLOBAL
+          data_source_last_refreshed: 2000-01-23T04:56:07.000+00:00
+          geographic_coverage_details: geographic_coverage_details
+          next_run: 2000-01-23T04:56:07.000+00:00
+          approved_by_user_id: approved_by_user_id
+          data_time_period_end: 2000-01-23T04:56:07.000+00:00
+          approved_at: 2000-01-23T04:56:07.000+00:00
+          cached: true
+          asset_type: CALCULATION
+          viz_color_col_name: viz_color_col_name
+          llm_connection_id: llm_connection_id
+          viz_data_limit: 1
+          slug: slug
+          viz_sort_direction: No Sorting
+          data_source_refresh_frequency: REAL_TIME
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          snippet_id: 0
+          company_id: company_id
+          visibility: PRIVATE
+          viz_size_col_name: viz_size_col_name
+          date_created: 2000-01-23T04:56:07.000+00:00
+          approval_status: approval_status
+          sell_in_marketplace: true
+          sql_logic: sql_logic
+          viz_chart_library: PLOTLY
+          viz_indep_var_col_name: viz_indep_var_col_name
+          tags: tags
+          ai_job_id: ai_job_id
+          source_schema_name: source_schema_name
+          schedule: schedule
+          asset_schema: "{}"
+          user_id: user_id
+          connection_id: connection_id
+          name: name
+          viz_chart_type: LINE
+          accept_terms: true
+          viz_color_scheme: Default
         message: success
       properties:
         message:
@@ -3039,23 +4441,25 @@ components:
           example: success
           type: string
         data:
-          $ref: '#/components/schemas/Alert'
+          items:
+            $ref: '#/components/schemas/Assets'
+          type: array
       required:
       - data
       - message
-    _companies__company_id__users__user_id__alerts__alert_id__delete_200_response_data:
+    _companies__company_id__assets_post_200_response_data:
       example:
-        alert_id: alert_id
+        asset_id: asset_id
       properties:
-        alert_id:
-          description: ID of the deleted alerts
+        asset_id:
+          description: ID of the created assets
           type: string
       required:
-      - alert_id
-    _companies__company_id__users__user_id__alerts__alert_id__delete_200_response:
+      - asset_id
+    _companies__company_id__assets_post_200_response:
       example:
         data:
-          alert_id: alert_id
+          asset_id: asset_id
         message: success
       properties:
         message:
@@ -3063,23 +4467,23 @@ components:
           example: success
           type: string
         data:
-          $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts__alert_id__delete_200_response_data'
+          $ref: '#/components/schemas/_companies__company_id__assets_post_200_response_data'
       required:
       - data
       - message
-    _companies__company_id__users__user_id__alerts__alert_id__patch_200_response_data:
+    _companies__company_id__assets__asset_id__delete_200_response_data:
       example:
-        alert_id: alert_id
+        asset_id: asset_id
       properties:
-        alert_id:
-          description: ID of the updated alerts
+        asset_id:
+          description: ID of the deleted assets
           type: string
       required:
-      - alert_id
-    _companies__company_id__users__user_id__alerts__alert_id__patch_200_response:
+      - asset_id
+    _companies__company_id__assets__asset_id__delete_200_response:
       example:
         data:
-          alert_id: alert_id
+          asset_id: asset_id
         message: success
       properties:
         message:
@@ -3087,51 +4491,179 @@ components:
           example: success
           type: string
         data:
-          $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts__alert_id__patch_200_response_data'
+          $ref: '#/components/schemas/_companies__company_id__assets__asset_id__delete_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__assets__asset_id__patch_200_response_data:
+      example:
+        asset_id: asset_id
+      properties:
+        asset_id:
+          description: ID of the updated assets
+          type: string
+      required:
+      - asset_id
+    _companies__company_id__assets__asset_id__patch_200_response:
+      example:
+        data:
+          asset_id: asset_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__assets__asset_id__patch_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__assets__asset_id__prices_get_200_response:
+      example:
+        data:
+        - aph_id: aph_id
+          price_usd: 0.8008281904610115
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          date_ended: 2000-01-23T04:56:07.000+00:00
+          date_created: 2000-01-23T04:56:07.000+00:00
+          asset_id: asset_id
+        - aph_id: aph_id
+          price_usd: 0.8008281904610115
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          date_ended: 2000-01-23T04:56:07.000+00:00
+          date_created: 2000-01-23T04:56:07.000+00:00
+          asset_id: asset_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/AssetPriceHistory'
+          type: array
+      required:
+      - data
+      - message
+    _companies__company_id__assets__asset_id__prices_post_200_response_data:
+      example:
+        aph_id: aph_id
+      properties:
+        aph_id:
+          description: ID of the created asset_price_history
+          type: string
+      required:
+      - aph_id
+    _companies__company_id__assets__asset_id__prices_post_200_response:
+      example:
+        data:
+          aph_id: aph_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices_post_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__assets__asset_id__prices__aph_id__get_200_response:
+      example:
+        data:
+          aph_id: aph_id
+          price_usd: 0.8008281904610115
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          date_ended: 2000-01-23T04:56:07.000+00:00
+          date_created: 2000-01-23T04:56:07.000+00:00
+          asset_id: asset_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/AssetPriceHistory'
+      required:
+      - data
+      - message
+    _companies__company_id__assets__asset_id__prices__aph_id__delete_200_response_data:
+      example:
+        aph_id: aph_id
+      properties:
+        aph_id:
+          description: ID of the deleted asset_price_history
+          type: string
+      required:
+      - aph_id
+    _companies__company_id__assets__asset_id__prices__aph_id__delete_200_response:
+      example:
+        data:
+          aph_id: aph_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices__aph_id__delete_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__assets__asset_id__prices__aph_id__patch_200_response_data:
+      example:
+        aph_id: aph_id
+      properties:
+        aph_id:
+          description: ID of the updated asset_price_history
+          type: string
+      required:
+      - aph_id
+    _companies__company_id__assets__asset_id__prices__aph_id__patch_200_response:
+      example:
+        data:
+          aph_id: aph_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__assets__asset_id__prices__aph_id__patch_200_response_data'
       required:
       - data
       - message
     _companies__company_id__connections_get_200_response:
       example:
         data:
-        - last_updated: last_updated
+        - credential_type: SERVICE_ACCOUNT
+          last_updated: 2000-01-23T04:56:07.000+00:00
           company_id: company_id
-          visibility: visibility
-          verified_usage_ability: verified_usage_ability
-          date_created: date_created
-          description: description
-          provider_domain: provider_domain
-          active: active
-          api_key_param: api_key_param
-          api_provider: api_provider
-          credential_type: credential_type
-          api_endpoint: api_endpoint
-          api_key_value: api_key_value
+          verified_usage_ability: true
           connection_id: connection_id
           user_id: user_id
-          engine_id: engine_id
+          engine_id: 0
+          date_created: 2000-01-23T04:56:07.000+00:00
           name: name
-          api_key_location: api_key_location
-          gcp_secret_id: gcp_secret_id
-        - last_updated: last_updated
-          company_id: company_id
-          visibility: visibility
-          verified_usage_ability: verified_usage_ability
-          date_created: date_created
           description: description
           provider_domain: provider_domain
-          active: active
-          api_key_param: api_key_param
-          api_provider: api_provider
-          credential_type: credential_type
-          api_endpoint: api_endpoint
-          api_key_value: api_key_value
+        - credential_type: SERVICE_ACCOUNT
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          company_id: company_id
+          verified_usage_ability: true
           connection_id: connection_id
           user_id: user_id
-          engine_id: engine_id
+          engine_id: 0
+          date_created: 2000-01-23T04:56:07.000+00:00
           name: name
-          api_key_location: api_key_location
-          gcp_secret_id: gcp_secret_id
+          description: description
+          provider_domain: provider_domain
         message: success
       properties:
         message:
@@ -3140,7 +4672,7 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/Connection'
+            $ref: '#/components/schemas/Connections'
           type: array
       required:
       - data
@@ -3172,25 +4704,17 @@ components:
     _companies__company_id__connections__connection_id__get_200_response:
       example:
         data:
-          last_updated: last_updated
+          credential_type: SERVICE_ACCOUNT
+          last_updated: 2000-01-23T04:56:07.000+00:00
           company_id: company_id
-          visibility: visibility
-          verified_usage_ability: verified_usage_ability
-          date_created: date_created
-          description: description
-          provider_domain: provider_domain
-          active: active
-          api_key_param: api_key_param
-          api_provider: api_provider
-          credential_type: credential_type
-          api_endpoint: api_endpoint
-          api_key_value: api_key_value
+          verified_usage_ability: true
           connection_id: connection_id
           user_id: user_id
-          engine_id: engine_id
+          engine_id: 0
+          date_created: 2000-01-23T04:56:07.000+00:00
           name: name
-          api_key_location: api_key_location
-          gcp_secret_id: gcp_secret_id
+          description: description
+          provider_domain: provider_domain
         message: success
       properties:
         message:
@@ -3198,7 +4722,7 @@ components:
           example: success
           type: string
         data:
-          $ref: '#/components/schemas/Connection'
+          $ref: '#/components/schemas/Connections'
       required:
       - data
       - message
@@ -3253,24 +4777,22 @@ components:
     _companies__company_id__users_get_200_response:
       example:
         data:
-        - last_updated: last_updated
+        - last_updated: 2000-01-23T04:56:07.000+00:00
           email_address: email_address
           company_id: company_id
           user_id: user_id
+          date_created: 2000-01-23T04:56:07.000+00:00
           timezone: timezone
-          date_created: date_created
-          function_id: function_id
-          active: active
-          status: status
-        - last_updated: last_updated
+          function_id: 0
+          status: ACTIVE
+        - last_updated: 2000-01-23T04:56:07.000+00:00
           email_address: email_address
           company_id: company_id
           user_id: user_id
+          date_created: 2000-01-23T04:56:07.000+00:00
           timezone: timezone
-          date_created: date_created
-          function_id: function_id
-          active: active
-          status: status
+          function_id: 0
+          status: ACTIVE
         message: success
       properties:
         message:
@@ -3279,7 +4801,7 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/Users'
           type: array
       required:
       - data
@@ -3311,15 +4833,14 @@ components:
     _companies__company_id__users__user_id__get_200_response:
       example:
         data:
-          last_updated: last_updated
+          last_updated: 2000-01-23T04:56:07.000+00:00
           email_address: email_address
           company_id: company_id
           user_id: user_id
+          date_created: 2000-01-23T04:56:07.000+00:00
           timezone: timezone
-          date_created: date_created
-          function_id: function_id
-          active: active
-          status: status
+          function_id: 0
+          status: ACTIVE
         message: success
       properties:
         message:
@@ -3327,7 +4848,7 @@ components:
           example: success
           type: string
         data:
-          $ref: '#/components/schemas/User'
+          $ref: '#/components/schemas/Users'
       required:
       - data
       - message
@@ -3379,103 +4900,23 @@ components:
       required:
       - data
       - message
-    _companies__company_id__assets_get_200_response:
+    _companies__company_id__users__user_id__alerts_get_200_response:
       example:
         data:
-        - industry_id: industry_id
-          data_time_period_start: data_time_period_start
-          viz_data_aggregation: viz_data_aggregation
-          allow_params: allow_params
-          viz_dep_var_col_name: viz_dep_var_col_name
-          description: description
-          source_table_name: source_table_name
-          asset_id: asset_id
-          source: source
-          geographic_coverage_type: geographic_coverage_type
-          data_source_last_refreshed: data_source_last_refreshed
-          geographic_coverage_details: geographic_coverage_details
-          next_run: next_run
-          approved_by_user_id: approved_by_user_id
-          data_time_period_end: data_time_period_end
-          approved_at: approved_at
-          cached: cached
-          asset_type: asset_type
-          viz_color_col_name: viz_color_col_name
-          llm_connection_id: llm_connection_id
-          viz_data_limit: viz_data_limit
-          slug: slug
-          viz_sort_direction: viz_sort_direction
-          data_source_refresh_frequency: data_source_refresh_frequency
-          snippet_id: snippet_id
-          last_updated: last_updated
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          is_active: true
           company_id: company_id
-          visibility: visibility
-          viz_size_col_name: viz_size_col_name
-          approval_status: approval_status
-          sell_in_marketplace: sell_in_marketplace
-          date_created: date_created
-          sql_logic: sql_logic
-          viz_chart_library: viz_chart_library
-          viz_indep_var_col_name: viz_indep_var_col_name
-          active: active
-          tags: tags
-          ai_job_id: ai_job_id
-          source_schema_name: source_schema_name
-          schedule: schedule
-          asset_schema: asset_schema
           user_id: user_id
-          connection_id: connection_id
-          name: name
-          viz_chart_type: viz_chart_type
-          accept_terms: accept_terms
-          viz_color_scheme: viz_color_scheme
-        - industry_id: industry_id
-          data_time_period_start: data_time_period_start
-          viz_data_aggregation: viz_data_aggregation
-          allow_params: allow_params
-          viz_dep_var_col_name: viz_dep_var_col_name
-          description: description
-          source_table_name: source_table_name
+          date_created: 2000-01-23T04:56:07.000+00:00
+          alert_id: 0
           asset_id: asset_id
-          source: source
-          geographic_coverage_type: geographic_coverage_type
-          data_source_last_refreshed: data_source_last_refreshed
-          geographic_coverage_details: geographic_coverage_details
-          next_run: next_run
-          approved_by_user_id: approved_by_user_id
-          data_time_period_end: data_time_period_end
-          approved_at: approved_at
-          cached: cached
-          asset_type: asset_type
-          viz_color_col_name: viz_color_col_name
-          llm_connection_id: llm_connection_id
-          viz_data_limit: viz_data_limit
-          slug: slug
-          viz_sort_direction: viz_sort_direction
-          data_source_refresh_frequency: data_source_refresh_frequency
-          snippet_id: snippet_id
-          last_updated: last_updated
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          is_active: true
           company_id: company_id
-          visibility: visibility
-          viz_size_col_name: viz_size_col_name
-          approval_status: approval_status
-          sell_in_marketplace: sell_in_marketplace
-          date_created: date_created
-          sql_logic: sql_logic
-          viz_chart_library: viz_chart_library
-          viz_indep_var_col_name: viz_indep_var_col_name
-          active: active
-          tags: tags
-          ai_job_id: ai_job_id
-          source_schema_name: source_schema_name
-          schedule: schedule
-          asset_schema: asset_schema
           user_id: user_id
-          connection_id: connection_id
-          name: name
-          viz_chart_type: viz_chart_type
-          accept_terms: accept_terms
-          viz_color_scheme: viz_color_scheme
+          date_created: 2000-01-23T04:56:07.000+00:00
+          alert_id: 0
+          asset_id: asset_id
         message: success
       properties:
         message:
@@ -3484,24 +4925,24 @@ components:
           type: string
         data:
           items:
-            $ref: '#/components/schemas/Asset'
+            $ref: '#/components/schemas/Alerts'
           type: array
       required:
       - data
       - message
-    _companies__company_id__assets_post_200_response_data:
+    _companies__company_id__users__user_id__alerts_post_200_response_data:
       example:
-        asset_id: asset_id
+        alert_id: alert_id
       properties:
-        asset_id:
-          description: ID of the created assets
+        alert_id:
+          description: ID of the created alerts
           type: string
       required:
-      - asset_id
-    _companies__company_id__assets_post_200_response:
+      - alert_id
+    _companies__company_id__users__user_id__alerts_post_200_response:
       example:
         data:
-          asset_id: asset_id
+          alert_id: alert_id
         message: success
       properties:
         message:
@@ -3509,268 +4950,250 @@ components:
           example: success
           type: string
         data:
-          $ref: '#/components/schemas/_companies__company_id__assets_post_200_response_data'
+          $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts_post_200_response_data'
       required:
       - data
       - message
-    _companies__company_id__assets__asset_id__get_200_response:
+    _companies__company_id__users__user_id__alerts_asset__asset_id__get_200_response:
       example:
         data:
-          industry_id: industry_id
-          data_time_period_start: data_time_period_start
-          viz_data_aggregation: viz_data_aggregation
-          allow_params: allow_params
-          viz_dep_var_col_name: viz_dep_var_col_name
-          description: description
-          source_table_name: source_table_name
-          asset_id: asset_id
-          source: source
-          geographic_coverage_type: geographic_coverage_type
-          data_source_last_refreshed: data_source_last_refreshed
-          geographic_coverage_details: geographic_coverage_details
-          next_run: next_run
-          approved_by_user_id: approved_by_user_id
-          data_time_period_end: data_time_period_end
-          approved_at: approved_at
-          cached: cached
-          asset_type: asset_type
-          viz_color_col_name: viz_color_col_name
-          llm_connection_id: llm_connection_id
-          viz_data_limit: viz_data_limit
-          slug: slug
-          viz_sort_direction: viz_sort_direction
-          data_source_refresh_frequency: data_source_refresh_frequency
-          snippet_id: snippet_id
-          last_updated: last_updated
-          company_id: company_id
-          visibility: visibility
-          viz_size_col_name: viz_size_col_name
-          approval_status: approval_status
-          sell_in_marketplace: sell_in_marketplace
-          date_created: date_created
-          sql_logic: sql_logic
-          viz_chart_library: viz_chart_library
-          viz_indep_var_col_name: viz_indep_var_col_name
-          active: active
-          tags: tags
-          ai_job_id: ai_job_id
-          source_schema_name: source_schema_name
-          schedule: schedule
-          asset_schema: asset_schema
-          user_id: user_id
-          connection_id: connection_id
-          name: name
-          viz_chart_type: viz_chart_type
-          accept_terms: accept_terms
-          viz_color_scheme: viz_color_scheme
-        message: success
-      properties:
-        message:
-          description: Response status message
-          example: success
-          type: string
-        data:
-          $ref: '#/components/schemas/Asset'
-      required:
-      - data
-      - message
-    _companies__company_id__assets__asset_id__delete_200_response_data:
-      example:
-        asset_id: asset_id
-      properties:
-        asset_id:
-          description: ID of the deleted assets
-          type: string
-      required:
-      - asset_id
-    _companies__company_id__assets__asset_id__delete_200_response:
-      example:
-        data:
-          asset_id: asset_id
-        message: success
-      properties:
-        message:
-          description: Response status message
-          example: success
-          type: string
-        data:
-          $ref: '#/components/schemas/_companies__company_id__assets__asset_id__delete_200_response_data'
-      required:
-      - data
-      - message
-    _companies__company_id__assets__asset_id__patch_200_response_data:
-      example:
-        asset_id: asset_id
-      properties:
-        asset_id:
-          description: ID of the updated assets
-          type: string
-      required:
-      - asset_id
-    _companies__company_id__assets__asset_id__patch_200_response:
-      example:
-        data:
-          asset_id: asset_id
-        message: success
-      properties:
-        message:
-          description: Response status message
-          example: success
-          type: string
-        data:
-          $ref: '#/components/schemas/_companies__company_id__assets__asset_id__patch_200_response_data'
-      required:
-      - data
-      - message
-    _me_get_200_response_profile:
-      example:
-        last_updated: 2000-01-23T04:56:07.000+00:00
-        email_address: email_address
-        company_id: company_id
-        timezone: timezone
-        date_created: 2000-01-23T04:56:07.000+00:00
-        function_id: 0
-        active: true
-        id: id
-        type: human_user
-        status: status
-      properties:
-        id:
-          description: User ID (primary key)
-          type: string
-        type:
-          description: Profile type
-          enum:
-          - human_user
-          - service_account
-          type: string
-        company_id:
-          description: Company ID
-          type: string
-        function_id:
-          description: User function/role ID
-          type: integer
-        status:
-          description: User status
-          type: string
-        email_address:
-          description: User email address
-          format: email
-          type: string
-        timezone:
-          description: User timezone
-          type: string
-        date_created:
-          description: Account creation date
-          format: date-time
-          type: string
-        last_updated:
-          description: Last profile update
-          format: date-time
-          type: string
-        active:
-          description: Account active status
-          type: boolean
-    _me_get_200_response_token_metadata:
-      description: JWT token metadata (null for API keys)
-      example:
-        expires_at: 5
-        auth_time: 1
-        issued_at: 5
-        issuer: issuer
-      properties:
-        issuer:
-          description: Token issuer
-          type: string
-        auth_time:
-          description: Authentication time
-          type: integer
-        issued_at:
-          description: Token issued timestamp
-          type: integer
-        expires_at:
-          description: Token expiration timestamp
-          type: integer
-      nullable: true
-    _me_get_200_response_api_key_info:
-      description: API key information (only for API key authentication)
-      example:
-        api_key_id: api_key_id
-        api_key_name: api_key_name
-      properties:
-        api_key_id:
-          description: API key ID
-          type: string
-        api_key_name:
-          description: API key name
-          type: string
-      nullable: true
-    _me_get_200_response:
-      example:
-        auth_method: jwt_token
-        company_id: company_id
-        user_id: user_id
-        role_id: 6
-        origin_domain: origin_domain
-        profile:
           last_updated: 2000-01-23T04:56:07.000+00:00
-          email_address: email_address
+          is_active: true
           company_id: company_id
-          timezone: timezone
+          user_id: user_id
           date_created: 2000-01-23T04:56:07.000+00:00
-          function_id: 0
-          active: true
-          id: id
-          type: human_user
-          status: status
-        email: email
-        platform: platform
-        token_metadata:
-          expires_at: 5
-          auth_time: 1
-          issued_at: 5
-          issuer: issuer
-        api_key_info:
-          api_key_id: api_key_id
-          api_key_name: api_key_name
+          alert_id: 0
+          asset_id: asset_id
+        message: success
       properties:
-        user_id:
-          description: Firebase user ID
+        message:
+          description: Response status message
+          example: success
           type: string
-        email:
-          description: User email address
-          format: email
-          type: string
-        auth_method:
-          description: Authentication method used
-          enum:
-          - jwt_token
-          - api_key
-          type: string
-        platform:
-          description: Platform origin
-          type: string
-        origin_domain:
-          description: Request origin domain
-          type: string
-        profile:
-          $ref: '#/components/schemas/_me_get_200_response_profile'
-        company_id:
-          description: Company ID from authentication claims
-          type: string
-        role_id:
-          description: Role ID from authentication claims
-          type: integer
-        token_metadata:
-          $ref: '#/components/schemas/_me_get_200_response_token_metadata'
-        api_key_info:
-          $ref: '#/components/schemas/_me_get_200_response_api_key_info'
+        data:
+          $ref: '#/components/schemas/Alerts'
       required:
-      - auth_method
-      - company_id
-      - profile
-      - role_id
-      - user_id
+      - data
+      - message
+    _companies__company_id__users__user_id__alerts__alert_id__delete_200_response_data:
+      example:
+        alert_id: alert_id
+      properties:
+        alert_id:
+          description: ID of the deleted alerts
+          type: string
+      required:
+      - alert_id
+    _companies__company_id__users__user_id__alerts__alert_id__delete_200_response:
+      example:
+        data:
+          alert_id: alert_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts__alert_id__delete_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__users__user_id__alerts__alert_id__patch_200_response_data:
+      example:
+        alert_id: alert_id
+      properties:
+        alert_id:
+          description: ID of the updated alerts
+          type: string
+      required:
+      - alert_id
+    _companies__company_id__users__user_id__alerts__alert_id__patch_200_response:
+      example:
+        data:
+          alert_id: alert_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__users__user_id__alerts__alert_id__patch_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__users__user_id__favorites_get_200_response:
+      example:
+        data:
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          company_id: company_id
+          user_id: user_id
+          date_created: 2000-01-23T04:56:07.000+00:00
+          favorite_id: 0
+          asset_id: asset_id
+          category: category
+          priority: 6
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          company_id: company_id
+          user_id: user_id
+          date_created: 2000-01-23T04:56:07.000+00:00
+          favorite_id: 0
+          asset_id: asset_id
+          category: category
+          priority: 6
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/Favorites'
+          type: array
+      required:
+      - data
+      - message
+    _companies__company_id__users__user_id__favorites_post_200_response_data:
+      example:
+        favorite_id: favorite_id
+      properties:
+        favorite_id:
+          description: ID of the created favorites
+          type: string
+      required:
+      - favorite_id
+    _companies__company_id__users__user_id__favorites_post_200_response:
+      example:
+        data:
+          favorite_id: favorite_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites_post_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__users__user_id__favorites_category__category__get_200_response:
+      example:
+        data:
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          notes: notes
+          company_id: company_id
+          user_id: user_id
+          date_created: 2000-01-23T04:56:07.000+00:00
+          favorite_id: 0
+          asset_id: asset_id
+          category: category
+          priority: 6
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/Favorites'
+      required:
+      - data
+      - message
+    _companies__company_id__users__user_id__favorites__favorite_id__delete_200_response_data:
+      example:
+        favorite_id: favorite_id
+      properties:
+        favorite_id:
+          description: ID of the deleted favorites
+          type: string
+      required:
+      - favorite_id
+    _companies__company_id__users__user_id__favorites__favorite_id__delete_200_response:
+      example:
+        data:
+          favorite_id: favorite_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__delete_200_response_data'
+      required:
+      - data
+      - message
+    _companies__company_id__users__user_id__favorites__favorite_id__patch_200_response_data:
+      example:
+        favorite_id: favorite_id
+      properties:
+        favorite_id:
+          description: ID of the updated favorites
+          type: string
+      required:
+      - favorite_id
+    _companies__company_id__users__user_id__favorites__favorite_id__patch_200_response:
+      example:
+        data:
+          favorite_id: favorite_id
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/_companies__company_id__users__user_id__favorites__favorite_id__patch_200_response_data'
+      required:
+      - data
+      - message
+    _job_functions_get_200_response:
+      example:
+        data:
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          date_created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          function_id: 0
+        - last_updated: 2000-01-23T04:56:07.000+00:00
+          date_created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          function_id: 0
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          items:
+            $ref: '#/components/schemas/JobFunctions'
+          type: array
+      required:
+      - data
+      - message
+    _job_functions__function_id__get_200_response:
+      example:
+        data:
+          last_updated: 2000-01-23T04:56:07.000+00:00
+          date_created: 2000-01-23T04:56:07.000+00:00
+          name: name
+          function_id: 0
+        message: success
+      properties:
+        message:
+          description: Response status message
+          example: success
+          type: string
+        data:
+          $ref: '#/components/schemas/JobFunctions'
+      required:
+      - data
+      - message
     inline_object:
       example:
         code: 400

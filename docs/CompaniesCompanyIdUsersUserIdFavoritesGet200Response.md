@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Message** | **string** | Response status message | 
-**Data** | [**[]Favorite**](Favorite.md) |  | 
+**Data** | [**[]Favorites**](Favorites.md) |  | 
 
 ## Methods
 
 ### NewCompaniesCompanyIdUsersUserIdFavoritesGet200Response
 
-`func NewCompaniesCompanyIdUsersUserIdFavoritesGet200Response(message string, data []Favorite, ) *CompaniesCompanyIdUsersUserIdFavoritesGet200Response`
+`func NewCompaniesCompanyIdUsersUserIdFavoritesGet200Response(message string, data []Favorites, ) *CompaniesCompanyIdUsersUserIdFavoritesGet200Response`
 
 NewCompaniesCompanyIdUsersUserIdFavoritesGet200Response instantiates a new CompaniesCompanyIdUsersUserIdFavoritesGet200Response object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetMessage sets Message field to given value.
 
 ### GetData
 
-`func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) GetData() []Favorite`
+`func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) GetData() []Favorites`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) GetDataOk() (*[]Favorite, bool)`
+`func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) GetDataOk() (*[]Favorites, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) SetData(v []Favorite)`
+`func (o *CompaniesCompanyIdUsersUserIdFavoritesGet200Response) SetData(v []Favorites)`
 
 SetData sets Data field to given value.
 

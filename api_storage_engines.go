@@ -3,7 +3,7 @@ Spartera API Documentation
 
 Auto-generated API documentation for REST services of the Spartera platform
 
-API version: 0.0.0
+API version: 1.24.0
 Contact: support@spartera.com
 */
 
@@ -31,7 +31,7 @@ type StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest s
 	engineId string
 }
 
-func (r StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest) Execute() (*CloudProvidersProviderIdStorageEnginesGet200Response, *http.Response, error) {
 	return r.ApiService.CloudProvidersProviderIdStorageEnginesEngineIdGetExecute(r)
 }
 
@@ -53,13 +53,13 @@ func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesEngineI
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesEngineIdGetExecute(r StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CloudProvidersProviderIdStorageEnginesGet200Response
+func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesEngineIdGetExecute(r StorageEnginesAPICloudProvidersProviderIdStorageEnginesEngineIdGetRequest) (*CloudProvidersProviderIdStorageEnginesGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CloudProvidersProviderIdStorageEnginesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageEnginesAPIService.CloudProvidersProviderIdStorageEnginesEngineIdGet")
@@ -181,7 +181,7 @@ type StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest struct {
 	providerId string
 }
 
-func (r StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest) Execute() (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+func (r StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest) Execute() (*CloudProvidersProviderIdStorageEnginesGet200Response, *http.Response, error) {
 	return r.ApiService.CloudProvidersProviderIdStorageEnginesGetExecute(r)
 }
 
@@ -201,13 +201,13 @@ func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesGet(ctx
 }
 
 // Execute executes the request
-//  @return CompaniesCompanyIdApiKeysGet200Response
-func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesGetExecute(r StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest) (*CompaniesCompanyIdApiKeysGet200Response, *http.Response, error) {
+//  @return CloudProvidersProviderIdStorageEnginesGet200Response
+func (a *StorageEnginesAPIService) CloudProvidersProviderIdStorageEnginesGetExecute(r StorageEnginesAPICloudProvidersProviderIdStorageEnginesGetRequest) (*CloudProvidersProviderIdStorageEnginesGet200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *CompaniesCompanyIdApiKeysGet200Response
+		localVarReturnValue  *CloudProvidersProviderIdStorageEnginesGet200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StorageEnginesAPIService.CloudProvidersProviderIdStorageEnginesGet")
