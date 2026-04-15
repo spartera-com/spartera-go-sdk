@@ -4,95 +4,21 @@ All URIs are relative to *https://api.spartera.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete) | **Delete** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Delete single alert by ID
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdGet**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAlertIdGet) | **Get** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Get single alert by ID
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch) | **Patch** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Update an existing alert by ID
-[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet) | **Get** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all | Get all alerts for a specific asset
-[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet) | **Get** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id} | Get all alerts for a specific asset (by user)
-[**CompaniesCompanyIdUsersUserIdAlertsGet**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsGet) | **Get** /companies/{company_id}/users/{user_id}/alerts | Get a list of all alerts for a specific user
-[**CompaniesCompanyIdUsersUserIdAlertsPost**](AlertsAPI.md#CompaniesCompanyIdUsersUserIdAlertsPost) | **Post** /companies/{company_id}/users/{user_id}/alerts | POST /companies/{company_id}/users/{user_id}/alerts
+[**CreateAlerts**](AlertsAPI.md#CreateAlerts) | **Post** /companies/{company_id}/users/{user_id}/alerts | POST /companies/{company_id}/users/{user_id}/alerts
+[**DeleteAlerts**](AlertsAPI.md#DeleteAlerts) | **Delete** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Delete single alert by ID
+[**GetAlertsById**](AlertsAPI.md#GetAlertsById) | **Get** /companies/{company_id}/users/{user_id}/alerts | Get a list of all alerts for a specific user
+[**GetAlertsByIdAssetAll**](AlertsAPI.md#GetAlertsByIdAssetAll) | **Get** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id}/all | Get all alerts for a specific asset
+[**GetAlertsByIdUsers**](AlertsAPI.md#GetAlertsByIdUsers) | **Get** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Get single alert by ID
+[**GetAlertsByIdUsersAsset**](AlertsAPI.md#GetAlertsByIdUsersAsset) | **Get** /companies/{company_id}/users/{user_id}/alerts/asset/{asset_id} | Get all alerts for a specific asset (by user)
+[**UpdateAlerts**](AlertsAPI.md#UpdateAlerts) | **Patch** /companies/{company_id}/users/{user_id}/alerts/{alert_id} | Update an existing alert by ID
 
 
 
-## CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete
+## CreateAlerts
 
-> CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete(ctx, companyId, userId, alertId).Execute()
+> CreateAlerts200Response CreateAlerts(ctx, companyId, userId).AlertsInput(alertsInput).Execute()
 
-Delete single alert by ID
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
-)
-
-func main() {
-	companyId := "companyId_example" // string | 
-	userId := "userId_example" // string | 
-	alertId := "alertId_example" // string | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete(context.Background(), companyId, userId, alertId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete`: CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response
-	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**companyId** | **string** |  | 
-**userId** | **string** |  | 
-**alertId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCompaniesCompanyIdUsersUserIdAlertsAlertIdDeleteRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdDelete200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CompaniesCompanyIdUsersUserIdAlertsAlertIdGet
-
-> CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response CompaniesCompanyIdUsersUserIdAlertsAlertIdGet(ctx, companyId, userId, alertId).Execute()
-
-Get single alert by ID
+POST /companies/{company_id}/users/{user_id}/alerts
 
 ### Example
 
@@ -103,23 +29,23 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	companyId := "companyId_example" // string | 
-	userId := "userId_example" // string | 
-	alertId := "alertId_example" // string | 
+	companyId := "companyId_example" // string | Unique identifier for the Company
+	userId := "userId_example" // string | Unique identifier for the User
+	alertsInput := *openapiclient.NewAlertsInput("asset_id_abc123", "company_id_abc123") // AlertsInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdGet(context.Background(), companyId, userId, alertId).Execute()
+	resp, r, err := apiClient.AlertsAPI.CreateAlerts(context.Background(), companyId, userId).AlertsInput(alertsInput).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CreateAlerts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdGet`: CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response
-	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdGet`: %v\n", resp)
+	// response from `CreateAlerts`: CreateAlerts200Response
+	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CreateAlerts`: %v\n", resp)
 }
 ```
 
@@ -129,100 +55,23 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**companyId** | **string** |  | 
-**userId** | **string** |  | 
-**alertId** | **string** |  | 
+**companyId** | **string** | Unique identifier for the Company | 
+**userId** | **string** | Unique identifier for the User | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCompaniesCompanyIdUsersUserIdAlertsAlertIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateAlertsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
-
+ **alertsInput** | [**AlertsInput**](AlertsInput.md) |  | 
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch
-
-> CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch(ctx, companyId, userId, alertId).AlertsUpdate(alertsUpdate).Execute()
-
-Update an existing alert by ID
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
-)
-
-func main() {
-	companyId := "companyId_example" // string | 
-	userId := "userId_example" // string | 
-	alertId := "alertId_example" // string | 
-	alertsUpdate := *openapiclient.NewAlertsUpdate() // AlertsUpdate | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch(context.Background(), companyId, userId, alertId).AlertsUpdate(alertsUpdate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch`: CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response
-	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**companyId** | **string** |  | 
-**userId** | **string** |  | 
-**alertId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCompaniesCompanyIdUsersUserIdAlertsAlertIdPatchRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
- **alertsUpdate** | [**AlertsUpdate**](AlertsUpdate.md) |  | 
-
-### Return type
-
-[**CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response**](CompaniesCompanyIdUsersUserIdAlertsAlertIdPatch200Response.md)
+[**CreateAlerts200Response**](CreateAlerts200Response.md)
 
 ### Authorization
 
@@ -238,11 +87,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet
+## DeleteAlerts
 
-> CompaniesCompanyIdUsersUserIdAlertsGet200Response CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(ctx, companyId, userId, assetId).Execute()
+> DeleteAlerts200Response DeleteAlerts(ctx, companyId, userId, alertId).Execute()
 
-Get all alerts for a specific asset
+Delete single alert by ID
 
 ### Example
 
@@ -253,23 +102,23 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	companyId := "companyId_example" // string | 
-	userId := "userId_example" // string | 
-	assetId := "assetId_example" // string | 
+	companyId := "companyId_example" // string | Unique identifier for the Company
+	userId := "userId_example" // string | Unique identifier for the User
+	alertId := "alertId_example" // string | Unique identifier for the Alert
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet(context.Background(), companyId, userId, assetId).Execute()
+	resp, r, err := apiClient.AlertsAPI.DeleteAlerts(context.Background(), companyId, userId, alertId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.DeleteAlerts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet`: CompaniesCompanyIdUsersUserIdAlertsGet200Response
-	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGet`: %v\n", resp)
+	// response from `DeleteAlerts`: DeleteAlerts200Response
+	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.DeleteAlerts`: %v\n", resp)
 }
 ```
 
@@ -279,13 +128,13 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**companyId** | **string** |  | 
-**userId** | **string** |  | 
-**assetId** | **string** |  | 
+**companyId** | **string** | Unique identifier for the Company | 
+**userId** | **string** | Unique identifier for the User | 
+**alertId** | **string** | Unique identifier for the Alert | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCompaniesCompanyIdUsersUserIdAlertsAssetAssetIdAllGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteAlertsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -296,7 +145,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsGet200Response**](CompaniesCompanyIdUsersUserIdAlertsGet200Response.md)
+[**DeleteAlerts200Response**](DeleteAlerts200Response.md)
 
 ### Authorization
 
@@ -312,83 +161,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet
+## GetAlertsById
 
-> CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet(ctx, companyId, userId, assetId).Execute()
-
-Get all alerts for a specific asset (by user)
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
-)
-
-func main() {
-	companyId := "companyId_example" // string | 
-	userId := "userId_example" // string | 
-	assetId := "assetId_example" // string | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet(context.Background(), companyId, userId, assetId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet`: CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response
-	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**companyId** | **string** |  | 
-**userId** | **string** |  | 
-**assetId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGetRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response**](CompaniesCompanyIdUsersUserIdAlertsAssetAssetIdGet200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CompaniesCompanyIdUsersUserIdAlertsGet
-
-> CompaniesCompanyIdUsersUserIdAlertsGet200Response CompaniesCompanyIdUsersUserIdAlertsGet(ctx, companyId, userId).Execute()
+> GetAlertsById200Response GetAlertsById(ctx, companyId, userId).Execute()
 
 Get a list of all alerts for a specific user
 
@@ -401,22 +176,22 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	companyId := "companyId_example" // string | 
-	userId := "userId_example" // string | 
+	companyId := "companyId_example" // string | Unique identifier for the Company
+	userId := "userId_example" // string | Unique identifier for the User
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsGet(context.Background(), companyId, userId).Execute()
+	resp, r, err := apiClient.AlertsAPI.GetAlertsById(context.Background(), companyId, userId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.GetAlertsById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsGet`: CompaniesCompanyIdUsersUserIdAlertsGet200Response
-	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsGet`: %v\n", resp)
+	// response from `GetAlertsById`: GetAlertsById200Response
+	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.GetAlertsById`: %v\n", resp)
 }
 ```
 
@@ -426,12 +201,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**companyId** | **string** |  | 
-**userId** | **string** |  | 
+**companyId** | **string** | Unique identifier for the Company | 
+**userId** | **string** | Unique identifier for the User | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCompaniesCompanyIdUsersUserIdAlertsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAlertsByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -441,7 +216,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsGet200Response**](CompaniesCompanyIdUsersUserIdAlertsGet200Response.md)
+[**GetAlertsById200Response**](GetAlertsById200Response.md)
 
 ### Authorization
 
@@ -457,11 +232,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CompaniesCompanyIdUsersUserIdAlertsPost
+## GetAlertsByIdAssetAll
 
-> CompaniesCompanyIdUsersUserIdAlertsPost200Response CompaniesCompanyIdUsersUserIdAlertsPost(ctx, companyId, userId).AlertsInput(alertsInput).Execute()
+> GetAlertsById200Response GetAlertsByIdAssetAll(ctx, companyId, userId, assetId).Execute()
 
-POST /companies/{company_id}/users/{user_id}/alerts
+Get all alerts for a specific asset
 
 ### Example
 
@@ -472,23 +247,23 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	companyId := "companyId_example" // string | 
-	userId := "userId_example" // string | 
-	alertsInput := *openapiclient.NewAlertsInput("AssetId_example", "CompanyId_example") // AlertsInput | 
+	companyId := "companyId_example" // string | Unique identifier for the Company
+	userId := "userId_example" // string | Unique identifier for the User
+	assetId := "assetId_example" // string | Unique identifier for the Asset
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsPost(context.Background(), companyId, userId).AlertsInput(alertsInput).Execute()
+	resp, r, err := apiClient.AlertsAPI.GetAlertsByIdAssetAll(context.Background(), companyId, userId, assetId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsPost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.GetAlertsByIdAssetAll``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CompaniesCompanyIdUsersUserIdAlertsPost`: CompaniesCompanyIdUsersUserIdAlertsPost200Response
-	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.CompaniesCompanyIdUsersUserIdAlertsPost`: %v\n", resp)
+	// response from `GetAlertsByIdAssetAll`: GetAlertsById200Response
+	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.GetAlertsByIdAssetAll`: %v\n", resp)
 }
 ```
 
@@ -498,23 +273,248 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**companyId** | **string** |  | 
-**userId** | **string** |  | 
+**companyId** | **string** | Unique identifier for the Company | 
+**userId** | **string** | Unique identifier for the User | 
+**assetId** | **string** | Unique identifier for the Asset | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCompaniesCompanyIdUsersUserIdAlertsPostRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAlertsByIdAssetAllRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **alertsInput** | [**AlertsInput**](AlertsInput.md) |  | 
+
 
 ### Return type
 
-[**CompaniesCompanyIdUsersUserIdAlertsPost200Response**](CompaniesCompanyIdUsersUserIdAlertsPost200Response.md)
+[**GetAlertsById200Response**](GetAlertsById200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAlertsByIdUsers
+
+> GetAlertsById200Response GetAlertsByIdUsers(ctx, companyId, userId, alertId).Execute()
+
+Get single alert by ID
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	companyId := "companyId_example" // string | Unique identifier for the Company
+	userId := "userId_example" // string | Unique identifier for the User
+	alertId := "alertId_example" // string | Unique identifier for the Alert
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AlertsAPI.GetAlertsByIdUsers(context.Background(), companyId, userId, alertId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.GetAlertsByIdUsers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAlertsByIdUsers`: GetAlertsById200Response
+	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.GetAlertsByIdUsers`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**companyId** | **string** | Unique identifier for the Company | 
+**userId** | **string** | Unique identifier for the User | 
+**alertId** | **string** | Unique identifier for the Alert | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAlertsByIdUsersRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**GetAlertsById200Response**](GetAlertsById200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAlertsByIdUsersAsset
+
+> GetAlertsById200Response GetAlertsByIdUsersAsset(ctx, companyId, userId, assetId).Execute()
+
+Get all alerts for a specific asset (by user)
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	companyId := "companyId_example" // string | Unique identifier for the Company
+	userId := "userId_example" // string | Unique identifier for the User
+	assetId := "assetId_example" // string | Unique identifier for the Asset
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AlertsAPI.GetAlertsByIdUsersAsset(context.Background(), companyId, userId, assetId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.GetAlertsByIdUsersAsset``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAlertsByIdUsersAsset`: GetAlertsById200Response
+	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.GetAlertsByIdUsersAsset`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**companyId** | **string** | Unique identifier for the Company | 
+**userId** | **string** | Unique identifier for the User | 
+**assetId** | **string** | Unique identifier for the Asset | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAlertsByIdUsersAssetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**GetAlertsById200Response**](GetAlertsById200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateAlerts
+
+> UpdateAlerts200Response UpdateAlerts(ctx, companyId, userId, alertId).AlertsUpdate(alertsUpdate).Execute()
+
+Update an existing alert by ID
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	companyId := "companyId_example" // string | Unique identifier for the Company
+	userId := "userId_example" // string | Unique identifier for the User
+	alertId := "alertId_example" // string | Unique identifier for the Alert
+	alertsUpdate := *openapiclient.NewAlertsUpdate() // AlertsUpdate | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AlertsAPI.UpdateAlerts(context.Background(), companyId, userId, alertId).AlertsUpdate(alertsUpdate).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertsAPI.UpdateAlerts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateAlerts`: UpdateAlerts200Response
+	fmt.Fprintf(os.Stdout, "Response from `AlertsAPI.UpdateAlerts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**companyId** | **string** | Unique identifier for the Company | 
+**userId** | **string** | Unique identifier for the User | 
+**alertId** | **string** | Unique identifier for the Alert | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateAlertsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **alertsUpdate** | [**AlertsUpdate**](AlertsUpdate.md) |  | 
+
+### Return type
+
+[**UpdateAlerts200Response**](UpdateAlerts200Response.md)
 
 ### Authorization
 

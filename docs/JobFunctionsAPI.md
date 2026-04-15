@@ -4,14 +4,14 @@ All URIs are relative to *https://api.spartera.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**JobFunctionsFunctionIdGet**](JobFunctionsAPI.md#JobFunctionsFunctionIdGet) | **Get** /job-functions/{function_id} | Get single job function by ID
-[**JobFunctionsGet**](JobFunctionsAPI.md#JobFunctionsGet) | **Get** /job-functions | Get a list of all job functions
+[**GetJobFunctionsById**](JobFunctionsAPI.md#GetJobFunctionsById) | **Get** /job-functions/{function_id} | Get single job function by ID
+[**ListJobFunctions**](JobFunctionsAPI.md#ListJobFunctions) | **Get** /job-functions | Get a list of all job functions
 
 
 
-## JobFunctionsFunctionIdGet
+## GetJobFunctionsById
 
-> JobFunctionsFunctionIdGet200Response JobFunctionsFunctionIdGet(ctx, functionId).Execute()
+> GetJobFunctionsById200Response GetJobFunctionsById(ctx, functionId).Execute()
 
 Get single job function by ID
 
@@ -24,21 +24,21 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	functionId := "functionId_example" // string | 
+	functionId := "functionId_example" // string | Unique identifier for the Function
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobFunctionsAPI.JobFunctionsFunctionIdGet(context.Background(), functionId).Execute()
+	resp, r, err := apiClient.JobFunctionsAPI.GetJobFunctionsById(context.Background(), functionId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobFunctionsAPI.JobFunctionsFunctionIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `JobFunctionsAPI.GetJobFunctionsById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `JobFunctionsFunctionIdGet`: JobFunctionsFunctionIdGet200Response
-	fmt.Fprintf(os.Stdout, "Response from `JobFunctionsAPI.JobFunctionsFunctionIdGet`: %v\n", resp)
+	// response from `GetJobFunctionsById`: GetJobFunctionsById200Response
+	fmt.Fprintf(os.Stdout, "Response from `JobFunctionsAPI.GetJobFunctionsById`: %v\n", resp)
 }
 ```
 
@@ -48,11 +48,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**functionId** | **string** |  | 
+**functionId** | **string** | Unique identifier for the Function | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiJobFunctionsFunctionIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetJobFunctionsByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**JobFunctionsFunctionIdGet200Response**](JobFunctionsFunctionIdGet200Response.md)
+[**GetJobFunctionsById200Response**](GetJobFunctionsById200Response.md)
 
 ### Authorization
 
@@ -77,9 +77,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## JobFunctionsGet
+## ListJobFunctions
 
-> JobFunctionsGet200Response JobFunctionsGet(ctx).Execute()
+> ListJobFunctions200Response ListJobFunctions(ctx).Page(page).Limit(limit).SortBy(sortBy).SortOrder(sortOrder).Search(search).Execute()
 
 Get a list of all job functions
 
@@ -92,35 +92,48 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
+	page := int32(56) // int32 | Page number for pagination (optional) (default to 1)
+	limit := int32(56) // int32 | Number of items per page (optional) (default to 20)
+	sortBy := "sortBy_example" // string | Field to sort by (optional)
+	sortOrder := "sortOrder_example" // string | Sort order (ascending or descending) (optional) (default to "desc")
+	search := "search_example" // string | Search term to filter results (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobFunctionsAPI.JobFunctionsGet(context.Background()).Execute()
+	resp, r, err := apiClient.JobFunctionsAPI.ListJobFunctions(context.Background()).Page(page).Limit(limit).SortBy(sortBy).SortOrder(sortOrder).Search(search).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobFunctionsAPI.JobFunctionsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `JobFunctionsAPI.ListJobFunctions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `JobFunctionsGet`: JobFunctionsGet200Response
-	fmt.Fprintf(os.Stdout, "Response from `JobFunctionsAPI.JobFunctionsGet`: %v\n", resp)
+	// response from `ListJobFunctions`: ListJobFunctions200Response
+	fmt.Fprintf(os.Stdout, "Response from `JobFunctionsAPI.ListJobFunctions`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiJobFunctionsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListJobFunctionsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int32** | Page number for pagination | [default to 1]
+ **limit** | **int32** | Number of items per page | [default to 20]
+ **sortBy** | **string** | Field to sort by | 
+ **sortOrder** | **string** | Sort order (ascending or descending) | [default to &quot;desc&quot;]
+ **search** | **string** | Search term to filter results | 
 
 ### Return type
 
-[**JobFunctionsGet200Response**](JobFunctionsGet200Response.md)
+[**ListJobFunctions200Response**](ListJobFunctions200Response.md)
 
 ### Authorization
 

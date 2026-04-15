@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
-**ParentCompany** | Pointer to **string** |  | [optional] 
-**MarketingHomepageUrl** | Pointer to **string** |  | [optional] 
+**Name** | Pointer to **string** | Required. | [optional] 
+**ParentCompany** | Pointer to **string** | Optional. | [optional] 
+**MarketingHomepageUrl** | Pointer to **string** | Optional. | [optional] 
 
 ## Methods
 

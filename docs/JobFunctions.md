@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DateCreated** | Pointer to **time.Time** |  | [optional] 
-**LastUpdated** | Pointer to **time.Time** |  | [optional] 
-**FunctionId** | **int64** |  | 
-**Name** | **string** |  | 
+**DateCreated** | Pointer to **time.Time** | Optional. | [optional] 
+**LastUpdated** | Pointer to **time.Time** | Optional. | [optional] 
+**FunctionId** | **int64** | Auto-generated unique identifier. | 
+**Name** | **string** | Required. Must be unique. | 
 
 ## Methods
 

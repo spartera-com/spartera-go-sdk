@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CompanyId** | **string** |  | 
-**FunctionId** | Pointer to **int64** |  | [optional] 
-**Status** | Pointer to **string** | Enum type: StatusCodes | [optional] 
-**EmailAddress** | Pointer to **string** |  | [optional] 
-**Timezone** | Pointer to **string** |  | [optional] 
+**CompanyId** | **string** | References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required. | 
+**RoleId** | Pointer to **int64** | User&#39;s role for RBAC - single source of truth | [optional] 
+**FunctionId** | Pointer to **int64** | User&#39;s job function/title | [optional] 
+**Status** | Pointer to **string** | Required. One of: ACTIVE, PENDING, INACTIVE, BANNED. | [optional] 
+**EmailAddress** | Pointer to **string** | Optional. Must be unique. | [optional] 
+**Timezone** | Pointer to **string** | Optional. | [optional] 
+**MarketingOptOut** | Pointer to **bool** | Whether user has opted out of marketing communications. Default false &#x3D; opted in per ToS. | [optional] 
 
 ## Methods
 
@@ -48,6 +50,31 @@ and a boolean to check if the value has been set.
 
 SetCompanyId sets CompanyId field to given value.
 
+
+### GetRoleId
+
+`func (o *UsersInput) GetRoleId() int64`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *UsersInput) GetRoleIdOk() (*int64, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *UsersInput) SetRoleId(v int64)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *UsersInput) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
 
 ### GetFunctionId
 
@@ -148,6 +175,31 @@ SetTimezone sets Timezone field to given value.
 `func (o *UsersInput) HasTimezone() bool`
 
 HasTimezone returns a boolean if a field has been set.
+
+### GetMarketingOptOut
+
+`func (o *UsersInput) GetMarketingOptOut() bool`
+
+GetMarketingOptOut returns the MarketingOptOut field if non-nil, zero value otherwise.
+
+### GetMarketingOptOutOk
+
+`func (o *UsersInput) GetMarketingOptOutOk() (*bool, bool)`
+
+GetMarketingOptOutOk returns a tuple with the MarketingOptOut field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMarketingOptOut
+
+`func (o *UsersInput) SetMarketingOptOut(v bool)`
+
+SetMarketingOptOut sets MarketingOptOut field to given value.
+
+### HasMarketingOptOut
+
+`func (o *UsersInput) HasMarketingOptOut() bool`
+
+HasMarketingOptOut returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

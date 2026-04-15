@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DateCreated** | Pointer to **time.Time** |  | [optional] 
-**LastUpdated** | Pointer to **time.Time** |  | [optional] 
-**ProviderId** | Pointer to **int64** |  | [optional] 
-**Name** | **string** |  | 
-**ParentCompany** | Pointer to **string** |  | [optional] 
-**MarketingHomepageUrl** | Pointer to **string** |  | [optional] 
+**DateCreated** | Pointer to **time.Time** | Optional. | [optional] 
+**LastUpdated** | Pointer to **time.Time** | Optional. | [optional] 
+**ProviderId** | Pointer to **int64** | Auto-generated unique identifier. | [optional] 
+**Name** | **string** | Required. | 
+**ParentCompany** | Pointer to **string** | Optional. | [optional] 
+**MarketingHomepageUrl** | Pointer to **string** | Optional. | [optional] 
 
 ## Methods
 

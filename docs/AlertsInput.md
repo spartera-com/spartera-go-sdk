@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetId** | **string** |  | 
-**UserId** | Pointer to **string** |  | [optional] 
-**CompanyId** | **string** |  | 
+**AssetId** | **string** | References assets.asset_id — A published analytics asset — a calculation or visualization built on a data connection. See GET /assets for valid values. Required. | 
+**UserId** | Pointer to **string** | References users.user_id — An individual user account within a company. See GET /users for valid values. Optional. | [optional] 
+**CompanyId** | **string** | References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required. | 
 **IsActive** | Pointer to **bool** | Whether this alert is currently active | [optional] 
 
 ## Methods

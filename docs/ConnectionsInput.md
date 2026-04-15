@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserId** | Pointer to **string** |  | [optional] 
-**EngineId** | **int64** |  | 
-**CompanyId** | **string** |  | 
-**CredentialType** | Pointer to **string** | Enum type: CredentialType | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
-**ProviderDomain** | Pointer to **string** |  | [optional] 
-**VerifiedUsageAbility** | Pointer to **bool** |  | [optional] 
+**UserId** | Pointer to **string** | References users.user_id — An individual user account within a company. See GET /users for valid values. Optional. | [optional] 
+**EngineId** | **int64** | References storage_engines.engine_id — Fact table of all the different storage engines we support. See GET /storage_engines for valid values. Required. | 
+**CompanyId** | **string** | References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required. | 
+**CredentialType** | Pointer to **string** | Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total). | [optional] 
+**Name** | Pointer to **string** | Optional. | [optional] 
+**Description** | Pointer to **string** | Optional. | [optional] 
+**ProviderDomain** | Pointer to **string** | Domain of the external API provider (e.g., &#39;api.weather.com&#39;) | [optional] 
+**VerifiedUsageAbility** | Pointer to **bool** | Optional. | [optional] 
 
 ## Methods
 

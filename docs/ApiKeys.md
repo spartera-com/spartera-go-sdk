@@ -4,12 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DateCreated** | Pointer to **time.Time** |  | [optional] 
-**LastUpdated** | Pointer to **time.Time** |  | [optional] 
-**ApiKeyId** | **int64** |  | 
+**DateCreated** | Pointer to **time.Time** | Optional. | [optional] 
+**LastUpdated** | Pointer to **time.Time** | Optional. | [optional] 
+**ApiKeyId** | **int64** | Unique identifier. | 
 **UserId** | Pointer to **string** | User who owns this API key | [optional] 
 **CompanyId** | **string** | Company this API key belongs to | 
 **RoleId** | **int64** | Role/permission level for this API key | 
+**KeyType** | **string** | Type of API key (analytics, mcp, or endpoint) | 
+**IsSystemGenerated** | **bool** | True if key was auto-generated for MCP deployment | 
+**McpDeploymentId** | Pointer to **string** | MCP deployment this key is tied to (NULL for analytics/endpoint keys) | [optional] 
+**EndpointId** | Pointer to **string** | Endpoint this key is tied to (NULL for analytics/mcp keys) | [optional] 
 **Name** | Pointer to **string** | Human-readable name for this API key | [optional] 
 **ExpirationDateUtc** | Pointer to **time.Time** | When this API key expires (NULL &#x3D; never expires) | [optional] 
 
@@ -17,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewApiKeys
 
-`func NewApiKeys(apiKeyId int64, companyId string, roleId int64, ) *ApiKeys`
+`func NewApiKeys(apiKeyId int64, companyId string, roleId int64, keyType string, isSystemGenerated bool, ) *ApiKeys`
 
 NewApiKeys instantiates a new ApiKeys object
 This constructor will assign default values to properties that have it defined,
@@ -166,6 +170,96 @@ and a boolean to check if the value has been set.
 
 SetRoleId sets RoleId field to given value.
 
+
+### GetKeyType
+
+`func (o *ApiKeys) GetKeyType() string`
+
+GetKeyType returns the KeyType field if non-nil, zero value otherwise.
+
+### GetKeyTypeOk
+
+`func (o *ApiKeys) GetKeyTypeOk() (*string, bool)`
+
+GetKeyTypeOk returns a tuple with the KeyType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeyType
+
+`func (o *ApiKeys) SetKeyType(v string)`
+
+SetKeyType sets KeyType field to given value.
+
+
+### GetIsSystemGenerated
+
+`func (o *ApiKeys) GetIsSystemGenerated() bool`
+
+GetIsSystemGenerated returns the IsSystemGenerated field if non-nil, zero value otherwise.
+
+### GetIsSystemGeneratedOk
+
+`func (o *ApiKeys) GetIsSystemGeneratedOk() (*bool, bool)`
+
+GetIsSystemGeneratedOk returns a tuple with the IsSystemGenerated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSystemGenerated
+
+`func (o *ApiKeys) SetIsSystemGenerated(v bool)`
+
+SetIsSystemGenerated sets IsSystemGenerated field to given value.
+
+
+### GetMcpDeploymentId
+
+`func (o *ApiKeys) GetMcpDeploymentId() string`
+
+GetMcpDeploymentId returns the McpDeploymentId field if non-nil, zero value otherwise.
+
+### GetMcpDeploymentIdOk
+
+`func (o *ApiKeys) GetMcpDeploymentIdOk() (*string, bool)`
+
+GetMcpDeploymentIdOk returns a tuple with the McpDeploymentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMcpDeploymentId
+
+`func (o *ApiKeys) SetMcpDeploymentId(v string)`
+
+SetMcpDeploymentId sets McpDeploymentId field to given value.
+
+### HasMcpDeploymentId
+
+`func (o *ApiKeys) HasMcpDeploymentId() bool`
+
+HasMcpDeploymentId returns a boolean if a field has been set.
+
+### GetEndpointId
+
+`func (o *ApiKeys) GetEndpointId() string`
+
+GetEndpointId returns the EndpointId field if non-nil, zero value otherwise.
+
+### GetEndpointIdOk
+
+`func (o *ApiKeys) GetEndpointIdOk() (*string, bool)`
+
+GetEndpointIdOk returns a tuple with the EndpointId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndpointId
+
+`func (o *ApiKeys) SetEndpointId(v string)`
+
+SetEndpointId sets EndpointId field to given value.
+
+### HasEndpointId
+
+`func (o *ApiKeys) HasEndpointId() bool`
+
+HasEndpointId returns a boolean if a field has been set.
 
 ### GetName
 

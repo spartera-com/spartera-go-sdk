@@ -4,19 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DateCreated** | Pointer to **time.Time** |  | [optional] 
-**LastUpdated** | Pointer to **time.Time** |  | [optional] 
-**CompanyId** | Pointer to **string** |  | [optional] 
-**IndustryId** | Pointer to **int64** |  | [optional] 
-**CountryId** | Pointer to **int64** |  | [optional] 
-**CompanyName** | Pointer to **string** |  | [optional] 
-**CompanyDescription** | Pointer to **string** |  | [optional] 
-**CompanyHandle** | **string** |  | 
-**CompanyDomain** | **string** |  | 
+**DateCreated** | Pointer to **time.Time** | Optional. | [optional] 
+**LastUpdated** | Pointer to **time.Time** | Optional. | [optional] 
+**CompanyId** | Pointer to **string** | Unique identifier. | [optional] 
+**IndustryId** | Pointer to **int64** | References industries.industry_id — Available industry categories for asset classification. Based on US NAISC codes.. See GET /industries for valid values. Optional. | [optional] 
+**CountryId** | Pointer to **int64** | References countries.country_id — List of countries of the world. See GET /countries for valid values. Optional. | [optional] 
+**CompanyName** | Pointer to **string** | Optional. | [optional] 
+**CompanyDescription** | Pointer to **string** | Optional. | [optional] 
+**CompanyHandle** | **string** | Required. Must be unique. | 
+**CompanyDomain** | **string** | Required. Must be unique. | 
 **CreditsBalance** | **int64** | Current balance of credits for this company (buyer) | 
-**AcceptedEula** | Pointer to **bool** |  | [optional] 
+**AcceptedEula** | Pointer to **bool** | Optional. | [optional] 
 **StripeAccountId** | Pointer to **string** | Stripe Connect account ID for marketplace sellers | [optional] 
 **StripeAccountStatus** | Pointer to **string** | Status of the Stripe account (verified, pending, etc.) | [optional] 
+**VendorSharePercent** | Pointer to **float32** | Negotiated vendor revenue share (e.g. 0.85 &#x3D; 85%). NULL &#x3D; system default 80%. | [optional] 
+**PartnershipType** | Pointer to **string** | Partnership type: SELF_MANAGED, CUSTODIAN, or null | [optional] 
 
 ## Methods
 
@@ -346,6 +348,56 @@ SetStripeAccountStatus sets StripeAccountStatus field to given value.
 `func (o *Companies) HasStripeAccountStatus() bool`
 
 HasStripeAccountStatus returns a boolean if a field has been set.
+
+### GetVendorSharePercent
+
+`func (o *Companies) GetVendorSharePercent() float32`
+
+GetVendorSharePercent returns the VendorSharePercent field if non-nil, zero value otherwise.
+
+### GetVendorSharePercentOk
+
+`func (o *Companies) GetVendorSharePercentOk() (*float32, bool)`
+
+GetVendorSharePercentOk returns a tuple with the VendorSharePercent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVendorSharePercent
+
+`func (o *Companies) SetVendorSharePercent(v float32)`
+
+SetVendorSharePercent sets VendorSharePercent field to given value.
+
+### HasVendorSharePercent
+
+`func (o *Companies) HasVendorSharePercent() bool`
+
+HasVendorSharePercent returns a boolean if a field has been set.
+
+### GetPartnershipType
+
+`func (o *Companies) GetPartnershipType() string`
+
+GetPartnershipType returns the PartnershipType field if non-nil, zero value otherwise.
+
+### GetPartnershipTypeOk
+
+`func (o *Companies) GetPartnershipTypeOk() (*string, bool)`
+
+GetPartnershipTypeOk returns a tuple with the PartnershipType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPartnershipType
+
+`func (o *Companies) SetPartnershipType(v string)`
+
+SetPartnershipType sets PartnershipType field to given value.
+
+### HasPartnershipType
+
+`func (o *Companies) HasPartnershipType() bool`
+
+HasPartnershipType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,45 +4,60 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserId** | Pointer to **string** |  | [optional] 
-**CompanyId** | Pointer to **string** |  | [optional] 
-**ConnectionId** | Pointer to **string** |  | [optional] 
-**IndustryId** | Pointer to **int64** |  | [optional] 
+**UserId** | Pointer to **string** | References users.user_id — An individual user account within a company. See GET /users for valid values. Optional. | [optional] 
+**CompanyId** | Pointer to **string** | References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required. | [optional] 
+**ConnectionId** | Pointer to **string** | Optional. | [optional] 
+**IndustryId** | Pointer to **int64** | References industries.industry_id — Available industry categories for asset classification. Based on US NAISC codes.. See GET /industries for valid values. Optional. | [optional] 
+**AucId** | Pointer to **int64** | Primary use case for this asset, from clustering analysis | [optional] 
+**FunctionId** | Pointer to **string** | Optional identifier for routing to specific functions/models at seller endpoint. For GET: appended to URL path. For POST: included in JSON body. | [optional] 
 **ApprovalStatus** | Pointer to **string** | Approval status for AI-generated assets | [optional] 
 **ApprovedByUserId** | Pointer to **string** | User who approved this asset for marketplace | [optional] 
 **ApprovedAt** | Pointer to **time.Time** | When this asset was approved for marketplace | [optional] 
-**Name** | Pointer to **string** |  | [optional] 
-**Slug** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
-**Source** | Pointer to **string** | Enum type: Source | [optional] 
-**AssetType** | Pointer to **string** | Enum type: AssetType | [optional] 
+**Name** | Pointer to **string** | Required. | [optional] 
+**Slug** | Pointer to **string** | Optional. | [optional] 
+**Description** | Pointer to **string** | Optional. | [optional] 
+**DetailedDescription** | Pointer to **string** | Long-form HTML description for product pages and SEO | [optional] 
+**Source** | Pointer to **string** | Required. One of: MANUAL, AUTOMATIC. | [optional] 
+**AssetType** | Pointer to **string** | Optional. One of: CALCULATION, VISUALIZATION, DATA. | [optional] 
 **AssetSchema** | Pointer to **map[string]interface{}** | Stores database table schema data including columns, types, and metadata | [optional] 
-**Tags** | Pointer to **string** |  | [optional] 
-**SqlLogic** | Pointer to **string** |  | [optional] 
-**SourceSchemaName** | Pointer to **string** |  | [optional] 
-**SourceTableName** | Pointer to **string** |  | [optional] 
-**SellInMarketplace** | Pointer to **bool** |  | [optional] 
-**VizChartLibrary** | Pointer to **string** | Enum type: PlottingLibrary | [optional] 
-**VizChartType** | Pointer to **string** | Enum type: ChartType | [optional] 
-**VizDepVarColName** | Pointer to **string** |  | [optional] 
-**VizIndepVarColName** | Pointer to **string** |  | [optional] 
-**VizSizeColName** | Pointer to **string** |  | [optional] 
-**VizColorColName** | Pointer to **string** |  | [optional] 
-**VizDataAggregation** | Pointer to **string** | Enum type: AggregationType | [optional] 
-**VizSortDirection** | Pointer to **string** | Enum type: SortDirection | [optional] 
-**VizDataLimit** | Pointer to **int64** |  | [optional] 
-**VizColorScheme** | Pointer to **string** | Enum type: ColorScheme | [optional] 
-**AllowParams** | Pointer to **bool** |  | [optional] 
-**AcceptTerms** | Pointer to **bool** |  | [optional] 
-**Cached** | Pointer to **bool** |  | [optional] 
-**Schedule** | Pointer to **string** |  | [optional] 
-**NextRun** | Pointer to **time.Time** |  | [optional] 
+**Tags** | Pointer to **string** | Optional. | [optional] 
+**ShortCode** | Pointer to **string** | Short code for tera.ac URL shortener (e.g., &#39;f78zq1&#39;) | [optional] 
+**RestrictedDomains** | Pointer to **string** | Semicolon or comma-separated list of domains restricted from accessing this asset | [optional] 
+**SqlLogic** | Pointer to **string** | Optional. | [optional] 
+**SourceSchemaName** | Pointer to **string** | Optional. | [optional] 
+**SourceTableName** | Pointer to **string** | Optional. | [optional] 
+**SellInMarketplace** | Pointer to **bool** | Required. | [optional] 
+**RequireCustomization** | Pointer to **bool** | Whether this asset requires customization before use | [optional] 
+**VizChartLibrary** | Pointer to **string** | Optional. One of: PLOTLY, MATPLOTLIB, SEABORN. | [optional] 
+**VizChartType** | Pointer to **string** | Optional. One of: LINE, BAR, PIE, DOUGHNUT, POLAR, … (8 total). | [optional] 
+**VizDepVarColName** | Pointer to **string** | Optional. | [optional] 
+**VizIndepVarColName** | Pointer to **string** | Optional. | [optional] 
+**VizSizeColName** | Pointer to **string** | Optional. | [optional] 
+**VizColorColName** | Pointer to **string** | Optional. | [optional] 
+**VizDataAggregation** | Pointer to **string** | Optional. One of: No Aggregation, Sum, Average, Count, Minimum, … (6 total). | [optional] 
+**VizSortDirection** | Pointer to **string** | Optional. One of: No Sorting, Ascending, Descending. | [optional] 
+**VizDataLimit** | Pointer to **int64** | Optional. | [optional] 
+**VizColorScheme** | Pointer to **string** | Optional. One of: Default, Sequential, Diverging, Categorical, Monochrome, … (8 total). | [optional] 
+**VizShowLegend** | Pointer to **bool** | Show/hide chart legend | [optional] 
+**VizShowGrid** | Pointer to **bool** | Show/hide grid lines | [optional] 
+**VizShowTrendline** | Pointer to **bool** | Show trendline for scatter/line charts | [optional] 
+**VizLineSmoothing** | Pointer to **bool** | Enable smoothing for line charts | [optional] 
+**VizBarStacked** | Pointer to **bool** | Stack bars instead of grouping | [optional] 
+**VizFilterDirection** | Pointer to **string** | Whether data_limit shows TOP or BOTTOM N | [optional] 
+**AllowParams** | Pointer to **bool** | Required. | [optional] 
+**AcceptTerms** | Pointer to **bool** | Required. | [optional] 
+**Cached** | Pointer to **bool** | Optional. | [optional] 
+**Schedule** | Pointer to **string** | Optional. | [optional] 
+**NextRun** | Pointer to **time.Time** | Optional. | [optional] 
 **DataTimePeriodStart** | Pointer to **time.Time** | Start date of the data time period covered | [optional] 
 **DataTimePeriodEnd** | Pointer to **time.Time** | End date of the data time period covered | [optional] 
-**GeographicCoverageType** | Pointer to **string** | Type of geographic coverage (Enum type: GeographicCoverage) | [optional] 
+**GeographicCoverageType** | Pointer to **string** | Type of geographic coverage | [optional] 
 **GeographicCoverageDetails** | Pointer to **string** | Specific regions/countries covered (e.g., &#39;United States, Canada, Mexico&#39;) | [optional] 
-**DataSourceRefreshFrequency** | Pointer to **string** | How often the source data is refreshed (Enum type: DataRefreshFrequency) | [optional] 
+**DataSourceRefreshFrequency** | Pointer to **string** | How often the source data is refreshed | [optional] 
 **DataSourceLastRefreshed** | Pointer to **time.Time** | When the source data was last refreshed | [optional] 
+**RateLimitNumber** | Pointer to **int64** | Number of requests allowed per period (e.g., 100) | [optional] 
+**RateLimitPeriod** | Pointer to **string** | Time period for rate limiting (second, minute, hour, day) | [optional] 
+**RateLimitGranularity** | Pointer to **string** | Granularity level for rate limiting (USER, COMPANY, IP) | [optional] 
 
 ## Methods
 
@@ -162,6 +177,56 @@ SetIndustryId sets IndustryId field to given value.
 `func (o *AssetsUpdate) HasIndustryId() bool`
 
 HasIndustryId returns a boolean if a field has been set.
+
+### GetAucId
+
+`func (o *AssetsUpdate) GetAucId() int64`
+
+GetAucId returns the AucId field if non-nil, zero value otherwise.
+
+### GetAucIdOk
+
+`func (o *AssetsUpdate) GetAucIdOk() (*int64, bool)`
+
+GetAucIdOk returns a tuple with the AucId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAucId
+
+`func (o *AssetsUpdate) SetAucId(v int64)`
+
+SetAucId sets AucId field to given value.
+
+### HasAucId
+
+`func (o *AssetsUpdate) HasAucId() bool`
+
+HasAucId returns a boolean if a field has been set.
+
+### GetFunctionId
+
+`func (o *AssetsUpdate) GetFunctionId() string`
+
+GetFunctionId returns the FunctionId field if non-nil, zero value otherwise.
+
+### GetFunctionIdOk
+
+`func (o *AssetsUpdate) GetFunctionIdOk() (*string, bool)`
+
+GetFunctionIdOk returns a tuple with the FunctionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFunctionId
+
+`func (o *AssetsUpdate) SetFunctionId(v string)`
+
+SetFunctionId sets FunctionId field to given value.
+
+### HasFunctionId
+
+`func (o *AssetsUpdate) HasFunctionId() bool`
+
+HasFunctionId returns a boolean if a field has been set.
 
 ### GetApprovalStatus
 
@@ -313,6 +378,31 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetDetailedDescription
+
+`func (o *AssetsUpdate) GetDetailedDescription() string`
+
+GetDetailedDescription returns the DetailedDescription field if non-nil, zero value otherwise.
+
+### GetDetailedDescriptionOk
+
+`func (o *AssetsUpdate) GetDetailedDescriptionOk() (*string, bool)`
+
+GetDetailedDescriptionOk returns a tuple with the DetailedDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetailedDescription
+
+`func (o *AssetsUpdate) SetDetailedDescription(v string)`
+
+SetDetailedDescription sets DetailedDescription field to given value.
+
+### HasDetailedDescription
+
+`func (o *AssetsUpdate) HasDetailedDescription() bool`
+
+HasDetailedDescription returns a boolean if a field has been set.
+
 ### GetSource
 
 `func (o *AssetsUpdate) GetSource() string`
@@ -413,6 +503,56 @@ SetTags sets Tags field to given value.
 
 HasTags returns a boolean if a field has been set.
 
+### GetShortCode
+
+`func (o *AssetsUpdate) GetShortCode() string`
+
+GetShortCode returns the ShortCode field if non-nil, zero value otherwise.
+
+### GetShortCodeOk
+
+`func (o *AssetsUpdate) GetShortCodeOk() (*string, bool)`
+
+GetShortCodeOk returns a tuple with the ShortCode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShortCode
+
+`func (o *AssetsUpdate) SetShortCode(v string)`
+
+SetShortCode sets ShortCode field to given value.
+
+### HasShortCode
+
+`func (o *AssetsUpdate) HasShortCode() bool`
+
+HasShortCode returns a boolean if a field has been set.
+
+### GetRestrictedDomains
+
+`func (o *AssetsUpdate) GetRestrictedDomains() string`
+
+GetRestrictedDomains returns the RestrictedDomains field if non-nil, zero value otherwise.
+
+### GetRestrictedDomainsOk
+
+`func (o *AssetsUpdate) GetRestrictedDomainsOk() (*string, bool)`
+
+GetRestrictedDomainsOk returns a tuple with the RestrictedDomains field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRestrictedDomains
+
+`func (o *AssetsUpdate) SetRestrictedDomains(v string)`
+
+SetRestrictedDomains sets RestrictedDomains field to given value.
+
+### HasRestrictedDomains
+
+`func (o *AssetsUpdate) HasRestrictedDomains() bool`
+
+HasRestrictedDomains returns a boolean if a field has been set.
+
 ### GetSqlLogic
 
 `func (o *AssetsUpdate) GetSqlLogic() string`
@@ -512,6 +652,31 @@ SetSellInMarketplace sets SellInMarketplace field to given value.
 `func (o *AssetsUpdate) HasSellInMarketplace() bool`
 
 HasSellInMarketplace returns a boolean if a field has been set.
+
+### GetRequireCustomization
+
+`func (o *AssetsUpdate) GetRequireCustomization() bool`
+
+GetRequireCustomization returns the RequireCustomization field if non-nil, zero value otherwise.
+
+### GetRequireCustomizationOk
+
+`func (o *AssetsUpdate) GetRequireCustomizationOk() (*bool, bool)`
+
+GetRequireCustomizationOk returns a tuple with the RequireCustomization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequireCustomization
+
+`func (o *AssetsUpdate) SetRequireCustomization(v bool)`
+
+SetRequireCustomization sets RequireCustomization field to given value.
+
+### HasRequireCustomization
+
+`func (o *AssetsUpdate) HasRequireCustomization() bool`
+
+HasRequireCustomization returns a boolean if a field has been set.
 
 ### GetVizChartLibrary
 
@@ -762,6 +927,156 @@ SetVizColorScheme sets VizColorScheme field to given value.
 `func (o *AssetsUpdate) HasVizColorScheme() bool`
 
 HasVizColorScheme returns a boolean if a field has been set.
+
+### GetVizShowLegend
+
+`func (o *AssetsUpdate) GetVizShowLegend() bool`
+
+GetVizShowLegend returns the VizShowLegend field if non-nil, zero value otherwise.
+
+### GetVizShowLegendOk
+
+`func (o *AssetsUpdate) GetVizShowLegendOk() (*bool, bool)`
+
+GetVizShowLegendOk returns a tuple with the VizShowLegend field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVizShowLegend
+
+`func (o *AssetsUpdate) SetVizShowLegend(v bool)`
+
+SetVizShowLegend sets VizShowLegend field to given value.
+
+### HasVizShowLegend
+
+`func (o *AssetsUpdate) HasVizShowLegend() bool`
+
+HasVizShowLegend returns a boolean if a field has been set.
+
+### GetVizShowGrid
+
+`func (o *AssetsUpdate) GetVizShowGrid() bool`
+
+GetVizShowGrid returns the VizShowGrid field if non-nil, zero value otherwise.
+
+### GetVizShowGridOk
+
+`func (o *AssetsUpdate) GetVizShowGridOk() (*bool, bool)`
+
+GetVizShowGridOk returns a tuple with the VizShowGrid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVizShowGrid
+
+`func (o *AssetsUpdate) SetVizShowGrid(v bool)`
+
+SetVizShowGrid sets VizShowGrid field to given value.
+
+### HasVizShowGrid
+
+`func (o *AssetsUpdate) HasVizShowGrid() bool`
+
+HasVizShowGrid returns a boolean if a field has been set.
+
+### GetVizShowTrendline
+
+`func (o *AssetsUpdate) GetVizShowTrendline() bool`
+
+GetVizShowTrendline returns the VizShowTrendline field if non-nil, zero value otherwise.
+
+### GetVizShowTrendlineOk
+
+`func (o *AssetsUpdate) GetVizShowTrendlineOk() (*bool, bool)`
+
+GetVizShowTrendlineOk returns a tuple with the VizShowTrendline field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVizShowTrendline
+
+`func (o *AssetsUpdate) SetVizShowTrendline(v bool)`
+
+SetVizShowTrendline sets VizShowTrendline field to given value.
+
+### HasVizShowTrendline
+
+`func (o *AssetsUpdate) HasVizShowTrendline() bool`
+
+HasVizShowTrendline returns a boolean if a field has been set.
+
+### GetVizLineSmoothing
+
+`func (o *AssetsUpdate) GetVizLineSmoothing() bool`
+
+GetVizLineSmoothing returns the VizLineSmoothing field if non-nil, zero value otherwise.
+
+### GetVizLineSmoothingOk
+
+`func (o *AssetsUpdate) GetVizLineSmoothingOk() (*bool, bool)`
+
+GetVizLineSmoothingOk returns a tuple with the VizLineSmoothing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVizLineSmoothing
+
+`func (o *AssetsUpdate) SetVizLineSmoothing(v bool)`
+
+SetVizLineSmoothing sets VizLineSmoothing field to given value.
+
+### HasVizLineSmoothing
+
+`func (o *AssetsUpdate) HasVizLineSmoothing() bool`
+
+HasVizLineSmoothing returns a boolean if a field has been set.
+
+### GetVizBarStacked
+
+`func (o *AssetsUpdate) GetVizBarStacked() bool`
+
+GetVizBarStacked returns the VizBarStacked field if non-nil, zero value otherwise.
+
+### GetVizBarStackedOk
+
+`func (o *AssetsUpdate) GetVizBarStackedOk() (*bool, bool)`
+
+GetVizBarStackedOk returns a tuple with the VizBarStacked field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVizBarStacked
+
+`func (o *AssetsUpdate) SetVizBarStacked(v bool)`
+
+SetVizBarStacked sets VizBarStacked field to given value.
+
+### HasVizBarStacked
+
+`func (o *AssetsUpdate) HasVizBarStacked() bool`
+
+HasVizBarStacked returns a boolean if a field has been set.
+
+### GetVizFilterDirection
+
+`func (o *AssetsUpdate) GetVizFilterDirection() string`
+
+GetVizFilterDirection returns the VizFilterDirection field if non-nil, zero value otherwise.
+
+### GetVizFilterDirectionOk
+
+`func (o *AssetsUpdate) GetVizFilterDirectionOk() (*string, bool)`
+
+GetVizFilterDirectionOk returns a tuple with the VizFilterDirection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVizFilterDirection
+
+`func (o *AssetsUpdate) SetVizFilterDirection(v string)`
+
+SetVizFilterDirection sets VizFilterDirection field to given value.
+
+### HasVizFilterDirection
+
+`func (o *AssetsUpdate) HasVizFilterDirection() bool`
+
+HasVizFilterDirection returns a boolean if a field has been set.
 
 ### GetAllowParams
 
@@ -1037,6 +1352,81 @@ SetDataSourceLastRefreshed sets DataSourceLastRefreshed field to given value.
 `func (o *AssetsUpdate) HasDataSourceLastRefreshed() bool`
 
 HasDataSourceLastRefreshed returns a boolean if a field has been set.
+
+### GetRateLimitNumber
+
+`func (o *AssetsUpdate) GetRateLimitNumber() int64`
+
+GetRateLimitNumber returns the RateLimitNumber field if non-nil, zero value otherwise.
+
+### GetRateLimitNumberOk
+
+`func (o *AssetsUpdate) GetRateLimitNumberOk() (*int64, bool)`
+
+GetRateLimitNumberOk returns a tuple with the RateLimitNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRateLimitNumber
+
+`func (o *AssetsUpdate) SetRateLimitNumber(v int64)`
+
+SetRateLimitNumber sets RateLimitNumber field to given value.
+
+### HasRateLimitNumber
+
+`func (o *AssetsUpdate) HasRateLimitNumber() bool`
+
+HasRateLimitNumber returns a boolean if a field has been set.
+
+### GetRateLimitPeriod
+
+`func (o *AssetsUpdate) GetRateLimitPeriod() string`
+
+GetRateLimitPeriod returns the RateLimitPeriod field if non-nil, zero value otherwise.
+
+### GetRateLimitPeriodOk
+
+`func (o *AssetsUpdate) GetRateLimitPeriodOk() (*string, bool)`
+
+GetRateLimitPeriodOk returns a tuple with the RateLimitPeriod field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRateLimitPeriod
+
+`func (o *AssetsUpdate) SetRateLimitPeriod(v string)`
+
+SetRateLimitPeriod sets RateLimitPeriod field to given value.
+
+### HasRateLimitPeriod
+
+`func (o *AssetsUpdate) HasRateLimitPeriod() bool`
+
+HasRateLimitPeriod returns a boolean if a field has been set.
+
+### GetRateLimitGranularity
+
+`func (o *AssetsUpdate) GetRateLimitGranularity() string`
+
+GetRateLimitGranularity returns the RateLimitGranularity field if non-nil, zero value otherwise.
+
+### GetRateLimitGranularityOk
+
+`func (o *AssetsUpdate) GetRateLimitGranularityOk() (*string, bool)`
+
+GetRateLimitGranularityOk returns a tuple with the RateLimitGranularity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRateLimitGranularity
+
+`func (o *AssetsUpdate) SetRateLimitGranularity(v string)`
+
+SetRateLimitGranularity sets RateLimitGranularity field to given value.
+
+### HasRateLimitGranularity
+
+`func (o *AssetsUpdate) HasRateLimitGranularity() bool`
+
+HasRateLimitGranularity returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

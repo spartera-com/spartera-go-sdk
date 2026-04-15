@@ -4,14 +4,14 @@ All URIs are relative to *https://api.spartera.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CloudProvidersProviderIdStorageEnginesEngineIdGet**](StorageEnginesAPI.md#CloudProvidersProviderIdStorageEnginesEngineIdGet) | **Get** /cloud-providers/{provider_id}/storage-engines/{engine_id} | Get single storage engine by ID
-[**CloudProvidersProviderIdStorageEnginesGet**](StorageEnginesAPI.md#CloudProvidersProviderIdStorageEnginesGet) | **Get** /cloud-providers/{provider_id}/storage-engines | Get a list of all storage engines
+[**GetStorageEnginesById**](StorageEnginesAPI.md#GetStorageEnginesById) | **Get** /cloud-providers/{provider_id}/storage-engines/{engine_id} | Get single storage engine by ID
+[**ListStorageEngines**](StorageEnginesAPI.md#ListStorageEngines) | **Get** /cloud-providers/{provider_id}/storage-engines | Get a list of all storage engines
 
 
 
-## CloudProvidersProviderIdStorageEnginesEngineIdGet
+## GetStorageEnginesById
 
-> CloudProvidersProviderIdStorageEnginesGet200Response CloudProvidersProviderIdStorageEnginesEngineIdGet(ctx, providerId, engineId).Execute()
+> GetStorageEnginesById200Response GetStorageEnginesById(ctx, providerId, engineId).Execute()
 
 Get single storage engine by ID
 
@@ -24,22 +24,22 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	providerId := "providerId_example" // string | 
-	engineId := "engineId_example" // string | 
+	providerId := "providerId_example" // string | Unique identifier for the Provider
+	engineId := "engineId_example" // string | Unique identifier for the Engine
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesEngineIdGet(context.Background(), providerId, engineId).Execute()
+	resp, r, err := apiClient.StorageEnginesAPI.GetStorageEnginesById(context.Background(), providerId, engineId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesEngineIdGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageEnginesAPI.GetStorageEnginesById``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CloudProvidersProviderIdStorageEnginesEngineIdGet`: CloudProvidersProviderIdStorageEnginesGet200Response
-	fmt.Fprintf(os.Stdout, "Response from `StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesEngineIdGet`: %v\n", resp)
+	// response from `GetStorageEnginesById`: GetStorageEnginesById200Response
+	fmt.Fprintf(os.Stdout, "Response from `StorageEnginesAPI.GetStorageEnginesById`: %v\n", resp)
 }
 ```
 
@@ -49,12 +49,12 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**providerId** | **string** |  | 
-**engineId** | **string** |  | 
+**providerId** | **string** | Unique identifier for the Provider | 
+**engineId** | **string** | Unique identifier for the Engine | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCloudProvidersProviderIdStorageEnginesEngineIdGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetStorageEnginesByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CloudProvidersProviderIdStorageEnginesGet200Response**](CloudProvidersProviderIdStorageEnginesGet200Response.md)
+[**GetStorageEnginesById200Response**](GetStorageEnginesById200Response.md)
 
 ### Authorization
 
@@ -80,9 +80,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CloudProvidersProviderIdStorageEnginesGet
+## ListStorageEngines
 
-> CloudProvidersProviderIdStorageEnginesGet200Response CloudProvidersProviderIdStorageEnginesGet(ctx, providerId).Execute()
+> ListStorageEngines200Response ListStorageEngines(ctx, providerId).Page(page).Limit(limit).SortBy(sortBy).SortOrder(sortOrder).Search(search).Execute()
 
 Get a list of all storage engines
 
@@ -95,21 +95,26 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/spartera-com/spartera-go-sdk"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
-	providerId := "providerId_example" // string | 
+	providerId := "providerId_example" // string | Unique identifier for the Provider
+	page := int32(56) // int32 | Page number for pagination (optional) (default to 1)
+	limit := int32(56) // int32 | Number of items per page (optional) (default to 20)
+	sortBy := "sortBy_example" // string | Field to sort by (optional)
+	sortOrder := "sortOrder_example" // string | Sort order (ascending or descending) (optional) (default to "desc")
+	search := "search_example" // string | Search term to filter results (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesGet(context.Background(), providerId).Execute()
+	resp, r, err := apiClient.StorageEnginesAPI.ListStorageEngines(context.Background(), providerId).Page(page).Limit(limit).SortBy(sortBy).SortOrder(sortOrder).Search(search).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `StorageEnginesAPI.ListStorageEngines``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CloudProvidersProviderIdStorageEnginesGet`: CloudProvidersProviderIdStorageEnginesGet200Response
-	fmt.Fprintf(os.Stdout, "Response from `StorageEnginesAPI.CloudProvidersProviderIdStorageEnginesGet`: %v\n", resp)
+	// response from `ListStorageEngines`: ListStorageEngines200Response
+	fmt.Fprintf(os.Stdout, "Response from `StorageEnginesAPI.ListStorageEngines`: %v\n", resp)
 }
 ```
 
@@ -119,20 +124,25 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**providerId** | **string** |  | 
+**providerId** | **string** | Unique identifier for the Provider | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCloudProvidersProviderIdStorageEnginesGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListStorageEnginesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **page** | **int32** | Page number for pagination | [default to 1]
+ **limit** | **int32** | Number of items per page | [default to 20]
+ **sortBy** | **string** | Field to sort by | 
+ **sortOrder** | **string** | Sort order (ascending or descending) | [default to &quot;desc&quot;]
+ **search** | **string** | Search term to filter results | 
 
 ### Return type
 
-[**CloudProvidersProviderIdStorageEnginesGet200Response**](CloudProvidersProviderIdStorageEnginesGet200Response.md)
+[**ListStorageEngines200Response**](ListStorageEngines200Response.md)
 
 ### Authorization
 

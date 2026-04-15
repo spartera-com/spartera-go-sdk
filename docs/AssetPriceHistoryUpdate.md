@@ -4,9 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssetId** | Pointer to **string** |  | [optional] 
-**PriceUsd** | Pointer to **float64** |  | [optional] 
-**DateEnded** | Pointer to **time.Time** | When did the price end (Datetime) | [optional] 
+**AssetId** | Pointer to **string** | FK to assets. NULL when this record belongs to an endpoint. | [optional] 
+**EndpointId** | Pointer to **string** | FK to endpoints. NULL when this record belongs to an asset. | [optional] 
+**PriceUsd** | Pointer to **float64** | Optional. | [optional] 
+**DateEnded** | Pointer to **time.Time** | SCD Type 2 — when this price record was superseded | [optional] 
 
 ## Methods
 
@@ -51,6 +52,31 @@ SetAssetId sets AssetId field to given value.
 `func (o *AssetPriceHistoryUpdate) HasAssetId() bool`
 
 HasAssetId returns a boolean if a field has been set.
+
+### GetEndpointId
+
+`func (o *AssetPriceHistoryUpdate) GetEndpointId() string`
+
+GetEndpointId returns the EndpointId field if non-nil, zero value otherwise.
+
+### GetEndpointIdOk
+
+`func (o *AssetPriceHistoryUpdate) GetEndpointIdOk() (*string, bool)`
+
+GetEndpointIdOk returns a tuple with the EndpointId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEndpointId
+
+`func (o *AssetPriceHistoryUpdate) SetEndpointId(v string)`
+
+SetEndpointId sets EndpointId field to given value.
+
+### HasEndpointId
+
+`func (o *AssetPriceHistoryUpdate) HasEndpointId() bool`
+
+HasEndpointId returns a boolean if a field has been set.
 
 ### GetPriceUsd
 
