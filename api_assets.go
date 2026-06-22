@@ -297,8 +297,8 @@ func (a *AssetsAPIService) CreateAssetsExecute(r ApiCreateAssetsRequest) (*Creat
 type ApiCreateAssetsAnalyzeRequest struct {
 	ctx context.Context
 	ApiService *AssetsAPIService
-	assetSlug string
 	companyHandle string
+	assetSlug string
 	assetsInput *AssetsInput
 }
 
@@ -315,16 +315,16 @@ func (r ApiCreateAssetsAnalyzeRequest) Execute() (*CreateAssetsAnalyze200Respons
 CreateAssetsAnalyze Process (analyze) an asset with dynamic rate limiting applied via decorator.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param assetSlug URL-friendly slug for the Asset
  @param companyHandle Human-readable handle for the Company
+ @param assetSlug URL-friendly slug for the Asset
  @return ApiCreateAssetsAnalyzeRequest
 */
-func (a *AssetsAPIService) CreateAssetsAnalyze(ctx context.Context, assetSlug string, companyHandle string) ApiCreateAssetsAnalyzeRequest {
+func (a *AssetsAPIService) CreateAssetsAnalyze(ctx context.Context, companyHandle string, assetSlug string) ApiCreateAssetsAnalyzeRequest {
 	return ApiCreateAssetsAnalyzeRequest{
 		ApiService: a,
 		ctx: ctx,
-		assetSlug: assetSlug,
 		companyHandle: companyHandle,
+		assetSlug: assetSlug,
 	}
 }
 
@@ -344,8 +344,8 @@ func (a *AssetsAPIService) CreateAssetsAnalyzeExecute(r ApiCreateAssetsAnalyzeRe
 	}
 
 	localVarPath := localBasePath + "/analyze/{company_handle}/assets/{asset_slug}"
-	localVarPath = strings.Replace(localVarPath, "{"+"asset_slug"+"}", url.PathEscape(parameterValueToString(r.assetSlug, "assetSlug")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"company_handle"+"}", url.PathEscape(parameterValueToString(r.companyHandle, "companyHandle")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"asset_slug"+"}", url.PathEscape(parameterValueToString(r.assetSlug, "assetSlug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1494,8 +1494,8 @@ func (a *AssetsAPIService) GetAssetsById2Execute(r ApiGetAssetsById2Request) (*G
 type ApiGetAssetsByIdAnalyzeRequest struct {
 	ctx context.Context
 	ApiService *AssetsAPIService
-	assetSlug string
 	companyHandle string
+	assetSlug string
 }
 
 func (r ApiGetAssetsByIdAnalyzeRequest) Execute() (*GetAssetsByIdAnalyze200Response, *http.Response, error) {
@@ -1506,16 +1506,16 @@ func (r ApiGetAssetsByIdAnalyzeRequest) Execute() (*GetAssetsByIdAnalyze200Respo
 GetAssetsByIdAnalyze Process (analyze) an asset with dynamic rate limiting applied via decorator.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param assetSlug URL-friendly slug for the Asset
  @param companyHandle Human-readable handle for the Company
+ @param assetSlug URL-friendly slug for the Asset
  @return ApiGetAssetsByIdAnalyzeRequest
 */
-func (a *AssetsAPIService) GetAssetsByIdAnalyze(ctx context.Context, assetSlug string, companyHandle string) ApiGetAssetsByIdAnalyzeRequest {
+func (a *AssetsAPIService) GetAssetsByIdAnalyze(ctx context.Context, companyHandle string, assetSlug string) ApiGetAssetsByIdAnalyzeRequest {
 	return ApiGetAssetsByIdAnalyzeRequest{
 		ApiService: a,
 		ctx: ctx,
-		assetSlug: assetSlug,
 		companyHandle: companyHandle,
+		assetSlug: assetSlug,
 	}
 }
 
@@ -1535,8 +1535,8 @@ func (a *AssetsAPIService) GetAssetsByIdAnalyzeExecute(r ApiGetAssetsByIdAnalyze
 	}
 
 	localVarPath := localBasePath + "/analyze/{company_handle}/assets/{asset_slug}"
-	localVarPath = strings.Replace(localVarPath, "{"+"asset_slug"+"}", url.PathEscape(parameterValueToString(r.assetSlug, "assetSlug")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"company_handle"+"}", url.PathEscape(parameterValueToString(r.companyHandle, "companyHandle")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"asset_slug"+"}", url.PathEscape(parameterValueToString(r.assetSlug, "assetSlug")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

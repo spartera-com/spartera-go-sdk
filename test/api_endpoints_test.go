@@ -51,6 +51,21 @@ func Test_spartera_EndpointsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test EndpointsAPIService CreateEndpointsScanColumn", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var companyId string
+		var endpointId string
+
+		resp, httpRes, err := apiClient.EndpointsAPI.CreateEndpointsScanColumn(context.Background(), companyId, endpointId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test EndpointsAPIService DeleteEndpoints", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -150,6 +165,21 @@ func Test_spartera_EndpointsAPIService(t *testing.T) {
 		var endpointId string
 
 		resp, httpRes, err := apiClient.EndpointsAPI.GetEndpointsByIdKeys(context.Background(), companyId, endpointId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EndpointsAPIService GetEndpointsByIdRecommendations", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var companyId string
+		var endpointId string
+
+		resp, httpRes, err := apiClient.EndpointsAPI.GetEndpointsByIdRecommendations(context.Background(), companyId, endpointId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

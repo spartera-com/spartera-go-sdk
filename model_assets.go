@@ -71,6 +71,8 @@ type Assets struct {
 	Visibility *string `json:"visibility,omitempty"`
 	// Optional.
 	Tags *string `json:"tags,omitempty"`
+	// Top 3 questions this asset can help answer, in English. Stored as JSON array of strings (1-3 items, 15-200 chars each). Required for marketplace assets.
+	TopQuestions *string `json:"top_questions,omitempty"`
 	// Short code for tera.ac URL shortener (e.g., 'f78zq1')
 	ShortCode *string `json:"short_code,omitempty"`
 	// Semicolon or comma-separated list of domains restricted from accessing this asset
@@ -85,6 +87,8 @@ type Assets struct {
 	SellInMarketplace bool `json:"sell_in_marketplace"`
 	// Whether this asset requires customization before use
 	RequireCustomization bool `json:"require_customization"`
+	// Plotly figure JSON describing the visualization. Authored via the visual editor or via API. When populated, takes precedence over the legacy viz_* fields. Shape follows Plotly's figure schema: {data: [{type: '...', xsrc: '...', ...}], layout: {...}}. Column references use *src keys (xsrc, ysrc, labelssrc, etc.) and are hydrated with actual data at render time.
+	VizSpec map[string]interface{} `json:"viz_spec,omitempty"`
 	// Optional. One of: PLOTLY, MATPLOTLIB, SEABORN.
 	VizChartLibrary *string `json:"viz_chart_library,omitempty"`
 	// Optional. One of: LINE, BAR, PIE, DOUGHNUT, POLAR, … (8 total).
@@ -131,14 +135,14 @@ type Assets struct {
 	DataTimePeriodStart *time.Time `json:"data_time_period_start,omitempty"`
 	// End date of the data time period covered
 	DataTimePeriodEnd *time.Time `json:"data_time_period_end,omitempty"`
+	// When the seller began actively collecting this data. Distinct from data_time_period_start, which describes when the records themselves begin. Backfilled historical data will have date_collection_start > data_time_period_start.
+	DateCollectionStart *time.Time `json:"date_collection_start,omitempty"`
 	// Type of geographic coverage
 	GeographicCoverageType *string `json:"geographic_coverage_type,omitempty"`
 	// Specific regions/countries covered (e.g., 'United States, Canada, Mexico')
 	GeographicCoverageDetails *string `json:"geographic_coverage_details,omitempty"`
 	// How often the source data is refreshed
 	DataSourceRefreshFrequency *string `json:"data_source_refresh_frequency,omitempty"`
-	// When the source data was last refreshed
-	DataSourceLastRefreshed *time.Time `json:"data_source_last_refreshed,omitempty"`
 	// Number of requests allowed per period (e.g., 100)
 	RateLimitNumber *int64 `json:"rate_limit_number,omitempty"`
 	// Time period for rate limiting (second, minute, hour, day)
@@ -917,6 +921,38 @@ func (o *Assets) SetTags(v string) {
 	o.Tags = &v
 }
 
+// GetTopQuestions returns the TopQuestions field value if set, zero value otherwise.
+func (o *Assets) GetTopQuestions() string {
+	if o == nil || IsNil(o.TopQuestions) {
+		var ret string
+		return ret
+	}
+	return *o.TopQuestions
+}
+
+// GetTopQuestionsOk returns a tuple with the TopQuestions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Assets) GetTopQuestionsOk() (*string, bool) {
+	if o == nil || IsNil(o.TopQuestions) {
+		return nil, false
+	}
+	return o.TopQuestions, true
+}
+
+// HasTopQuestions returns a boolean if a field has been set.
+func (o *Assets) HasTopQuestions() bool {
+	if o != nil && !IsNil(o.TopQuestions) {
+		return true
+	}
+
+	return false
+}
+
+// SetTopQuestions gets a reference to the given string and assigns it to the TopQuestions field.
+func (o *Assets) SetTopQuestions(v string) {
+	o.TopQuestions = &v
+}
+
 // GetShortCode returns the ShortCode field value if set, zero value otherwise.
 func (o *Assets) GetShortCode() string {
 	if o == nil || IsNil(o.ShortCode) {
@@ -1123,6 +1159,38 @@ func (o *Assets) GetRequireCustomizationOk() (*bool, bool) {
 // SetRequireCustomization sets field value
 func (o *Assets) SetRequireCustomization(v bool) {
 	o.RequireCustomization = v
+}
+
+// GetVizSpec returns the VizSpec field value if set, zero value otherwise.
+func (o *Assets) GetVizSpec() map[string]interface{} {
+	if o == nil || IsNil(o.VizSpec) {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.VizSpec
+}
+
+// GetVizSpecOk returns a tuple with the VizSpec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Assets) GetVizSpecOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.VizSpec) {
+		return map[string]interface{}{}, false
+	}
+	return o.VizSpec, true
+}
+
+// HasVizSpec returns a boolean if a field has been set.
+func (o *Assets) HasVizSpec() bool {
+	if o != nil && !IsNil(o.VizSpec) {
+		return true
+	}
+
+	return false
+}
+
+// SetVizSpec gets a reference to the given map[string]interface{} and assigns it to the VizSpec field.
+func (o *Assets) SetVizSpec(v map[string]interface{}) {
+	o.VizSpec = v
 }
 
 // GetVizChartLibrary returns the VizChartLibrary field value if set, zero value otherwise.
@@ -1845,6 +1913,38 @@ func (o *Assets) SetDataTimePeriodEnd(v time.Time) {
 	o.DataTimePeriodEnd = &v
 }
 
+// GetDateCollectionStart returns the DateCollectionStart field value if set, zero value otherwise.
+func (o *Assets) GetDateCollectionStart() time.Time {
+	if o == nil || IsNil(o.DateCollectionStart) {
+		var ret time.Time
+		return ret
+	}
+	return *o.DateCollectionStart
+}
+
+// GetDateCollectionStartOk returns a tuple with the DateCollectionStart field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Assets) GetDateCollectionStartOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.DateCollectionStart) {
+		return nil, false
+	}
+	return o.DateCollectionStart, true
+}
+
+// HasDateCollectionStart returns a boolean if a field has been set.
+func (o *Assets) HasDateCollectionStart() bool {
+	if o != nil && !IsNil(o.DateCollectionStart) {
+		return true
+	}
+
+	return false
+}
+
+// SetDateCollectionStart gets a reference to the given time.Time and assigns it to the DateCollectionStart field.
+func (o *Assets) SetDateCollectionStart(v time.Time) {
+	o.DateCollectionStart = &v
+}
+
 // GetGeographicCoverageType returns the GeographicCoverageType field value if set, zero value otherwise.
 func (o *Assets) GetGeographicCoverageType() string {
 	if o == nil || IsNil(o.GeographicCoverageType) {
@@ -1939,38 +2039,6 @@ func (o *Assets) HasDataSourceRefreshFrequency() bool {
 // SetDataSourceRefreshFrequency gets a reference to the given string and assigns it to the DataSourceRefreshFrequency field.
 func (o *Assets) SetDataSourceRefreshFrequency(v string) {
 	o.DataSourceRefreshFrequency = &v
-}
-
-// GetDataSourceLastRefreshed returns the DataSourceLastRefreshed field value if set, zero value otherwise.
-func (o *Assets) GetDataSourceLastRefreshed() time.Time {
-	if o == nil || IsNil(o.DataSourceLastRefreshed) {
-		var ret time.Time
-		return ret
-	}
-	return *o.DataSourceLastRefreshed
-}
-
-// GetDataSourceLastRefreshedOk returns a tuple with the DataSourceLastRefreshed field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Assets) GetDataSourceLastRefreshedOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.DataSourceLastRefreshed) {
-		return nil, false
-	}
-	return o.DataSourceLastRefreshed, true
-}
-
-// HasDataSourceLastRefreshed returns a boolean if a field has been set.
-func (o *Assets) HasDataSourceLastRefreshed() bool {
-	if o != nil && !IsNil(o.DataSourceLastRefreshed) {
-		return true
-	}
-
-	return false
-}
-
-// SetDataSourceLastRefreshed gets a reference to the given time.Time and assigns it to the DataSourceLastRefreshed field.
-func (o *Assets) SetDataSourceLastRefreshed(v time.Time) {
-	o.DataSourceLastRefreshed = &v
 }
 
 // GetRateLimitNumber returns the RateLimitNumber field value if set, zero value otherwise.
@@ -2145,6 +2213,9 @@ func (o Assets) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
+	if !IsNil(o.TopQuestions) {
+		toSerialize["top_questions"] = o.TopQuestions
+	}
 	if !IsNil(o.ShortCode) {
 		toSerialize["short_code"] = o.ShortCode
 	}
@@ -2162,6 +2233,9 @@ func (o Assets) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["sell_in_marketplace"] = o.SellInMarketplace
 	toSerialize["require_customization"] = o.RequireCustomization
+	if !IsNil(o.VizSpec) {
+		toSerialize["viz_spec"] = o.VizSpec
+	}
 	if !IsNil(o.VizChartLibrary) {
 		toSerialize["viz_chart_library"] = o.VizChartLibrary
 	}
@@ -2227,6 +2301,9 @@ func (o Assets) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DataTimePeriodEnd) {
 		toSerialize["data_time_period_end"] = o.DataTimePeriodEnd
 	}
+	if !IsNil(o.DateCollectionStart) {
+		toSerialize["date_collection_start"] = o.DateCollectionStart
+	}
 	if !IsNil(o.GeographicCoverageType) {
 		toSerialize["geographic_coverage_type"] = o.GeographicCoverageType
 	}
@@ -2235,9 +2312,6 @@ func (o Assets) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DataSourceRefreshFrequency) {
 		toSerialize["data_source_refresh_frequency"] = o.DataSourceRefreshFrequency
-	}
-	if !IsNil(o.DataSourceLastRefreshed) {
-		toSerialize["data_source_last_refreshed"] = o.DataSourceLastRefreshed
 	}
 	if !IsNil(o.RateLimitNumber) {
 		toSerialize["rate_limit_number"] = o.RateLimitNumber

@@ -96,6 +96,21 @@ func Test_spartera_ConnectionsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ConnectionsAPIService GetConnectionsByIdSampleData", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var companyId string
+		var connectionId string
+
+		resp, httpRes, err := apiClient.ConnectionsAPI.GetConnectionsByIdSampleData(context.Background(), companyId, connectionId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ConnectionsAPIService ListConnections", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

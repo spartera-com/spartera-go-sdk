@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **AssetSchema** | Pointer to **map[string]interface{}** | Stores database table schema data including columns, types, and metadata | [optional] 
 **Visibility** | Pointer to **string** | Optional. One of: PRIVATE, SHARED. | [optional] 
 **Tags** | Pointer to **string** | Optional. | [optional] 
+**TopQuestions** | Pointer to **string** | Top 3 questions this asset can help answer, in English. Stored as JSON array of strings (1-3 items, 15-200 chars each). Required for marketplace assets. | [optional] 
 **ShortCode** | Pointer to **string** | Short code for tera.ac URL shortener (e.g., &#39;f78zq1&#39;) | [optional] 
 **RestrictedDomains** | Pointer to **string** | Semicolon or comma-separated list of domains restricted from accessing this asset | [optional] 
 **SqlLogic** | Pointer to **string** | Optional. | [optional] 
@@ -35,6 +36,7 @@ Name | Type | Description | Notes
 **SourceTableName** | Pointer to **string** | Optional. | [optional] 
 **SellInMarketplace** | **bool** | Required. | 
 **RequireCustomization** | **bool** | Whether this asset requires customization before use | 
+**VizSpec** | Pointer to **map[string]interface{}** | Plotly figure JSON describing the visualization. Authored via the visual editor or via API. When populated, takes precedence over the legacy viz_* fields. Shape follows Plotly&#39;s figure schema: {data: [{type: &#39;...&#39;, xsrc: &#39;...&#39;, ...}], layout: {...}}. Column references use *src keys (xsrc, ysrc, labelssrc, etc.) and are hydrated with actual data at render time. | [optional] 
 **VizChartLibrary** | Pointer to **string** | Optional. One of: PLOTLY, MATPLOTLIB, SEABORN. | [optional] 
 **VizChartType** | Pointer to **string** | Optional. One of: LINE, BAR, PIE, DOUGHNUT, POLAR, … (8 total). | [optional] 
 **VizDepVarColName** | Pointer to **string** | Optional. | [optional] 
@@ -58,10 +60,10 @@ Name | Type | Description | Notes
 **NextRun** | Pointer to **time.Time** | Optional. | [optional] 
 **DataTimePeriodStart** | Pointer to **time.Time** | Start date of the data time period covered | [optional] 
 **DataTimePeriodEnd** | Pointer to **time.Time** | End date of the data time period covered | [optional] 
+**DateCollectionStart** | Pointer to **time.Time** | When the seller began actively collecting this data. Distinct from data_time_period_start, which describes when the records themselves begin. Backfilled historical data will have date_collection_start &gt; data_time_period_start. | [optional] 
 **GeographicCoverageType** | Pointer to **string** | Type of geographic coverage | [optional] 
 **GeographicCoverageDetails** | Pointer to **string** | Specific regions/countries covered (e.g., &#39;United States, Canada, Mexico&#39;) | [optional] 
 **DataSourceRefreshFrequency** | Pointer to **string** | How often the source data is refreshed | [optional] 
-**DataSourceLastRefreshed** | Pointer to **time.Time** | When the source data was last refreshed | [optional] 
 **RateLimitNumber** | Pointer to **int64** | Number of requests allowed per period (e.g., 100) | [optional] 
 **RateLimitPeriod** | Pointer to **string** | Time period for rate limiting (second, minute, hour, day) | [optional] 
 **RateLimitGranularity** | Pointer to **string** | Granularity level for rate limiting (USER, COMPANY, IP) | [optional] 
@@ -670,6 +672,31 @@ SetTags sets Tags field to given value.
 
 HasTags returns a boolean if a field has been set.
 
+### GetTopQuestions
+
+`func (o *Assets) GetTopQuestions() string`
+
+GetTopQuestions returns the TopQuestions field if non-nil, zero value otherwise.
+
+### GetTopQuestionsOk
+
+`func (o *Assets) GetTopQuestionsOk() (*string, bool)`
+
+GetTopQuestionsOk returns a tuple with the TopQuestions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTopQuestions
+
+`func (o *Assets) SetTopQuestions(v string)`
+
+SetTopQuestions sets TopQuestions field to given value.
+
+### HasTopQuestions
+
+`func (o *Assets) HasTopQuestions() bool`
+
+HasTopQuestions returns a boolean if a field has been set.
+
 ### GetShortCode
 
 `func (o *Assets) GetShortCode() string`
@@ -834,6 +861,31 @@ and a boolean to check if the value has been set.
 
 SetRequireCustomization sets RequireCustomization field to given value.
 
+
+### GetVizSpec
+
+`func (o *Assets) GetVizSpec() map[string]interface{}`
+
+GetVizSpec returns the VizSpec field if non-nil, zero value otherwise.
+
+### GetVizSpecOk
+
+`func (o *Assets) GetVizSpecOk() (*map[string]interface{}, bool)`
+
+GetVizSpecOk returns a tuple with the VizSpec field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVizSpec
+
+`func (o *Assets) SetVizSpec(v map[string]interface{})`
+
+SetVizSpec sets VizSpec field to given value.
+
+### HasVizSpec
+
+`func (o *Assets) HasVizSpec() bool`
+
+HasVizSpec returns a boolean if a field has been set.
 
 ### GetVizChartLibrary
 
@@ -1400,6 +1452,31 @@ SetDataTimePeriodEnd sets DataTimePeriodEnd field to given value.
 
 HasDataTimePeriodEnd returns a boolean if a field has been set.
 
+### GetDateCollectionStart
+
+`func (o *Assets) GetDateCollectionStart() time.Time`
+
+GetDateCollectionStart returns the DateCollectionStart field if non-nil, zero value otherwise.
+
+### GetDateCollectionStartOk
+
+`func (o *Assets) GetDateCollectionStartOk() (*time.Time, bool)`
+
+GetDateCollectionStartOk returns a tuple with the DateCollectionStart field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDateCollectionStart
+
+`func (o *Assets) SetDateCollectionStart(v time.Time)`
+
+SetDateCollectionStart sets DateCollectionStart field to given value.
+
+### HasDateCollectionStart
+
+`func (o *Assets) HasDateCollectionStart() bool`
+
+HasDateCollectionStart returns a boolean if a field has been set.
+
 ### GetGeographicCoverageType
 
 `func (o *Assets) GetGeographicCoverageType() string`
@@ -1474,31 +1551,6 @@ SetDataSourceRefreshFrequency sets DataSourceRefreshFrequency field to given val
 `func (o *Assets) HasDataSourceRefreshFrequency() bool`
 
 HasDataSourceRefreshFrequency returns a boolean if a field has been set.
-
-### GetDataSourceLastRefreshed
-
-`func (o *Assets) GetDataSourceLastRefreshed() time.Time`
-
-GetDataSourceLastRefreshed returns the DataSourceLastRefreshed field if non-nil, zero value otherwise.
-
-### GetDataSourceLastRefreshedOk
-
-`func (o *Assets) GetDataSourceLastRefreshedOk() (*time.Time, bool)`
-
-GetDataSourceLastRefreshedOk returns a tuple with the DataSourceLastRefreshed field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDataSourceLastRefreshed
-
-`func (o *Assets) SetDataSourceLastRefreshed(v time.Time)`
-
-SetDataSourceLastRefreshed sets DataSourceLastRefreshed field to given value.
-
-### HasDataSourceLastRefreshed
-
-`func (o *Assets) HasDataSourceLastRefreshed() bool`
-
-HasDataSourceLastRefreshed returns a boolean if a field has been set.
 
 ### GetRateLimitNumber
 

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateEndpoints**](EndpointsAPI.md#CreateEndpoints) | **Post** /companies/{company_id}/endpoints | Create a new endpoint
 [**CreateEndpointsKeys**](EndpointsAPI.md#CreateEndpointsKeys) | **Post** /companies/{company_id}/endpoints/{endpoint_id}/keys | POST /companies/{company_id}/endpoints/{endpoint_id}/keys
+[**CreateEndpointsScanColumn**](EndpointsAPI.md#CreateEndpointsScanColumn) | **Post** /companies/{company_id}/endpoints/{endpoint_id}/scan_column | POST /companies/{company_id}/endpoints/{endpoint_id}/scan_column
 [**DeleteEndpoints**](EndpointsAPI.md#DeleteEndpoints) | **Delete** /companies/{company_id}/endpoints/{endpoint_id} | Delete single endpoint by ID
 [**DeleteEndpointsKeys**](EndpointsAPI.md#DeleteEndpointsKeys) | **Delete** /companies/{company_id}/endpoints/{endpoint_id}/keys/{api_key_id} | DELETE /companies/{company_id}/endpoints/{endpoint_id}/keys/{api_key_id}
 [**GetEndpointsById**](EndpointsAPI.md#GetEndpointsById) | **Get** /companies/{company_id}/endpoints/{endpoint_id} | Get single endpoint by ID
@@ -13,6 +14,7 @@ Method | HTTP request | Description
 [**GetEndpointsByIdConnectionsDescribe**](EndpointsAPI.md#GetEndpointsByIdConnectionsDescribe) | **Get** /companies/{company_id}/endpoints/../connections/{connection_id}/describe | Get schema information for a connection      Query parameters:         include_fields: Whether to include field information (default: true)         schemas: Optional comma-separated schemas to include         tables: Optional comma-separated tables to include
 [**GetEndpointsByIdExecute**](EndpointsAPI.md#GetEndpointsByIdExecute) | **Get** /companies/{company_id}/endpoints/{endpoint_id}/execute | Execute an endpoint with pagination support.      Customer-facing route that returns paginated data.     Query params: ?start&#x3D;0&amp;limit&#x3D;100
 [**GetEndpointsByIdKeys**](EndpointsAPI.md#GetEndpointsByIdKeys) | **Get** /companies/{company_id}/endpoints/{endpoint_id}/keys | GET /companies/{company_id}/endpoints/{endpoint_id}/keys
+[**GetEndpointsByIdRecommendations**](EndpointsAPI.md#GetEndpointsByIdRecommendations) | **Get** /companies/{company_id}/endpoints/{endpoint_id}/recommendations | GET /companies/{company_id}/endpoints/{endpoint_id}/recommendations
 [**GetEndpointsByIdStats**](EndpointsAPI.md#GetEndpointsByIdStats) | **Get** /companies/{company_id}/endpoints/{endpoint_id}/stats | Get usage statistics for an endpoint      Query parameters:         days: Number of days to analyze (default: 30)
 [**GetEndpointsByIdTest**](EndpointsAPI.md#GetEndpointsByIdTest) | **Get** /companies/{company_id}/endpoints/{endpoint_id}/test | Test an endpoint with sample data      Request body (optional):         limit: Number of sample rows to return (default: 10)
 [**GetEndpointsByIdUrl**](EndpointsAPI.md#GetEndpointsByIdUrl) | **Get** /companies/{company_id}/endpoints/{endpoint_id}/url | GET /companies/{company_id}/endpoints/{endpoint_id}/url
@@ -148,6 +150,79 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCreateEndpointsKeysRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **endpointsInput** | [**EndpointsInput**](EndpointsInput.md) |  | 
+
+### Return type
+
+[**CreateEndpoints200Response**](CreateEndpoints200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateEndpointsScanColumn
+
+> CreateEndpoints200Response CreateEndpointsScanColumn(ctx, companyId, endpointId).EndpointsInput(endpointsInput).Execute()
+
+POST /companies/{company_id}/endpoints/{endpoint_id}/scan_column
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	companyId := "companyId_example" // string | Unique identifier for the Company
+	endpointId := "endpointId_example" // string | Unique identifier for the Endpoint
+	endpointsInput := *openapiclient.NewEndpointsInput("company_id_abc123", "connection_id_abc123", "Example Name") // EndpointsInput | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EndpointsAPI.CreateEndpointsScanColumn(context.Background(), companyId, endpointId).EndpointsInput(endpointsInput).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EndpointsAPI.CreateEndpointsScanColumn``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateEndpointsScanColumn`: CreateEndpoints200Response
+	fmt.Fprintf(os.Stdout, "Response from `EndpointsAPI.CreateEndpointsScanColumn`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**companyId** | **string** | Unique identifier for the Company | 
+**endpointId** | **string** | Unique identifier for the Endpoint | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateEndpointsScanColumnRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -649,6 +724,77 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetEndpointsByIdKeysRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**GetEndpointsByIdConnectionsDescribe200Response**](GetEndpointsByIdConnectionsDescribe200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetEndpointsByIdRecommendations
+
+> GetEndpointsByIdConnectionsDescribe200Response GetEndpointsByIdRecommendations(ctx, companyId, endpointId).Execute()
+
+GET /companies/{company_id}/endpoints/{endpoint_id}/recommendations
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	companyId := "companyId_example" // string | Unique identifier for the Company
+	endpointId := "endpointId_example" // string | Unique identifier for the Endpoint
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EndpointsAPI.GetEndpointsByIdRecommendations(context.Background(), companyId, endpointId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EndpointsAPI.GetEndpointsByIdRecommendations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetEndpointsByIdRecommendations`: GetEndpointsByIdConnectionsDescribe200Response
+	fmt.Fprintf(os.Stdout, "Response from `EndpointsAPI.GetEndpointsByIdRecommendations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**companyId** | **string** | Unique identifier for the Company | 
+**endpointId** | **string** | Unique identifier for the Endpoint | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetEndpointsByIdRecommendationsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

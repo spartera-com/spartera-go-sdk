@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**GetConnectionsById**](ConnectionsAPI.md#GetConnectionsById) | **Get** /companies/{company_id}/connections/{connection_id} | Get single connection by ID
 [**GetConnectionsById2**](ConnectionsAPI.md#GetConnectionsById2) | **Get** /companies/{company_id}/connections/{connection_id}/test | Test the specified connection
 [**GetConnectionsByIdInfoschema**](ConnectionsAPI.md#GetConnectionsByIdInfoschema) | **Get** /companies/{company_id}/connections/{connection_id}/infoschema | Retrieve the information schema for the specified connection
+[**GetConnectionsByIdSampleData**](ConnectionsAPI.md#GetConnectionsByIdSampleData) | **Get** /companies/{company_id}/connections/{connection_id}/sample-data | Get a randomized sample of rows from a table on this connection.     Used by the visualization editor to give sellers data to author against.      Query Parameters:         schema_name (required): Schema/dataset name         table_name  (required): Table name         limit       (optional): Max rows to return (default 1000, max 10000)      Returns columnar data — {column_name: [values]} — ready for Plotly&#39;s     dataSources prop. The actual chart at render time will pull fresh data     via the asset&#39;s saved SQL; this is only for authoring preview.
 [**ListConnections**](ConnectionsAPI.md#ListConnections) | **Get** /companies/{company_id}/connections | Get all connections for a specific company
 [**UpdateConnections**](ConnectionsAPI.md#UpdateConnections) | **Patch** /companies/{company_id}/connections/{connection_id} | Update an existing connection by ID
 
@@ -353,6 +354,77 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetConnectionsByIdInfoschemaRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**GetConnectionsById200Response**](GetConnectionsById200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetConnectionsByIdSampleData
+
+> GetConnectionsById200Response GetConnectionsByIdSampleData(ctx, companyId, connectionId).Execute()
+
+Get a randomized sample of rows from a table on this connection.     Used by the visualization editor to give sellers data to author against.      Query Parameters:         schema_name (required): Schema/dataset name         table_name  (required): Table name         limit       (optional): Max rows to return (default 1000, max 10000)      Returns columnar data — {column_name: [values]} — ready for Plotly's     dataSources prop. The actual chart at render time will pull fresh data     via the asset's saved SQL; this is only for authoring preview.
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	companyId := "companyId_example" // string | Unique identifier for the Company
+	connectionId := "connectionId_example" // string | Unique identifier for the Connection
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ConnectionsAPI.GetConnectionsByIdSampleData(context.Background(), companyId, connectionId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.GetConnectionsByIdSampleData``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetConnectionsByIdSampleData`: GetConnectionsById200Response
+	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.GetConnectionsByIdSampleData`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**companyId** | **string** | Unique identifier for the Company | 
+**connectionId** | **string** | Unique identifier for the Connection | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetConnectionsByIdSampleDataRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

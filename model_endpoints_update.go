@@ -43,26 +43,26 @@ type EndpointsUpdate struct {
 	ApprovedAt *time.Time `json:"approved_at,omitempty"`
 	// Whether this endpoint appears in the public marketplace
 	SellInMarketplace *bool `json:"sell_in_marketplace,omitempty"`
-	// Credits deducted from the buyer's pool per successful (200 OK) request. Same credit pool as assets. price_usd kept for billing records / dashboards.
-	PriceCredits *int64 `json:"price_credits,omitempty"`
 	// Human-readable name for the endpoint
 	Name *string `json:"name,omitempty"`
 	// Human-readable, URL-safe slug derived from name at creation time. e.g. 'NFL Live Moneyline & Spread Odds' → 'nfl-live-moneyline-spread-odds'. Never changes after creation. Unique within company (DB constraint). Creation fails with 409 if a duplicate name exists in the same company.
 	Slug *string `json:"slug,omitempty"`
 	// Description of what this endpoint provides
 	Description *string `json:"description,omitempty"`
+	// Long-form HTML description for product pages and SEO
+	DetailedDescription *string `json:"detailed_description,omitempty"`
+	// Top 3 questions this endpoint can help answer, in English. Stored as JSON array of strings (1-3 items, 15-200 chars each). Strongly encouraged for marketplace endpoints but not required — nudge via UI completeness score, not hard validation.
+	TopQuestions *string `json:"top_questions,omitempty"`
 	// Schema/database name where the table resides
 	SourceSchemaName *string `json:"source_schema_name,omitempty"`
 	// Table name to query from
 	SourceTableName *string `json:"source_table_name,omitempty"`
-	// Named customer for B2B deals (marketplace uses price_credits instead)
+	// Named customer for B2B deals (pricing handled via asset_price_history)
 	CustomerName *string `json:"customer_name,omitempty"`
-	// USD reference price for billing records and seller dashboards
-	PriceUsd *float32 `json:"price_usd,omitempty"`
 	// Column configurations including aggregations, filters, and visibility. Format: {columns: [{name, type, aggregation, filter, is_hidden, alias, ...}]}. This is the source of truth — SQL is generated at runtime from this configuration.
 	EndpointSchema map[string]interface{} `json:"endpoint_schema,omitempty"`
 	// Number of requests allowed per rate_limit_period
-	RateLimitRequests *int64 `json:"rate_limit_requests,omitempty"`
+	RateLimitNumber *int64 `json:"rate_limit_number,omitempty"`
 	// Time period for rate limiting (HOUR, DAY, MONTH)
 	RateLimitPeriod *string `json:"rate_limit_period,omitempty"`
 	// How to group rate limits (IP, USER, COMPANY, API_KEY, GLOBAL)
@@ -73,12 +73,28 @@ type EndpointsUpdate struct {
 	AccessWhitelist map[string]interface{} `json:"access_whitelist,omitempty"`
 	// Current status of the endpoint (ACTIVE, INACTIVE, DEPRECATED)
 	Status *string `json:"status,omitempty"`
+	// Start date of the data time period covered
+	DataTimePeriodStart *time.Time `json:"data_time_period_start,omitempty"`
+	// End date of the data time period covered
+	DataTimePeriodEnd *time.Time `json:"data_time_period_end,omitempty"`
+	// When the seller began actively collecting this data. Distinct from data_time_period_start, which describes when the records themselves begin. Backfilled historical data will have date_collection_start > data_time_period_start.
+	DateCollectionStart *time.Time `json:"date_collection_start,omitempty"`
+	// Type of geographic coverage
+	GeographicCoverageType *string `json:"geographic_coverage_type,omitempty"`
+	// Specific regions/countries covered (e.g., 'United States, Canada, Mexico')
+	GeographicCoverageDetails *string `json:"geographic_coverage_details,omitempty"`
+	// How often the source data is refreshed
+	DataSourceRefreshFrequency *string `json:"data_source_refresh_frequency,omitempty"`
 	// Comma-separated tags for organizing endpoints
 	Tags *string `json:"tags,omitempty"`
 	// When this endpoint was last called
 	LastAccessed *time.Time `json:"last_accessed,omitempty"`
 	// Seller-enforced row cap per request. Buyers cannot exceed this. Default 1000.
 	MaxRecordsPerRequest *int64 `json:"max_records_per_request,omitempty"`
+	// Whether this endpoint supports bulk export to GCS. When True, buyers can request delivery=gcs with format=csv|parquet. Independent of max_records_per_request, which only governs inline JSON.
+	ExportEnabled *bool `json:"export_enabled,omitempty"`
+	// Hard ceiling on rows returned per GCS export. Separate from max_records_per_request so sellers can offer larger downloads via file delivery without expanding inline JSON responses.
+	MaxRecordsPerExport *int64 `json:"max_records_per_export,omitempty"`
 	// Last successful {spartera, request, response} envelope. Saved on each successful marketplace run. Displayed as preview on product page load.
 	SampleResponse map[string]interface{} `json:"sample_response,omitempty"`
 	// Required.
@@ -454,38 +470,6 @@ func (o *EndpointsUpdate) SetSellInMarketplace(v bool) {
 	o.SellInMarketplace = &v
 }
 
-// GetPriceCredits returns the PriceCredits field value if set, zero value otherwise.
-func (o *EndpointsUpdate) GetPriceCredits() int64 {
-	if o == nil || IsNil(o.PriceCredits) {
-		var ret int64
-		return ret
-	}
-	return *o.PriceCredits
-}
-
-// GetPriceCreditsOk returns a tuple with the PriceCredits field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EndpointsUpdate) GetPriceCreditsOk() (*int64, bool) {
-	if o == nil || IsNil(o.PriceCredits) {
-		return nil, false
-	}
-	return o.PriceCredits, true
-}
-
-// HasPriceCredits returns a boolean if a field has been set.
-func (o *EndpointsUpdate) HasPriceCredits() bool {
-	if o != nil && !IsNil(o.PriceCredits) {
-		return true
-	}
-
-	return false
-}
-
-// SetPriceCredits gets a reference to the given int64 and assigns it to the PriceCredits field.
-func (o *EndpointsUpdate) SetPriceCredits(v int64) {
-	o.PriceCredits = &v
-}
-
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *EndpointsUpdate) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -580,6 +564,70 @@ func (o *EndpointsUpdate) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *EndpointsUpdate) SetDescription(v string) {
 	o.Description = &v
+}
+
+// GetDetailedDescription returns the DetailedDescription field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetDetailedDescription() string {
+	if o == nil || IsNil(o.DetailedDescription) {
+		var ret string
+		return ret
+	}
+	return *o.DetailedDescription
+}
+
+// GetDetailedDescriptionOk returns a tuple with the DetailedDescription field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointsUpdate) GetDetailedDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.DetailedDescription) {
+		return nil, false
+	}
+	return o.DetailedDescription, true
+}
+
+// HasDetailedDescription returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasDetailedDescription() bool {
+	if o != nil && !IsNil(o.DetailedDescription) {
+		return true
+	}
+
+	return false
+}
+
+// SetDetailedDescription gets a reference to the given string and assigns it to the DetailedDescription field.
+func (o *EndpointsUpdate) SetDetailedDescription(v string) {
+	o.DetailedDescription = &v
+}
+
+// GetTopQuestions returns the TopQuestions field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetTopQuestions() string {
+	if o == nil || IsNil(o.TopQuestions) {
+		var ret string
+		return ret
+	}
+	return *o.TopQuestions
+}
+
+// GetTopQuestionsOk returns a tuple with the TopQuestions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointsUpdate) GetTopQuestionsOk() (*string, bool) {
+	if o == nil || IsNil(o.TopQuestions) {
+		return nil, false
+	}
+	return o.TopQuestions, true
+}
+
+// HasTopQuestions returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasTopQuestions() bool {
+	if o != nil && !IsNil(o.TopQuestions) {
+		return true
+	}
+
+	return false
+}
+
+// SetTopQuestions gets a reference to the given string and assigns it to the TopQuestions field.
+func (o *EndpointsUpdate) SetTopQuestions(v string) {
+	o.TopQuestions = &v
 }
 
 // GetSourceSchemaName returns the SourceSchemaName field value if set, zero value otherwise.
@@ -678,38 +726,6 @@ func (o *EndpointsUpdate) SetCustomerName(v string) {
 	o.CustomerName = &v
 }
 
-// GetPriceUsd returns the PriceUsd field value if set, zero value otherwise.
-func (o *EndpointsUpdate) GetPriceUsd() float32 {
-	if o == nil || IsNil(o.PriceUsd) {
-		var ret float32
-		return ret
-	}
-	return *o.PriceUsd
-}
-
-// GetPriceUsdOk returns a tuple with the PriceUsd field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EndpointsUpdate) GetPriceUsdOk() (*float32, bool) {
-	if o == nil || IsNil(o.PriceUsd) {
-		return nil, false
-	}
-	return o.PriceUsd, true
-}
-
-// HasPriceUsd returns a boolean if a field has been set.
-func (o *EndpointsUpdate) HasPriceUsd() bool {
-	if o != nil && !IsNil(o.PriceUsd) {
-		return true
-	}
-
-	return false
-}
-
-// SetPriceUsd gets a reference to the given float32 and assigns it to the PriceUsd field.
-func (o *EndpointsUpdate) SetPriceUsd(v float32) {
-	o.PriceUsd = &v
-}
-
 // GetEndpointSchema returns the EndpointSchema field value if set, zero value otherwise.
 func (o *EndpointsUpdate) GetEndpointSchema() map[string]interface{} {
 	if o == nil || IsNil(o.EndpointSchema) {
@@ -742,36 +758,36 @@ func (o *EndpointsUpdate) SetEndpointSchema(v map[string]interface{}) {
 	o.EndpointSchema = v
 }
 
-// GetRateLimitRequests returns the RateLimitRequests field value if set, zero value otherwise.
-func (o *EndpointsUpdate) GetRateLimitRequests() int64 {
-	if o == nil || IsNil(o.RateLimitRequests) {
+// GetRateLimitNumber returns the RateLimitNumber field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetRateLimitNumber() int64 {
+	if o == nil || IsNil(o.RateLimitNumber) {
 		var ret int64
 		return ret
 	}
-	return *o.RateLimitRequests
+	return *o.RateLimitNumber
 }
 
-// GetRateLimitRequestsOk returns a tuple with the RateLimitRequests field value if set, nil otherwise
+// GetRateLimitNumberOk returns a tuple with the RateLimitNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *EndpointsUpdate) GetRateLimitRequestsOk() (*int64, bool) {
-	if o == nil || IsNil(o.RateLimitRequests) {
+func (o *EndpointsUpdate) GetRateLimitNumberOk() (*int64, bool) {
+	if o == nil || IsNil(o.RateLimitNumber) {
 		return nil, false
 	}
-	return o.RateLimitRequests, true
+	return o.RateLimitNumber, true
 }
 
-// HasRateLimitRequests returns a boolean if a field has been set.
-func (o *EndpointsUpdate) HasRateLimitRequests() bool {
-	if o != nil && !IsNil(o.RateLimitRequests) {
+// HasRateLimitNumber returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasRateLimitNumber() bool {
+	if o != nil && !IsNil(o.RateLimitNumber) {
 		return true
 	}
 
 	return false
 }
 
-// SetRateLimitRequests gets a reference to the given int64 and assigns it to the RateLimitRequests field.
-func (o *EndpointsUpdate) SetRateLimitRequests(v int64) {
-	o.RateLimitRequests = &v
+// SetRateLimitNumber gets a reference to the given int64 and assigns it to the RateLimitNumber field.
+func (o *EndpointsUpdate) SetRateLimitNumber(v int64) {
+	o.RateLimitNumber = &v
 }
 
 // GetRateLimitPeriod returns the RateLimitPeriod field value if set, zero value otherwise.
@@ -934,6 +950,198 @@ func (o *EndpointsUpdate) SetStatus(v string) {
 	o.Status = &v
 }
 
+// GetDataTimePeriodStart returns the DataTimePeriodStart field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetDataTimePeriodStart() time.Time {
+	if o == nil || IsNil(o.DataTimePeriodStart) {
+		var ret time.Time
+		return ret
+	}
+	return *o.DataTimePeriodStart
+}
+
+// GetDataTimePeriodStartOk returns a tuple with the DataTimePeriodStart field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointsUpdate) GetDataTimePeriodStartOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.DataTimePeriodStart) {
+		return nil, false
+	}
+	return o.DataTimePeriodStart, true
+}
+
+// HasDataTimePeriodStart returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasDataTimePeriodStart() bool {
+	if o != nil && !IsNil(o.DataTimePeriodStart) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataTimePeriodStart gets a reference to the given time.Time and assigns it to the DataTimePeriodStart field.
+func (o *EndpointsUpdate) SetDataTimePeriodStart(v time.Time) {
+	o.DataTimePeriodStart = &v
+}
+
+// GetDataTimePeriodEnd returns the DataTimePeriodEnd field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetDataTimePeriodEnd() time.Time {
+	if o == nil || IsNil(o.DataTimePeriodEnd) {
+		var ret time.Time
+		return ret
+	}
+	return *o.DataTimePeriodEnd
+}
+
+// GetDataTimePeriodEndOk returns a tuple with the DataTimePeriodEnd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointsUpdate) GetDataTimePeriodEndOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.DataTimePeriodEnd) {
+		return nil, false
+	}
+	return o.DataTimePeriodEnd, true
+}
+
+// HasDataTimePeriodEnd returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasDataTimePeriodEnd() bool {
+	if o != nil && !IsNil(o.DataTimePeriodEnd) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataTimePeriodEnd gets a reference to the given time.Time and assigns it to the DataTimePeriodEnd field.
+func (o *EndpointsUpdate) SetDataTimePeriodEnd(v time.Time) {
+	o.DataTimePeriodEnd = &v
+}
+
+// GetDateCollectionStart returns the DateCollectionStart field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetDateCollectionStart() time.Time {
+	if o == nil || IsNil(o.DateCollectionStart) {
+		var ret time.Time
+		return ret
+	}
+	return *o.DateCollectionStart
+}
+
+// GetDateCollectionStartOk returns a tuple with the DateCollectionStart field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointsUpdate) GetDateCollectionStartOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.DateCollectionStart) {
+		return nil, false
+	}
+	return o.DateCollectionStart, true
+}
+
+// HasDateCollectionStart returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasDateCollectionStart() bool {
+	if o != nil && !IsNil(o.DateCollectionStart) {
+		return true
+	}
+
+	return false
+}
+
+// SetDateCollectionStart gets a reference to the given time.Time and assigns it to the DateCollectionStart field.
+func (o *EndpointsUpdate) SetDateCollectionStart(v time.Time) {
+	o.DateCollectionStart = &v
+}
+
+// GetGeographicCoverageType returns the GeographicCoverageType field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetGeographicCoverageType() string {
+	if o == nil || IsNil(o.GeographicCoverageType) {
+		var ret string
+		return ret
+	}
+	return *o.GeographicCoverageType
+}
+
+// GetGeographicCoverageTypeOk returns a tuple with the GeographicCoverageType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointsUpdate) GetGeographicCoverageTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.GeographicCoverageType) {
+		return nil, false
+	}
+	return o.GeographicCoverageType, true
+}
+
+// HasGeographicCoverageType returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasGeographicCoverageType() bool {
+	if o != nil && !IsNil(o.GeographicCoverageType) {
+		return true
+	}
+
+	return false
+}
+
+// SetGeographicCoverageType gets a reference to the given string and assigns it to the GeographicCoverageType field.
+func (o *EndpointsUpdate) SetGeographicCoverageType(v string) {
+	o.GeographicCoverageType = &v
+}
+
+// GetGeographicCoverageDetails returns the GeographicCoverageDetails field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetGeographicCoverageDetails() string {
+	if o == nil || IsNil(o.GeographicCoverageDetails) {
+		var ret string
+		return ret
+	}
+	return *o.GeographicCoverageDetails
+}
+
+// GetGeographicCoverageDetailsOk returns a tuple with the GeographicCoverageDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointsUpdate) GetGeographicCoverageDetailsOk() (*string, bool) {
+	if o == nil || IsNil(o.GeographicCoverageDetails) {
+		return nil, false
+	}
+	return o.GeographicCoverageDetails, true
+}
+
+// HasGeographicCoverageDetails returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasGeographicCoverageDetails() bool {
+	if o != nil && !IsNil(o.GeographicCoverageDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetGeographicCoverageDetails gets a reference to the given string and assigns it to the GeographicCoverageDetails field.
+func (o *EndpointsUpdate) SetGeographicCoverageDetails(v string) {
+	o.GeographicCoverageDetails = &v
+}
+
+// GetDataSourceRefreshFrequency returns the DataSourceRefreshFrequency field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetDataSourceRefreshFrequency() string {
+	if o == nil || IsNil(o.DataSourceRefreshFrequency) {
+		var ret string
+		return ret
+	}
+	return *o.DataSourceRefreshFrequency
+}
+
+// GetDataSourceRefreshFrequencyOk returns a tuple with the DataSourceRefreshFrequency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointsUpdate) GetDataSourceRefreshFrequencyOk() (*string, bool) {
+	if o == nil || IsNil(o.DataSourceRefreshFrequency) {
+		return nil, false
+	}
+	return o.DataSourceRefreshFrequency, true
+}
+
+// HasDataSourceRefreshFrequency returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasDataSourceRefreshFrequency() bool {
+	if o != nil && !IsNil(o.DataSourceRefreshFrequency) {
+		return true
+	}
+
+	return false
+}
+
+// SetDataSourceRefreshFrequency gets a reference to the given string and assigns it to the DataSourceRefreshFrequency field.
+func (o *EndpointsUpdate) SetDataSourceRefreshFrequency(v string) {
+	o.DataSourceRefreshFrequency = &v
+}
+
 // GetTags returns the Tags field value if set, zero value otherwise.
 func (o *EndpointsUpdate) GetTags() string {
 	if o == nil || IsNil(o.Tags) {
@@ -1028,6 +1236,70 @@ func (o *EndpointsUpdate) HasMaxRecordsPerRequest() bool {
 // SetMaxRecordsPerRequest gets a reference to the given int64 and assigns it to the MaxRecordsPerRequest field.
 func (o *EndpointsUpdate) SetMaxRecordsPerRequest(v int64) {
 	o.MaxRecordsPerRequest = &v
+}
+
+// GetExportEnabled returns the ExportEnabled field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetExportEnabled() bool {
+	if o == nil || IsNil(o.ExportEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.ExportEnabled
+}
+
+// GetExportEnabledOk returns a tuple with the ExportEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointsUpdate) GetExportEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.ExportEnabled) {
+		return nil, false
+	}
+	return o.ExportEnabled, true
+}
+
+// HasExportEnabled returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasExportEnabled() bool {
+	if o != nil && !IsNil(o.ExportEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetExportEnabled gets a reference to the given bool and assigns it to the ExportEnabled field.
+func (o *EndpointsUpdate) SetExportEnabled(v bool) {
+	o.ExportEnabled = &v
+}
+
+// GetMaxRecordsPerExport returns the MaxRecordsPerExport field value if set, zero value otherwise.
+func (o *EndpointsUpdate) GetMaxRecordsPerExport() int64 {
+	if o == nil || IsNil(o.MaxRecordsPerExport) {
+		var ret int64
+		return ret
+	}
+	return *o.MaxRecordsPerExport
+}
+
+// GetMaxRecordsPerExportOk returns a tuple with the MaxRecordsPerExport field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EndpointsUpdate) GetMaxRecordsPerExportOk() (*int64, bool) {
+	if o == nil || IsNil(o.MaxRecordsPerExport) {
+		return nil, false
+	}
+	return o.MaxRecordsPerExport, true
+}
+
+// HasMaxRecordsPerExport returns a boolean if a field has been set.
+func (o *EndpointsUpdate) HasMaxRecordsPerExport() bool {
+	if o != nil && !IsNil(o.MaxRecordsPerExport) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxRecordsPerExport gets a reference to the given int64 and assigns it to the MaxRecordsPerExport field.
+func (o *EndpointsUpdate) SetMaxRecordsPerExport(v int64) {
+	o.MaxRecordsPerExport = &v
 }
 
 // GetSampleResponse returns the SampleResponse field value if set, zero value otherwise.
@@ -1137,9 +1409,6 @@ func (o EndpointsUpdate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SellInMarketplace) {
 		toSerialize["sell_in_marketplace"] = o.SellInMarketplace
 	}
-	if !IsNil(o.PriceCredits) {
-		toSerialize["price_credits"] = o.PriceCredits
-	}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
@@ -1148,6 +1417,12 @@ func (o EndpointsUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.DetailedDescription) {
+		toSerialize["detailed_description"] = o.DetailedDescription
+	}
+	if !IsNil(o.TopQuestions) {
+		toSerialize["top_questions"] = o.TopQuestions
 	}
 	if !IsNil(o.SourceSchemaName) {
 		toSerialize["source_schema_name"] = o.SourceSchemaName
@@ -1158,14 +1433,11 @@ func (o EndpointsUpdate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CustomerName) {
 		toSerialize["customer_name"] = o.CustomerName
 	}
-	if !IsNil(o.PriceUsd) {
-		toSerialize["price_usd"] = o.PriceUsd
-	}
 	if !IsNil(o.EndpointSchema) {
 		toSerialize["endpoint_schema"] = o.EndpointSchema
 	}
-	if !IsNil(o.RateLimitRequests) {
-		toSerialize["rate_limit_requests"] = o.RateLimitRequests
+	if !IsNil(o.RateLimitNumber) {
+		toSerialize["rate_limit_number"] = o.RateLimitNumber
 	}
 	if !IsNil(o.RateLimitPeriod) {
 		toSerialize["rate_limit_period"] = o.RateLimitPeriod
@@ -1182,6 +1454,24 @@ func (o EndpointsUpdate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+	if !IsNil(o.DataTimePeriodStart) {
+		toSerialize["data_time_period_start"] = o.DataTimePeriodStart
+	}
+	if !IsNil(o.DataTimePeriodEnd) {
+		toSerialize["data_time_period_end"] = o.DataTimePeriodEnd
+	}
+	if !IsNil(o.DateCollectionStart) {
+		toSerialize["date_collection_start"] = o.DateCollectionStart
+	}
+	if !IsNil(o.GeographicCoverageType) {
+		toSerialize["geographic_coverage_type"] = o.GeographicCoverageType
+	}
+	if !IsNil(o.GeographicCoverageDetails) {
+		toSerialize["geographic_coverage_details"] = o.GeographicCoverageDetails
+	}
+	if !IsNil(o.DataSourceRefreshFrequency) {
+		toSerialize["data_source_refresh_frequency"] = o.DataSourceRefreshFrequency
+	}
 	if !IsNil(o.Tags) {
 		toSerialize["tags"] = o.Tags
 	}
@@ -1190,6 +1480,12 @@ func (o EndpointsUpdate) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.MaxRecordsPerRequest) {
 		toSerialize["max_records_per_request"] = o.MaxRecordsPerRequest
+	}
+	if !IsNil(o.ExportEnabled) {
+		toSerialize["export_enabled"] = o.ExportEnabled
+	}
+	if !IsNil(o.MaxRecordsPerExport) {
+		toSerialize["max_records_per_export"] = o.MaxRecordsPerExport
 	}
 	if !IsNil(o.SampleResponse) {
 		toSerialize["sample_response"] = o.SampleResponse

@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 
 ## CreateAssetsAnalyze
 
-> CreateAssetsAnalyze200Response CreateAssetsAnalyze(ctx, assetSlug, companyHandle).AssetsInput(assetsInput).Execute()
+> CreateAssetsAnalyze200Response CreateAssetsAnalyze(ctx, companyHandle, assetSlug).AssetsInput(assetsInput).Execute()
 
 Process (analyze) an asset with dynamic rate limiting applied via decorator.
 
@@ -122,13 +122,13 @@ import (
 )
 
 func main() {
-	assetSlug := "assetSlug_example" // string | URL-friendly slug for the Asset
 	companyHandle := "companyHandle_example" // string | Human-readable handle for the Company
+	assetSlug := "assetSlug_example" // string | URL-friendly slug for the Asset
 	assetsInput := *openapiclient.NewAssetsInput("company_id_abc123", "Example Name", "MANUAL") // AssetsInput | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AssetsAPI.CreateAssetsAnalyze(context.Background(), assetSlug, companyHandle).AssetsInput(assetsInput).Execute()
+	resp, r, err := apiClient.AssetsAPI.CreateAssetsAnalyze(context.Background(), companyHandle, assetSlug).AssetsInput(assetsInput).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.CreateAssetsAnalyze``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -144,8 +144,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**assetSlug** | **string** | URL-friendly slug for the Asset | 
 **companyHandle** | **string** | Human-readable handle for the Company | 
+**assetSlug** | **string** | URL-friendly slug for the Asset | 
 
 ### Other Parameters
 
@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 
 ## GetAssetsByIdAnalyze
 
-> GetAssetsByIdAnalyze200Response GetAssetsByIdAnalyze(ctx, assetSlug, companyHandle).Execute()
+> GetAssetsByIdAnalyze200Response GetAssetsByIdAnalyze(ctx, companyHandle, assetSlug).Execute()
 
 Process (analyze) an asset with dynamic rate limiting applied via decorator.
 
@@ -554,12 +554,12 @@ import (
 )
 
 func main() {
-	assetSlug := "assetSlug_example" // string | URL-friendly slug for the Asset
 	companyHandle := "companyHandle_example" // string | Human-readable handle for the Company
+	assetSlug := "assetSlug_example" // string | URL-friendly slug for the Asset
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AssetsAPI.GetAssetsByIdAnalyze(context.Background(), assetSlug, companyHandle).Execute()
+	resp, r, err := apiClient.AssetsAPI.GetAssetsByIdAnalyze(context.Background(), companyHandle, assetSlug).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AssetsAPI.GetAssetsByIdAnalyze``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -575,8 +575,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**assetSlug** | **string** | URL-friendly slug for the Asset | 
 **companyHandle** | **string** | Human-readable handle for the Company | 
+**assetSlug** | **string** | URL-friendly slug for the Asset | 
 
 ### Other Parameters
 

@@ -40,10 +40,10 @@ func Test_spartera_AssetsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var assetSlug string
 		var companyHandle string
+		var assetSlug string
 
-		resp, httpRes, err := apiClient.AssetsAPI.CreateAssetsAnalyze(context.Background(), assetSlug, companyHandle).Execute()
+		resp, httpRes, err := apiClient.AssetsAPI.CreateAssetsAnalyze(context.Background(), companyHandle, assetSlug).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -130,10 +130,10 @@ func Test_spartera_AssetsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var assetSlug string
 		var companyHandle string
+		var assetSlug string
 
-		resp, httpRes, err := apiClient.AssetsAPI.GetAssetsByIdAnalyze(context.Background(), assetSlug, companyHandle).Execute()
+		resp, httpRes, err := apiClient.AssetsAPI.GetAssetsByIdAnalyze(context.Background(), companyHandle, assetSlug).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

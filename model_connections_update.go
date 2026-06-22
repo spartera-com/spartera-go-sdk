@@ -26,7 +26,7 @@ type ConnectionsUpdate struct {
 	EngineId *int64 `json:"engine_id,omitempty"`
 	// References companies.company_id — A Spartera seller or buyer company account. See GET /companies for valid values. Required.
 	CompanyId *string `json:"company_id,omitempty"`
-	// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (8 total).
+	// Optional. One of: SERVICE_ACCOUNT, USERNAME_PASSWORD, API_KEY, SERVICE_IDENTITY, ACCESS_KEY, … (10 total).
 	CredentialType *string `json:"credential_type,omitempty"`
 	// Optional.
 	Name *string `json:"name,omitempty"`

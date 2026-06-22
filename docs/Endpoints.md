@@ -16,24 +16,32 @@ Name | Type | Description | Notes
 **ApprovedByUserId** | Pointer to **string** | User who approved this endpoint for marketplace | [optional] 
 **ApprovedAt** | Pointer to **time.Time** | Timestamp of marketplace approval | [optional] 
 **SellInMarketplace** | **bool** | Whether this endpoint appears in the public marketplace | 
-**PriceCredits** | **int64** | Credits deducted from the buyer&#39;s pool per successful (200 OK) request. Same credit pool as assets. price_usd kept for billing records / dashboards. | 
 **Name** | **string** | Human-readable name for the endpoint | 
 **Slug** | Pointer to **string** | Human-readable, URL-safe slug derived from name at creation time. e.g. &#39;NFL Live Moneyline &amp; Spread Odds&#39; → &#39;nfl-live-moneyline-spread-odds&#39;. Never changes after creation. Unique within company (DB constraint). Creation fails with 409 if a duplicate name exists in the same company. | [optional] 
 **Description** | Pointer to **string** | Description of what this endpoint provides | [optional] 
+**DetailedDescription** | Pointer to **string** | Long-form HTML description for product pages and SEO | [optional] 
+**TopQuestions** | Pointer to **string** | Top 3 questions this endpoint can help answer, in English. Stored as JSON array of strings (1-3 items, 15-200 chars each). Strongly encouraged for marketplace endpoints but not required — nudge via UI completeness score, not hard validation. | [optional] 
 **SourceSchemaName** | Pointer to **string** | Schema/database name where the table resides | [optional] 
 **SourceTableName** | Pointer to **string** | Table name to query from | [optional] 
-**CustomerName** | Pointer to **string** | Named customer for B2B deals (marketplace uses price_credits instead) | [optional] 
-**PriceUsd** | Pointer to **float32** | USD reference price for billing records and seller dashboards | [optional] 
+**CustomerName** | Pointer to **string** | Named customer for B2B deals (pricing handled via asset_price_history) | [optional] 
 **EndpointSchema** | Pointer to **map[string]interface{}** | Column configurations including aggregations, filters, and visibility. Format: {columns: [{name, type, aggregation, filter, is_hidden, alias, ...}]}. This is the source of truth — SQL is generated at runtime from this configuration. | [optional] 
-**RateLimitRequests** | Pointer to **int64** | Number of requests allowed per rate_limit_period | [optional] 
+**RateLimitNumber** | Pointer to **int64** | Number of requests allowed per rate_limit_period | [optional] 
 **RateLimitPeriod** | Pointer to **string** | Time period for rate limiting (HOUR, DAY, MONTH) | [optional] 
 **RateLimitGranularity** | Pointer to **string** | How to group rate limits (IP, USER, COMPANY, API_KEY, GLOBAL) | [optional] 
 **AccessMethod** | Pointer to **string** | Access control method (OPEN, API_KEY, IP, EMAIL, DOMAIN) | [optional] 
 **AccessWhitelist** | Pointer to **map[string]interface{}** | List of allowed IPs, emails, or domains based on access_method. Format: {type: &#39;ip&#39;|&#39;email&#39;|&#39;domain&#39;, values: [&#39;192.168.1.1&#39;, ...]} | [optional] 
 **Status** | **string** | Current status of the endpoint (ACTIVE, INACTIVE, DEPRECATED) | 
+**DataTimePeriodStart** | Pointer to **time.Time** | Start date of the data time period covered | [optional] 
+**DataTimePeriodEnd** | Pointer to **time.Time** | End date of the data time period covered | [optional] 
+**DateCollectionStart** | Pointer to **time.Time** | When the seller began actively collecting this data. Distinct from data_time_period_start, which describes when the records themselves begin. Backfilled historical data will have date_collection_start &gt; data_time_period_start. | [optional] 
+**GeographicCoverageType** | Pointer to **string** | Type of geographic coverage | [optional] 
+**GeographicCoverageDetails** | Pointer to **string** | Specific regions/countries covered (e.g., &#39;United States, Canada, Mexico&#39;) | [optional] 
+**DataSourceRefreshFrequency** | Pointer to **string** | How often the source data is refreshed | [optional] 
 **Tags** | Pointer to **string** | Comma-separated tags for organizing endpoints | [optional] 
 **LastAccessed** | Pointer to **time.Time** | When this endpoint was last called | [optional] 
 **MaxRecordsPerRequest** | Pointer to **int64** | Seller-enforced row cap per request. Buyers cannot exceed this. Default 1000. | [optional] 
+**ExportEnabled** | **bool** | Whether this endpoint supports bulk export to GCS. When True, buyers can request delivery&#x3D;gcs with format&#x3D;csv|parquet. Independent of max_records_per_request, which only governs inline JSON. | 
+**MaxRecordsPerExport** | Pointer to **int64** | Hard ceiling on rows returned per GCS export. Separate from max_records_per_request so sellers can offer larger downloads via file delivery without expanding inline JSON responses. | [optional] 
 **SampleResponse** | Pointer to **map[string]interface{}** | Last successful {spartera, request, response} envelope. Saved on each successful marketplace run. Displayed as preview on product page load. | [optional] 
 **Active** | **bool** | Required. | 
 
@@ -41,7 +49,7 @@ Name | Type | Description | Notes
 
 ### NewEndpoints
 
-`func NewEndpoints(dateCreated time.Time, lastUpdated time.Time, companyId string, connectionId string, sellInMarketplace bool, priceCredits int64, name string, status string, active bool, ) *Endpoints`
+`func NewEndpoints(dateCreated time.Time, lastUpdated time.Time, companyId string, connectionId string, sellInMarketplace bool, name string, status string, exportEnabled bool, active bool, ) *Endpoints`
 
 NewEndpoints instantiates a new Endpoints object
 This constructor will assign default values to properties that have it defined,
@@ -331,26 +339,6 @@ and a boolean to check if the value has been set.
 SetSellInMarketplace sets SellInMarketplace field to given value.
 
 
-### GetPriceCredits
-
-`func (o *Endpoints) GetPriceCredits() int64`
-
-GetPriceCredits returns the PriceCredits field if non-nil, zero value otherwise.
-
-### GetPriceCreditsOk
-
-`func (o *Endpoints) GetPriceCreditsOk() (*int64, bool)`
-
-GetPriceCreditsOk returns a tuple with the PriceCredits field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPriceCredits
-
-`func (o *Endpoints) SetPriceCredits(v int64)`
-
-SetPriceCredits sets PriceCredits field to given value.
-
-
 ### GetName
 
 `func (o *Endpoints) GetName() string`
@@ -420,6 +408,56 @@ SetDescription sets Description field to given value.
 `func (o *Endpoints) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetDetailedDescription
+
+`func (o *Endpoints) GetDetailedDescription() string`
+
+GetDetailedDescription returns the DetailedDescription field if non-nil, zero value otherwise.
+
+### GetDetailedDescriptionOk
+
+`func (o *Endpoints) GetDetailedDescriptionOk() (*string, bool)`
+
+GetDetailedDescriptionOk returns a tuple with the DetailedDescription field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetailedDescription
+
+`func (o *Endpoints) SetDetailedDescription(v string)`
+
+SetDetailedDescription sets DetailedDescription field to given value.
+
+### HasDetailedDescription
+
+`func (o *Endpoints) HasDetailedDescription() bool`
+
+HasDetailedDescription returns a boolean if a field has been set.
+
+### GetTopQuestions
+
+`func (o *Endpoints) GetTopQuestions() string`
+
+GetTopQuestions returns the TopQuestions field if non-nil, zero value otherwise.
+
+### GetTopQuestionsOk
+
+`func (o *Endpoints) GetTopQuestionsOk() (*string, bool)`
+
+GetTopQuestionsOk returns a tuple with the TopQuestions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTopQuestions
+
+`func (o *Endpoints) SetTopQuestions(v string)`
+
+SetTopQuestions sets TopQuestions field to given value.
+
+### HasTopQuestions
+
+`func (o *Endpoints) HasTopQuestions() bool`
+
+HasTopQuestions returns a boolean if a field has been set.
 
 ### GetSourceSchemaName
 
@@ -496,31 +534,6 @@ SetCustomerName sets CustomerName field to given value.
 
 HasCustomerName returns a boolean if a field has been set.
 
-### GetPriceUsd
-
-`func (o *Endpoints) GetPriceUsd() float32`
-
-GetPriceUsd returns the PriceUsd field if non-nil, zero value otherwise.
-
-### GetPriceUsdOk
-
-`func (o *Endpoints) GetPriceUsdOk() (*float32, bool)`
-
-GetPriceUsdOk returns a tuple with the PriceUsd field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPriceUsd
-
-`func (o *Endpoints) SetPriceUsd(v float32)`
-
-SetPriceUsd sets PriceUsd field to given value.
-
-### HasPriceUsd
-
-`func (o *Endpoints) HasPriceUsd() bool`
-
-HasPriceUsd returns a boolean if a field has been set.
-
 ### GetEndpointSchema
 
 `func (o *Endpoints) GetEndpointSchema() map[string]interface{}`
@@ -546,30 +559,30 @@ SetEndpointSchema sets EndpointSchema field to given value.
 
 HasEndpointSchema returns a boolean if a field has been set.
 
-### GetRateLimitRequests
+### GetRateLimitNumber
 
-`func (o *Endpoints) GetRateLimitRequests() int64`
+`func (o *Endpoints) GetRateLimitNumber() int64`
 
-GetRateLimitRequests returns the RateLimitRequests field if non-nil, zero value otherwise.
+GetRateLimitNumber returns the RateLimitNumber field if non-nil, zero value otherwise.
 
-### GetRateLimitRequestsOk
+### GetRateLimitNumberOk
 
-`func (o *Endpoints) GetRateLimitRequestsOk() (*int64, bool)`
+`func (o *Endpoints) GetRateLimitNumberOk() (*int64, bool)`
 
-GetRateLimitRequestsOk returns a tuple with the RateLimitRequests field if it's non-nil, zero value otherwise
+GetRateLimitNumberOk returns a tuple with the RateLimitNumber field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRateLimitRequests
+### SetRateLimitNumber
 
-`func (o *Endpoints) SetRateLimitRequests(v int64)`
+`func (o *Endpoints) SetRateLimitNumber(v int64)`
 
-SetRateLimitRequests sets RateLimitRequests field to given value.
+SetRateLimitNumber sets RateLimitNumber field to given value.
 
-### HasRateLimitRequests
+### HasRateLimitNumber
 
-`func (o *Endpoints) HasRateLimitRequests() bool`
+`func (o *Endpoints) HasRateLimitNumber() bool`
 
-HasRateLimitRequests returns a boolean if a field has been set.
+HasRateLimitNumber returns a boolean if a field has been set.
 
 ### GetRateLimitPeriod
 
@@ -691,6 +704,156 @@ and a boolean to check if the value has been set.
 SetStatus sets Status field to given value.
 
 
+### GetDataTimePeriodStart
+
+`func (o *Endpoints) GetDataTimePeriodStart() time.Time`
+
+GetDataTimePeriodStart returns the DataTimePeriodStart field if non-nil, zero value otherwise.
+
+### GetDataTimePeriodStartOk
+
+`func (o *Endpoints) GetDataTimePeriodStartOk() (*time.Time, bool)`
+
+GetDataTimePeriodStartOk returns a tuple with the DataTimePeriodStart field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataTimePeriodStart
+
+`func (o *Endpoints) SetDataTimePeriodStart(v time.Time)`
+
+SetDataTimePeriodStart sets DataTimePeriodStart field to given value.
+
+### HasDataTimePeriodStart
+
+`func (o *Endpoints) HasDataTimePeriodStart() bool`
+
+HasDataTimePeriodStart returns a boolean if a field has been set.
+
+### GetDataTimePeriodEnd
+
+`func (o *Endpoints) GetDataTimePeriodEnd() time.Time`
+
+GetDataTimePeriodEnd returns the DataTimePeriodEnd field if non-nil, zero value otherwise.
+
+### GetDataTimePeriodEndOk
+
+`func (o *Endpoints) GetDataTimePeriodEndOk() (*time.Time, bool)`
+
+GetDataTimePeriodEndOk returns a tuple with the DataTimePeriodEnd field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataTimePeriodEnd
+
+`func (o *Endpoints) SetDataTimePeriodEnd(v time.Time)`
+
+SetDataTimePeriodEnd sets DataTimePeriodEnd field to given value.
+
+### HasDataTimePeriodEnd
+
+`func (o *Endpoints) HasDataTimePeriodEnd() bool`
+
+HasDataTimePeriodEnd returns a boolean if a field has been set.
+
+### GetDateCollectionStart
+
+`func (o *Endpoints) GetDateCollectionStart() time.Time`
+
+GetDateCollectionStart returns the DateCollectionStart field if non-nil, zero value otherwise.
+
+### GetDateCollectionStartOk
+
+`func (o *Endpoints) GetDateCollectionStartOk() (*time.Time, bool)`
+
+GetDateCollectionStartOk returns a tuple with the DateCollectionStart field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDateCollectionStart
+
+`func (o *Endpoints) SetDateCollectionStart(v time.Time)`
+
+SetDateCollectionStart sets DateCollectionStart field to given value.
+
+### HasDateCollectionStart
+
+`func (o *Endpoints) HasDateCollectionStart() bool`
+
+HasDateCollectionStart returns a boolean if a field has been set.
+
+### GetGeographicCoverageType
+
+`func (o *Endpoints) GetGeographicCoverageType() string`
+
+GetGeographicCoverageType returns the GeographicCoverageType field if non-nil, zero value otherwise.
+
+### GetGeographicCoverageTypeOk
+
+`func (o *Endpoints) GetGeographicCoverageTypeOk() (*string, bool)`
+
+GetGeographicCoverageTypeOk returns a tuple with the GeographicCoverageType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGeographicCoverageType
+
+`func (o *Endpoints) SetGeographicCoverageType(v string)`
+
+SetGeographicCoverageType sets GeographicCoverageType field to given value.
+
+### HasGeographicCoverageType
+
+`func (o *Endpoints) HasGeographicCoverageType() bool`
+
+HasGeographicCoverageType returns a boolean if a field has been set.
+
+### GetGeographicCoverageDetails
+
+`func (o *Endpoints) GetGeographicCoverageDetails() string`
+
+GetGeographicCoverageDetails returns the GeographicCoverageDetails field if non-nil, zero value otherwise.
+
+### GetGeographicCoverageDetailsOk
+
+`func (o *Endpoints) GetGeographicCoverageDetailsOk() (*string, bool)`
+
+GetGeographicCoverageDetailsOk returns a tuple with the GeographicCoverageDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGeographicCoverageDetails
+
+`func (o *Endpoints) SetGeographicCoverageDetails(v string)`
+
+SetGeographicCoverageDetails sets GeographicCoverageDetails field to given value.
+
+### HasGeographicCoverageDetails
+
+`func (o *Endpoints) HasGeographicCoverageDetails() bool`
+
+HasGeographicCoverageDetails returns a boolean if a field has been set.
+
+### GetDataSourceRefreshFrequency
+
+`func (o *Endpoints) GetDataSourceRefreshFrequency() string`
+
+GetDataSourceRefreshFrequency returns the DataSourceRefreshFrequency field if non-nil, zero value otherwise.
+
+### GetDataSourceRefreshFrequencyOk
+
+`func (o *Endpoints) GetDataSourceRefreshFrequencyOk() (*string, bool)`
+
+GetDataSourceRefreshFrequencyOk returns a tuple with the DataSourceRefreshFrequency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDataSourceRefreshFrequency
+
+`func (o *Endpoints) SetDataSourceRefreshFrequency(v string)`
+
+SetDataSourceRefreshFrequency sets DataSourceRefreshFrequency field to given value.
+
+### HasDataSourceRefreshFrequency
+
+`func (o *Endpoints) HasDataSourceRefreshFrequency() bool`
+
+HasDataSourceRefreshFrequency returns a boolean if a field has been set.
+
 ### GetTags
 
 `func (o *Endpoints) GetTags() string`
@@ -765,6 +928,51 @@ SetMaxRecordsPerRequest sets MaxRecordsPerRequest field to given value.
 `func (o *Endpoints) HasMaxRecordsPerRequest() bool`
 
 HasMaxRecordsPerRequest returns a boolean if a field has been set.
+
+### GetExportEnabled
+
+`func (o *Endpoints) GetExportEnabled() bool`
+
+GetExportEnabled returns the ExportEnabled field if non-nil, zero value otherwise.
+
+### GetExportEnabledOk
+
+`func (o *Endpoints) GetExportEnabledOk() (*bool, bool)`
+
+GetExportEnabledOk returns a tuple with the ExportEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExportEnabled
+
+`func (o *Endpoints) SetExportEnabled(v bool)`
+
+SetExportEnabled sets ExportEnabled field to given value.
+
+
+### GetMaxRecordsPerExport
+
+`func (o *Endpoints) GetMaxRecordsPerExport() int64`
+
+GetMaxRecordsPerExport returns the MaxRecordsPerExport field if non-nil, zero value otherwise.
+
+### GetMaxRecordsPerExportOk
+
+`func (o *Endpoints) GetMaxRecordsPerExportOk() (*int64, bool)`
+
+GetMaxRecordsPerExportOk returns a tuple with the MaxRecordsPerExport field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxRecordsPerExport
+
+`func (o *Endpoints) SetMaxRecordsPerExport(v int64)`
+
+SetMaxRecordsPerExport sets MaxRecordsPerExport field to given value.
+
+### HasMaxRecordsPerExport
+
+`func (o *Endpoints) HasMaxRecordsPerExport() bool`
+
+HasMaxRecordsPerExport returns a boolean if a field has been set.
 
 ### GetSampleResponse
 
